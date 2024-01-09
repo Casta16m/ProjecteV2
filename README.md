@@ -12,6 +12,12 @@ Grup:
 https://trello.com/b/3UyTBxkh/projectev2
 ```
 
+
+### Ver FIGMA
+```
+https://www.figma.com/file/GYmp7HTY5R1BZO4fdGDj8U/Musify?type=design&node-id=0%3A1&mode=design&t=UJ10nMkF3RmuopXo-1
+```
+
 ### Clonar este repositorio
 
 Para clonar este repositorio en tu máquina local, puedes utilizar el siguiente comando:
