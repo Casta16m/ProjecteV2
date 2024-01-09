@@ -9,7 +9,7 @@ Grup:
 
 ### Ver TRELLO
 ```
-[https://trello.com/b/3UyTBxkh/projectev2](https://trello.com/b/3UyTBxkh/projectev2)
+https://trello.com/b/3UyTBxkh/projectev2
 ```
 
 ### Clonar este repositorio
