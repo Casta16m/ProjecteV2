@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="15dp"
+    android:background="@color/navyBlue">
+
+    <ImageView
+        android:id="@+id/songCover"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+
+        android:src="@drawable/album" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/songCover"
+        android:layout_marginLeft="10dp">
+
+
+        <TextView
+            android:id="@+id/songNameMinimized"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Slim Shady"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/artistNameMinimized"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eminem"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    <!-- Controls -->
+
+    <LinearLayout
+        android:id="@+id/controlsLayoutMinimized"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <!-- Previous Button -->
+        <ImageView
+            android:id="@+id/previousButtonMinimized"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/previous" />
+
+        <!-- Play/Pause Button -->
+        <ImageView
+            android:id="@+id/playPauseButtonMinimized"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+
+            android:src="@drawable/playwhite" />
+
+        <!-- Next Button -->
+        <ImageView
+            android:id="@+id/nextButtonMinimized"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:src="@drawable/next" />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
