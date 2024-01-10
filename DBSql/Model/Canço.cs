@@ -5,5 +5,8 @@ namespace ProjecteV2.ApiSql{
         [Key]
         public string UID { get; set; }
         public ICollection<Es> Es { get; set; } 
+
+        public ICollection<conteAlbum> conteAlbum { get; set; }
+
     }
 }
