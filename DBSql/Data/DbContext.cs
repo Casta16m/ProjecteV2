@@ -9,8 +9,11 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Album> Album { get; set; }
         public DbSet<Canço> Cançons { get; set; }
         public DbSet<Es> es { get; set; }
+        public DbSet<conteAlbum> conteAlbum { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.ApplyConfiguration(new EsConfiguration());
+            modelBuilder.ApplyConfiguration(new conteAlbumConfiguration());
+            modelBuilder.ApplyConfiguration(new AlbumConfiguration());
         }
     }
 
