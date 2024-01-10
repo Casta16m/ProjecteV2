@@ -225,15 +225,12 @@ C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\ru\Microsoft.C
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.csproj.AssemblyReference.cache
@@ -258,3 +255,6 @@ C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\refint\DBSql.d
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.pdb
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.genruntimeconfig.cache
 C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\ref\DBSql.dll
+C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Aimar\Documents\GitHub\ProjecteV2\DBSql\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll

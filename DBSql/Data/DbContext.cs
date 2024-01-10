@@ -6,7 +6,10 @@ namespace ProjecteV2.ApiSql{
         public DataContext(DbContextOptions<DataContext> options) : base(options){}
         public DbSet<Format> Formats { get; set; }
         public DbSet<Artista> Artistes { get; set; }
+        public DbSet<Canço> Cançons { get; set; }
+        public DbSet<Es> es { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.ApplyConfiguration(new EsConfiguration());
         }
     }
 
