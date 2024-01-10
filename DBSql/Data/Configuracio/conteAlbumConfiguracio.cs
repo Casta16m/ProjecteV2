@@ -9,7 +9,7 @@ namespace ProjecteV2.ApiSql
         {
             builder.HasKey(x => new { x.UID, x.Nom, x.data });
             builder.HasOne(x => x.CançoObj).WithMany(x => x.conteAlbum).HasForeignKey(x => x.UID);
-            builder.HasOne(x => x.AlbumObj).WithMany(x => x.conteAlbum).HasForeignKey(x => x.Nom);
+            builder.HasOne(x => x.AlbumObj).WithMany(x => x.conteAlbum).HasForeignKey(x => x.Nom, x => x.data, x => x.ArtistaNom);
             builder.HasIndex(x => x.UID).IsUnique(false);
             builder.HasIndex(x => x.Nom).IsUnique(false);
             builder.HasIndex(x => x.data).IsUnique(false);
