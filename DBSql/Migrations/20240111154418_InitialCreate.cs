@@ -15,25 +15,25 @@ namespace DBSql.Migrations
                 name: "Album",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomAlbum = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ArtistaNom = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Album", x => new { x.Nom, x.data, x.ArtistaNom });
+                    table.PrimaryKey("PK_Album", x => new { x.NomAlbum, x.data, x.ArtistaNom });
                 });
 
             migrationBuilder.CreateTable(
                 name: "Artistes",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AnyNaixement = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artistes", x => x.Nom);
+                    table.PrimaryKey("PK_Artistes", x => x.NomArtista);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,22 +51,22 @@ namespace DBSql.Migrations
                 name: "Extensio",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    NomExtensio = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Extensio", x => x.Nom);
+                    table.PrimaryKey("PK_Extensio", x => x.NomExtensio);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Grups",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    NomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Grups", x => x.Nom);
+                    table.PrimaryKey("PK_Grups", x => x.NomGrup);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,18 +74,18 @@ namespace DBSql.Migrations
                 columns: table => new
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomAlbum = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ArtistaNom = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_conteAlbum", x => new { x.UID, x.Nom, x.data });
+                    table.PrimaryKey("PK_conteAlbum", x => new { x.UID, x.NomAlbum, x.data });
                     table.ForeignKey(
-                        name: "FK_conteAlbum_Album_Nom_data_ArtistaNom",
-                        columns: x => new { x.Nom, x.data, x.ArtistaNom },
+                        name: "FK_conteAlbum_Album_NomAlbum_data_ArtistaNom",
+                        columns: x => new { x.NomAlbum, x.data, x.ArtistaNom },
                         principalTable: "Album",
-                        principalColumns: new[] { "Nom", "data", "ArtistaNom" },
+                        principalColumns: new[] { "NomAlbum", "data", "ArtistaNom" },
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_conteAlbum_Cançons_UID",
@@ -100,11 +100,11 @@ namespace DBSql.Migrations
                 columns: table => new
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    NomFormat = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Format", x => new { x.UID, x.Nom });
+                    table.PrimaryKey("PK_Format", x => new { x.UID, x.NomFormat });
                     table.ForeignKey(
                         name: "FK_Format_Cançons_UID",
                         column: x => x.UID,
@@ -112,10 +112,36 @@ namespace DBSql.Migrations
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Format_Extensio_Nom",
-                        column: x => x.Nom,
+                        name: "FK_Format_Extensio_NomFormat",
+                        column: x => x.NomFormat,
                         principalTable: "Extensio",
-                        principalColumn: "Nom",
+                        principalColumn: "NomExtensio",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pertany",
+                columns: table => new
+                {
+                    NomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DataInici = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DataFi = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pertany", x => new { x.NomGrup, x.NomArtista });
+                    table.ForeignKey(
+                        name: "FK_Pertany_Artistes_NomArtista",
+                        column: x => x.NomArtista,
+                        principalTable: "Artistes",
+                        principalColumn: "NomArtista",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pertany_Grups_NomGrup",
+                        column: x => x.NomGrup,
+                        principalTable: "Grups",
+                        principalColumn: "NomGrup",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -125,14 +151,14 @@ namespace DBSql.Migrations
                 column: "data");
 
             migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_Nom",
+                name: "IX_conteAlbum_NomAlbum",
                 table: "conteAlbum",
-                column: "Nom");
+                column: "NomAlbum");
 
             migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_Nom_data_ArtistaNom",
+                name: "IX_conteAlbum_NomAlbum_data_ArtistaNom",
                 table: "conteAlbum",
-                columns: new[] { "Nom", "data", "ArtistaNom" });
+                columns: new[] { "NomAlbum", "data", "ArtistaNom" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_UID",
@@ -140,22 +166,29 @@ namespace DBSql.Migrations
                 column: "UID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Format_Nom",
+                name: "IX_Format_NomFormat",
                 table: "Format",
-                column: "Nom");
+                column: "NomFormat");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Format_UID",
                 table: "Format",
                 column: "UID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pertany_NomArtista",
+                table: "Pertany",
+                column: "NomArtista");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pertany_NomGrup",
+                table: "Pertany",
+                column: "NomGrup");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Artistes");
-
             migrationBuilder.DropTable(
                 name: "conteAlbum");
 
@@ -163,7 +196,7 @@ namespace DBSql.Migrations
                 name: "Format");
 
             migrationBuilder.DropTable(
-                name: "Grups");
+                name: "Pertany");
 
             migrationBuilder.DropTable(
                 name: "Album");
@@ -173,6 +206,12 @@ namespace DBSql.Migrations
 
             migrationBuilder.DropTable(
                 name: "Extensio");
+
+            migrationBuilder.DropTable(
+                name: "Artistes");
+
+            migrationBuilder.DropTable(
+                name: "Grups");
         }
     }
 }

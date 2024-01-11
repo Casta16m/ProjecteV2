@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ProjecteV2{
+namespace ProjecteV2.ApiSql{
     public class PertanyConfiguracio : IEntityTypeConfiguration<Pertany>
     {
         public void Configure(EntityTypeBuilder<Pertany> builder)

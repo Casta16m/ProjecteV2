@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjecteV2{
+namespace ProjecteV2.ApiSql{
     public class Grup{
         [Key]
-        public string Nom { get; set; }
+        public string NomGrup { get; set; }
         public ICollection<Pertany> Pertany { get; set; }
     }
 }

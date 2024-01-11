@@ -8,7 +8,7 @@ namespace ProjecteV2.ApiSql{
         public string UID { get; set; }
         public Extensio? ExtensioObj { get; set; }
         [Key]
-        public string ?Nom { get; set; }
+        public string ?NomFormat { get; set; }
 
     }
 }
