@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {
+    "net6.0": {
       "BouncyCastle.Cryptography/2.2.1": {
         "type": "package",
         "compile": {
@@ -659,12 +659,12 @@
       "System.Formats.Asn1/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net8.0/System.Formats.Asn1.dll": {
+          "lib/net6.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Formats.Asn1.dll": {
+          "lib/net6.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
@@ -1193,12 +1193,12 @@
           "System.Formats.Asn1": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
             "related": ".xml"
           }
         },
@@ -1206,7 +1206,7 @@
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+          "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1236,12 +1236,12 @@
           "System.Security.Cryptography.Pkcs": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/System.Security.Cryptography.Xml.dll": {
+          "lib/net6.0/System.Security.Cryptography.Xml.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Security.Cryptography.Xml.dll": {
+          "lib/net6.0/System.Security.Cryptography.Xml.dll": {
             "related": ".xml"
           }
         },
@@ -1444,21 +1444,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
-        }
-      },
-      "DamSecurityLib/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Security.Cryptography.Xml": "8.0.0",
-          "itext7": "8.0.2",
-          "itext7.bouncy-castle-adapter": "8.0.2"
-        },
-        "compile": {
-          "bin/placeholder/DamSecurityLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DamSecurityLib.dll": {}
         }
       }
     }
@@ -3828,7 +3813,6 @@
       "path": "system.runtime.interopservices.runtimeinformation/4.0.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4861,16 +4845,13 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
-    },
-    "DamSecurityLib/1.0.0": {
-      "type": "project",
-      "path": "../DamSecurityLib/DamSecurityLib.csproj",
-      "msbuildProject": "../DamSecurityLib/DamSecurityLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0": [
-      "DamSecurityLib >= 1.0.0"
+    "net6.0": [
+      "System.Security.Cryptography.Xml >= 8.0.0",
+      "itext7 >= 8.0.2",
+      "itext7.bouncy-castle-adapter >= 8.0.2"
     ]
   },
   "packageFolders": {
@@ -4879,31 +4860,27 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\ClientSend\\ClientSend.csproj",
-      "projectName": "ClientSend",
-      "projectPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\ClientSend\\ClientSend.csproj",
+      "projectUniqueName": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\DamSecurityLib.csproj",
+      "projectName": "DamSecurityLib",
+      "projectPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\DamSecurityLib.csproj",
       "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\ClientSend\\obj\\",
+      "outputPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sergi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net8.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\DamSecurityLib.csproj": {
-              "projectPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\DamSecurityLib.csproj"
-            }
-          }
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -4913,8 +4890,22 @@
       }
     },
     "frameworks": {
-      "net8.0": {
-        "targetAlias": "net8.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "System.Security.Cryptography.Xml": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "itext7": {
+            "target": "Package",
+            "version": "[8.0.2, )"
+          },
+          "itext7.bouncy-castle-adapter": {
+            "target": "Package",
+            "version": "[8.0.2, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -4931,7 +4922,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

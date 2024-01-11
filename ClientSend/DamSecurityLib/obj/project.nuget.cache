@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ENlKELfDaS6M+8xmoMqdc/y4tSQELZONu80xDNRamsGit/+pg7iNwmHS8Fete/F74odmaCz3zaa5DytnN5ajZg==",
+  "dgSpecHash": "fAfgrQZRnEdZIU/ikyWbq6bKuf05TGBLzi4P5s7GgL8TGQ7vXty7EIPP1Q0Q5vs/2z3HKVA/taV23kItPXeifg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\ClientSend\\ClientSend.csproj",
+  "projectFilePath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\ClientSend\\DamSecurityLib\\DamSecurityLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sergi\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\sergi\\.nuget\\packages\\itext\\8.0.2\\itext.8.0.2.nupkg.sha512",

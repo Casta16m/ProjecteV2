@@ -1,0 +1,5 @@
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net8.0\DamSecurityLib.csproj.AssemblyReference.cache
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net8.0\DamSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net8.0\DamSecurityLib.AssemblyInfoInputs.cache
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net8.0\DamSecurityLib.AssemblyInfo.cs
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net8.0\DamSecurityLib.csproj.CoreCompileInputs.cache

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Pdf.Xobject;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -22,27 +23,16 @@ class Program
             string clientAddress = ((System.Net.IPEndPoint)client.Client.LocalEndPoint).Address.ToString();
             Console.WriteLine($"Cliente ({clientAddress}) conectado al servidor de chat.");
 
-            while (true)
-            {
-                string input = Console.ReadLine();
+            string pdfFilePath = Console.ReadLine();
 
-                if (input == "exit")
-                {
-                    // Permite que el cliente cierre la conexión de manera ordenada
-                    break;
-                }
-                else if (input == "clear")
-                {
-                    Console.Clear();
-                }
-                else if (string.IsNullOrEmpty(input))
-                {
-                    // Ignora las líneas en blanco
-                }
-                else
-                {
-                    SendMessage(input);
-                }
+            string password = Console.ReadLine();
+
+            if (pdfFilePath != null)
+            {
+                // SendMessage(password, pdfFilePath);
+                SendMessage(password, pdfFilePath);
+
+                
             }
         }
         catch (Exception ex)
@@ -63,9 +53,19 @@ class Program
         writer = new StreamWriter(stream, Encoding.ASCII);
     }
 
-    static void SendMessage(string message)
+    static void SendMessage(string password, string outFile)
     {
-        writer.WriteLine(message);
-        writer.Flush();
+        DAMSecurityLib.Crypto.Sign sign;
+        try
+        {
+            sign = new DAMSecurityLib.Crypto.Sign();
+            sign.EncryptPdf(password, outFile);
+
+            writer.WriteLine(outFile);
+            writer.Flush();
+
+        } catch (IOException ex) {
+            Console.WriteLine($"Error de lectura: {ex.Message}");
+        }
     }
 }
