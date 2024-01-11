@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ProjecteV1.ApiMongoDB{
+namespace ProjecteV2.ApiMongoDB{
     public class Audio {
            
         [BsonId]

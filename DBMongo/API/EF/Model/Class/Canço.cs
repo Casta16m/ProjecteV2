@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using ProjecteV1.ApiMongoDB;
-namespace ProjecteV1.ApiMongoDB{
+
+namespace ProjecteV2.ApiMongoDB{
     public class Canço{
         
         [BsonId]
