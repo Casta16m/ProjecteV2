@@ -1,10 +1,14 @@
-
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjecteV2.ApiSql{
     public class Format{
+
+        public Canço? CançoObj { get; set; } 
         [Key]
-        public string Nom { get; set; }
-        public ICollection<Es> Es { get; set; }
+        public string UID { get; set; }
+        public Extensio? ExtensioObj { get; set; }
+        [Key]
+        public string ?Nom { get; set; }
+
     }
 }

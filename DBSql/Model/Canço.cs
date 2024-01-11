@@ -4,7 +4,7 @@ namespace ProjecteV2.ApiSql{
     public class Canço{
         [Key]
         public string UID { get; set; }
-        public ICollection<Es> Es { get; set; } 
+        public ICollection<Format> Format { get; set; }
 
         public ICollection<conteAlbum> conteAlbum { get; set; }
 

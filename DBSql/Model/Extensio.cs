@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace ProjecteV2.ApiSql{
-    public class Artista{
+    public class Extensio{
         [Key]
         public string Nom { get; set; }
-        public int AnyNaixement { get; set; }
-        public ICollection<Pertany> Pertany { get; set; }
+        public ICollection<Format> Format { get; set; }
     }
 }

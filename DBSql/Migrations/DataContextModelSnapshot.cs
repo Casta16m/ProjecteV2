@@ -61,7 +61,17 @@ namespace DBSql.Migrations
                     b.ToTable("Cançons");
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.Es", b =>
+            modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
+                {
+                    b.Property<string>("Nom")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Nom");
+
+                    b.ToTable("Extensio");
+                });
+
+            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
                 {
                     b.Property<string>("UID")
                         .HasColumnType("nvarchar(450)");
@@ -75,17 +85,7 @@ namespace DBSql.Migrations
 
                     b.HasIndex("UID");
 
-                    b.ToTable("es");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
-                {
-                    b.Property<string>("Nom")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Nom");
-
-                    b.ToTable("Formats");
+                    b.ToTable("Format");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.conteAlbum", b =>
@@ -116,23 +116,33 @@ namespace DBSql.Migrations
                     b.ToTable("conteAlbum");
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.Es", b =>
+            modelBuilder.Entity("ProjecteV2.Grup", b =>
                 {
-                    b.HasOne("ProjecteV2.ApiSql.Format", "FormatObj")
-                        .WithMany("Es")
+                    b.Property<string>("Nom")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Nom");
+
+                    b.ToTable("Grups");
+                });
+
+            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
+                {
+                    b.HasOne("ProjecteV2.ApiSql.Extensio", "ExtensioObj")
+                        .WithMany("Format")
                         .HasForeignKey("Nom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProjecteV2.ApiSql.Canço", "CançoObj")
-                        .WithMany("Es")
+                        .WithMany("Format")
                         .HasForeignKey("UID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CançoObj");
 
-                    b.Navigation("FormatObj");
+                    b.Navigation("ExtensioObj");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.conteAlbum", b =>
@@ -161,14 +171,14 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Canço", b =>
                 {
-                    b.Navigation("Es");
+                    b.Navigation("Format");
 
                     b.Navigation("conteAlbum");
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
+            modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
                 {
-                    b.Navigation("Es");
+                    b.Navigation("Format");
                 });
 #pragma warning restore 612, 618
         }

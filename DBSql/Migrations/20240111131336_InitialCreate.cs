@@ -48,14 +48,25 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Formats",
+                name: "Extensio",
                 columns: table => new
                 {
                     Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Formats", x => x.Nom);
+                    table.PrimaryKey("PK_Extensio", x => x.Nom);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Grups",
+                columns: table => new
+                {
+                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Grups", x => x.Nom);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,7 +96,7 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "es",
+                name: "Format",
                 columns: table => new
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -93,17 +104,17 @@ namespace DBSql.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_es", x => new { x.UID, x.Nom });
+                    table.PrimaryKey("PK_Format", x => new { x.UID, x.Nom });
                     table.ForeignKey(
-                        name: "FK_es_Cançons_UID",
+                        name: "FK_Format_Cançons_UID",
                         column: x => x.UID,
                         principalTable: "Cançons",
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_es_Formats_Nom",
+                        name: "FK_Format_Extensio_Nom",
                         column: x => x.Nom,
-                        principalTable: "Formats",
+                        principalTable: "Extensio",
                         principalColumn: "Nom",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -129,13 +140,13 @@ namespace DBSql.Migrations
                 column: "UID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_es_Nom",
-                table: "es",
+                name: "IX_Format_Nom",
+                table: "Format",
                 column: "Nom");
 
             migrationBuilder.CreateIndex(
-                name: "IX_es_UID",
-                table: "es",
+                name: "IX_Format_UID",
+                table: "Format",
                 column: "UID");
         }
 
@@ -149,7 +160,10 @@ namespace DBSql.Migrations
                 name: "conteAlbum");
 
             migrationBuilder.DropTable(
-                name: "es");
+                name: "Format");
+
+            migrationBuilder.DropTable(
+                name: "Grups");
 
             migrationBuilder.DropTable(
                 name: "Album");
@@ -158,7 +172,7 @@ namespace DBSql.Migrations
                 name: "Cançons");
 
             migrationBuilder.DropTable(
-                name: "Formats");
+                name: "Extensio");
         }
     }
 }
