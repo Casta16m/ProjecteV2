@@ -8,5 +8,6 @@ namespace ProjecteV2.ApiSql{
 
         public ICollection<conteAlbum> conteAlbum { get; set; }
         public ICollection<ConteLlista> conteLlista { get; set; }
+        public ICollection<Participa> participa { get; set; }
     }
 }

@@ -1297,3 +1297,14 @@ C:\Users\luisr\Documents\Musify\ProjecteV2\DBSql\obj\Debug\net8.0\refint\DBSql.d
 C:\Users\luisr\Documents\Musify\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.pdb
 C:\Users\luisr\Documents\Musify\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.genruntimeconfig.cache
 C:\Users\luisr\Documents\Musify\ProjecteV2\DBSql\obj\Debug\net8.0\ref\DBSql.dll
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.csproj.AssemblyReference.cache
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.AssemblyInfoInputs.cache
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.AssemblyInfo.cs
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.csproj.CoreCompileInputs.cache
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.sourcelink.json
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.dll
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\refint\DBSql.dll
+C:\Users\sergi\GitHub\ProjecteV2\DBSql\obj\Debug\net8.0\DBSql.pdb

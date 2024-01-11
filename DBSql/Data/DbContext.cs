@@ -13,6 +13,8 @@ namespace ProjecteV2.ApiSql{
         public DbSet<conteAlbum> conteAlbum { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Llista> Llista { get; set; }
+        public DbSet<Instrument> Instrument { get; set; }
+        public DbSet<Participa> Participa { get; set; }
 
         public DbSet<ConteLlista> ConteLlista { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
@@ -22,6 +24,7 @@ namespace ProjecteV2.ApiSql{
             modelBuilder.ApplyConfiguration(new conteLlistaConfiguracio());
             modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   
             modelBuilder.ApplyConfiguration(new PertanyConfiguracio());
+            modelBuilder.ApplyConfiguration(new ParticipaConfiguracio());
         }
     }
 
