@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
+
     tools:context=".MainActivity">
 
 
@@ -12,7 +13,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="transparent"
+        android:background="@color/lightBlue"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
@@ -49,34 +50,34 @@
         android:id="@+id/titlenav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="transparent"
-        android:gravity="center"
+        android:background="@color/lightBlue"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="20dp"
         android:weightSum="1"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:text="Play list"
             android:textColor="@color/navyBlue"
             android:textSize="24sp"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             />
 
         <ImageView
             android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="end"
-            android:layout_weight="0.2"
-            android:src="@drawable/editplaylist"
+            android:src="@drawable/newplaylist"
             />
 
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlayLists"
@@ -87,7 +88,17 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="@+id/titlenav"
         app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSongList"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@+id/titlenav"
+        app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
         />
 
     <include
