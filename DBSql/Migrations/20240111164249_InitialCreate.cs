@@ -70,6 +70,19 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Llista",
+                columns: table => new
+                {
+                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID_MAC = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Dispositiu = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Llista", x => new { x.Nom, x.ID_MAC });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "conteAlbum",
                 columns: table => new
                 {
@@ -145,6 +158,31 @@ namespace DBSql.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ConteLlista",
+                columns: table => new
+                {
+                    NomLlista = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MAC = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConteLlista", x => new { x.NomLlista, x.MAC, x.UID });
+                    table.ForeignKey(
+                        name: "FK_ConteLlista_Cançons_UID",
+                        column: x => x.UID,
+                        principalTable: "Cançons",
+                        principalColumn: "UID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ConteLlista_Llista_NomLlista_MAC",
+                        columns: x => new { x.NomLlista, x.MAC },
+                        principalTable: "Llista",
+                        principalColumns: new[] { "Nom", "ID_MAC" },
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_data",
                 table: "conteAlbum",
@@ -163,6 +201,11 @@ namespace DBSql.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_UID",
                 table: "conteAlbum",
+                column: "UID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ConteLlista_UID",
+                table: "ConteLlista",
                 column: "UID");
 
             migrationBuilder.CreateIndex(
@@ -193,6 +236,9 @@ namespace DBSql.Migrations
                 name: "conteAlbum");
 
             migrationBuilder.DropTable(
+                name: "ConteLlista");
+
+            migrationBuilder.DropTable(
                 name: "Format");
 
             migrationBuilder.DropTable(
@@ -200,6 +246,9 @@ namespace DBSql.Migrations
 
             migrationBuilder.DropTable(
                 name: "Album");
+
+            migrationBuilder.DropTable(
+                name: "Llista");
 
             migrationBuilder.DropTable(
                 name: "Cançons");

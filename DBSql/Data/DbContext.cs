@@ -12,10 +12,15 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Pertany> Pertany { get; set; }
         public DbSet<conteAlbum> conteAlbum { get; set; }
         public DbSet<Grup> Grups { get; set; }
+        public DbSet<Llista> Llista { get; set; }
+
+        public DbSet<ConteLlista> ConteLlista { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.ApplyConfiguration(new FormatConfiguracio());
             modelBuilder.ApplyConfiguration(new conteAlbumConfiguracio());
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
+            modelBuilder.ApplyConfiguration(new conteLlistaConfiguracio());
+            modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   
             modelBuilder.ApplyConfiguration(new PertanyConfiguracio());
         }
     }

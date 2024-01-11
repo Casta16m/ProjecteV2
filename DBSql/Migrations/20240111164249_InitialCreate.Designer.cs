@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240111154418_InitialCreate")]
+    [Migration("20240111164249_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -64,6 +64,24 @@ namespace DBSql.Migrations
                     b.ToTable("Cançons");
                 });
 
+            modelBuilder.Entity("ProjecteV2.ApiSql.ConteLlista", b =>
+                {
+                    b.Property<string>("NomLlista")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MAC")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("NomLlista", "MAC", "UID");
+
+                    b.HasIndex("UID");
+
+                    b.ToTable("ConteLlista");
+                });
+
             modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
                 {
                     b.Property<string>("NomExtensio")
@@ -99,6 +117,22 @@ namespace DBSql.Migrations
                     b.HasKey("NomGrup");
 
                     b.ToTable("Grups");
+                });
+
+            modelBuilder.Entity("ProjecteV2.ApiSql.Llista", b =>
+                {
+                    b.Property<string>("Nom")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ID_MAC")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Dispositiu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Nom", "ID_MAC");
+
+                    b.ToTable("Llista");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Pertany", b =>
@@ -150,6 +184,25 @@ namespace DBSql.Migrations
                     b.HasIndex("NomAlbum", "data", "ArtistaNom");
 
                     b.ToTable("conteAlbum");
+                });
+
+            modelBuilder.Entity("ProjecteV2.ApiSql.ConteLlista", b =>
+                {
+                    b.HasOne("ProjecteV2.ApiSql.Canço", "cançoObj")
+                        .WithMany("conteLlista")
+                        .HasForeignKey("UID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjecteV2.ApiSql.Llista", "llistaObj")
+                        .WithMany("conteLlista")
+                        .HasForeignKey("NomLlista", "MAC")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cançoObj");
+
+                    b.Navigation("llistaObj");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
@@ -224,6 +277,8 @@ namespace DBSql.Migrations
                     b.Navigation("Format");
 
                     b.Navigation("conteAlbum");
+
+                    b.Navigation("conteLlista");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
@@ -234,6 +289,11 @@ namespace DBSql.Migrations
             modelBuilder.Entity("ProjecteV2.ApiSql.Grup", b =>
                 {
                     b.Navigation("Pertany");
+                });
+
+            modelBuilder.Entity("ProjecteV2.ApiSql.Llista", b =>
+                {
+                    b.Navigation("conteLlista");
                 });
 #pragma warning restore 612, 618
         }
