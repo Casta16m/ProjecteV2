@@ -20,7 +20,5 @@ namespace ProjecteV2.ApiSql{
         public Instrument InstrumentObj { get; set; }
 
         public string? NomInstrument { get; set; }
-
-        public ICollection<conteAlbum> conteAlbum { get; set; }
     }
 }
