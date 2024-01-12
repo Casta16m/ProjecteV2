@@ -1,0 +1,24 @@
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.csproj.AssemblyReference.cache
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.AssemblyInfoInputs.cache
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.AssemblyInfo.cs
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.csproj.CoreCompileInputs.cache
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.deps.json
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.dll
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.pdb
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.dll
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\refint\DamSecurityLib.dll
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.pdb
+C:\Users\guill\OneDrive\Documentos\DAM\Programación de Servicios y Procesos (PSP)\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\ref\DamSecurityLib.dll
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.deps.json
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.dll
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\bin\Debug\net6.0\DamSecurityLib.pdb
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.csproj.AssemblyReference.cache
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.AssemblyInfoInputs.cache
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.AssemblyInfo.cs
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.dll
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\refint\DamSecurityLib.dll
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\DamSecurityLib.pdb
+C:\Users\sergi\Downloads\PracticaCriptografia\DamSecurityLib\obj\Debug\net6.0\ref\DamSecurityLib.dll
