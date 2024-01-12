@@ -63,14 +63,14 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="Play list"
+            android:text="Playlists"
             android:textColor="@color/navyBlue"
             android:textSize="24sp"
             android:layout_weight="1"
             />
 
         <ImageView
-            android:id="@+id/arrow"
+            android:id="@+id/createplaylist"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="end"
@@ -82,23 +82,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlayLists"
         android:layout_width="match_parent"
-        android:layout_margin="30dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="@+id/titlenav"
         app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintHeight_default="wrap"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongList"
         android:layout_width="match_parent"
-        android:layout_margin="30dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="@+id/titlenav"
         app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintHeight_default="wrap"
         />
 
     <include
@@ -110,5 +112,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <include
+        layout="@layout/expandedsong"
+        android:id="@+id/expandedsong"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

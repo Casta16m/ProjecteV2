@@ -50,14 +50,14 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/editplaylist"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:src="@drawable/editplaylist" />
+            <ImageView
+                android:id="@+id/editplaylist"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/editplaylist" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
