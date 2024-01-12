@@ -8,7 +8,8 @@ namespace ProjecteV2.ApiSql{
         public string? Nom { get; set; }
        
         public string? ID_MAC { get; set; }
-        public ICollection<ConteLlista> conteLlista { get; set; }
+        public ICollection<Canço> cançons { get; set; }
+
 
 
 

@@ -8,6 +8,6 @@ namespace ProjecteV2.ApiSql{
 
         public string ArtistaNom { get; set; }
 
-        public ICollection<conteAlbum> conteAlbum { get; set; }
+        public ICollection<Canço> cançons { get; set; }
     }
 }

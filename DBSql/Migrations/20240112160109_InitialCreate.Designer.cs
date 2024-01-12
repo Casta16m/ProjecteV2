@@ -12,8 +12,8 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112154943_InitialCreateç")]
-    partial class InitialCreateç
+    [Migration("20240112160109_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,24 @@ namespace DBSql.Migrations
                     b.ToTable("CançoExtensio");
                 });
 
+            modelBuilder.Entity("CançoLlista", b =>
+                {
+                    b.Property<string>("cançonsUID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("llistaNom")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("llistaID_MAC")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("cançonsUID", "llistaNom", "llistaID_MAC");
+
+                    b.HasIndex("llistaNom", "llistaID_MAC");
+
+                    b.ToTable("CançoLlista");
+                });
+
             modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
                 {
                     b.Property<string>("NomAlbum")
@@ -92,24 +110,6 @@ namespace DBSql.Migrations
                     b.HasKey("UID");
 
                     b.ToTable("Cançons");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.ConteLlista", b =>
-                {
-                    b.Property<string>("NomLlista")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MAC")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("NomLlista", "MAC", "UID");
-
-                    b.HasIndex("UID");
-
-                    b.ToTable("ConteLlista");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
@@ -250,23 +250,19 @@ namespace DBSql.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.ConteLlista", b =>
+            modelBuilder.Entity("CançoLlista", b =>
                 {
-                    b.HasOne("ProjecteV2.ApiSql.Canço", "cançoObj")
-                        .WithMany("conteLlista")
-                        .HasForeignKey("UID")
+                    b.HasOne("ProjecteV2.ApiSql.Canço", null)
+                        .WithMany()
+                        .HasForeignKey("cançonsUID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjecteV2.ApiSql.Llista", "llistaObj")
-                        .WithMany("conteLlista")
-                        .HasForeignKey("NomLlista", "MAC")
+                    b.HasOne("ProjecteV2.ApiSql.Llista", null)
+                        .WithMany()
+                        .HasForeignKey("llistaNom", "llistaID_MAC")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("cançoObj");
-
-                    b.Navigation("llistaObj");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Participa", b =>
@@ -337,8 +333,6 @@ namespace DBSql.Migrations
                 {
                     b.Navigation("conteAlbum");
 
-                    b.Navigation("conteLlista");
-
                     b.Navigation("participa");
                 });
 
@@ -350,11 +344,6 @@ namespace DBSql.Migrations
             modelBuilder.Entity("ProjecteV2.ApiSql.Instrument", b =>
                 {
                     b.Navigation("participa");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Llista", b =>
-                {
-                    b.Navigation("conteLlista");
                 });
 #pragma warning restore 612, 618
         }

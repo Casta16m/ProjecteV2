@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DBSql.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreateç : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -208,25 +208,25 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ConteLlista",
+                name: "CançoLlista",
                 columns: table => new
                 {
-                    NomLlista = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MAC = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    cançonsUID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    llistaNom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    llistaID_MAC = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ConteLlista", x => new { x.NomLlista, x.MAC, x.UID });
+                    table.PrimaryKey("PK_CançoLlista", x => new { x.cançonsUID, x.llistaNom, x.llistaID_MAC });
                     table.ForeignKey(
-                        name: "FK_ConteLlista_Cançons_UID",
-                        column: x => x.UID,
+                        name: "FK_CançoLlista_Cançons_cançonsUID",
+                        column: x => x.cançonsUID,
                         principalTable: "Cançons",
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ConteLlista_Llista_NomLlista_MAC",
-                        columns: x => new { x.NomLlista, x.MAC },
+                        name: "FK_CançoLlista_Llista_llistaNom_llistaID_MAC",
+                        columns: x => new { x.llistaNom, x.llistaID_MAC },
                         principalTable: "Llista",
                         principalColumns: new[] { "Nom", "ID_MAC" },
                         onDelete: ReferentialAction.Cascade);
@@ -241,6 +241,11 @@ namespace DBSql.Migrations
                 name: "IX_CançoExtensio_extensioNomExtensio",
                 table: "CançoExtensio",
                 column: "extensioNomExtensio");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CançoLlista_llistaNom_llistaID_MAC",
+                table: "CançoLlista",
+                columns: new[] { "llistaNom", "llistaID_MAC" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_data",
@@ -260,11 +265,6 @@ namespace DBSql.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_UID",
                 table: "conteAlbum",
-                column: "UID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ConteLlista_UID",
-                table: "ConteLlista",
                 column: "UID");
 
             migrationBuilder.CreateIndex(
@@ -298,10 +298,10 @@ namespace DBSql.Migrations
                 name: "CançoExtensio");
 
             migrationBuilder.DropTable(
-                name: "conteAlbum");
+                name: "CançoLlista");
 
             migrationBuilder.DropTable(
-                name: "ConteLlista");
+                name: "conteAlbum");
 
             migrationBuilder.DropTable(
                 name: "Participa");
@@ -310,10 +310,10 @@ namespace DBSql.Migrations
                 name: "Extensio");
 
             migrationBuilder.DropTable(
-                name: "Album");
+                name: "Llista");
 
             migrationBuilder.DropTable(
-                name: "Llista");
+                name: "Album");
 
             migrationBuilder.DropTable(
                 name: "Artistes");

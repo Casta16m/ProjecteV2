@@ -6,8 +6,8 @@ namespace ProjecteV2.ApiSql{
         public string UID { get; set; }
         
 
-        public ICollection<conteAlbum> conteAlbum { get; set; }
-        public ICollection<ConteLlista> conteLlista { get; set; }
+        public ICollection<Album> albums { get; set; }
+        public ICollection<Llista> llista { get; set; }
         public ICollection<Participa> participa { get; set; }
         public ICollection<Extensio> extensio { get; set; }
     }
