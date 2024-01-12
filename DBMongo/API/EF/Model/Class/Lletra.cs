@@ -12,10 +12,10 @@ namespace ProjecteV2.ApiMongoDB{
         public string CançoOID { get; set; }
 
         [BsonElement("Lletra")]
-        public string Lletra { get; set; }
+        public string lletra { get; set; }
         
         public void SetCançoOID(Canço canço){
-            OIDCanço = canço._ID;
+            CançoOID = canço._ID;
         }
     }
 }

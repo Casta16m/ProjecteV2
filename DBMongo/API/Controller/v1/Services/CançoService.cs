@@ -16,13 +16,14 @@ public class CançoService{
                 mongoStoreDatabaseSettings.Value.CançonsCollectionName); 
         }
         public async Task<List<Canço>> GetAsync() => 
-            await _cançonsCollection.Find(_ => true).toListAsync();
+            (await _cançonsCollection.FindAsync(canço => true)).ToList();
+            
         public async Task<Canço?> GetAsync(string id) =>
-            await _cançonsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            await _cançonsCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
         public async Task CreateAsync(Canço newCanço) =>
         await _cançonsCollection.InsertOneAsync(newCanço);
         public async Task UpdateAsync(string id, Canço updatedCanço) =>
-            await _cançonsCollection.ReplaceOneAsync(x => x.Id == id, updatedCanço);
+            await _cançonsCollection.ReplaceOneAsync(x => x._ID == id, updatedCanço);
         public async Task RemoveAsync(string id) =>
-            await _cançonsCollection.DeleteOneAsync(x => x.Id == id);
+            await _cançonsCollection.DeleteOneAsync(x => x._ID == id);
 }
