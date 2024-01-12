@@ -75,7 +75,7 @@ class Program
                 string message = ReadMessage(reader);
                 if (message != null)
                 {
-
+                    
 
                     //Console.Write(message);
                     // Procesa el mensaje recibido

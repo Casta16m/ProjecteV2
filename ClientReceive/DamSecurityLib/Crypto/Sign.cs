@@ -322,6 +322,13 @@ namespace DAMSecurityLib.Crypto
             File.Delete(signedFile);
         }
 
+        public static string Decrypt() {
+            
+            
+            return Decrypt();
+        }
+
+
         public static bool? ValidatePdfSignature(string signedPdfPath, object certInfo)
         {
             throw new NotImplementedException();
