@@ -148,12 +148,12 @@ namespace DBSql.Migrations
                 name: "ArtistaGrup",
                 columns: table => new
                 {
-                    artistesNomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    grupsNomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    GrupsNomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    artistesNomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArtistaGrup", x => new { x.artistesNomArtista, x.grupsNomGrup });
+                    table.PrimaryKey("PK_ArtistaGrup", x => new { x.GrupsNomGrup, x.artistesNomArtista });
                     table.ForeignKey(
                         name: "FK_ArtistaGrup_Artistes_artistesNomArtista",
                         column: x => x.artistesNomArtista,
@@ -161,8 +161,8 @@ namespace DBSql.Migrations
                         principalColumn: "NomArtista",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ArtistaGrup_Grups_grupsNomGrup",
-                        column: x => x.grupsNomGrup,
+                        name: "FK_ArtistaGrup_Grups_GrupsNomGrup",
+                        column: x => x.GrupsNomGrup,
                         principalTable: "Grups",
                         principalColumn: "NomGrup",
                         onDelete: ReferentialAction.Cascade);
@@ -233,9 +233,9 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArtistaGrup_grupsNomGrup",
+                name: "IX_ArtistaGrup_artistesNomArtista",
                 table: "ArtistaGrup",
-                column: "grupsNomGrup");
+                column: "artistesNomArtista");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CançoExtensio_extensioNomExtensio",

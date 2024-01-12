@@ -5,6 +5,6 @@ namespace ProjecteV2.ApiSql{
     public class Extensio{
         [Key]
         public string NomExtensio { get; set; }
-        public ICollection<Canço> cançons { get; set; }
+            public ICollection<Canço> cançons { get; set; }
     }
 }

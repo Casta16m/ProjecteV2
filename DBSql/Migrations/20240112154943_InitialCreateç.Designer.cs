@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112153839_InitialCreateç")]
+    [Migration("20240112154943_InitialCreateç")]
     partial class InitialCreateç
     {
         /// <inheritdoc />
@@ -27,15 +27,15 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ArtistaGrup", b =>
                 {
+                    b.Property<string>("GrupsNomGrup")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("artistesNomArtista")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("grupsNomGrup")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("GrupsNomGrup", "artistesNomArtista");
 
-                    b.HasKey("artistesNomArtista", "grupsNomGrup");
-
-                    b.HasIndex("grupsNomGrup");
+                    b.HasIndex("artistesNomArtista");
 
                     b.ToTable("ArtistaGrup");
                 });
@@ -222,15 +222,15 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ArtistaGrup", b =>
                 {
-                    b.HasOne("ProjecteV2.ApiSql.Artista", null)
+                    b.HasOne("ProjecteV2.ApiSql.Grup", null)
                         .WithMany()
-                        .HasForeignKey("artistesNomArtista")
+                        .HasForeignKey("GrupsNomGrup")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjecteV2.ApiSql.Grup", null)
+                    b.HasOne("ProjecteV2.ApiSql.Artista", null)
                         .WithMany()
-                        .HasForeignKey("grupsNomGrup")
+                        .HasForeignKey("artistesNomArtista")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
