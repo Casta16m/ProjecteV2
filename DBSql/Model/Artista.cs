@@ -5,7 +5,6 @@ namespace ProjecteV2.ApiSql{
         [Key]
         public string NomArtista { get; set; }
         public int AnyNaixement { get; set; }
-        public ICollection<Grup> grups { get; set; }
-        public ICollection<Participa> participa { get; set; }
+        public ICollection<Grup> Grups { get; set; }
     }
 }
