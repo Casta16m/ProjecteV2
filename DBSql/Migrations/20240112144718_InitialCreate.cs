@@ -28,12 +28,12 @@ namespace DBSql.Migrations
                 name: "Artistes",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AnyNaixement = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artistes", x => x.Nom);
+                    table.PrimaryKey("PK_Artistes", x => x.NomArtista);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,11 +62,11 @@ namespace DBSql.Migrations
                 name: "Grups",
                 columns: table => new
                 {
-                    Nom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    NomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Grups", x => x.Nom);
+                    table.PrimaryKey("PK_Grups", x => x.NomGrup);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +119,35 @@ namespace DBSql.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ArtistaGrup",
+                columns: table => new
+                {
+                    ArtistasNomArtista = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    GrupsNomGrup = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArtistaGrup", x => new { x.ArtistasNomArtista, x.GrupsNomGrup });
+                    table.ForeignKey(
+                        name: "FK_ArtistaGrup_Artistes_ArtistasNomArtista",
+                        column: x => x.ArtistasNomArtista,
+                        principalTable: "Artistes",
+                        principalColumn: "NomArtista",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ArtistaGrup_Grups_GrupsNomGrup",
+                        column: x => x.GrupsNomGrup,
+                        principalTable: "Grups",
+                        principalColumn: "NomGrup",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ArtistaGrup_GrupsNomGrup",
+                table: "ArtistaGrup",
+                column: "GrupsNomGrup");
+
             migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_data",
                 table: "conteAlbum",
@@ -154,13 +183,16 @@ namespace DBSql.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Artistes");
+                name: "ArtistaGrup");
 
             migrationBuilder.DropTable(
                 name: "conteAlbum");
 
             migrationBuilder.DropTable(
                 name: "Format");
+
+            migrationBuilder.DropTable(
+                name: "Artistes");
 
             migrationBuilder.DropTable(
                 name: "Grups");

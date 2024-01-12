@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ProjecteV2.ApiSql
 {
-    public class conteAlbumConfiguration : IEntityTypeConfiguration<conteAlbum>
+    public class conteAlbumConfiguracio : IEntityTypeConfiguration<conteAlbum>
     {
         public void Configure(EntityTypeBuilder<conteAlbum> builder)
         {

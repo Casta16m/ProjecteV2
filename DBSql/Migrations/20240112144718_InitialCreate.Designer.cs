@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240111131336_InitialCreate")]
+    [Migration("20240112144718_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,21 @@ namespace DBSql.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ArtistaGrup", b =>
+                {
+                    b.Property<string>("ArtistasNomArtista")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("GrupsNomGrup")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ArtistasNomArtista", "GrupsNomGrup");
+
+                    b.HasIndex("GrupsNomGrup");
+
+                    b.ToTable("ArtistaGrup");
+                });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
                 {
@@ -43,13 +58,13 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Artista", b =>
                 {
-                    b.Property<string>("Nom")
+                    b.Property<string>("NomArtista")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AnyNaixement")
                         .HasColumnType("int");
 
-                    b.HasKey("Nom");
+                    b.HasKey("NomArtista");
 
                     b.ToTable("Artistes");
                 });
@@ -91,6 +106,16 @@ namespace DBSql.Migrations
                     b.ToTable("Format");
                 });
 
+            modelBuilder.Entity("ProjecteV2.ApiSql.Grup", b =>
+                {
+                    b.Property<string>("NomGrup")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("NomGrup");
+
+                    b.ToTable("Grups");
+                });
+
             modelBuilder.Entity("ProjecteV2.ApiSql.conteAlbum", b =>
                 {
                     b.Property<string>("UID")
@@ -119,14 +144,19 @@ namespace DBSql.Migrations
                     b.ToTable("conteAlbum");
                 });
 
-            modelBuilder.Entity("ProjecteV2.Grup", b =>
+            modelBuilder.Entity("ArtistaGrup", b =>
                 {
-                    b.Property<string>("Nom")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasOne("ProjecteV2.ApiSql.Artista", null)
+                        .WithMany()
+                        .HasForeignKey("ArtistasNomArtista")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasKey("Nom");
-
-                    b.ToTable("Grups");
+                    b.HasOne("ProjecteV2.ApiSql.Grup", null)
+                        .WithMany()
+                        .HasForeignKey("GrupsNomGrup")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
