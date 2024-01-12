@@ -121,24 +121,24 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Format",
+                name: "CançoExtensio",
                 columns: table => new
                 {
-                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NomFormat = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    cançonsUID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    extensioNomExtensio = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Format", x => new { x.UID, x.NomFormat });
+                    table.PrimaryKey("PK_CançoExtensio", x => new { x.cançonsUID, x.extensioNomExtensio });
                     table.ForeignKey(
-                        name: "FK_Format_Cançons_UID",
-                        column: x => x.UID,
+                        name: "FK_CançoExtensio_Cançons_cançonsUID",
+                        column: x => x.cançonsUID,
                         principalTable: "Cançons",
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Format_Extensio_NomFormat",
-                        column: x => x.NomFormat,
+                        name: "FK_CançoExtensio_Extensio_extensioNomExtensio",
+                        column: x => x.extensioNomExtensio,
                         principalTable: "Extensio",
                         principalColumn: "NomExtensio",
                         onDelete: ReferentialAction.Cascade);
@@ -238,6 +238,11 @@ namespace DBSql.Migrations
                 column: "grupsNomGrup");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CançoExtensio_extensioNomExtensio",
+                table: "CançoExtensio",
+                column: "extensioNomExtensio");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_conteAlbum_data",
                 table: "conteAlbum",
                 column: "data");
@@ -260,16 +265,6 @@ namespace DBSql.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ConteLlista_UID",
                 table: "ConteLlista",
-                column: "UID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Format_NomFormat",
-                table: "Format",
-                column: "NomFormat");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Format_UID",
-                table: "Format",
                 column: "UID");
 
             migrationBuilder.CreateIndex(
@@ -300,25 +295,25 @@ namespace DBSql.Migrations
                 name: "ArtistaGrup");
 
             migrationBuilder.DropTable(
+                name: "CançoExtensio");
+
+            migrationBuilder.DropTable(
                 name: "conteAlbum");
 
             migrationBuilder.DropTable(
                 name: "ConteLlista");
 
             migrationBuilder.DropTable(
-                name: "Format");
+                name: "Participa");
 
             migrationBuilder.DropTable(
-                name: "Participa");
+                name: "Extensio");
 
             migrationBuilder.DropTable(
                 name: "Album");
 
             migrationBuilder.DropTable(
                 name: "Llista");
-
-            migrationBuilder.DropTable(
-                name: "Extensio");
 
             migrationBuilder.DropTable(
                 name: "Artistes");

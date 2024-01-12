@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112152004_InitialCreateç")]
+    [Migration("20240112153839_InitialCreateç")]
     partial class InitialCreateç
     {
         /// <inheritdoc />
@@ -38,6 +38,21 @@ namespace DBSql.Migrations
                     b.HasIndex("grupsNomGrup");
 
                     b.ToTable("ArtistaGrup");
+                });
+
+            modelBuilder.Entity("CançoExtensio", b =>
+                {
+                    b.Property<string>("cançonsUID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("extensioNomExtensio")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("cançonsUID", "extensioNomExtensio");
+
+                    b.HasIndex("extensioNomExtensio");
+
+                    b.ToTable("CançoExtensio");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
@@ -105,23 +120,6 @@ namespace DBSql.Migrations
                     b.HasKey("NomExtensio");
 
                     b.ToTable("Extensio");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
-                {
-                    b.Property<string>("UID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("NomFormat")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UID", "NomFormat");
-
-                    b.HasIndex("NomFormat");
-
-                    b.HasIndex("UID");
-
-                    b.ToTable("Format");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Grup", b =>
@@ -237,6 +235,21 @@ namespace DBSql.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CançoExtensio", b =>
+                {
+                    b.HasOne("ProjecteV2.ApiSql.Canço", null)
+                        .WithMany()
+                        .HasForeignKey("cançonsUID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjecteV2.ApiSql.Extensio", null)
+                        .WithMany()
+                        .HasForeignKey("extensioNomExtensio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProjecteV2.ApiSql.ConteLlista", b =>
                 {
                     b.HasOne("ProjecteV2.ApiSql.Canço", "cançoObj")
@@ -254,25 +267,6 @@ namespace DBSql.Migrations
                     b.Navigation("cançoObj");
 
                     b.Navigation("llistaObj");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Format", b =>
-                {
-                    b.HasOne("ProjecteV2.ApiSql.Extensio", "ExtensioObj")
-                        .WithMany("Format")
-                        .HasForeignKey("NomFormat")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjecteV2.ApiSql.Canço", "CançoObj")
-                        .WithMany("Format")
-                        .HasForeignKey("UID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CançoObj");
-
-                    b.Navigation("ExtensioObj");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Participa", b =>
@@ -341,18 +335,11 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Canço", b =>
                 {
-                    b.Navigation("Format");
-
                     b.Navigation("conteAlbum");
 
                     b.Navigation("conteLlista");
 
                     b.Navigation("participa");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
-                {
-                    b.Navigation("Format");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Grup", b =>
