@@ -9,7 +9,6 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Artista> Artistes { get; set; }
         public DbSet<Album> Album { get; set; }
         public DbSet<Canço> Cançons { get; set; }
-        public DbSet<Pertany> Pertany { get; set; }
         public DbSet<conteAlbum> conteAlbum { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Llista> Llista { get; set; }
@@ -23,7 +22,7 @@ namespace ProjecteV2.ApiSql{
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new conteLlistaConfiguracio());
             modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   
-            modelBuilder.ApplyConfiguration(new PertanyConfiguracio());
+          
             modelBuilder.ApplyConfiguration(new ParticipaConfiguracio());
         }
     }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sergi\\GitHub\\ProjecteV2\\DBSql\\DBSql.csproj": {}
+    "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2-3\\DBSql\\DBSql.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sergi\\GitHub\\ProjecteV2\\DBSql\\DBSql.csproj": {
+    "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2-3\\DBSql\\DBSql.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\DBSql\\DBSql.csproj",
+        "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2-3\\DBSql\\DBSql.csproj",
         "projectName": "DBSql",
-        "projectPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\DBSql\\DBSql.csproj",
-        "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sergi\\GitHub\\ProjecteV2\\DBSql\\obj\\",
+        "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2-3\\DBSql\\DBSql.csproj",
+        "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2-3\\DBSql\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\sergi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
