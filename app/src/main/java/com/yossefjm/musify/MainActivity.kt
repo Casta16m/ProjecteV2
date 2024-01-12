@@ -84,13 +84,17 @@ class MainActivity : AppCompatActivity() {
             configPlayerListeners()
 
             val playlists = playListRepository.getAllPlaylists()
-            Log.d("MainActivity", "playLists: $playlists")
             playlistAdapter.updateList(playlists)
         } else {
             // Permission is not granted
             Snackbar.make(binding.root, "Permission is not granted, request it", Snackbar.LENGTH_INDEFINITE).show()
         }
+        binding.downloadLayoutbtn.setOnClickListener {
+            // abrimos el intent de descargas
 
+
+
+        }
 
 
 
@@ -424,6 +428,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gobackToPlaylists(){
+        if (binding.rvPlayLists.visibility == View.VISIBLE){
+            // Si ya estamos en la pantalla de listas de reproducción, cerramos la app
+            finish()
+        }
+
         binding.rvPlayLists.startAnimation(slideFadeInAnimation)
         binding.rvPlayLists.visibility = View.VISIBLE
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
 
-    tools:context=".MainActivity">
+    tools:context=".DownloadActivity">
 
 
     <LinearLayout
@@ -44,6 +44,18 @@
             android:layout_weight="0.1"
             android:src="@drawable/downloadnavy" />
     </LinearLayout>
+<!--
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Buscar..."
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="16dp" />
+-->
 
     <LinearLayout
         android:id="@+id/titlenav"
@@ -53,69 +65,62 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:paddingVertical="10dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="20dp"
+
         android:weightSum="1"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/playlistnav"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:text="Playlists"
-            android:textColor="@color/navyBlue"
-            android:textSize="24sp"
-            android:layout_weight="1"
+            android:textColor="@color/lightBlue"
+            android:textSize="30sp"
+            android:padding="10dp"
+            android:layout_weight="0.5"
+            android:textAlignment="center"
+            android:background="@color/navyBlue"
             />
 
-        <ImageView
-            android:id="@+id/createplaylist"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="end"
-            android:src="@drawable/newplaylist"
+        <TextView
+            android:id="@+id/songlistnav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SongList"
+            android:textColor="@color/navyBlue"
+            android:textSize="25sp"
+            android:padding="10dp"
+            android:layout_weight="0.5"
+            android:textAlignment="center"
             />
 
     </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlayLists"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
         android:orientation="vertical"
         android:visibility="visible"
-        app:layout_constraintTop_toTopOf="@+id/titlenav"
-        app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
-        app:layout_constraintHeight_max="500dp"
         app:layout_constraintHeight_default="wrap"
-        />
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintTop_toTopOf="@+id/titlenav"
+        tools:layout_editor_absoluteX="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="308dp"
         android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintTop_toTopOf="@+id/titlenav"
-        app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
-        app:layout_constraintHeight_max="500dp"
-        app:layout_constraintHeight_default="wrap"
-        />
-
-    <include
-        layout="@layout/compactplayer"
-        android:id="@+id/compactPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <include
-        layout="@layout/expandedsong"
-        android:id="@+id/expandedsong"
         android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintTop_toTopOf="@+id/titlenav"
+        tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
