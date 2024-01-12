@@ -5,6 +5,8 @@ namespace ProjecteV2.ApiSql{
         [Key]
         public string UID { get; set; }
         
+        [MaxLength(35)]
+        public string NomCanço { get; set; }
 
         public ICollection<Album> albums { get; set; }
         public ICollection<Llista> llista { get; set; }

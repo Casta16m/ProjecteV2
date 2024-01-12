@@ -8372,23 +8372,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aimar\\.nuget\\packages\\": {},
+    "C:\\Users\\yosse\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aimar\\Documents\\GitHub\\DBSql\\DBSql.csproj",
+      "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBSql\\DBSql.csproj",
       "projectName": "DBSql",
-      "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\DBSql\\DBSql.csproj",
-      "packagesPath": "C:\\Users\\Aimar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aimar\\Documents\\GitHub\\DBSql\\obj\\",
+      "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBSql\\DBSql.csproj",
+      "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBSql\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Aimar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
