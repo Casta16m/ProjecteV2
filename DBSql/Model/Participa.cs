@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 namespace ProjecteV2.ApiSql{
     public class Participa{
 
-        public Canço CançoObj { get; set; }
+        public Song SongObj { get; set; }
 
         public string UID { get; set; }
 
-        public string NomCanço { get; set; }
+        public string NomSong { get; set; }
 
         public Artista ArtistaObj { get; set; }
 

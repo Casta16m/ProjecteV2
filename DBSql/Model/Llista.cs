@@ -10,7 +10,7 @@ namespace ProjecteV2.ApiSql{
 
         [MaxLength(50)]
         public string? ID_MAC { get; set; }
-        public ICollection<Canço> cançons { get; set; }
+        public ICollection<Song> songs { get; set; }
 
 
 
