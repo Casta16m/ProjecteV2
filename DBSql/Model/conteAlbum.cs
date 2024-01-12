@@ -10,7 +10,7 @@ namespace ProjecteV2.ApiSql{
         
         public Album AlbumObj { get; set; }
 
-        public string Nom { get; set; }
+        public string NomAlbum { get; set; }
 
 
         public DateTime data { get; set; }

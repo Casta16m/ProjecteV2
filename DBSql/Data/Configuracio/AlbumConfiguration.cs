@@ -7,7 +7,7 @@ namespace ProjecteV2.ApiSql
     {
         public void Configure(EntityTypeBuilder<Album> builder)
         {
-            builder.HasKey(x => new { x.Nom, x.data, x.ArtistaNom });
+            builder.HasKey(x => new { x.NomAlbum, x.data, x.ArtistaNom });
         }
     }
 }

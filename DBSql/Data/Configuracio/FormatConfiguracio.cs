@@ -7,11 +7,11 @@ namespace ProjecteV2.ApiSql
     {
         public void Configure(EntityTypeBuilder<Format> builder)
         {
-            builder.HasKey(x => new { x.UID, x.Nom });
+            builder.HasKey(x => new { x.UID, x.NomFormat });
             builder.HasOne(x => x.CançoObj).WithMany(x => x.Format).HasForeignKey(x => x.UID);
-            builder.HasOne(x => x.ExtensioObj).WithMany(x => x.Format).HasForeignKey(x => x.Nom);
+            builder.HasOne(x => x.ExtensioObj).WithMany(x => x.Format).HasForeignKey(x => x.NomFormat);
             builder.HasIndex(x => x.UID).IsUnique(false);
-            builder.HasIndex(x => x.Nom).IsUnique(false);
+            builder.HasIndex(x => x.NomFormat).IsUnique(false);
         }
     }
 }

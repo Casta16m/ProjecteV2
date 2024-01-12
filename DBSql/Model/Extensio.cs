@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ProjecteV2.ApiSql{
     public class Extensio{
         [Key]
-        public string Nom { get; set; }
+        public string NomExtensio { get; set; }
         public ICollection<Format> Format { get; set; }
     }
 }
