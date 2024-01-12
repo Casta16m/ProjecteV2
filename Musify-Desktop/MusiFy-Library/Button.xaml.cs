@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
+
 namespace MusiFy_Library
 {
     /// <summary>
@@ -23,6 +26,11 @@ namespace MusiFy_Library
     {
 
 
+
+
+        public event RoutedEventHandler? Click;
+        
+      
         public string Text
         {
             get { return ButtonName.Text; }
@@ -40,6 +48,9 @@ namespace MusiFy_Library
             get { return (int)btn_glb.Width; }
             set { btn_glb.Width = value; }
         }
+
+
+       
 
 
         public int HeightButton
@@ -71,8 +82,21 @@ namespace MusiFy_Library
         public Button()
         {
             InitializeComponent();
+
+
+            btn_glb.Click += (s, e) =>
+            {
+                Click?.Invoke(s, e);
+            };
+
         }
 
+      
+
+        protected virtual void OnClick()
+        {
+            Click?.Invoke(this, new RoutedEventArgs());
+        }
 
         private void myButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -83,6 +107,7 @@ namespace MusiFy_Library
         }
 
 
+      
         private void myButton_MouseLeave(object sender, MouseEventArgs e)
         {
             ScaleTransform scaleTransform = (ScaleTransform)btn_glb.RenderTransform;

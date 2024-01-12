@@ -12,13 +12,13 @@
 
     <Viewbox VerticalAlignment="Center">
         <Grid Width="800" Height="450">
-            <Label Content="MusiFy" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Segoe UI" FontWeight="Bold"/>
+            <Label Content="MusiFy" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
 
-            <MusiFy_Library:Button x:Name="ReportButton" WidthButton="250" HeightButton="80" ImageSize="75" WidthGrid="160"  TextSize="35"  Text="Informes"   HorizontalAlignment="Left" Margin="130,161,0,0" VerticalAlignment="Top"/>
-            <MusiFy_Library:Button x:Name="AdminButton" WidthButton="250" HeightButton="80"  ImageSize="70"   Text="Admin" TextSize="40" WidthGrid="140" HorizontalAlignment="Left" Margin="405,161,0,0" VerticalAlignment="Top"/>
-
+            <MusiFy_Library:Button Click="ReportButton_Click"  x:Name="ReportButton" WidthButton="250" HeightButton="80" ImageSize="75" WidthGrid="160"  TextSize="35"  Text="Informes"   HorizontalAlignment="Left" Margin="130,161,0,0" VerticalAlignment="Top"/>
+            <MusiFy_Library:Button  x:Name="AdminButton" WidthButton="250" HeightButton="80"  ImageSize="70"   Text="Admin" TextSize="35" WidthGrid="140" HorizontalAlignment="Left" Margin="405,161,0,0" VerticalAlignment="Top"/>
+            <Frame x:Name="MainFrame"></Frame>
         </Grid>
 
     </Viewbox>
-
+    
 </Window>

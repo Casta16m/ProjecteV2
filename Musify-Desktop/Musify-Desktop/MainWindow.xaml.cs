@@ -20,19 +20,24 @@ namespace Musify_Desktop
         {
             InitializeComponent();
 
-            ReportButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/report.png", UriKind.Absolute));
+           ReportButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/report.png", UriKind.Absolute));
             AdminButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/admin.png", UriKind.Absolute));
 
         }
 
 
+       private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {       
+            ReportPage reportPage = new ReportPage();
+            MainFrame.NavigationService.Navigate(reportPage);
 
-        public void ReportButton_Click(object sender, RoutedEventArgs e)
-        {
-            ReportWindow reportWindow = new ReportWindow();
-            reportWindow.Show();
-            this.Close();
+           
         }
+
+
+
+
+
 
     }
 }

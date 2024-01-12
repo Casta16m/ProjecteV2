@@ -28,7 +28,7 @@
 
 
     <Grid>
-        <Button MouseEnter="myButton_MouseEnter" MouseLeave="myButton_MouseLeave" Cursor="Hand"  x:Name="btn_glb" Margin="10px"   Foreground="White" FontSize="25px" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center"  Height="100" Width="300">
+        <Button  MouseEnter="myButton_MouseEnter" MouseLeave="myButton_MouseLeave" Cursor="Hand"  x:Name="btn_glb" Margin="10px"   Foreground="White" FontSize="25px" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center"  Height="100" Width="300">
             <Button.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1" CenterX="1" CenterY="1" />
             </Button.RenderTransform>

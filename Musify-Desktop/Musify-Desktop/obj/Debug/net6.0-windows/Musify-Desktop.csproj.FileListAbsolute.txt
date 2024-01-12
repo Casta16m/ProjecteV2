@@ -23,5 +23,5 @@ C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\bin\Deb
 C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\bin\Debug\net6.0-windows\MusiFy-Library.pdb
 C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Musify-Desktop.csproj.AssemblyReference.cache
 C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Musify-Desktop.csproj.CopyComplete
-C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\ReportWindow.g.cs
-C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\ReportWindow.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\ReportPage.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\ReportPage.baml
