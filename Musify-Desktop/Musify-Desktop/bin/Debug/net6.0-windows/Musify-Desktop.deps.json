@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Musify-Desktop/1.0.0": {
+        "dependencies": {
+          "MusiFy-Library": "1.0.0"
+        },
+        "runtime": {
+          "Musify-Desktop.dll": {}
+        }
+      },
+      "MusiFy-Library/1.0.0": {
+        "runtime": {
+          "MusiFy-Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Musify-Desktop/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MusiFy-Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

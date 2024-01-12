@@ -19,6 +19,20 @@ namespace Musify_Desktop
         public MainWindow()
         {
             InitializeComponent();
+
+            ReportButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/report.png", UriKind.Absolute));
+            AdminButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/admin.png", UriKind.Absolute));
+
         }
+
+
+
+        public void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow reportWindow = new ReportWindow();
+            reportWindow.Show();
+            this.Close();
+        }
+
     }
 }

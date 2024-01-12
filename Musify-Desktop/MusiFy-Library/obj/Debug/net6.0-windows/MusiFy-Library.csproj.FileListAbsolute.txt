@@ -1,0 +1,17 @@
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\Button.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library_MarkupCompile.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library_MarkupCompile.lref
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\bin\Debug\net6.0-windows\MusiFy-Library.deps.json
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\bin\Debug\net6.0-windows\MusiFy-Library.dll
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\bin\Debug\net6.0-windows\MusiFy-Library.pdb
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\Button.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.g.resources
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.AssemblyInfoInputs.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.AssemblyInfo.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.csproj.CoreCompileInputs.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.sourcelink.json
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.dll
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\refint\MusiFy-Library.dll
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\MusiFy-Library.pdb
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ref\MusiFy-Library.dll

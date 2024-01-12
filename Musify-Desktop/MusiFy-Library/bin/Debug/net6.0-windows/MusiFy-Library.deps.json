@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MusiFy-Library/1.0.0": {
+        "runtime": {
+          "MusiFy-Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MusiFy-Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

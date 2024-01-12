@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "MusiFy-Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MusiFy-Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MusiFy-Library.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "MusiFy-Library/1.0.0": {
+      "type": "project",
+      "path": "../MusiFy-Library/MusiFy-Library.csproj",
+      "msbuildProject": "../MusiFy-Library/MusiFy-Library.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "MusiFy-Library >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\luisr\\.nuget\\packages\\": {},
@@ -38,7 +60,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj": {
+              "projectPath": "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
