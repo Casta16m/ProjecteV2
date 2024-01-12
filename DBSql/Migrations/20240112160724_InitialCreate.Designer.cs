@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112160109_InitialCreate")]
+    [Migration("20240112160724_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,27 @@ namespace DBSql.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AlbumCanço", b =>
+                {
+                    b.Property<string>("cançonsUID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("albumsNomAlbum")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("albumsdata")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("albumsArtistaNom")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("cançonsUID", "albumsNomAlbum", "albumsdata", "albumsArtistaNom");
+
+                    b.HasIndex("albumsNomAlbum", "albumsdata", "albumsArtistaNom");
+
+                    b.ToTable("AlbumCanço");
+                });
 
             modelBuilder.Entity("ArtistaGrup", b =>
                 {
@@ -192,32 +213,19 @@ namespace DBSql.Migrations
                     b.ToTable("Participa");
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.conteAlbum", b =>
+            modelBuilder.Entity("AlbumCanço", b =>
                 {
-                    b.Property<string>("UID")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasOne("ProjecteV2.ApiSql.Canço", null)
+                        .WithMany()
+                        .HasForeignKey("cançonsUID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("NomAlbum")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ArtistaNom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UID", "NomAlbum", "data");
-
-                    b.HasIndex("NomAlbum");
-
-                    b.HasIndex("UID");
-
-                    b.HasIndex("data");
-
-                    b.HasIndex("NomAlbum", "data", "ArtistaNom");
-
-                    b.ToTable("conteAlbum");
+                    b.HasOne("ProjecteV2.ApiSql.Album", null)
+                        .WithMany()
+                        .HasForeignKey("albumsNomAlbum", "albumsdata", "albumsArtistaNom")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ArtistaGrup", b =>
@@ -300,30 +308,6 @@ namespace DBSql.Migrations
                     b.Navigation("InstrumentObj");
                 });
 
-            modelBuilder.Entity("ProjecteV2.ApiSql.conteAlbum", b =>
-                {
-                    b.HasOne("ProjecteV2.ApiSql.Canço", "CançoObj")
-                        .WithMany("conteAlbum")
-                        .HasForeignKey("UID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjecteV2.ApiSql.Album", "AlbumObj")
-                        .WithMany("conteAlbum")
-                        .HasForeignKey("NomAlbum", "data", "ArtistaNom")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AlbumObj");
-
-                    b.Navigation("CançoObj");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
-                {
-                    b.Navigation("conteAlbum");
-                });
-
             modelBuilder.Entity("ProjecteV2.ApiSql.Artista", b =>
                 {
                     b.Navigation("participa");
@@ -331,8 +315,6 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Canço", b =>
                 {
-                    b.Navigation("conteAlbum");
-
                     b.Navigation("participa");
                 });
 

@@ -95,26 +95,26 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "conteAlbum",
+                name: "AlbumCanço",
                 columns: table => new
                 {
-                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NomAlbum = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ArtistaNom = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    cançonsUID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    albumsNomAlbum = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    albumsdata = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    albumsArtistaNom = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_conteAlbum", x => new { x.UID, x.NomAlbum, x.data });
+                    table.PrimaryKey("PK_AlbumCanço", x => new { x.cançonsUID, x.albumsNomAlbum, x.albumsdata, x.albumsArtistaNom });
                     table.ForeignKey(
-                        name: "FK_conteAlbum_Album_NomAlbum_data_ArtistaNom",
-                        columns: x => new { x.NomAlbum, x.data, x.ArtistaNom },
+                        name: "FK_AlbumCanço_Album_albumsNomAlbum_albumsdata_albumsArtistaNom",
+                        columns: x => new { x.albumsNomAlbum, x.albumsdata, x.albumsArtistaNom },
                         principalTable: "Album",
                         principalColumns: new[] { "NomAlbum", "data", "ArtistaNom" },
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_conteAlbum_Cançons_UID",
-                        column: x => x.UID,
+                        name: "FK_AlbumCanço_Cançons_cançonsUID",
+                        column: x => x.cançonsUID,
                         principalTable: "Cançons",
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
@@ -233,6 +233,11 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AlbumCanço_albumsNomAlbum_albumsdata_albumsArtistaNom",
+                table: "AlbumCanço",
+                columns: new[] { "albumsNomAlbum", "albumsdata", "albumsArtistaNom" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ArtistaGrup_artistesNomArtista",
                 table: "ArtistaGrup",
                 column: "artistesNomArtista");
@@ -246,26 +251,6 @@ namespace DBSql.Migrations
                 name: "IX_CançoLlista_llistaNom_llistaID_MAC",
                 table: "CançoLlista",
                 columns: new[] { "llistaNom", "llistaID_MAC" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_data",
-                table: "conteAlbum",
-                column: "data");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_NomAlbum",
-                table: "conteAlbum",
-                column: "NomAlbum");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_NomAlbum_data_ArtistaNom",
-                table: "conteAlbum",
-                columns: new[] { "NomAlbum", "data", "ArtistaNom" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_conteAlbum_UID",
-                table: "conteAlbum",
-                column: "UID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Participa_NomArtista",
@@ -292,6 +277,9 @@ namespace DBSql.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AlbumCanço");
+
+            migrationBuilder.DropTable(
                 name: "ArtistaGrup");
 
             migrationBuilder.DropTable(
@@ -301,19 +289,16 @@ namespace DBSql.Migrations
                 name: "CançoLlista");
 
             migrationBuilder.DropTable(
-                name: "conteAlbum");
+                name: "Participa");
 
             migrationBuilder.DropTable(
-                name: "Participa");
+                name: "Album");
 
             migrationBuilder.DropTable(
                 name: "Extensio");
 
             migrationBuilder.DropTable(
                 name: "Llista");
-
-            migrationBuilder.DropTable(
-                name: "Album");
 
             migrationBuilder.DropTable(
                 name: "Artistes");
