@@ -23,6 +23,7 @@ using System.IO;
 using iText.Layout.Properties;
 using iText.Signatures;
 using Path = System.IO.Path;
+using System.Net.Sockets;
 
 namespace DAMSecurityLib.Crypto
 {
@@ -322,16 +323,31 @@ namespace DAMSecurityLib.Crypto
             File.Delete(signedFile);
         }
 
-        public void EncryptPdf(string password, string outFile)
+        // Cliente Emisor
+        public byte[] EncryptPDF(string pathPdf, RSAParameters _publicKey) // , TcpClient servidorSocket
         {
-            string signedFile = Path.GetTempFileName();
+            byte[] pdfBytes = File.ReadAllBytes(pathPdf);
 
-            // Encrypt the document
-            using (PdfWriter writer = new PdfWriter(outFile, new WriterProperties().SetStandardEncryption(Encoding.ASCII.GetBytes(password), null, EncryptionConstants.ENCRYPTION_AES_128, EncryptionConstants.ENCRYPTION_AES_256)))
-            using (PdfDocument encryptedPdfDoc = new PdfDocument(new PdfReader(signedFile), writer))
+            // Cifrar el PDF amb la clave pública
+            byte[] pdfEncrypted = EncryptWithPublicKey(pdfBytes, _publicKey);
+
+            return pdfEncrypted;
+
+            /*
+            // Crear un stream de per enviar al servidor dades
+            NetworkStream stream = servidorSocket.GetStream();
+
+            // Enviar el PDF xifrat al servidor
+            stream.Write(pdfEncrypted, 0, pdfEncrypted.Length);
+            */
+        }
+
+        public static byte[] EncryptWithPublicKey(byte[] datos, RSAParameters clavePublica)
+        {
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
             {
-                // Close the encrypted document
-                encryptedPdfDoc.Close();
+                rsa.ImportParameters(clavePublica);
+                return rsa.Encrypt(datos, false);
             }
         }
 

@@ -1,7 +1,9 @@
 ﻿using iText.Kernel.Pdf.Xobject;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 
@@ -21,18 +23,34 @@ class Program
             ConnectToServer();
 
             string clientAddress = ((System.Net.IPEndPoint)client.Client.LocalEndPoint).Address.ToString();
-            Console.WriteLine($"Cliente ({clientAddress}) conectado al servidor de chat.");
+            Console.WriteLine($"Client ({clientAddress}) conectado al servidor de chat.");
 
             string pdfFilePath = Console.ReadLine();
 
-            string password = Console.ReadLine();
+            string publicKey = Console.ReadLine();
+            RSAParameters _publicKey = DeserializeRSAParameters(publicKey);
 
-            if (pdfFilePath != null)
+            if (!string.IsNullOrWhiteSpace(pdfFilePath) && publicKey != null)
             {
-                // SendMessage(password, pdfFilePath);
-                SendMessage(password, pdfFilePath);
-
-                
+                if (File.Exists(pdfFilePath))
+                {
+                    if (IsPdfFile(pdfFilePath))
+                    {
+                        SendMessage(pdfFilePath, _publicKey);
+                    }
+                    else
+                    {
+                        Console.WriteLine("The file is not a PDF.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The path dont exist.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Either field is empty.");
             }
         }
         catch (Exception ex)
@@ -47,25 +65,52 @@ class Program
 
     static void ConnectToServer()
     {
-        client.Connect("127.0.0.1", 12345);
+        const string serverAddress = "localhost";
+        const int serverPort = 12345; // Haig de saber quin es el port
+
+        client.Connect(serverAddress, serverPort);
         stream = client.GetStream();
         reader = new StreamReader(stream, Encoding.ASCII);
         writer = new StreamWriter(stream, Encoding.ASCII);
     }
 
-    static void SendMessage(string password, string outFile)
+    static void SendMessage(string pdfFile, RSAParameters _publicKey)
     {
         DAMSecurityLib.Crypto.Sign sign;
         try
         {
             sign = new DAMSecurityLib.Crypto.Sign();
-            sign.EncryptPdf(password, outFile);
+            byte[] encryptedPDF = sign.EncryptPDF(pdfFile, _publicKey);
 
-            writer.WriteLine(outFile);
+            writer.WriteLine(encryptedPDF);
             writer.Flush();
 
         } catch (IOException ex) {
             Console.WriteLine($"Error de lectura: {ex.Message}");
+        }
+    }
+
+    static RSAParameters DeserializeRSAParameters(string json)
+    {
+        return JsonConvert.DeserializeObject<RSAParameters>(json);
+    }
+
+    static bool IsPdfFile(string filePath)
+    {
+        try
+        {
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                // Verificar si el archivo comienza con la firma PDF
+                byte[] signature = new byte[4];
+                fileStream.Read(signature, 0, 4);
+                return Encoding.ASCII.GetString(signature) == "%PDF";
+            }
+        }
+        catch (IOException)
+        {
+            // Manejar la excepción si hay problemas al leer el archivo
+            return false;
         }
     }
 }
