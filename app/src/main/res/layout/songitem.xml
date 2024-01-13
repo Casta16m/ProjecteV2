@@ -62,5 +62,17 @@
                 android:layout_marginRight="15dp"
                 android:gravity="center"
                 android:src="@drawable/likefalse" />
+
+            <ImageView
+                android:id="@+id/downloadSong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/downloadnavy" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

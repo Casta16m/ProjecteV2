@@ -37,21 +37,22 @@ class PlaylistRepository(private val context: Context) {
                 allSongs
             )
         )
+        /*
+                // Filtrar canciones que no existen
+                playlistsJson.playlists.forEach { playlist ->
+                    playlist.songs = playlist.songs.filter { song ->
+                        allSongs.any { it.id == song.id }
+                    }.toMutableList()
+                }
 
-        // Filtrar canciones que no existen
-        playlistsJson.playlists.forEach { playlist ->
-            playlist.songs = playlist.songs.filter { song ->
-                allSongs.any { it.id == song.id }
-            }.toMutableList()
-        }
-
-        // Eliminar canciones inexistentes en el JSON
-        playlistsJson.playlists.forEach { playlist ->
-            val songsToRemove = playlist.songs.filterNot { song ->
-                allSongs.any { it.id == song.id }
-            }
-            playlist.songs.removeAll(songsToRemove)
-        }
+                // Eliminar canciones inexistentes en el JSON
+                playlistsJson.playlists.forEach { playlist ->
+                    val songsToRemove = playlist.songs.filterNot { song ->
+                        allSongs.any { it.id == song.id }
+                    }
+                    playlist.songs.removeAll(songsToRemove)
+                }
+                */
 
         val likedPlaylist = playlistsJson.playlists.find { it.id == 1L }
 

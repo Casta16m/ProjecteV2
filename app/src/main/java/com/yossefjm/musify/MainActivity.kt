@@ -1,7 +1,7 @@
 package com.yossefjm.musify
 
 import android.Manifest
-import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,10 +10,8 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatSeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,8 +67,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Data access objects
-        songRepository = SongRepository(this)
-        playListRepository = PlaylistRepository(this)
+        songRepository = SongRepository(this.applicationContext)
+        playListRepository = PlaylistRepository(this.applicationContext)
 
         // inicializar las animaciones
         initAnimations()
@@ -90,15 +88,16 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(binding.root, "Permission is not granted, request it", Snackbar.LENGTH_INDEFINITE).show()
         }
         binding.downloadLayoutbtn.setOnClickListener {
-            // abrimos el intent de descargas
-
-
+            // abrimos el intent de descargas y cerramos el actual
+            val intent = Intent(this, DownloadActivity::class.java)
+            startActivity(intent)
+            // reescibimos la activity
+            finish()
 
         }
-
-
-
     }
+
+
 
     private fun initAnimations() {
         slideFadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)

@@ -11,29 +11,26 @@ import com.yossefjm.musify.model.Playlist
  * ViewHolder que contiene la lógica para mostrar una canción en la lista de reproducción
  * @param itemView vista que contiene los elementos de la lista de reproducción
  */
-class PlayListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DownloadPlaylistHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val nameTextView: TextView = itemView.findViewById(R.id.playlistTitle)
     private val descriptionTextView: TextView = itemView.findViewById(R.id.playlistDescr)
+    private val editplaylist: ImageView = itemView.findViewById(R.id.editplaylist)
     private val download: ImageView = itemView.findViewById(R.id.downloadplaylist)
     //  private val coverImageView: TextView = itemView.findViewById(R.id.playListCoverList)
 
 
     fun bind(
         playlist: Playlist,
-        playlistOnClickListener: (Playlist) -> Unit,
-        playlistEditClickListener: (Playlist) -> Unit
+        DownloadPLOnClickListener: (Playlist) -> Unit,
     ) {
         nameTextView.text = playlist.name
         descriptionTextView.text = playlist.description
         // coverImageView.setBackgroundResource(playlist.coverPath.toInt())
+        editplaylist.visibility = View.GONE
+        download.visibility = View.VISIBLE
 
-        download.visibility = View.GONE
-
-        itemView.setOnClickListener {
-            playlistOnClickListener(playlist)
-        }
-        itemView.findViewById<ImageView>(R.id.editplaylist).setOnClickListener {
-            playlistEditClickListener(playlist)
+        download.setOnClickListener {
+            DownloadPLOnClickListener(playlist)
         }
 
 

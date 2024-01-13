@@ -1,5 +1,7 @@
 package com.yossefjm.musify.model
 
+import com.yossefjm.musify.DownloadActivity
+
 /**
  * Clase que representa una lista de reproducción
  * Esta clase es responsable de almacenar la información de una lista de reproducción

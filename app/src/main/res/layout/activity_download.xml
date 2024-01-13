@@ -42,9 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
+            android:visibility="invisible"
             android:src="@drawable/downloadnavy" />
     </LinearLayout>
-<!--
+
 
     <SearchView
         android:id="@+id/searchView"
@@ -55,7 +56,7 @@
         android:queryHint="Buscar..."
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:layout_editor_absoluteX="16dp" />
--->
+
 
     <LinearLayout
         android:id="@+id/titlenav"
@@ -70,12 +71,12 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView">
 
         <TextView
-            android:id="@+id/playlistnav"
+            android:id="@+id/albumsnav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Playlists"
+            android:text="Albums"
             android:textColor="@color/lightBlue"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:padding="10dp"
             android:layout_weight="0.5"
             android:textAlignment="center"
@@ -83,10 +84,10 @@
             />
 
         <TextView
-            android:id="@+id/songlistnav"
+            android:id="@+id/songsnav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SongList"
+            android:text="Songs"
             android:textColor="@color/navyBlue"
             android:textSize="25sp"
             android:padding="10dp"
@@ -99,7 +100,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPlayLists"
+        android:id="@+id/rvDownload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
@@ -110,17 +111,6 @@
         app:layout_constraintTop_toTopOf="@+id/titlenav"
         tools:layout_editor_absoluteX="16dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSongList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintHeight_default="wrap"
-        app:layout_constraintHeight_max="500dp"
-        app:layout_constraintTop_toTopOf="@+id/titlenav"
-        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
