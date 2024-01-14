@@ -1,0 +1,15 @@
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\bin\Debug\net8.0\serverSocket.exe
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\bin\Debug\net8.0\serverSocket.deps.json
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\bin\Debug\net8.0\serverSocket.runtimeconfig.json
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\bin\Debug\net8.0\serverSocket.dll
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\bin\Debug\net8.0\serverSocket.pdb
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.AssemblyInfoInputs.cache
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.AssemblyInfo.cs
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.csproj.CoreCompileInputs.cache
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.sourcelink.json
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.dll
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\refint\serverSocket.dll
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.pdb
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\serverSocket.genruntimeconfig.cache
+C:\Users\sergi\GitHub\ProjecteV2\Socket\serverSocket\serverSocket\obj\Debug\net8.0\ref\serverSocket.dll

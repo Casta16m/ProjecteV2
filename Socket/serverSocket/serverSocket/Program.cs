@@ -12,7 +12,8 @@ class Program
 
     static async Task Main()
     {
-        TcpListener server = new TcpListener(IPAddress.Any, 12345);
+        TcpListener server = new TcpListener(IPAddress.Any, 49152);
+        Console.WriteLine($"La IP és: ");
         server.Start();
         Console.WriteLine("Servidor en ejecución...");
 

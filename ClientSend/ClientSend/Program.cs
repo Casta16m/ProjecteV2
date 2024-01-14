@@ -11,7 +11,6 @@ class Program
 {
     static TcpClient client;
     static NetworkStream stream;
-    static StreamReader reader;
     static StreamWriter writer;
 
     static void Main()
@@ -23,7 +22,7 @@ class Program
             ConnectToServer();
 
             string clientAddress = ((System.Net.IPEndPoint)client.Client.LocalEndPoint).Address.ToString();
-            Console.WriteLine($"Client ({clientAddress}) conectado al servidor de chat.");
+            Console.WriteLine($"Client ({clientAddress}) is connected to server.");
 
             string pdfFilePath = Console.ReadLine();
 
@@ -55,22 +54,21 @@ class Program
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error de conexión: {ex.Message}");
+            Console.WriteLine($"Connection error: {ex.Message}");
         }
         finally
         {
             client.Close();
-        }
+        }   
     }
 
     static void ConnectToServer()
     {
         const string serverAddress = "localhost";
-        const int serverPort = 12345; // Haig de saber quin es el port
+        const int serverPort = 49152; // Haig de saber quin es el port
 
         client.Connect(serverAddress, serverPort);
         stream = client.GetStream();
-        reader = new StreamReader(stream, Encoding.ASCII);
         writer = new StreamWriter(stream, Encoding.ASCII);
     }
 
@@ -86,7 +84,7 @@ class Program
             writer.Flush();
 
         } catch (IOException ex) {
-            Console.WriteLine($"Error de lectura: {ex.Message}");
+            Console.WriteLine($"Read error: {ex.Message}");
         }
     }
 
