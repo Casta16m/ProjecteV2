@@ -41,6 +41,20 @@ namespace DBSql.Controller
             return song;
         }
 
+        // GET: api/Song/BuscarNom/5
+        [HttpGet("BuscarNom/{nom}")]
+        public async Task<ActionResult<IEnumerable<Song>>> GetNomSong(string nom)
+        {
+            var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            return song;
+        }
+
         // PUT: api/Song/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
