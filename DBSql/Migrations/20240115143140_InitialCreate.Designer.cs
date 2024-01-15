@@ -12,8 +12,8 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112175610_InitialCreateçç")]
-    partial class InitialCreateçç
+    [Migration("20240115143140_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
