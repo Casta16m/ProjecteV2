@@ -40,6 +40,18 @@ namespace DBSql.Controller
 
             return grup;
         }
+        [HttpGet("BuscarNom/{nom}")]
+        public async Task<ActionResult<IEnumerable<Grup>>> GetNomGrup(string nom)
+        {
+            var grup = await _context.Grups.Where(a => a.NomGrup.Contains(nom)).ToListAsync();
+
+            if (grup == null)
+            {
+                return NotFound();
+            }
+
+            return grup;
+        }
 
         // PUT: api/Grup/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

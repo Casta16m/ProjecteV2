@@ -28,7 +28,7 @@ namespace DBSql.Controller
         }
 
 
-        [HttpGet("search/{nom}")]
+        [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Artista>>> GetNomArtista(string nom)
         {
             var artista = await _context.Artistes.Where(a => a.NomArtista.Contains(nom)).ToListAsync();
