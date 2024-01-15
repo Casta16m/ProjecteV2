@@ -135,7 +135,7 @@ class DownloadActivity() : AppCompatActivity() {
     }
 
 
-    private fun searchAlbums(query: String) : List<Playlist> {
+    private fun searchAlbums(query: String) : List<Playlist>  {
         var responseBodyJson = ""
         val client = OkHttpClient()
 
