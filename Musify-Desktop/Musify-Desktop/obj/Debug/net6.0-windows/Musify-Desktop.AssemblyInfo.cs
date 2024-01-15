@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Musify-Desktop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d43da3286b5c89914e59a08def1229e53681233")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Musify-Desktop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Musify-Desktop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

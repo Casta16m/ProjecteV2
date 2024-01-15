@@ -14,6 +14,16 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "MusiFy_Lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MusiFy_Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MusiFy_Lib.dll": {}
+        }
       }
     }
   },
@@ -22,11 +32,17 @@
       "type": "project",
       "path": "../MusiFy-Library/MusiFy-Library.csproj",
       "msbuildProject": "../MusiFy-Library/MusiFy-Library.csproj"
+    },
+    "MusiFy_Lib/1.0.0": {
+      "type": "project",
+      "path": "../MusiFy_Lib/MusiFy_Lib.csproj",
+      "msbuildProject": "../MusiFy_Lib/MusiFy_Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MusiFy-Library >= 1.0.0"
+      "MusiFy-Library >= 1.0.0",
+      "MusiFy_Lib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -63,6 +79,9 @@
           "projectReferences": {
             "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj": {
               "projectPath": "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj"
+            },
+            "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj": {
+              "projectPath": "C:\\Users\\luisr\\Documents\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj"
             }
           }
         }

@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MusiFy-Library\MusiFy-Library.csproj" />
+    <ProjectReference Include="..\MusiFy_Lib\MusiFy_Lib.csproj" />
   </ItemGroup>
 
 </Project>
