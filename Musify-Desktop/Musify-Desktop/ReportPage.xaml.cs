@@ -20,6 +20,9 @@ namespace Musify_Desktop
     /// </summary>
     public partial class ReportPage : Page
     {
+
+
+        static MusiFy_Lib.CreatePDF? crearPDF = new MusiFy_Lib.CreatePDF();
         public ReportPage()
         {
             InitializeComponent();
@@ -27,21 +30,15 @@ namespace Musify_Desktop
         }
 
 
-        private static void CreateReportButtons()
+
+        public void ReportButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-            for(int i = 0; i < 10; i++) {
-
-                MusiFy_Library.Button reportButton = new MusiFy_Library.Button();
-                
-
-
-            }
-            
-
-            
-
+            crearPDF.createPDF();
         }
+
+
+        
+
+       
     }
 }
