@@ -100,5 +100,12 @@ namespace DAMSecurityLib.Crypto
             }
 
         }
+
+        public static byte[] EncryptPDF(byte[] pdfBytes, RSA publicKey)
+        {
+            // Encrypt the PDF content directly using RSA
+            byte[] encryptedPDF = publicKey.Encrypt(pdfBytes, RSAEncryptionPadding.OaepSHA256);
+            return encryptedPDF;
+        }
     }
 }

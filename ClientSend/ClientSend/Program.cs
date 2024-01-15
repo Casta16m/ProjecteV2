@@ -1,4 +1,5 @@
-﻿using iText.Kernel.Pdf.Xobject;
+﻿using DAMSecurityLib.Crypto;
+using iText.Kernel.Pdf.Xobject;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -11,7 +12,7 @@ class Program
 {
     static TcpClient client;
     static NetworkStream stream;
-    static StreamWriter writer;
+    static BinaryWriter binaryWriter;
 
     static void Main()
     {
@@ -27,29 +28,27 @@ class Program
             string pdfFilePath = Console.ReadLine();
 
             string publicKey = Console.ReadLine();
-            RSAParameters _publicKey = DeserializeRSAParameters(publicKey);
 
             if (!string.IsNullOrWhiteSpace(pdfFilePath) && publicKey != null)
             {
                 if (File.Exists(pdfFilePath))
                 {
-                    if (IsPdfFile(pdfFilePath))
-                    {
-                        SendMessage(pdfFilePath, _publicKey);
-                    }
-                    else
-                    {
-                        Console.WriteLine("The file is not a PDF.");
-                    }
+
+                        byte[] encryptedPDF;
+
+                        encryptedPDF = EncryptFunction(pdfFilePath, publicKey);
+
+                        SendMessage(encryptedPDF);
+
                 }
                 else
                 {
-                    Console.WriteLine("The path dont exist.");
+                    Console.WriteLine("The path doesn't exist.");
                 }
             }
             else
             {
-                Console.WriteLine("Either field is empty.");
+                Console.WriteLine("Some of the fields are empty.");
             }
         }
         catch (Exception ex)
@@ -59,56 +58,52 @@ class Program
         finally
         {
             client.Close();
-        }   
+        }
     }
 
     static void ConnectToServer()
     {
         const string serverAddress = "localhost";
-        const int serverPort = 49152; // Haig de saber quin es el port
+        const int serverPort = 49152; // Em posaba que aquest port no s'utilitzaba
 
         client.Connect(serverAddress, serverPort);
         stream = client.GetStream();
-        writer = new StreamWriter(stream, Encoding.ASCII);
+        binaryWriter = new BinaryWriter(stream);
     }
 
-    static void SendMessage(string pdfFile, RSAParameters _publicKey)
+    static byte[] EncryptFunction(string pdfFile, string publicKey)
     {
-        DAMSecurityLib.Crypto.Sign sign;
         try
         {
-            sign = new DAMSecurityLib.Crypto.Sign();
-            byte[] encryptedPDF = sign.EncryptPDF(pdfFile, _publicKey);
+            string publicKeyFilePath = publicKey;
+            RSA _publicKey = RSACrypt.LoadPublicKey(publicKeyFilePath);
 
-            writer.WriteLine(encryptedPDF);
-            writer.Flush();
+            string pdfFilePath = pdfFile; // Ruta del PDF que s'enviarà
+            byte[] pdfBytes = File.ReadAllBytes(pdfFilePath);
 
-        } catch (IOException ex) {
+            // Xifrar el PDF amb la clau publica
+            byte[] encryptedPDF = RSACrypt.EncryptPDF(pdfBytes, _publicKey);
+
+            return encryptedPDF;
+
+        }
+        catch (IOException ex)
+        {
             Console.WriteLine($"Read error: {ex.Message}");
+            return null;
         }
     }
 
-    static RSAParameters DeserializeRSAParameters(string json)
-    {
-        return JsonConvert.DeserializeObject<RSAParameters>(json);
-    }
-
-    static bool IsPdfFile(string filePath)
+    static void SendMessage(byte[] encryptedPDF)
     {
         try
         {
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-            {
-                // Verificar si el archivo comienza con la firma PDF
-                byte[] signature = new byte[4];
-                fileStream.Read(signature, 0, 4);
-                return Encoding.ASCII.GetString(signature) == "%PDF";
-            }
-        }
-        catch (IOException)
+            binaryWriter.Write(encryptedPDF);
+            binaryWriter.Flush();
+
+        } catch (IOException ex)
         {
-            // Manejar la excepción si hay problemas al leer el archivo
-            return false;
+            Console.WriteLine($"Error de lectura: {ex.Message}");
         }
     }
 }
