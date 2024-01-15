@@ -3,14 +3,13 @@ using System.ComponentModel.DataAnnotations;
 namespace ProjecteV2.ApiSql{
     public class Song{
         [Key]
-        public string UID { get; set; }
+        public string? UID { get; set; }
         public DateTime? data { get; set; }
-        public string? Titol { get; set; }
         
         [MaxLength(35)]
         public string NomSong { get; set; }
-        public Song SongObj { get; set; }
-        public string SongOriginal { get; set; }
+        public Song? SongObj { get; set; }
+        public string? SongOriginal { get; set; }
         [MaxLength(35)]
         public string Genere { get; set; }
 

@@ -28,7 +28,7 @@ namespace DBSql.Controller
         }
 
         // GET: api/Llista/5
-        [HttpGet("{id}")]
+        [HttpGet("getLlistaName/{Nom}")]
         public async Task<ActionResult<Llista>> GetLlista(string id)
         {
             var llista = await _context.Llista.FindAsync(id);

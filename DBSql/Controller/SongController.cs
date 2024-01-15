@@ -76,12 +76,13 @@ namespace DBSql.Controller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Song>> PostSong(Song song)
-        {
+        {                
+            song.data = DateTime.Now;
+            song.UID = Guid.NewGuid().ToString();
             _context.Songs.Add(song);
             try
             {
-                song.data = DateTime.Now;
-                song.UID = Guid.NewGuid().ToString();
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)

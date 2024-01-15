@@ -12,6 +12,19 @@ namespace DBSql.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Album",
+                columns: table => new
+                {
+                    NomAlbum = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArtistaNom = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Album", x => new { x.NomAlbum, x.data, x.ArtistaNom });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Artistes",
                 columns: table => new
                 {
@@ -24,16 +37,14 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Canço",
+                name: "Extensio",
                 columns: table => new
                 {
-                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Titol = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    NomExtensio = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Canço", x => x.UID);
+                    table.PrimaryKey("PK_Extensio", x => x.NomExtensio);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,58 +71,16 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Album",
-                columns: table => new
-                {
-                    NomAlbum = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ArtistaNom = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CançoUID = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Album", x => new { x.NomAlbum, x.data, x.ArtistaNom });
-                    table.ForeignKey(
-                        name: "FK_Album_Canço_CançoUID",
-                        column: x => x.CançoUID,
-                        principalTable: "Canço",
-                        principalColumn: "UID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Extensio",
-                columns: table => new
-                {
-                    NomExtensio = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    CançoUID = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Extensio", x => x.NomExtensio);
-                    table.ForeignKey(
-                        name: "FK_Extensio_Canço_CançoUID",
-                        column: x => x.CançoUID,
-                        principalTable: "Canço",
-                        principalColumn: "UID");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Llista",
                 columns: table => new
                 {
                     Nom = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     ID_MAC = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Dispositiu = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
-                    CançoUID = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Dispositiu = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Llista", x => new { x.Nom, x.ID_MAC });
-                    table.ForeignKey(
-                        name: "FK_Llista_Canço_CançoUID",
-                        column: x => x.CançoUID,
-                        principalTable: "Canço",
-                        principalColumn: "UID");
                 });
 
             migrationBuilder.CreateTable(
@@ -119,19 +88,14 @@ namespace DBSql.Migrations
                 columns: table => new
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    data = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    CançoUID = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Songs", x => x.UID);
-                    table.ForeignKey(
-                        name: "FK_Songs_Canço_CançoUID",
-                        column: x => x.CançoUID,
-                        principalTable: "Canço",
-                        principalColumn: "UID");
                     table.ForeignKey(
                         name: "FK_Songs_Songs_SongOriginal",
                         column: x => x.SongOriginal,
@@ -258,12 +222,6 @@ namespace DBSql.Migrations
                         principalColumn: "NomArtista",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Participa_Canço_UID",
-                        column: x => x.UID,
-                        principalTable: "Canço",
-                        principalColumn: "UID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Participa_Grups_NomGrup",
                         column: x => x.NomGrup,
                         principalTable: "Grups",
@@ -284,11 +242,6 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Album_CançoUID",
-                table: "Album",
-                column: "CançoUID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AlbumSong_albumsNomAlbum_albumsdata_albumsArtistaNom",
                 table: "AlbumSong",
                 columns: new[] { "albumsNomAlbum", "albumsdata", "albumsArtistaNom" });
@@ -299,19 +252,9 @@ namespace DBSql.Migrations
                 column: "artistesNomArtista");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Extensio_CançoUID",
-                table: "Extensio",
-                column: "CançoUID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ExtensioSong_songsUID",
                 table: "ExtensioSong",
                 column: "songsUID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Llista_CançoUID",
-                table: "Llista",
-                column: "CançoUID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LlistaSong_llistaNom_llistaID_MAC",
@@ -337,11 +280,6 @@ namespace DBSql.Migrations
                 name: "IX_Participa_NomSong",
                 table: "Participa",
                 column: "NomSong");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Songs_CançoUID",
-                table: "Songs",
-                column: "CançoUID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Songs_SongOriginal",
@@ -387,9 +325,6 @@ namespace DBSql.Migrations
 
             migrationBuilder.DropTable(
                 name: "Songs");
-
-            migrationBuilder.DropTable(
-                name: "Canço");
         }
     }
 }
