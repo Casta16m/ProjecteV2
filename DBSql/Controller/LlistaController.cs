@@ -28,7 +28,7 @@ namespace DBSql.Controller
         }
 
         // GET: api/Llista/5
-        [HttpGet("getLlistaName/{Nom}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Llista>> GetLlista(string id)
         {
             var llista = await _context.Llista.FindAsync(id);
@@ -40,6 +40,21 @@ namespace DBSql.Controller
 
             return llista;
         }
+
+        // GET: api/Llista/getLlistaNom/Nom
+        [HttpGet("BuscarNom/{nom}")]
+        public async Task<ActionResult<Llista>> getLlistaNom(string nom)
+        {
+            var llista = await _context.Llista.Where(a => a.Nom.Contains(nom)).ToListAsync();
+
+            if (llista == null)
+            {
+                return NotFound();
+            }
+
+            return llista.ToList()[0];
+        }
+    
 
         // PUT: api/Llista/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
