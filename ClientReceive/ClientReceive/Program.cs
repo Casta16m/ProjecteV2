@@ -24,37 +24,10 @@ class Program
 
             Thread receiveThread = new Thread(ReceiveMessages);
             receiveThread.Start();
-
-            while (true)
-            {
-                string input = Console.ReadLine();
-
-                if (input == "exit")
-                {
-                    // Permite que el cliente cierre la conexión de manera ordenada
-                    break;
-                }
-                else if (input == "clear")
-                {
-                    Console.Clear();
-                }
-                else if (string.IsNullOrEmpty(input))
-                {
-                    // Ignora las líneas en blanco
-                }
-                else
-                {
-                    //SendMessage(input);
-                }
-            }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error de conexión: {ex.Message}");
-        }
-        finally
-        {
-            client.Close();
         }
     }
 
@@ -92,6 +65,8 @@ class Program
             Console.WriteLine($"Error de lectura: {ex.Message}");
         }
     }
+
+
 
     static string ReadMessage(StreamReader reader)
     {
