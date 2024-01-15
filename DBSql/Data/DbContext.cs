@@ -7,7 +7,7 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Extensio> Extensio { get; set; }
         public DbSet<Artista> Artistes { get; set; }
         public DbSet<Album> Album { get; set; }
-        public DbSet<Canço> Cançons { get; set; }
+        public DbSet<Song> Songs { get; set; }
         public DbSet<Grup> Grups { get; set; }
         public DbSet<Llista> Llista { get; set; }
         public DbSet<Instrument> Instrument { get; set; }
@@ -19,6 +19,7 @@ namespace ProjecteV2.ApiSql{
             modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   
           
             modelBuilder.ApplyConfiguration(new ParticipaConfiguracio());
+            modelBuilder.ApplyConfiguration(new SongConfiguracio());
         }
     }
 

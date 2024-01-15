@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "adLeg9WPEMYEIU/Ee3FQHrRWK7eptzHRbnGSxyoh7OR4BsrpSAjzRyAsB7vU2E3/vQe0lBYvxnOE9SKDOCKFmA==",
+  "dgSpecHash": "1ZCZWk0RnXUcW99uZp4509yqJS4nacspCPBfFCyaukCn2qkSAXUVs+CKwjsOqYR9gI68FN8BE3m2kAwzyhRxsw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aimar\\Documents\\GitHub\\DBSql\\DBSql.csproj",
+  "projectFilePath": "C:\\Users\\Aimar\\Desktop\\DBSql\\DBSql.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aimar\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Aimar\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
