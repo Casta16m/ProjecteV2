@@ -6,6 +6,6 @@ namespace ProjecteV2.ApiSql{
         [Key]
         [MaxLength(10)]
         public string NomExtensio { get; set; }
-        public ICollection<Song> songs { get; set; }
+        public ICollection<Song>? songs { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace ProjecteV2.ApiSql{
         [MaxLength(25)]
         public string Model { get; set; }
 
-        public ICollection<Participa> participa { get; set; }
+        public ICollection<Participa>? participa { get; set; }
     }
 }
