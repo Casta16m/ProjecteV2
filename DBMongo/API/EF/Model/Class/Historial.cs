@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
+
 namespace ProjecteV2.ApiMongoDB{
     public class Historial{
         [BsonId]
@@ -16,8 +17,8 @@ namespace ProjecteV2.ApiMongoDB{
         [BsonElement("OID")]
         public string? CançoOID { get; set; }
 
-        public void SetCançoOID(Canço canço){
-            CançoOID = canço._ID;
+        public void SetCançoOID(Song Song){
+            CançoOID = Song._ID;
         }
       
       

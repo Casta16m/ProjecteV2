@@ -9,13 +9,13 @@ namespace ProjecteV2.ApiMongoDB{
         public string? _ID { get; set; } =  MongoDB.Bson.ObjectId.GenerateNewId().ToString();
 
         [BsonElement("OID")]
-        public string CançoOID { get; set; }
+        public string SongOID { get; set; }
 
         [BsonElement("Lletra")]
         public string lletra { get; set; }
         
-        public void SetCançoOID(Canço canço){
-            CançoOID = canço._ID;
+        public void SetCançoOID(Song Song){
+            SongOID = Song._ID;
         }
     }
 }

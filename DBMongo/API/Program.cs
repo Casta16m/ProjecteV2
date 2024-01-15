@@ -2,9 +2,11 @@ using MongoStoreApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 builder.Services.Configure<MongoStoreDatabaseSettings>(
-    builder.Configuration.GetSection("BookStoreDatabse"));
+    builder.Configuration.GetSection("MongoStoreDatabase"));
+    
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
