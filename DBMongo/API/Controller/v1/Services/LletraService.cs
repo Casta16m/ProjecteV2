@@ -21,8 +21,8 @@ public class LletraService{
             await _LletraCollection.Find(x => x._ID == id).FirstOrDefaultAsync();
         public async Task CreateAsync(Lletra newLletra) =>
         await _LletraCollection.InsertOneAsync(newLletra);
-        public async Task UpdateAsync(string id, Lletra updatedLletra) =>
-            await _LletraCollection.ReplaceOneAsync(x => x._ID == id, updatedLletra);
+        public async Task UpdateAsync(string id, Historial updatedHistorial) =>
+            await _LletraCollection.ReplaceOneAsync(x => x._ID == id, updatedHistorial);
         public async Task RemoveAsync(string id) =>
             await _LletraCollection.DeleteOneAsync(x => x._ID == id);
 }
