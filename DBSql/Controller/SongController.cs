@@ -55,6 +55,19 @@ namespace DBSql.Controller
             return song;
         }
 
+        [HttpGet("BuscarGenere/{nom}")]
+        public async Task<ActionResult<IEnumerable<Song>>> GetGenereSong(string nom)
+        {
+            var song = await _context.Songs.Where(a => a.Genere.Contains(nom)).ToListAsync();
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            return song;
+        }
+
         // PUT: api/Song/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

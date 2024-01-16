@@ -28,33 +28,19 @@ namespace DBSql.Controller
         }
 
         // GET: api/Llista/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Llista>> GetLlista(string id)
+        [HttpGet("getLlistaName/{Nom}")]
+        public async Task<ActionResult<Llista>> GetLlista(string Nom)
         {
-            var llista = await _context.Llista.FindAsync(id);
+            var Lista = await _context.Llista.Include(a => a.songs).FirstOrDefaultAsync(a => a.Nom == Nom);
+            //var llista = await _context.Llista.FindAsync(Nom);
 
-            if (llista == null)
+            if (Lista == null)
             {
                 return NotFound();
             }
 
-            return llista;
+            return Lista;
         }
-
-        // GET: api/Llista/getLlistaNom/Nom
-        [HttpGet("BuscarNom/{nom}")]
-        public async Task<ActionResult<Llista>> getLlistaNom(string nom)
-        {
-            var llista = await _context.Llista.Where(a => a.Nom.Contains(nom)).ToListAsync();
-
-            if (llista == null)
-            {
-                return NotFound();
-            }
-
-            return llista.ToList()[0];
-        }
-    
 
         // PUT: api/Llista/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -111,7 +97,76 @@ namespace DBSql.Controller
 
             return CreatedAtAction("GetLlista", new { id = llista.Nom }, llista);
         }
+        //----------------------------------------------------------------------------------------
+        [HttpPut("AfegirSong/{id}")]
+        public async Task<IActionResult> PutLlista(string id, Song Song)
+        {
+            var llista = await _context.Llista.FindAsync(id);
+            if (llista == null)
+            {
+                return NotFound();
+            }
+            llista.songs.Add(Song);
+            _context.Entry(llista).State = EntityState.Modified;
 
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LlistaExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }   
+
+        //----------------------------------------------------------------------------------------
+
+       [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
+    public async Task<IActionResult> PutLlistaSong(string NomLlista, string UID, string ID_MAC)
+    {
+        var llista = await _context.Llista.FirstOrDefaultAsync(a => a.Nom == NomLlista);
+        if (llista == null)
+        {
+            return NotFound();
+        }
+
+        var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == UID);
+        if (song == null)
+        {
+            return NotFound();
+        }
+
+        var ID_MAC1 = await _context.Llista.FirstOrDefaultAsync(a => a.ID_MAC == ID_MAC);
+        if (ID_MAC1 == null)
+        {
+            return NotFound();
+        }
+        
+        if(llista.ID_MAC == ID_MAC1.ID_MAC)
+        {
+            llista.songs?.Add(song);
+            _context.Entry(llista).State = EntityState.Modified;
+            return StatusCode(200);
+
+        }
+        else
+        {
+            return NotFound();
+        }
+
+
+
+
+    } 
         // DELETE: api/Llista/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLlista(string id)
