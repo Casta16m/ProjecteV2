@@ -41,6 +41,21 @@ namespace DBSql.Controller
             return instrument;
         }
 
+
+        [HttpGet("BuscarNom/{nom}")]
+        public async Task<ActionResult<Instrument>> GetNomInstrument(string nom)
+        {
+            var instrument = await _context.Instrument.Where(a => a.Nom.Contains(nom)).ToListAsync();
+
+            if (instrument == null)
+            {
+                return NotFound();
+            }
+
+            return instrument.ToList()[0];
+        }
+
+
         // PUT: api/Instrument/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
