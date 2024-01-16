@@ -105,7 +105,6 @@ namespace DBSql.Controller
         public async Task<ActionResult<Song>> PostSong(Song song)
         {                
             song.data = DateTime.Now;
-            song.UID = Guid.NewGuid().ToString();
             _context.Songs.Add(song);
             try
             {

@@ -130,10 +130,11 @@ namespace DBSql.Controller
 
         //----------------------------------------------------------------------------------------
 
-       [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
+    [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
     public async Task<IActionResult> PutLlistaSong(string NomLlista, string UID, string ID_MAC)
     {
-        var llista = await _context.Llista.FirstOrDefaultAsync(a => a.Nom == NomLlista);
+        var llista = await _context.Llista.Include(a => a.songs).FirstOrDefaultAsync(a => a.Nom == NomLlista);
+        
         if (llista == null)
         {
             return NotFound();
@@ -150,12 +151,14 @@ namespace DBSql.Controller
         {
             return NotFound();
         }
-        
+
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
         {
-            llista.songs?.Add(song);
+            llista.songs.Add(song);
             _context.Entry(llista).State = EntityState.Modified;
-            return StatusCode(200);
+            await _context.SaveChangesAsync();
+
+            return StatusCode(400);
 
         }
         else
