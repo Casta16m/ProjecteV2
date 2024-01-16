@@ -26,19 +26,67 @@ namespace Musify_Desktop
         public ReportPage()
         {
             InitializeComponent();
+            CreateReportButtons();
 
         }
 
 
-
-        public void ReportButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Method to create the report buttons, add style and add them to the stack panel
+        /// </summary>
+        public void CreateReportButtons()
         {
-            crearPDF.createPDF();
+
+
+            for (int i = 1; i <= 8; i++)
+            {
+                MusiFy_Library.Button button = new MusiFy_Library.Button();
+                button.Text = "Reporte " + i;
+                button.WidthButton = 200;
+                button.HeightButton = 50;
+                button.TextSize = 20;
+                button.Click += ReportButton_ClickAsync;
+                button.WidthGrid = new GridLength(110, GridUnitType.Pixel);
+
+
+                if(i <= 4)
+                {
+                    reportStack.Children.Add(button);
+                }
+                else
+                {
+                    reportStackTwo.Children.Add(button);
+                }
+               
+            }
         }
 
 
-        
+      
+        public async void ReportButton_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            MusiFy_Lib.Reports report = new MusiFy_Lib.Reports();
 
-       
+            MessageBox.Show(await report.GetArtists());
+
+
+
+            //await Task.Run(() => CrearPDF());
+        }
+
+
+      
+
+
+        public async void CrearPDF()
+
+        {
+          
+           
+            
+        }
+
+
+
     }
 }

@@ -23,22 +23,22 @@ namespace MusiFy_Lib
          
 
 
-
-       public  void createPDF()
+        /// <summary>
+        /// Method to create a PDF and save it in the PDF folder 
+        /// </summary>
+        /// <param name="pdfName"></param>
+       public  void createPDF(string pdfName)
         {
-            
-
+                
             {
-                FileStream fileStream = new FileStream(fp , FileMode.Create, FileAccess.Write);
+                FileStream fileStream = new FileStream(Environment.CurrentDirectory + $"/PDF/{pdfName}" , FileMode.Create, FileAccess.Write);
                 PdfWriter pdfWriter = new PdfWriter(fileStream);
                 PdfDocument pdfDocument = new PdfDocument(pdfWriter);
                 Document document = new Document(pdfDocument, PageSize.A4);
                 document.Add(new Paragraph("Hello World!"));
                 document.Close();
             }
-           
-
-           
+                      
         }
    }
 }

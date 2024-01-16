@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BenchmarkDotNet.Reports;
+using Prometheus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,15 +29,26 @@ namespace MusiFy_Library
 
 
 
-
+        /// <summary>
+        /// Event to handle the click
+        /// </summary>
         public event RoutedEventHandler? Click;
         
       
+      /// <summary>
+      /// Property to set the text of the button
+      /// </summary>
         public string Text
         {
             get { return ButtonName.Text; }
             set { ButtonName.Text = value; }
         }
+
+
+
+        /// <summary>
+        /// Property to set the width of TextBlock inside the button
+        /// </summary>
        
         public GridLength WidthGrid
         {
@@ -43,6 +56,11 @@ namespace MusiFy_Library
             set { ButtonNameSpace.ColumnDefinitions[1].Width = value; }
         }
        
+
+
+        /// <summary>
+        /// Property to set the width of the button
+        /// </summary>
         public int WidthButton
         {
             get { return (int)btn_glb.Width; }
@@ -53,11 +71,20 @@ namespace MusiFy_Library
        
 
 
+        /// <summary>
+        /// Property to set the height of the button
+        /// </summary>
+
         public int HeightButton
         {
             get { return (int)btn_glb.Height; }
             set { btn_glb.Height = value; }
         }
+
+
+        /// <summary>
+        /// Property to set the font size of the text inside the button
+        /// </summary>
         public int TextSize 
         {
             get { return (int)ButtonName.FontSize; }
@@ -65,12 +92,24 @@ namespace MusiFy_Library
         }
 
 
+
+
+        /// <summary>
+        /// Property to set the image of the Control 
+        /// </summary>
+
         public ImageSource SourceImageButton {
             get { return ButtonImage.Source; }
             set { ButtonImage.Source = value; }
         }
 
 
+
+
+
+        /// <summary>
+        /// Property to set the size of the image inside the button
+        /// </summary>
         public int ImageSize
         {
             get { return (int)ButtonImage.Width; }
@@ -79,6 +118,8 @@ namespace MusiFy_Library
 
       
 
+
+        
         public Button()
         {
             InitializeComponent();
@@ -93,11 +134,22 @@ namespace MusiFy_Library
 
       
 
+
+        /// <summary>
+        /// Method to handle the click event
+        /// </summary>
         protected virtual void OnClick()
         {
             Click?.Invoke(this, new RoutedEventArgs());
         }
 
+
+
+        /// <summary>
+        /// Method to handle the mouse enter event and animate the button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void myButton_MouseEnter(object sender, MouseEventArgs e)
         {
             ScaleTransform scaleTransform = (ScaleTransform)btn_glb.RenderTransform;
@@ -107,7 +159,11 @@ namespace MusiFy_Library
         }
 
 
-      
+        /// <summary>
+        /// Method to handle the mouse leave event and animate the button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void myButton_MouseLeave(object sender, MouseEventArgs e)
         {
             ScaleTransform scaleTransform = (ScaleTransform)btn_glb.RenderTransform;

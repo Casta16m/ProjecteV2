@@ -15,11 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageReference Include="prometheus-net" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\admin.png" />
     <Resource Include="Images\report.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Button.xaml.cs">
+      <CustomToolNamespace>MusiFy_Library</CustomToolNamespace>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -32,6 +40,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Button.xaml">
+      <CustomToolNamespace>MusiFy_Library</CustomToolNamespace>
+    </Page>
   </ItemGroup>
 
   

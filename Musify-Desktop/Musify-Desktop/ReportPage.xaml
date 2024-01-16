@@ -12,17 +12,10 @@
     <Viewbox>
         <Grid Width="800" Height="450">
             <Label Content="MusiFy" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Segoe UI" FontWeight="Bold"/>
-            <StackPanel Width="500" Height="300">
-
-
-
-                <MusiFy_Library:Button Click="ReportButton_Click"/>
-
-
-
-            </StackPanel>
-
+            <Grid  Height="300" Width="750" Margin="0,60,0,0">
+                <StackPanel Margin="60,0 ,0 ,0" HorizontalAlignment="Left" Width="300" x:Name="reportStack" Orientation="Vertical"></StackPanel>
+                <StackPanel Margin="0,0 ,60 ,0"  HorizontalAlignment="Right" Width="300" x:Name="reportStackTwo" Orientation="Vertical" ></StackPanel>
+            </Grid>
         </Grid>
     </Viewbox>
-
 </Page>
