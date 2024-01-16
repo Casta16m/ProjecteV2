@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
@@ -29,9 +30,9 @@ namespace DBSql.Controller
 
         // GET: api/Song/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Song>> GetSong(string id)
+        public async Task<ActionResult<Song>> Get(string id)
         {
-            var song = await _context.Songs.FindAsync(id);
+            var song  = await new SongService().GetSong(id, _context);
 
             if (song == null)
             {
@@ -39,20 +40,37 @@ namespace DBSql.Controller
             }
 
             return song;
+            /*var song = await _context.Songs.FindAsync(id);
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            return song;*/
         }
 
         // GET: api/Song/BuscarNom/5
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Song>>> GetNomSong(string nom)
         {
-            var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
+            var songService = new SongService();
+            var song = await songService.GetSong(nom, _context);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(song);
+
+            /*var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
 
             if (song == null)
             {
                 return NotFound();
             }
 
-            return song;
+            return song;*/
         }
 
         [HttpGet("BuscarGenere/{nom}")]
