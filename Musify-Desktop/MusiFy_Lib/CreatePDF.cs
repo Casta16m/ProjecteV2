@@ -18,7 +18,7 @@ using com.sun.tools.@internal.jxc.ap;
 
 namespace MusiFy_Lib
 {
-     public class CreatePDF
+     public  class CreatePDF
 
     {
          
@@ -46,6 +46,7 @@ namespace MusiFy_Lib
                  PdfWriter pdfWriter = new PdfWriter(path + $"{pdfName}.pdf");
                  PdfDocument pdfDocument = new PdfDocument(pdfWriter);
                  Document document = new Document(pdfDocument, PageSize.A4);
+                 document.SetFontSize(15);
 
                 foreach (string s in content) {
 

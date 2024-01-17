@@ -32,62 +32,70 @@ namespace Musify_Desktop
 
         }
 
-
+        public async void CreateReportButtons()
+        {
+            await Task.Run(() => CreateAndConfigureReportButtons());
+        }
         /// <summary>
         /// Method to create the report buttons, add style and add them to the stack panel
         /// </summary>
-        public async void CreateReportButtons()
+        public async void CreateAndConfigureReportButtons<T>(string apiUrl, string reportName)
         {
-                    
 
+            MusiFy_Lib.Reports report = new MusiFy_Lib.Reports();
+            List<string> artistNames = new List<string>();
+            List<string> albumNames = new List<string>();
+
+            for (int i = 0; i < 8; i++)
+            {
+                int index = i ;
+                MusiFy_Library.Button button = new MusiFy_Library.Button();
+              
+                List<Artist> artists = await report.GetData<Artist>("http://localhost:1443/api/Artista");
                 
 
-            for (int i = 0; i < 4; i++)
-            {
-                int index = i;
-                MusiFy_Lib.Reports report = new MusiFy_Lib.Reports();
-                List <string> artistNames = new List<string>();
-                List<Artist> artists = await report.GetData<Artist>("http://localhost:1443/api/Artista");
-                artistNames.Add(artists[index].NomArtista);
-                //Asignar estilos a los botones creados
-                MusiFy_Library.Button button = new MusiFy_Library.Button();
-                button.Text = "Reporte " + i;
-                button.WidthButton = 200;
-                button.HeightButton = 50;
-                button.TextSize = 20;
-
-
-
-
-
-                switch (index)
+              
                 {
-                    case 0:
-                        button.Click += (sender, e) => crearPDF.createPDF(artistNames, "Artistas");
-                        break;
-                    case 1:
-                        
-                        break;
-                    case 2:
-                        
-                        break;
-                    case 3:
-                       
-                        break;
-                    default:
-                        break;
+
+                    string artistName = artists[index].NomArtista;
+                    
+                    artistNames.Add(artistName);
+                   
+                    // Asignar estilos a los botones creados
+                    button.Text = "Reporte " + i;
+                    button.WidthButton = 200;
+                    button.HeightButton = 50;
+                    button.TextSize = 20;
+
+                    // Asignar evento de clic con manejo asíncrono
+
+
+                    switch (i)
+                    {
+                        case 0:
+                            button.Click += async (sender, e) =>
+                            {
+                                crearPDF.createPDF(artistNames, "Artistas");
+                            };
+                            break;
+                        case 1:
+                            button.Click += async (sender, e) =>
+                            { 
+
+                                crearPDF.createPDF(albumNames, "Albums"); 
+                            
+                            };
+                            break;
+                    }
+                   
+
+                    // Configurar otros casos del switch si es necesario
                 }
-                          
-
-
-
 
                 button.WidthGrid = new GridLength(110, GridUnitType.Pixel);
 
-
-
-
-                if(i <= 2)
+                // Añadir el botón al contenedor adecuado según el índice
+                if (i < 4)
                 {
                     reportStack.Children.Add(button);
                 }
@@ -95,15 +103,19 @@ namespace Musify_Desktop
                 {
                     reportStackTwo.Children.Add(button);
                 }
-               
             }
+            
+
         }
 
 
        
 
 
-       
+
+
+
+
 
 
 
