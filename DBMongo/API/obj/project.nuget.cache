@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KW4GW/mjRcqPl1RgRRAomqW0yhDGNTkxaQzfsFe+ZMC0DsAeUk9AkRXuA1u+8xUe4VRaLqqOHkSFXIweuuob7Q==",
+  "dgSpecHash": "C+cnX+FNJ2jq0rhC/cUT8A+Bki4hPe0rvKf+Oz4eJmEwhusx8TVVUmmnfZ+HH5wcQSRuaQVU1Ob2tA1I0FSmzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\DBMongo\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\DBMongo\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guill\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\guill\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

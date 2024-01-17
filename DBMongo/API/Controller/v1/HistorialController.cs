@@ -49,6 +49,18 @@ public class HistorialController: ControllerBase
         }
         return result;
     }
+    [HttpPut("{_ID}")]
+    public async Task<IActionResult> Update(string _ID, Historial updatedHistorial)
+    {
+        var historial = await _HistorialService.GetAsync(_ID);
+        if (historial is null)
+        {
+            return NotFound();
+        }
+        updatedHistorial._ID = historial._ID;
+        await _HistorialService.UpdateAsync(_ID, updatedHistorial);
+        return NoContent();
+    }
    
 
 }
