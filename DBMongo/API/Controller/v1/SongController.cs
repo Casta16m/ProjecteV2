@@ -14,7 +14,16 @@ public class SongController : ControllerBase
 
     public SongController(SongService SongService) =>
         _SongService = SongService;
-
+    [HttpGet]
+    public async Task<ActionResult<List<Song>>> GetAllSongs()
+    {
+        var songs = await _SongService.GetAsync();
+        if (songs is null)
+        {
+            return NotFound();
+        }
+        return songs;
+    }
     [HttpGet("{_ID}")]
     public async Task<ActionResult<Song>> Get(string _ID)
     {
