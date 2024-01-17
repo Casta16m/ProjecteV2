@@ -65,10 +65,17 @@ namespace Musify_Desktop
       
         public async void ReportButton_ClickAsync(object sender, RoutedEventArgs e)
         {
+
+
             MusiFy_Lib.Reports report = new MusiFy_Lib.Reports();
+            //string apiRes = await report.GetArtists();           
 
-            MessageBox.Show(await report.GetArtists());
+           MusiFy_Lib.Artist artist = await report.GetArtists();
 
+           string ArtistName = artist.NomArtista;
+
+            MessageBox.Show(ArtistName);
+            
 
 
             //await Task.Run(() => CrearPDF());
