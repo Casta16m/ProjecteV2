@@ -74,18 +74,6 @@ public class SongController : ControllerBase
         await _SongService.UpdateAsync(_ID, updatedSong);
         return NoContent();
     }
-    [HttpDelete("{_ID}")]
-    public async Task<IActionResult> Delete(string _ID)
-    {
-        var song = await _SongService.GetAsync(_ID);
-        if (song is null)
-        {
-            return NotFound();
-        }
-        await _SongService.RemoveAsync(song._ID);
-        return NoContent();
-    }
-    //Buscan per OID rertorna audioID
 
 
 }
