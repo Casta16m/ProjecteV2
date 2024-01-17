@@ -10,6 +10,6 @@ namespace ProjecteV2.ApiSql{
         [MaxLength(50)]
         public string ArtistaNom { get; set; }
 
-        public ICollection<Song>? songs { get; set; }
+        public ICollection<ConteAlbum>? conteAlbum { get; set; }
     }
 }

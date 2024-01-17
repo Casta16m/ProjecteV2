@@ -15,7 +15,7 @@ namespace ProjecteV2.ApiSql{
         public string Genere { get; set; }
 
 
-        public ICollection<Album>? albums { get; set; }
+        public ICollection<ConteAlbum> conteAlbum { get; set; }
         public ICollection<Llista>? llista { get; set; }
         public ICollection<Participa>? participa { get; set; }
         public ICollection<Extensio>? extensio { get; set; }
