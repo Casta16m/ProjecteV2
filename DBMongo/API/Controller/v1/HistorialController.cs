@@ -14,11 +14,20 @@ public class HistorialController: ControllerBase
 
     public HistorialController(HistorialService  HistorialService ) =>
         _HistorialService = HistorialService ;
-    
-    [HttpGet("{_ID}")]
-    public async Task<ActionResult<Historial>> GetHistorial(string _ID)
+    [HttpGet]
+    public async Task<ActionResult<List<Historial>>> GetAllHistorial()
     {
-        var Historial = await _HistorialService.GetAsyncHistorial(_ID);
+        var Historial = await _HistorialService.GetAsync();
+        if (Historial is null)
+        {
+            return NotFound();
+        }
+        return Historial;
+    }
+    [HttpGet("{_ID}")]
+    public async Task<ActionResult<Historial>> Get(string _ID)
+    {
+        var Historial = await _HistorialService.GetAsync(_ID);
 
         if (Historial is null)
         {
@@ -28,12 +37,12 @@ public class HistorialController: ControllerBase
         return Historial;
     }
     [HttpPost]
-    public async Task<IActionResult> PostHistorial(Historial newHistorial)
+    public async Task<IActionResult> Post(Historial newHistorial)
     {
         IActionResult result;
         try{
-            await _HistorialService.CreateAsyncHistorial(newHistorial);
-            result =  CreatedAtAction(nameof(GetHistorial), new { _ID = newHistorial._ID }, newHistorial);
+            await _HistorialService.CreateAsync(newHistorial);
+            result =  CreatedAtAction(nameof(Get), new { _ID = newHistorial._ID }, newHistorial);
         } catch (MongoWriteException ex){
             string message = "{\"Category\":\""+ ex.WriteError.Category.ToString()+"\", \"Code\": \""+ex.WriteError.Code.ToString()+"\", \"Message\": \"Duplicate key\"}";
             result = Conflict(message);

@@ -14,16 +14,15 @@ public class HistorialService
             MongoStoreDatabaseSettings.Value.DatabaseName);
          _historialCollection = mongoDatabase.GetCollection<Historial>(MongoStoreDatabaseSettings.Value.HistorialCollectionName);
     }
-    public async Task<List<Historial>> GetAsyncHistorial() => 
+    public async Task<List<Historial>> GetAsync() => 
         (await _historialCollection.FindAsync(Historial => true)).ToList();
         
-    public async Task<Historial?> GetAsyncHistorial(string id) =>
+    public async Task<Historial?> GetAsync(string id) =>
         await _historialCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
-    public async Task CreateAsyncHistorial(Historial newHistorial) =>
+    public async Task CreateAsync(Historial newHistorial) =>
     await _historialCollection.InsertOneAsync(newHistorial);
-    public async Task UpdateAsyncHistorial(string id, Historial updatedHistorial) =>
+    public async Task UpdateAsync(string id, Historial updatedHistorial) =>
         await _historialCollection.ReplaceOneAsync(x => x._ID == id, updatedHistorial);
-    public async Task RemoveAsyncHistorial(string id) =>
-        await _historialCollection.DeleteOneAsync(x => x._ID == id);
+   
   
 }
