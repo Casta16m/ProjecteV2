@@ -4,25 +4,26 @@ using MongoStoreApi.Models;
 using ProjecteV2.ApiMongoDB;
 
 namespace MongoStoreApi.Services;
-public class HistorialService{
-    private readonly IMongoCollection<Historial> _HistorialCollection;
-    public HistorialService(
-        IOptions<MongoStoreDatabaseSettings> mongoStoreDatabaseSettings){
-            var mongoClient = new MongoClient(
-                mongoStoreDatabaseSettings.Value.ConnectionString);
-            var mongoDatabase = mongoClient.GetDatabase(
-                mongoStoreDatabaseSettings.Value.DatabaseName);            
-            _HistorialCollection = mongoDatabase.GetCollection<Historial>(
-                mongoStoreDatabaseSettings.Value.LletresCollectionName); 
-        }
-        public async Task<List<Historial>> GetAsync() => 
-            (await _HistorialCollection.FindAsync(canço => true)).ToList();
-        public async Task<Historial?> GetAsync(string id) =>
-            await _HistorialCollection.Find(x => x._ID == id).FirstOrDefaultAsync();
-        public async Task CreateAsync(Historial newHistorial) =>
-        await _HistorialCollection.InsertOneAsync(newHistorial);
-        public async Task UpdateAsync(string id, Historial updatedHistorial) =>
-            await _HistorialCollection.ReplaceOneAsync(x => x._ID == id, updatedHistorial);
-        public async Task RemoveAsync(string id) =>
-            await _HistorialCollection.DeleteOneAsync(x => x._ID == id);
+public class HistorialService
+{
+    private readonly IMongoCollection<Historial> _historialCollection;
+    public HistorialService(IOptions<MongoStoreDatabaseSettings> MongoStoreDatabaseSettings)
+    {
+        IMongoClient mongoClient = new MongoClient(MongoStoreDatabaseSettings.Value.ConnectionString);
+        IMongoDatabase mongoDatabase = mongoClient.GetDatabase(
+            MongoStoreDatabaseSettings.Value.DatabaseName);
+         _historialCollection = mongoDatabase.GetCollection<Historial>(MongoStoreDatabaseSettings.Value.HistorialCollectionName);
+    }
+    public async Task<List<Historial>> GetAsyncHistorial() => 
+        (await _historialCollection.FindAsync(Historial => true)).ToList();
+        
+    public async Task<Historial?> GetAsyncHistorial(string id) =>
+        await _historialCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
+    public async Task CreateAsyncHistorial(Historial newHistorial) =>
+    await _historialCollection.InsertOneAsync(newHistorial);
+    public async Task UpdateAsyncHistorial(string id, Historial updatedHistorial) =>
+        await _historialCollection.ReplaceOneAsync(x => x._ID == id, updatedHistorial);
+    public async Task RemoveAsyncHistorial(string id) =>
+        await _historialCollection.DeleteOneAsync(x => x._ID == id);
+  
 }

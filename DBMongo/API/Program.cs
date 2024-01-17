@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<MongoStoreDatabaseSettings>(
     builder.Configuration.GetSection("MongoStoreDatabase"));
+
+
 builder.Services.AddSingleton<SongService>();
+builder.Services.AddSingleton<HistorialService>();
 
 
 // Add services to the container.

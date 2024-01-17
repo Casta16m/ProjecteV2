@@ -6,19 +6,19 @@ namespace ProjecteV2.ApiMongoDB{
     public class Historial{
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? _ID { get; set; } =  MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+        public string _ID { get; set; } =  MongoDB.Bson.ObjectId.GenerateNewId().ToString();
         
         [BsonElement("MAC")]
-        public string MAC { get; set; }
+        public string? MAC { get; set; }
 
         [BsonElement("Data")]
-        public DateTime Data { get; set; }
+        public DateTime? Data { get; set; } = DateTime.Now;
 
         [BsonElement("OID")]
-        public string? CançoOID { get; set; }
+        public string? SongOID { get; set; }
 
-        public void SetCançoOID(Song Song){
-            CançoOID = Song._ID;
+        public void SetAudioOID(Song Song){
+            SongOID = Song._ID;
         }
       
       
