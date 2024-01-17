@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <Compile Update="Button.xaml.cs">
-      <CustomToolNamespace>MusiFy_Library</CustomToolNamespace>
+      <CustomToolNamespace>MusiFy-Library</CustomToolNamespace>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <Page Update="Button.xaml">
-      <CustomToolNamespace>MusiFy_Library</CustomToolNamespace>
+      <CustomToolNamespace>MusiFy-Library</CustomToolNamespace>
     </Page>
   </ItemGroup>
 

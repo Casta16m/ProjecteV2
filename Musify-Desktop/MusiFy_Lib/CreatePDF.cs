@@ -15,6 +15,7 @@ using IOException = System.IO.IOException;
 using com.sun.tools.@internal.jxc.ap;
 
 
+
 namespace MusiFy_Lib
 {
      public class CreatePDF
@@ -26,19 +27,44 @@ namespace MusiFy_Lib
         /// <summary>
         /// Method to create a PDF and save it in the PDF folder 
         /// </summary>
-        /// <param name="pdfName"></param>
-       public  void createPDF(string pdfName)
+        /// <param name="pdfName">Name of the PDF file</param>
+        /// <param name="content">Content to write on the PDF</param>
+        /// <param name="pdfSize">Size of the PDF</param>
+       public  void createPDF(List <string> content, string pdfName)
         {
-                
-            {
-                FileStream fileStream = new FileStream(Environment.CurrentDirectory + $"/PDF/{pdfName}" , FileMode.Create, FileAccess.Write);
-                PdfWriter pdfWriter = new PdfWriter(fileStream);
-                PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-                Document document = new Document(pdfDocument, PageSize.A4);
-                document.Add(new Paragraph("Hello World!"));
-                document.Close();
+            
+                try
+                {
+                // Obtener la ruta completa al directorio PDF
+                    
+
+                string path = System.IO.Path.GetFullPath(@"..\..\..\..\..\MusiFy-Desktop\MusiFy_Lib\PDF\");
+                // Combinar la ruta completa con el nombre del archivo PDF
+
+
+
+                 PdfWriter pdfWriter = new PdfWriter(path + $"{pdfName}.pdf");
+                 PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+                 Document document = new Document(pdfDocument, PageSize.A4);
+
+                foreach (string s in content) {
+
+                    document.Add(new Paragraph(" "));
+                    document.Add(new Paragraph($"{s}"));
+                }
+                 
+
+                 document.Close();
+                    
+                }
+                catch (Exception ex)
+                {
+                    // Manejar excepciones aquí
+                    
+                }
             }
-                      
+
+
         }
-   }
-}
+    }
+
