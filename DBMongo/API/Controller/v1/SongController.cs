@@ -36,6 +36,18 @@ public class SongController : ControllerBase
 
         return song;
     }
+    [HttpGet("Audio/{AudioID}")]
+    public async Task<ActionResult<Song>> GetByAudioID(string AudioID)
+    {
+        var song = await _SongService.GetByAudioIDAsync(AudioID);
+
+        if (song is null)
+        {
+            return NotFound();
+        }
+
+        return song;
+    }
     [HttpPost]
     public async Task<IActionResult> Post(Song newSong)
     {
@@ -58,6 +70,7 @@ public class SongController : ControllerBase
         {
             return NotFound();
         }
+        updatedSong._ID = song._ID;
         await _SongService.UpdateAsync(_ID, updatedSong);
         return NoContent();
     }
