@@ -30,18 +30,16 @@ public class SongController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(Song newSong)
     {
-        try
-        {
-            await _SongService.CreateAsync(newSong);
-            Console.WriteLine("Song created");
-            return CreatedAtAction(nameof(Get), new { _ID = newSong._ID }, newSong);
-         
+        IActionResult result;
+        try{
+             await _SongService.CreateAsync(newSong);
+             result =  CreatedAtAction(nameof(Get), new { _ID = newSong._ID }, newSong);
+        } catch (MongoWriteException ex){
+            string message = "{\"Category\":\""+ ex.WriteError.Category.ToString()+"\", \"Code\": \""+ex.WriteError.Code.ToString()+"\", \"Message\": \"Duplicate key\"}";
+            return Conflict(message);
         }
-        catch (Exception ex)
-        {
-            // Aquí puedes manejar la excepción como quieras. Por ejemplo, podrías devolver un 500 Internal Server Error.
-            return StatusCode(500, ex.Message);
-        }
+         return result;
+        
     }
     [HttpPut("{_ID}")]
     public async Task<IActionResult> Update(string _ID, Song updatedSong)

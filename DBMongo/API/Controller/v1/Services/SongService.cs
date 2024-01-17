@@ -6,14 +6,12 @@ using ProjecteV2.ApiMongoDB;
 namespace MongoStoreApi.Services;
 public class SongService{
     private readonly IMongoCollection<Song> _songsCollection;
-    public SongService(
-        IOptions<MongoStoreDatabaseSettings> mongoStoreDatabaseSettings){
-            var mongoClient = new MongoClient(
-                mongoStoreDatabaseSettings.Value.ConnectionString);
-            var mongoDatabase = mongoClient.GetDatabase(
-                mongoStoreDatabaseSettings.Value.DatabaseName);            
-            _songsCollection = mongoDatabase.GetCollection<Song>(
-                mongoStoreDatabaseSettings.Value.SongsCollectionName); 
+    public SongService(IOptions<MongoStoreDatabaseSettings> MongoStoreDatabaseSettings)
+    {
+            IMongoClient mongoClient = new MongoClient(MongoStoreDatabaseSettings.Value.ConnectionString);
+            IMongoDatabase mongoDatabase = mongoClient.GetDatabase(
+                MongoStoreDatabaseSettings.Value.DatabaseName);
+           _songsCollection = mongoDatabase.GetCollection<Song>(MongoStoreDatabaseSettings.Value.SongsCollectionName);
         }
         public async Task<List<Song>> GetAsync() => 
             (await _songsCollection.FindAsync(Song => true)).ToList();
