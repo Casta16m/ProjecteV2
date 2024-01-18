@@ -39,7 +39,7 @@ namespace DBSql.Controller
                 return NotFound();
             }
 
-            return song;
+            return Ok(song);
             /*var song = await _context.Songs.FindAsync(id);
 
             if (song == null)
@@ -54,35 +54,17 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Song>>> GetNomSong(string nom)
         {
+
             var songService = new SongService();
             var song = await songService.GetSong(nom, _context);
-            if (song == null)
-            {
-                return NotFound();
-            }
-            
-            return Ok(song);
-
-            /*var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
-
-            if (song == null)
-            {
-                return NotFound();
-            }
-
-            return song;*/
+            return song;
         }
 
         [HttpGet("BuscarGenere/{nom}")]
         public async Task<ActionResult<IEnumerable<Song>>> GetGenereSong(string nom)
         {
-            var song = await _context.Songs.Where(a => a.Genere.Contains(nom)).ToListAsync();
-
-            if (song == null)
-            {
-                return NotFound();
-            }
-
+            var genreService = new SongService();
+            var song = await genreService.GetGenere(nom, _context);
             return song;
         }
 
@@ -91,6 +73,14 @@ namespace DBSql.Controller
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSong(string id, Song song)
         {
+            /*var songService = new SongService();
+            var song2 = await songService.PutSong(id, song, _context);
+            if (song2 == null)
+            {
+                return BadRequest();
+            }
+            return Ok(song2);*/
+            
             if (id != song.UID)
             {
                 return BadRequest();
@@ -122,26 +112,15 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Song>> PostSong(Song song)
         {                
-            song.data = DateTime.Now;
-            _context.Songs.Add(song);
-            try
-            {
 
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
+            var songService = new SongService();
+            var song2 = await songService.PostSong(song.UID, song, _context);
+            if (song2 == null)
             {
-                if (SongExists(song.UID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest();
             }
+            return Ok(song2);
 
-            return CreatedAtAction("GetSong", new { id = song.UID }, song);
         }
 
         // DELETE: api/Song/5

@@ -137,19 +137,19 @@ namespace DBSql.Controller
         
         if (llista == null)
         {
-            return NotFound();
+            return StatusCode(401);
         }
 
         var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == UID);
         if (song == null)
         {
-            return NotFound();
+            return StatusCode(402);
         }
 
         var ID_MAC1 = await _context.Llista.FirstOrDefaultAsync(a => a.ID_MAC == ID_MAC);
         if (ID_MAC1 == null)
         {
-            return NotFound();
+            return StatusCode(403);
         }
 
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
