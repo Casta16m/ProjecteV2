@@ -19,6 +19,11 @@ public class HistorialService
         
     public async Task<Historial?> GetAsync(string id) =>
         await _historialCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
+    public async Task<Historial?> GetByMACAsync(string MAC) =>
+        await _historialCollection.Find(x => x.MAC == MAC).FirstOrDefaultAsync();
+    public async Task<Historial?> GetByAudioIDAndMACAsync(string audioID, string MAC) =>
+        await _historialCollection.Find(x => x.AudioID == audioID && x.MAC == MAC).FirstOrDefaultAsync();
+    
     public async Task CreateAsync(Historial newHistorial) =>
     await _historialCollection.InsertOneAsync(newHistorial);
     public async Task UpdateAsync(string id, Historial updatedHistorial) =>

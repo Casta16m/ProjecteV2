@@ -36,6 +36,31 @@ public class HistorialController: ControllerBase
 
         return Historial;
     }
+    [HttpGet("Mac/{MAC}")]
+    public async Task<ActionResult<Historial>> GetByMAC(string MAC)
+    {
+        var Historial = await _HistorialService.GetByMACAsync(MAC);
+
+        if (Historial is null)
+        {
+            return NotFound();
+        }
+
+        return Historial;
+    }
+    [HttpGet("Song/MAC/{audioID}/{MAC}")]
+    public async Task<ActionResult<Historial>> GetByAudioIDAndMAC(string audioID, string MAC)
+    {
+        var Historial = await _HistorialService.GetByAudioIDAndMACAsync(audioID, MAC);
+
+        if (Historial is null)
+        {
+            return NotFound();
+        }
+
+        return Historial;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> Post(Historial newHistorial)
     {

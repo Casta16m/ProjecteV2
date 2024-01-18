@@ -15,10 +15,10 @@ namespace ProjecteV2.ApiMongoDB{
         public DateTime? Data { get; set; } = DateTime.Now;
 
         [BsonElement("OID")]
-        public string? SongOID { get; set; }
+        public string? AudioID { get; set; }
 
         public void SetAudioOID(Song Song){
-            SongOID = Song._ID;
+            AudioID = Song._ID;
         }
       
       

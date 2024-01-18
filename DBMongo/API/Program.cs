@@ -10,15 +10,14 @@ builder.Services.Configure<MongoStoreDatabaseSettings>(
 
 builder.Services.AddSingleton<SongService>();
 builder.Services.AddSingleton<HistorialService>();
+builder.Services.AddSingleton<LletraService>();
 
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionString = "mongodb://localhost:27017";
-var mongoClient = new MongoClient(connectionString);
-Console.WriteLine(mongoClient);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
