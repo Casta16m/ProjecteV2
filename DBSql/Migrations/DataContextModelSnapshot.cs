@@ -245,6 +245,10 @@ namespace DBSql.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
+                    b.Property<string>("NomArtista")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NomSong")
                         .IsRequired()
                         .HasMaxLength(35)

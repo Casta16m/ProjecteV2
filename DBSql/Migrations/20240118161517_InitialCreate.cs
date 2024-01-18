@@ -136,6 +136,7 @@ namespace DBSql.Migrations
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NomArtista = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),

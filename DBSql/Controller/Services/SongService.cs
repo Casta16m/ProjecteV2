@@ -49,34 +49,7 @@ namespace ProjecteV2.ApiSql.Services{
             return song;
 
         }
-        public async Task<Song>PutSong(string id, Song song, DataContext _context){
-            _context.Entry(song).State = EntityState.Modified;
 
-            if (id != song.UID)
-            {
-                return null;
-            }
-
-            _context.Entry(song).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SongExists(id, _context))
-                {
-                    return null;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return null;
-        }
                 
         private bool SongExists(string id, DataContext _context)
         {

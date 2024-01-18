@@ -28,18 +28,28 @@ namespace DBSql.Controller
         }
 
         // GET: api/Llista/5
-        [HttpGet("getLlistaName/{Nom}")]
+        [HttpGet("BuscarNom/{Nom}")]
         public async Task<ActionResult<Llista>> GetLlista(string Nom)
         {
-            var Lista = await _context.Llista.Include(a => a.songs).FirstOrDefaultAsync(a => a.Nom == Nom);
-            //var llista = await _context.Llista.FindAsync(Nom);
-
-            if (Lista == null)
+            LlistaService LlistaService = new LlistaService();
+            var llista = await LlistaService.GetLlista(Nom, _context);
+            if (llista == null)
             {
                 return NotFound();
             }
+            return Ok(llista);
+        }
+        [HttpGet("BuscarMac/{ID_MAC}")]
+        public async Task<ActionResult<Llista>> GetLlistaMAC(string ID_MAC)
+        {
 
-            return Lista;
+            LlistaService LlistaService = new LlistaService();
+            var llistaMac = await LlistaService.GetLlistaMac(ID_MAC, _context);
+            if (llistaMac == null)
+            {
+                return NotFound();
+            }
+            return Ok(llistaMac);
         }
 
         // PUT: api/Llista/5
@@ -78,56 +88,15 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Llista>> PostLlista(Llista llista)
         {
-            _context.Llista.Add(llista);
-            try
+            LlistaService LlistaService = new LlistaService();
+            var llista2 = await LlistaService.PostLlista(llista, _context);
+            if (llista2 == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (LlistaExists(llista.Nom))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetLlista", new { id = llista.Nom }, llista);
+            return Ok(llista2);
         }
-        //----------------------------------------------------------------------------------------
-        [HttpPut("AfegirSong/{id}")]
-        public async Task<IActionResult> PutLlista(string id, Song Song)
-        {
-            var llista = await _context.Llista.FindAsync(id);
-            if (llista == null)
-            {
-                return NotFound();
-            }
-            llista.songs.Add(Song);
-            _context.Entry(llista).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LlistaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }   
-
+        
         //----------------------------------------------------------------------------------------
 
     [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
@@ -140,17 +109,19 @@ namespace DBSql.Controller
             return StatusCode(401);
         }
 
+        var ID_MAC1 = await _context.Llista.FirstOrDefaultAsync(a => a.ID_MAC == ID_MAC);
+        if (ID_MAC1 == null)
+        {
+            return StatusCode(403);
+        }
+
         var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == UID);
         if (song == null)
         {
             return StatusCode(402);
         }
 
-        var ID_MAC1 = await _context.Llista.FirstOrDefaultAsync(a => a.ID_MAC == ID_MAC);
-        if (ID_MAC1 == null)
-        {
-            return StatusCode(403);
-        }
+
 
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
         {
@@ -158,7 +129,7 @@ namespace DBSql.Controller
             _context.Entry(llista).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return StatusCode(400);
+            return StatusCode(200);
 
         }
         else

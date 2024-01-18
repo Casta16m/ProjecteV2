@@ -73,14 +73,6 @@ namespace DBSql.Controller
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSong(string id, Song song)
         {
-            /*var songService = new SongService();
-            var song2 = await songService.PutSong(id, song, _context);
-            if (song2 == null)
-            {
-                return BadRequest();
-            }
-            return Ok(song2);*/
-            
             if (id != song.UID)
             {
                 return BadRequest();
