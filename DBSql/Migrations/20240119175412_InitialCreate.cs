@@ -76,7 +76,6 @@ namespace DBSql.Migrations
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    NomArtista = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
@@ -188,14 +187,13 @@ namespace DBSql.Migrations
                 columns: table => new
                 {
                     UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NomSong = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NomArtista = table.Column<string>(type: "nvarchar(25)", nullable: false),
                     NomGrup = table.Column<string>(type: "nvarchar(25)", nullable: false),
                     NomInstrument = table.Column<string>(type: "nvarchar(25)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Participa", x => new { x.UID, x.NomSong, x.NomArtista, x.NomGrup, x.NomInstrument });
+                    table.PrimaryKey("PK_Participa", x => new { x.UID, x.NomArtista, x.NomGrup, x.NomInstrument });
                     table.ForeignKey(
                         name: "FK_Participa_Artistes_NomArtista",
                         column: x => x.NomArtista,
@@ -215,8 +213,8 @@ namespace DBSql.Migrations
                         principalColumn: "Nom",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Participa_Songs_NomSong",
-                        column: x => x.NomSong,
+                        name: "FK_Participa_Songs_UID",
+                        column: x => x.UID,
                         principalTable: "Songs",
                         principalColumn: "UID",
                         onDelete: ReferentialAction.Cascade);
@@ -256,11 +254,6 @@ namespace DBSql.Migrations
                 name: "IX_Participa_NomInstrument",
                 table: "Participa",
                 column: "NomInstrument");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Participa_NomSong",
-                table: "Participa",
-                column: "NomSong");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Songs_SongOriginal",

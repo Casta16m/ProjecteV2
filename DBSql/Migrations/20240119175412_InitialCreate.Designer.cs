@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240119144940_InitialCreate")]
+    [Migration("20240119175412_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -82,7 +82,7 @@ namespace DBSql.Migrations
                     b.Property<string>("UIDSong")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("data")
+                    b.Property<DateTime>("data")
                         .HasColumnType("datetime2");
 
                     b.HasKey("NomAlbum", "UIDSong", "data");
@@ -168,9 +168,6 @@ namespace DBSql.Migrations
                     b.Property<string>("UID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("NomSong")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("NomArtista")
                         .HasColumnType("nvarchar(25)");
 
@@ -180,15 +177,13 @@ namespace DBSql.Migrations
                     b.Property<string>("NomInstrument")
                         .HasColumnType("nvarchar(25)");
 
-                    b.HasKey("UID", "NomSong", "NomArtista", "NomGrup", "NomInstrument");
+                    b.HasKey("UID", "NomArtista", "NomGrup", "NomInstrument");
 
                     b.HasIndex("NomArtista");
 
                     b.HasIndex("NomGrup");
 
                     b.HasIndex("NomInstrument");
-
-                    b.HasIndex("NomSong");
 
                     b.ToTable("Participa");
                 });
@@ -202,10 +197,6 @@ namespace DBSql.Migrations
                         .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
-
-                    b.Property<string>("NomArtista")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomSong")
                         .IsRequired()
@@ -303,7 +294,7 @@ namespace DBSql.Migrations
 
                     b.HasOne("ProjecteV2.ApiSql.Song", "SongObj")
                         .WithMany("participa")
-                        .HasForeignKey("NomSong")
+                        .HasForeignKey("UID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

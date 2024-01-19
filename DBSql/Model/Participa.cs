@@ -7,8 +7,6 @@ namespace ProjecteV2.ApiSql{
 
         public string? UID { get; set; } = new Guid().ToString();
 
-        public string NomSong { get; set; }
-
         public Artista? ArtistaObj { get; set; }
 
         public string NomArtista { get; set; }
