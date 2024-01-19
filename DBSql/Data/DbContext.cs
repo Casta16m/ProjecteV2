@@ -12,13 +12,11 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Llista> Llista { get; set; }
         public DbSet<Instrument> Instrument { get; set; }
         public DbSet<Participa> Participa { get; set; }
-        public DbSet<ConteAlbum> ConteAlbum { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
     
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   
-            modelBuilder.ApplyConfiguration(new ConteAlbumConfiguracio());
             modelBuilder.ApplyConfiguration(new ParticipaConfiguracio());
             modelBuilder.ApplyConfiguration(new SongConfiguracio());
         }

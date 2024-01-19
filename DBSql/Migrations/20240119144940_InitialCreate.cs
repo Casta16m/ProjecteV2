@@ -71,6 +71,27 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Songs",
+                columns: table => new
+                {
+                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    data = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NomArtista = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
+                    SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Songs", x => x.UID);
+                    table.ForeignKey(
+                        name: "FK_Songs_Songs_SongOriginal",
+                        column: x => x.SongOriginal,
+                        principalTable: "Songs",
+                        principalColumn: "UID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ArtistaGrup",
                 columns: table => new
                 {
@@ -100,63 +121,17 @@ namespace DBSql.Migrations
                 {
                     NomAlbum = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ArtistaNom = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ConteAlbumNomAlbum = table.Column<string>(type: "nvarchar(25)", nullable: true),
-                    ConteAlbumNomSong = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ConteAlbumdata = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    UIDSong = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Album", x => new { x.NomAlbum, x.data, x.ArtistaNom });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ConteAlbum",
-                columns: table => new
-                {
-                    NomSong = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NomAlbum = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ArtistaNom = table.Column<string>(type: "nvarchar(50)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ConteAlbum", x => new { x.NomSong, x.data, x.NomAlbum });
+                    table.PrimaryKey("PK_Album", x => new { x.NomAlbum, x.UIDSong, x.data });
                     table.ForeignKey(
-                        name: "FK_ConteAlbum_Album_NomAlbum_data_ArtistaNom",
-                        columns: x => new { x.NomAlbum, x.data, x.ArtistaNom },
-                        principalTable: "Album",
-                        principalColumns: new[] { "NomAlbum", "data", "ArtistaNom" },
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Songs",
-                columns: table => new
-                {
-                    UID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    NomArtista = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    ConteAlbumNomAlbum = table.Column<string>(type: "nvarchar(25)", nullable: true),
-                    ConteAlbumNomSong = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ConteAlbumdata = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Songs", x => x.UID);
-                    table.ForeignKey(
-                        name: "FK_Songs_ConteAlbum_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
-                        columns: x => new { x.ConteAlbumNomSong, x.ConteAlbumdata, x.ConteAlbumNomAlbum },
-                        principalTable: "ConteAlbum",
-                        principalColumns: new[] { "NomSong", "data", "NomAlbum" });
-                    table.ForeignKey(
-                        name: "FK_Songs_Songs_SongOriginal",
-                        column: x => x.SongOriginal,
+                        name: "FK_Album_Songs_UIDSong",
+                        column: x => x.UIDSong,
                         principalTable: "Songs",
-                        principalColumn: "UID");
+                        principalColumn: "UID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -248,29 +223,14 @@ namespace DBSql.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Album_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
+                name: "IX_Album_UIDSong",
                 table: "Album",
-                columns: new[] { "ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum" });
+                column: "UIDSong");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArtistaGrup_artistesNomArtista",
                 table: "ArtistaGrup",
                 column: "artistesNomArtista");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ConteAlbum_data",
-                table: "ConteAlbum",
-                column: "data");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ConteAlbum_NomAlbum",
-                table: "ConteAlbum",
-                column: "NomAlbum");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ConteAlbum_NomAlbum_data_ArtistaNom",
-                table: "ConteAlbum",
-                columns: new[] { "NomAlbum", "data", "ArtistaNom" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExtensioSong_songsUID",
@@ -303,41 +263,16 @@ namespace DBSql.Migrations
                 column: "NomSong");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Songs_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
-                table: "Songs",
-                columns: new[] { "ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum" });
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Songs_SongOriginal",
                 table: "Songs",
                 column: "SongOriginal");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Album_ConteAlbum_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
-                table: "Album",
-                columns: new[] { "ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum" },
-                principalTable: "ConteAlbum",
-                principalColumns: new[] { "NomSong", "data", "NomAlbum" });
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_ConteAlbum_Songs_NomSong",
-                table: "ConteAlbum",
-                column: "NomSong",
-                principalTable: "Songs",
-                principalColumn: "UID",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Album_ConteAlbum_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
-                table: "Album");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Songs_ConteAlbum_ConteAlbumNomSong_ConteAlbumdata_ConteAlbumNomAlbum",
-                table: "Songs");
+            migrationBuilder.DropTable(
+                name: "Album");
 
             migrationBuilder.DropTable(
                 name: "ArtistaGrup");
@@ -365,12 +300,6 @@ namespace DBSql.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instrument");
-
-            migrationBuilder.DropTable(
-                name: "ConteAlbum");
-
-            migrationBuilder.DropTable(
-                name: "Album");
 
             migrationBuilder.DropTable(
                 name: "Songs");

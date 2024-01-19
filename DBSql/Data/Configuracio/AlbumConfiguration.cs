@@ -7,7 +7,8 @@ namespace ProjecteV2.ApiSql
     {
         public void Configure(EntityTypeBuilder<Album> builder)
         {
-            builder.HasKey(x => new { x.NomAlbum, x.data, x.ArtistaNom });
+            builder.HasKey(x => new { x.NomAlbum, x.UIDSong, x.data });
+            builder.HasOne(x => x.SongObj).WithMany(x => x.album).HasForeignKey(x => x.UIDSong);
         }
     }
 }

@@ -76,25 +76,15 @@ namespace DBSql.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
+                    b.Property<string>("UIDSong")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ArtistaNom")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.HasKey("NomAlbum", "UIDSong", "data");
 
-                    b.Property<string>("ConteAlbumNomAlbum")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ConteAlbumNomSong")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("ConteAlbumdata")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("NomAlbum", "data", "ArtistaNom");
-
-                    b.HasIndex("ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum");
+                    b.HasIndex("UIDSong");
 
                     b.ToTable("Album");
                 });
@@ -111,32 +101,6 @@ namespace DBSql.Migrations
                     b.HasKey("NomArtista");
 
                     b.ToTable("Artistes");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.ConteAlbum", b =>
-                {
-                    b.Property<string>("NomSong")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NomAlbum")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArtistaNom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("NomSong", "data", "NomAlbum");
-
-                    b.HasIndex("NomAlbum");
-
-                    b.HasIndex("data");
-
-                    b.HasIndex("NomAlbum", "data", "ArtistaNom");
-
-                    b.ToTable("ConteAlbum");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Extensio", b =>
@@ -231,15 +195,6 @@ namespace DBSql.Migrations
                     b.Property<string>("UID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ConteAlbumNomAlbum")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ConteAlbumNomSong")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("ConteAlbumdata")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Genere")
                         .IsRequired()
                         .HasMaxLength(35)
@@ -263,8 +218,6 @@ namespace DBSql.Migrations
                     b.HasKey("UID");
 
                     b.HasIndex("SongOriginal");
-
-                    b.HasIndex("ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum");
 
                     b.ToTable("Songs");
                 });
@@ -316,26 +269,11 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
                 {
-                    b.HasOne("ProjecteV2.ApiSql.ConteAlbum", null)
-                        .WithMany("Albums")
-                        .HasForeignKey("ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.ConteAlbum", b =>
-                {
                     b.HasOne("ProjecteV2.ApiSql.Song", "SongObj")
-                        .WithMany("conteAlbum")
-                        .HasForeignKey("NomSong")
+                        .WithMany("album")
+                        .HasForeignKey("UIDSong")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ProjecteV2.ApiSql.Album", "AlbumObj")
-                        .WithMany("conteAlbum")
-                        .HasForeignKey("NomAlbum", "data", "ArtistaNom")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AlbumObj");
 
                     b.Navigation("SongObj");
                 });
@@ -382,28 +320,12 @@ namespace DBSql.Migrations
                         .HasForeignKey("SongOriginal")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("ProjecteV2.ApiSql.ConteAlbum", null)
-                        .WithMany("Songs")
-                        .HasForeignKey("ConteAlbumNomSong", "ConteAlbumdata", "ConteAlbumNomAlbum");
-
                     b.Navigation("SongObj");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.Album", b =>
-                {
-                    b.Navigation("conteAlbum");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Artista", b =>
                 {
                     b.Navigation("participa");
-                });
-
-            modelBuilder.Entity("ProjecteV2.ApiSql.ConteAlbum", b =>
-                {
-                    b.Navigation("Albums");
-
-                    b.Navigation("Songs");
                 });
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Grup", b =>
@@ -418,7 +340,7 @@ namespace DBSql.Migrations
 
             modelBuilder.Entity("ProjecteV2.ApiSql.Song", b =>
                 {
-                    b.Navigation("conteAlbum");
+                    b.Navigation("album");
 
                     b.Navigation("participa");
 
