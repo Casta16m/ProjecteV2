@@ -3,9 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql.Services{
     public class SongService{
-
+        public DataContext _context { get; set; }
+        public SongService(DataContext context){
+            _context = context;
+        }
         //
-        public async Task<List<Song>> GetSong(string nom, DataContext _context)
+        public async Task<List<Song>> GetSong(string nom)
         {
             var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
 
@@ -16,7 +19,20 @@ namespace ProjecteV2.ApiSql.Services{
             
             return song;
         }
-        public async Task<List<Song>>GetGenere(string Genere, DataContext _context)
+
+public async Task<Song> GetSongWithList(string id)
+        {
+            var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == id);
+
+            if (song == null)
+            {
+                return null;
+            }
+            
+            return song;
+        }
+        
+        public async Task<List<Song>>GetGenere(string Genere)
         {
             var song = await _context.Songs.Where(a => a.Genere.Contains(Genere)).ToListAsync();
 
@@ -27,7 +43,7 @@ namespace ProjecteV2.ApiSql.Services{
 
             return song;
         }
-        public async Task<Song>PostSong(string id, Song song, DataContext _context){
+        public async Task<Song>PostSong(string id, Song song){
             song.data = DateTime.Now;
             _context.Songs.Add(song);
             try

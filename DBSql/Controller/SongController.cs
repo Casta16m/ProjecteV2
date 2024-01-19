@@ -15,10 +15,12 @@ namespace DBSql.Controller
     public class SongController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly SongService _songService;
 
         public SongController(DataContext context)
         {
             _context = context;
+            _songService = new SongService(context);
         }
 
         // GET: api/Song
@@ -32,7 +34,7 @@ namespace DBSql.Controller
         [HttpGet("{id}")]
         public async Task<ActionResult<Song>> Get(string id)
         {
-            var song  = await new SongService().GetSong(id, _context);
+            var song  = await _songService.GetSong(id);
 
             if (song == null)
             {
@@ -55,16 +57,15 @@ namespace DBSql.Controller
         public async Task<ActionResult<IEnumerable<Song>>> GetNomSong(string nom)
         {
 
-            var songService = new SongService();
-            var song = await songService.GetSong(nom, _context);
+
+            var song = await _songService.GetSong(nom);
             return song;
         }
 
         [HttpGet("BuscarGenere/{nom}")]
         public async Task<ActionResult<IEnumerable<Song>>> GetGenereSong(string nom)
         {
-            var genreService = new SongService();
-            var song = await genreService.GetGenere(nom, _context);
+            var song = await _songService.GetGenere(nom);
             return song;
         }
 
@@ -73,6 +74,7 @@ namespace DBSql.Controller
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSong(string id, Song song)
         {
+            var song2 = await _songService.GetSongWithList(id);
             if (id != song.UID)
             {
                 return BadRequest();
@@ -105,8 +107,7 @@ namespace DBSql.Controller
         public async Task<ActionResult<Song>> PostSong(Song song)
         {                
 
-            var songService = new SongService();
-            var song2 = await songService.PostSong(song.UID, song, _context);
+            var song2 = await _songService.PostSong(song.UID, song);
             if (song2 == null)
             {
                 return BadRequest();

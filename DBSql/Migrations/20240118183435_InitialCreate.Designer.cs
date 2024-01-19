@@ -12,7 +12,7 @@ using ProjecteV2.ApiSql;
 namespace DBSql.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240118161517_InitialCreate")]
+    [Migration("20240118183435_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

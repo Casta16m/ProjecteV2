@@ -5,7 +5,7 @@ namespace ProjecteV2.ApiSql{
         [Key]
         public string? UID { get; set; } = Guid.NewGuid().ToString();
         public DateTime? data { get; set; }
-        //public string NomArtista { get; set; }
+        public string NomArtista { get; set; }
         
         [MaxLength(35)]
         public string NomSong { get; set; }
