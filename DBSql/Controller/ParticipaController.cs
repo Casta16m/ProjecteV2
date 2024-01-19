@@ -28,17 +28,17 @@ namespace DBSql.Controller
         }
 
         // GET: api/Participa/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Participa>> GetParticipa(string id)
+        [HttpGet("BuscarSong/{UID}")]
+        public async Task<ActionResult<Participa>> GetParticipa(string UID)
         {
-            var participa = await _context.Participa.FindAsync(id);
+            var participa = await _context.Participa.Where(a => a.UID == UID).ToListAsync();
 
             if (participa == null)
             {
                 return NotFound();
             }
 
-            return participa;
+            return Ok(participa);
         }
 
         // PUT: api/Participa/5
