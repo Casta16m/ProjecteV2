@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ProjecteV2.ApiSql{
     public class LlistaService{
         public async Task <List<Llista>> GetLlista(string Nom, DataContext _context){
-            var song = await _context.Llista.Where(a => a.Nom.Contains(Nom)).ToListAsync();
+            var song = await _context.Llista.Include(a => a.songs).Where(a => a.Nom.Contains(Nom)).ToListAsync();
 
             if (song == null)
             {

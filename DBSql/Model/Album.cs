@@ -5,7 +5,7 @@ namespace ProjecteV2.ApiSql{
         [MaxLength(25)]
         public string NomAlbum { get; set; }
 
-        public DateTime? data { get; set; }
+        public DateTime data { get; set; }
         
         public string UIDSong { get; set; }
         public Song? SongObj { get; set; }

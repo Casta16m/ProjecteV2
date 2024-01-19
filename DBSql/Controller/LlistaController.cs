@@ -33,6 +33,7 @@ namespace DBSql.Controller
         {
             LlistaService LlistaService = new LlistaService();
             var llista = await LlistaService.GetLlista(Nom, _context);
+        
             if (llista == null)
             {
                 return NotFound();

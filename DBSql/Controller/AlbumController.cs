@@ -27,20 +27,6 @@ namespace DBSql.Controller
             return await _context.Album.ToListAsync();
         }
 
-        //Get: api/Album/BuscarNomAlbum/{nom}
-        [HttpGet("BuscarNom/{nom}")]
-        public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string nom)
-        {
-            var album = await _context.Album.Where(a => a.NomAlbum.Contains(nom)).ToListAsync();
-
-            if (album == null)
-            {
-                return NotFound();
-            }
-
-            return album;
-        }
-
         // GET: api/Album/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Album>> GetAlbum(string id)
@@ -53,6 +39,18 @@ namespace DBSql.Controller
             }
 
             return album;
+        }
+
+        [HttpGet("BuscarNom/{album}")]
+        public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album)
+        {
+            var albums = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(album)).ToListAsync();
+            
+            if (albums == null)
+            {
+                return NotFound();
+            }
+            return albums;
         }
 
         // PUT: api/Album/5
@@ -86,17 +84,12 @@ namespace DBSql.Controller
             return NoContent();
         }
 
-
-
         // POST: api/Album
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
-            
-            album.data = DateTime.Now;
             _context.Album.Add(album);
-
             try
             {
                 await _context.SaveChangesAsync();

@@ -10,7 +10,7 @@ namespace ProjecteV2.ApiSql.Services{
         //
         public async Task<List<Song>> GetSong(string nom)
         {
-            var song = await _context.Songs.Where(a => a.NomSong.Contains(nom)).ToListAsync();
+            var song = await _context.Songs.Include(a=> a.album).Where(a => a.NomSong.Contains(nom)).ToListAsync();
 
             if (song == null)
             {
