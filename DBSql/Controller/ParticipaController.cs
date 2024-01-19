@@ -77,6 +77,10 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Participa>> PostParticipa(Participa participa)
         {
+            ArtistaController artistaController = new ArtistaController(_context);
+            GrupController grupController = new GrupController(_context);
+            InstrumentController instrumentController = new InstrumentController(_context);
+
             _context.Participa.Add(participa);
             try
             {
@@ -86,6 +90,15 @@ namespace DBSql.Controller
             {
                 if (ParticipaExists(participa.UID))
                 {
+                    return Conflict();
+                }
+                if(!artistaController.ArtistaExists(participa.NomArtista))
+                {
+                    return Conflict();
+                }if(!grupController.GrupExists(participa.NomGrup))
+                {
+                    return Conflict();
+                }if(!instrumentController.InstrumentExists(participa.NomInstrument)){
                     return Conflict();
                 }
                 else

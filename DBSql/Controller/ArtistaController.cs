@@ -128,7 +128,7 @@ namespace DBSql.Controller
             return NoContent();
         }
 
-        private bool ArtistaExists(string id)
+        public bool ArtistaExists(string id)
         {
             return _context.Artistes.Any(e => e.NomArtista == id);
         }

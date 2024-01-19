@@ -128,7 +128,7 @@ namespace DBSql.Controller
             return NoContent();
         }
 
-        private bool InstrumentExists(string id)
+        public bool InstrumentExists(string id)
         {
             return _context.Instrument.Any(e => e.Nom == id);
         }

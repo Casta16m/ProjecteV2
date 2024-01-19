@@ -125,7 +125,7 @@ namespace DBSql.Controller
             return NoContent();
         }
 
-        private bool GrupExists(string id)
+        public bool GrupExists(string id)
         {
             return _context.Grups.Any(e => e.NomGrup == id);
         }
