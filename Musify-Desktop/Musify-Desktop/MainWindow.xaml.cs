@@ -14,12 +14,11 @@ namespace Musify_Desktop
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow: Window
     {
         public MainWindow()
         {
             InitializeComponent();
-
 
             
             ReportButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/report.png", UriKind.Absolute));
@@ -33,13 +32,14 @@ namespace Musify_Desktop
         /// <param name="sender"></param>
         /// <param name="e"></param>
        private void ReportButton_Click(object sender, RoutedEventArgs e)
-        {       
-            ReportPage reportPage = new ReportPage();
-            MainFrame.NavigationService.Navigate(reportPage);
+{
+    ReportPage reportPage = new ReportPage();
+        reportPage.Show();
+}
 
-           
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
-
-
     }
 }

@@ -41,8 +41,6 @@ namespace MusiFy_Lib
                 string path = System.IO.Path.GetFullPath(@"..\..\..\..\..\MusiFy-Desktop\MusiFy_Lib\PDF\");
                 // Combinar la ruta completa con el nombre del archivo PDF
 
-
-
                  PdfWriter pdfWriter = new PdfWriter(path + $"{pdfName}.pdf");
                  PdfDocument pdfDocument = new PdfDocument(pdfWriter);
                  Document document = new Document(pdfDocument, PageSize.A4);
@@ -61,7 +59,7 @@ namespace MusiFy_Lib
                 catch (Exception ex)
                 {
                     // Manejar excepciones aquí
-                    
+                   
                 }
             }
 

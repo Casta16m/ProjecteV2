@@ -14,110 +14,70 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.Generic;
+using Microsoft.Win32;
+using MusiFy_Lib;
 
 namespace Musify_Desktop
 {
     /// <summary>
     /// Lógica de interacción para ReportWindow.xaml
     /// </summary>
-    public partial class ReportPage : Page
-    {
-
-
-        static MusiFy_Lib.CreatePDF? crearPDF = new MusiFy_Lib.CreatePDF();
-        public ReportPage()
+    public partial class ReportPage : Window{
+        
+      public ReportPage()
         {
             InitializeComponent();
-            CreateReportButtons();
-
         }
-
-        public async void CreateReportButtons()
+        private void btSelectPfx_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => CreateAndConfigureReportButtons());
-        }
-        /// <summary>
-        /// Method to create the report buttons, add style and add them to the stack panel
-        /// </summary>
-        public async void CreateAndConfigureReportButtons<T>(string apiUrl, string reportName)
-        {
-
-            MusiFy_Lib.Reports report = new MusiFy_Lib.Reports();
-            List<string> artistNames = new List<string>();
-            List<string> albumNames = new List<string>();
-
-            for (int i = 0; i < 8; i++)
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
             {
-                int index = i ;
-                MusiFy_Library.Button button = new MusiFy_Library.Button();
-              
-                List<Artist> artists = await report.GetData<Artist>("http://localhost:1443/api/Artista");
-                
-
-              
-                {
-
-                    string artistName = artists[index].NomArtista;
-                    
-                    artistNames.Add(artistName);
-                   
-                    // Asignar estilos a los botones creados
-                    button.Text = "Reporte " + i;
-                    button.WidthButton = 200;
-                    button.HeightButton = 50;
-                    button.TextSize = 20;
-
-                    // Asignar evento de clic con manejo asíncrono
-
-
-                    switch (i)
-                    {
-                        case 0:
-                            button.Click += async (sender, e) =>
-                            {
-                                crearPDF.createPDF(artistNames, "Artistas");
-                            };
-                            break;
-                        case 1:
-                            button.Click += async (sender, e) =>
-                            { 
-
-                                crearPDF.createPDF(albumNames, "Albums"); 
-                            
-                            };
-                            break;
-                    }
-                   
-
-                    // Configurar otros casos del switch si es necesario
-                }
-
-                button.WidthGrid = new GridLength(110, GridUnitType.Pixel);
-
-                // Añadir el botón al contenedor adecuado según el índice
-                if (i < 4)
-                {
-                    reportStack.Children.Add(button);
-                }
-                else
-                {
-                    reportStackTwo.Children.Add(button);
-                }
+                txtPfxFile.Text = fileDialog.FileName;
             }
-            
+        }
+
+        private void btSelectPDF_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                txtPDFFile.Text = saveFileDialog.FileName;
+            }
+        }
+        private void btSign_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.txtPDFFile.Text))
+            {
+                MessageBox.Show("Please select a PDF file to sign", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            } try
+            {
+                var create = new MusiFyApi("http://172.23.1.231:1443/api/Artista/BuscarNom/");
+                MessageBox.Show(create.ObtenerDatosAsync().Result);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                           
+        }
+
+        private void txtPfxFile_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
 
+        private void txtPfxPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
-       
+        }
 
+        private void txtOutFile_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
 
-
-
-
-
-
-
+        
     }
 }
