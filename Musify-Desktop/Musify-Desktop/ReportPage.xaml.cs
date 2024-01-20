@@ -15,7 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 using Microsoft.Win32;
-using MusiFy_Lib;
+using System.IO;
+using javax.swing.text.html;
 
 namespace Musify_Desktop
 {
@@ -24,59 +25,122 @@ namespace Musify_Desktop
     /// </summary>
     public partial class ReportPage : Window{
         
-      public ReportPage()
+
+
+        private MusiFy_Lib.Reports reports = new MusiFy_Lib.Reports();
+        private CreatePDF crearPDF = new CreatePDF();
+        private bool isDragging = false;
+        private Point startPoint;
+
+        public ReportPage()
         {
             InitializeComponent();
+            string pdfPath = crearPDF.getPdfPath();
+            CargarArchivosListView(pdfPath);
+            CreateReportButtons();
         }
-        private void btSelectPfx_Click(object sender, RoutedEventArgs e)
+
+
+        private void CreateReportButtons()
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == true)
+            for(int i = 0; i < 4; i++)
             {
-                txtPfxFile.Text = fileDialog.FileName;
+
+
+                int index = i;
+                MusiFy_Library.Button button = new MusiFy_Library.Button();
+                button.WidthGrid = new GridLength(100, GridUnitType.Pixel);
+                button.WidthButton = 200;
+                button.HeightButton = 40;
+                button.TextSize= 20;
+                button.Text= "Button " + i;
+                ButtonsContainer.Children.Add(button);
+
+
+                switch (index)
+                {
+                    case 0:
+                        button.Click += async (sender, e) =>
+                        {
+                            List<Artist> artists = await reports.GetData<Artist>("http://localhost:1443/api/Artista");
+                            List< string> artisNames = new List<string>();
+                            artisNames = artists.Select(x => x.NomArtista).ToList();
+                            crearPDF.createPDF(artisNames, "Artistas");
+                            string pdfPath = crearPDF.getPdfPath();
+                            CargarArchivosListView(pdfPath);
+
+                        };
+                        break;
+                    case 1:
+                        button.Click += async (sender, e) => {
+
+                            List<Album> albums = await reports.GetData<Album>("http://localhost:1443/api/Artista");
+                            List<string> albumNames = new List<string>();
+                            albumNames = albums.Select(x => x.NomAlbum).ToList();
+                            crearPDF.createPDF(albumNames, "Albums");
+                            string pdfPath = crearPDF.getPdfPath();
+                            CargarArchivosListView(pdfPath);
+
+
+                        };
+                        break;
+
+                }
+
+
+             
+
             }
         }
 
-        private void btSelectPDF_Click(object sender, RoutedEventArgs e)
+
+
+
+        private void CargarArchivosListView(string carpeta)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                txtPDFFile.Text = saveFileDialog.FileName;
+                DirectoryInfo di = new DirectoryInfo(carpeta);
+                FileInfo[] archivos = di.GetFiles();
+                List<string> listaArchivos = new List<string>();
+                foreach (FileInfo archivo in archivos)
+                {
+                    listaArchivos.Add(archivo.FullName);
+                }
+                ListaPDF.ItemsSource = listaArchivos;
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+
+
+
         }
-        private void btSign_Click(object sender, RoutedEventArgs e)
+
+
+      
+
+        private void ListaPDF_MouseMove(object sender, MouseEventArgs e)
         {
-            if (string.IsNullOrEmpty(this.txtPDFFile.Text))
+            if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
             {
-                MessageBox.Show("Please select a PDF file to sign", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            } try
-            {
-                var create = new MusiFyApi("http://172.23.1.231:1443/api/Artista/BuscarNom/");
-                MessageBox.Show(create.ObtenerDatosAsync().Result);
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                DragDrop.DoDragDrop(ListaPDF, ListaPDF.SelectedItem, DragDropEffects.Move);
             }
-                           
+            
         }
 
-        private void txtPfxFile_TextChanged(object sender, TextChangedEventArgs e)
-        {
+       
 
-        }
 
-        private void txtPfxPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
 
-        private void txtOutFile_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
+      
+
+
+
+
 
         
     }

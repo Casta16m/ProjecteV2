@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MusiFy_Lib\MusiFy_Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\admin.png" />
     <Resource Include="Images\report.png" />
   </ItemGroup>

@@ -8,17 +8,42 @@
         mc:Ignorable="d"
         Background="#091227" 
         Title="ReportPage" Height="450" Width="800">
-    <Canvas>
-        <Rectangle Height="197" Canvas.Left="338" Stroke="White" Canvas.Top="10" Width="278" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label Content="Pfx File" Canvas.Left="354"   Canvas.Top="59" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtPfxFile" Canvas.Left="422" TextWrapping="Wrap" Canvas.Top="63" Width="158" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="txtPfxFile_TextChanged"/>
-        <Button x:Name="btSelectPfx" Content="..." Canvas.Left="587" Canvas.Top="62" Width="16" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btSelectPfx_Click"/>
-        <Label Content="Pfx password" Canvas.Left="354" Canvas.Top="89" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtPfxPassword" Canvas.Left="432" TextWrapping="Wrap" Canvas.Top="93" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="txtPfxPassword_TextChanged" />
-        <CheckBox x:Name="chkShowSignature" Content="Show signature" Canvas.Left="356" Canvas.Top="160" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" />
-        <Button x:Name="btSign" Content="Sign PDF" Canvas.Left="536" Canvas.Top="173" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="24" Click="btSign_Click"/>
-        <Label Content="PDF File" Canvas.Left="354" Canvas.Top="122" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtPDFFile" Canvas.Left="412"  TextWrapping="Wrap" Canvas.Top="126" Width="158" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="txtOutFile_TextChanged"/>
-        <Button x:Name="btSelectPDF" Content="..." Canvas.Left="587" Canvas.Top="125" Width="16" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btSelectPDF_Click"/>
-    </Canvas>
+
+
+
+    <Viewbox Stretch="Fill" StretchDirection="Both" >
+
+        <Grid Width="800" Height="450">
+
+
+        <StackPanel HorizontalAlignment="Left" Width="460" Height="400" Margin="20 ,20 ,0 ,20">
+            <ScrollViewer  Height="200" Margin="10, 10, 10, 10">
+                <StackPanel x:Name="ButtonsContainer">
+
+                </StackPanel>
+            </ScrollViewer>
+
+
+
+                <ListBox MouseMove="ListaPDF_MouseMove"  AllowDrop="True" FontSize="20" x:Name="ListaPDF" BorderBrush="Black" BorderThickness="1"  Background="#9DADD4" Height="170" Margin="10, 0, 10, 10"></ListBox>
+
+
+
+        </StackPanel>
+
+
+
+
+
+        <StackPanel>
+            <MusiFy_Library:pdfSigner  HorizontalAlignment="Left" Margin="510,0,0,0" VerticalAlignment="Top"/>
+        </StackPanel>
+
+
+    </Grid>
+
+    </Viewbox>
+
+
+
 </Window>

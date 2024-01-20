@@ -13,6 +13,9 @@ using iText.Layout.Element;
 using java.io;
 using IOException = System.IO.IOException;
 using com.sun.tools.@internal.jxc.ap;
+using System.Collections.Generic;
+
+
 
 
 
@@ -35,16 +38,18 @@ namespace MusiFy_Lib
             
                 try
                 {
-                // Obtener la ruta completa al directorio PDF
+               
                     
 
                 string path = System.IO.Path.GetFullPath(@"..\..\..\..\..\MusiFy-Desktop\MusiFy_Lib\PDF\");
-                // Combinar la ruta completa con el nombre del archivo PDF
+             
 
                  PdfWriter pdfWriter = new PdfWriter(path + $"{pdfName}.pdf");
                  PdfDocument pdfDocument = new PdfDocument(pdfWriter);
                  Document document = new Document(pdfDocument, PageSize.A4);
                  document.SetFontSize(15);
+
+
 
                 foreach (string s in content) {
 
@@ -62,6 +67,18 @@ namespace MusiFy_Lib
                    
                 }
             }
+
+
+
+
+        public string getPdfPath()
+        {
+            string path = System.IO.Path.GetFullPath(@"..\..\..\..\..\MusiFy-Desktop\MusiFy_Lib\PDF");
+
+
+
+            return path;
+        }
 
 
         }

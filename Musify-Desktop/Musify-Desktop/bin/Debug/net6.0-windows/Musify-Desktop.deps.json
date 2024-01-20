@@ -1285,6 +1285,7 @@
       "MusiFy-Library/1.0.0": {
         "dependencies": {
           "BenchmarkDotNet": "0.13.12",
+          "MusiFy_Lib": "1.0.0",
           "prometheus-net": "8.2.1"
         },
         "runtime": {

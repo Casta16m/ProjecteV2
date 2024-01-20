@@ -24,6 +24,23 @@ namespace MusiFy_Lib
         private MusiFy_Lib.CertificateInfo? certificateInfo;
         private Pkcs12Store pkcs12Store = new Pkcs12StoreBuilder().Build();
         private string storeAlias = "";
+
+
+        public void InitCertificate(string pfxFileName, string pfxPassword)
+        {
+            certificate = new X509Certificate2(pfxFileName, pfxPassword);
+
+            pkcs12Store.Load(new FileStream(pfxFileName, FileMode.Open, FileAccess.Read), pfxPassword.ToCharArray());
+            foreach (string currentAlias in pkcs12Store.Aliases)
+            {
+                if (pkcs12Store.IsKeyEntry(currentAlias))
+                {
+                    storeAlias = currentAlias;
+                    break;
+                }
+            }
+            certificateInfo = CertificateInfo.FromCertificate(pfxFileName, pfxPassword);
+        }
         public void SignPdf(string inputFileName, string outputFileName, bool showSignature)
         {
             AsymmetricKeyParameter key = pkcs12Store.GetKey(storeAlias).Key;
