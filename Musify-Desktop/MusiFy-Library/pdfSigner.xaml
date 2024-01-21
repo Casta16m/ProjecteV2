@@ -6,27 +6,21 @@
              xmlns:local="clr-namespace:MusiFy_Library"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
 
         <Canvas Height="400" Width="280" Margin="0, 20 ,0, 20">
             <Rectangle Height="400" Stroke="White" Canvas.Top="0" Width="278"  />
             <Label Content="Pfx File" Canvas.Left="20"   Canvas.Top="40" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="txtPfxFile" Canvas.Left="82" TextWrapping="Wrap" Canvas.Top="45" Width="158" IsEnabled="False" TextChanged="txtPfxFile_TextChanged" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button x:Name="btSelectPfx" Content="..." Canvas.Left="250" Canvas.Top="45" Width="16" VerticalContentAlignment="Center" Click="btSelectPfx_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="btSelectPfx" Content="..." Canvas.Left="250" Canvas.Top="45" Width="16" VerticalContentAlignment="Center" Click="btSelectPfx_Click" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,4.529"/>
             <Label Content="Pfx password" Canvas.Left="20" Canvas.Top="79" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="txtPfxPassword" Canvas.Left="112" TextWrapping="Wrap" Canvas.Top="83" Width="130" TextChanged="txtPfxPassword_TextChanged" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <CheckBox x:Name="chkShowSignature" Content="Show signature" Canvas.Left="20" Canvas.Top="359" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Button x:Name="btSign" Content="Sign PDF" Canvas.Left="198" Canvas.Top="350" Width="60" Height="24" Click="btSign_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label Content="PDF File" Canvas.Left="20" Canvas.Top="122" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="PDFFile" Canvas.Left="20" Canvas.Top="122" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="txtPDFFile" Canvas.Left="82"  TextWrapping="Wrap" Canvas.Top="126" Width="158" IsEnabled="False" TextChanged="txtOutFile_TextChanged" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-            <Canvas  Drop="ListaPDF_Drop"  AllowDrop="True" Canvas.Left="30" Canvas.Top="200" Width="210" Height="100">
-                <Rectangle   Height="100" Fill="DarkGray"    Width="210" RadiusX="10" RadiusY="10"/>
-                <Label FontSize="20" Height="40" Canvas.Top="30" HorizontalContentAlignment="Center" Width="146" Canvas.Left="32">Arrastre su PDF</Label>
-            </Canvas>
-
-
-
+            <Button x:Name="btPDFUbication" Content="..." Canvas.Left="247" Canvas.Top="126" Width="16" VerticalContentAlignment="Center" Click="btPDFUbication" RenderTransformOrigin="0.5,4.529" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>
 </UserControl>

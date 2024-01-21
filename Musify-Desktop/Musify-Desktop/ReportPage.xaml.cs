@@ -130,18 +130,9 @@ namespace Musify_Desktop
             
         }
 
-       
+        private void pdfSigner_Loaded(object sender, RoutedEventArgs e)
+        {
 
-
-
-
-
-      
-
-
-
-
-
-        
+        }
     }
 }

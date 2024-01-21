@@ -101,7 +101,13 @@ namespace MusiFy_Library
             }
         }
 
-
-
+        private void btPDFUbication(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                txtPDFFile.Text = fileDialog.FileName;
+            }
+        }
     }
 }
