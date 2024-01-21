@@ -101,7 +101,7 @@ namespace MusiFy_Library {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MusiFy-Library;component/pdfsigner.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MusiFy-Library;V1.0.0.0;component/pdfsigner.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\pdfSigner.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
