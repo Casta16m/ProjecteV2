@@ -8,8 +8,8 @@ namespace ProjecteV2.ApiMongoDB{
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _ID { get; set; } =  MongoDB.Bson.ObjectId.GenerateNewId().ToString();
 
-        [BsonElement("OID")]
-        public string AudioID { get; set; }
+        [BsonElement("UID")]
+        public string UIDSong { get; set; }
 
         [BsonElement("Lletra")]
         public string lletra { get; set; }

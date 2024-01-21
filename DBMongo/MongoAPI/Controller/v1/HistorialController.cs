@@ -48,10 +48,10 @@ public class HistorialController: ControllerBase
 
         return Historial;
     }
-    [HttpGet("Song/MAC/{audioID}/{MAC}")]
-    public async Task<ActionResult<Historial>> GetByAudioIDAndMAC(string audioID, string MAC)
+    [HttpGet("Song/MAC/{UIDSong}/{MAC}")]
+    public async Task<ActionResult<Historial>> GetByUIDSongAndMAC(string UIDSong, string MAC)
     {
-        var Historial = await _HistorialService.GetByAudioIDAndMACAsync(audioID, MAC);
+        var Historial = await _HistorialService.GetByUIDSongAndMACAsync(UIDSong, MAC);
 
         if (Historial is null)
         {

@@ -36,10 +36,10 @@ public class LletresController: ControllerBase
 
         return Lletres;
     }
-    [HttpGet("Song/{audioID}")]
-    public async Task<ActionResult<Lletra>> GetByAudioID(string audioID)
+    [HttpGet("Song/{UIDSong}")]
+    public async Task<ActionResult<Lletra>> GetByUIDSong(string UIDSong)
     {
-        var Lletres = await _LletresService.GetByAudioIDAsync(audioID);
+        var Lletres = await _LletresService.GetByUIDSongAsync(UIDSong);
 
         if (Lletres is null)
         {

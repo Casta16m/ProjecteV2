@@ -7,15 +7,12 @@ namespace ProjecteV2.ApiMongoDB{
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _ID { get; set; } =  MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+        
         [BsonElement("UID")]
         public string? UID { get; set; }
-        [BsonElement("AudioId")]
-        public string? AudioId { get; set; }
-        
-        public void SetAudio(Audio audio){
-            AudioId = audio._ID;
-        }
 
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId AudioFileId { get; set; }
 
     }
 }

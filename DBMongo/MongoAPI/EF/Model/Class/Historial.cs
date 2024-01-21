@@ -14,9 +14,8 @@ namespace ProjecteV2.ApiMongoDB{
         [BsonElement("Data")]
         public DateTime? Data { get; set; } = DateTime.Now;
 
-        [BsonElement("OID")]
-        public string AudioID { get; set; }
+        [BsonElement("UIDSong")]
+        public string UIDSong { get; set; }
 
-      
- }
+    }
 }

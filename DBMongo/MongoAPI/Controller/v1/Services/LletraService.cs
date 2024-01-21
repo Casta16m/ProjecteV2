@@ -17,8 +17,8 @@ public class LletraService{
         (await _LletraCollection.FindAsync(Lletra => true)).ToList();
     public async Task<Lletra?> GetAsync(string id) =>
         await _LletraCollection.Find(x => x._ID== id).FirstOrDefaultAsync();
-    public async Task<Lletra?> GetByAudioIDAsync(string audioID) =>
-        await _LletraCollection.Find(x => x.AudioID== audioID).FirstOrDefaultAsync();
+    public async Task<Lletra?> GetByUIDSongAsync(string UIDSong) =>
+        await _LletraCollection.Find(x => x.UIDSong== UIDSong).FirstOrDefaultAsync();
     public async Task CreateAsync(Lletra newLletra) =>
     await _LletraCollection.InsertOneAsync(newLletra);
     public async Task UpdateAsync(string id, Lletra updatedLletra) =>

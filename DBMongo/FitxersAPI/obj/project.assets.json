@@ -195,6 +195,24 @@
           }
         }
       },
+      "MongoDB.Driver.GridFS/2.23.1": {
+        "type": "package",
+        "dependencies": {
+          "MongoDB.Bson": "2.23.1",
+          "MongoDB.Driver": "2.23.1",
+          "MongoDB.Driver.Core": "2.23.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/MongoDB.Driver.GridFS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/MongoDB.Driver.GridFS.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MongoDB.Libmongocrypt/1.8.0": {
         "type": "package",
         "compile": {
@@ -865,6 +883,23 @@
         "packageIcon.png"
       ]
     },
+    "MongoDB.Driver.GridFS/2.23.1": {
+      "sha512": "rCSIOvjYF1tr3srZGchG+ra1v9rUBhWrD8AhNDVn07B8Z+UTzhjw7MIqlis8Va8NTfzHeIpP1wEudKrngH4+4w==",
+      "type": "package",
+      "path": "mongodb.driver.gridfs/2.23.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/netstandard2.0/MongoDB.Driver.GridFS.dll",
+        "lib/netstandard2.0/MongoDB.Driver.GridFS.xml",
+        "lib/netstandard2.1/MongoDB.Driver.GridFS.dll",
+        "lib/netstandard2.1/MongoDB.Driver.GridFS.xml",
+        "mongodb.driver.gridfs.2.23.1.nupkg.sha512",
+        "mongodb.driver.gridfs.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "MongoDB.Libmongocrypt/1.8.0": {
       "sha512": "fgNw8Dxpkq7mpoaAYes8cfnPRzvFIoB8oL9GPXwi3op/rONftl0WAeg4akRLcxfoVuUvuUO2wGoVBr3JzJ7Svw==",
       "type": "package",
@@ -1224,27 +1259,28 @@
     "net8.0": [
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "MongoDB.Driver >= 2.23.1",
+      "MongoDB.Driver.GridFS >= 2.23.1",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guill\\.nuget\\packages\\": {},
+    "C:\\Users\\yosse\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\DBMongo\\API2\\API2.csproj",
+      "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBMongo\\FitxersAPI\\API2.csproj",
       "projectName": "API2",
-      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\DBMongo\\API2\\API2.csproj",
-      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\DBMongo\\API2\\obj\\",
+      "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBMongo\\FitxersAPI\\API2.csproj",
+      "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DBMongo\\FitxersAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1276,6 +1312,10 @@
             "version": "[8.0.0, )"
           },
           "MongoDB.Driver": {
+            "target": "Package",
+            "version": "[2.23.1, )"
+          },
+          "MongoDB.Driver.GridFS": {
             "target": "Package",
             "version": "[2.23.1, )"
           },

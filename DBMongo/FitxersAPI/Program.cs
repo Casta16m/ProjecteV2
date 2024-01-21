@@ -9,7 +9,6 @@ builder.Services.Configure<MongoStoreDatabaseSettings>(
 
 
 builder.Services.AddSingleton<SongService>();
-builder.Services.AddSingleton<AudioService>();
 
 
 // Add services to the container.
