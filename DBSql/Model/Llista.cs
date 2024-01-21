@@ -2,8 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjecteV2.ApiSql{
     public class Llista{
-        [MaxLength(25)]
-        public string? Dispositiu { get; set; }
+
 
         [MaxLength(25)]
         public string? Nom { get; set; }

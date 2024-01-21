@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
@@ -14,10 +15,12 @@ namespace DBSql.Controller
     public class GrupController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly GrupService _grupservice;
 
         public GrupController(DataContext context)
         {
             _context = context;
+            _grupservice = new GrupService(context);
         }
 
         // GET: api/Grup
@@ -43,7 +46,8 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Grup>>> GetNomGrup(string nom)
         {
-            var grup = await _context.Grups.Where(a => a.NomGrup.Contains(nom)).ToListAsync();
+            
+            var grup = await _context.Grups.Include(a=> a.artistes).Where(a => a.NomGrup.Contains(nom)).ToListAsync();
 
             if (grup == null)
             {
@@ -52,77 +56,28 @@ namespace DBSql.Controller
 
             return grup;
         }
-
-        // PUT: api/Grup/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGrup(string id, Grup grup)
+        [HttpPut("AfegirArtista/{NomGrup}/{NomArtista}")]
+        public async Task<IActionResult> PutAfegirSong(string NomGrup, string NomArtista)
         {
-            if (id != grup.NomGrup)
-            {
-                return BadRequest();
+            var resposta = await _grupservice.PutGrup(NomGrup, NomArtista);
+            if (resposta == "Okay"){
+                return StatusCode(200);
+            } 
+            else{
+                return StatusCode(400);
             }
-
-            _context.Entry(grup).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GrupExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
-
         // POST: api/Grup
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Grup>> PostGrup(Grup grup)
         {
-            _context.Grups.Add(grup);
-            try
+            var postGrup = await _grupservice.PostGrup(grup);
+            if (postGrup == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (GrupExists(grup.NomGrup))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetGrup", new { id = grup.NomGrup }, grup);
-        }
-
-        // DELETE: api/Grup/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGrup(string id)
-        {
-            var grup = await _context.Grups.FindAsync(id);
-            if (grup == null)
-            {
-                return NotFound();
-            }
-
-            _context.Grups.Remove(grup);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(postGrup);
         }
 
         public bool GrupExists(string id)

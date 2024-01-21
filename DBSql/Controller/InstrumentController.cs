@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
@@ -14,10 +15,12 @@ namespace DBSql.Controller
     public class InstrumentController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly InstrumentService _instrumentService;
 
         public InstrumentController(DataContext context)
         {
             _context = context;
+            _instrumentService = new InstrumentService(context);
         }
 
         // GET: api/Instrument
@@ -45,14 +48,14 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<Instrument>> GetNomInstrument(string nom)
         {
-            var instrument = await _context.Instrument.Where(a => a.Nom.Contains(nom)).ToListAsync();
+            var instrument = await _instrumentService.GetInstrument(nom);
 
             if (instrument == null)
             {
                 return NotFound();
             }
 
-            return instrument.ToList()[0];
+            return Ok(instrument);
         }
 
 
@@ -92,24 +95,12 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Instrument>> PostInstrument(Instrument instrument)
         {
-            _context.Instrument.Add(instrument);
-            try
+            var crearInstrument = await _instrumentService.PostInstrument(instrument);
+            if (crearInstrument == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (InstrumentExists(instrument.Nom))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetInstrument", new { id = instrument.Nom }, instrument);
+            return StatusCode(201);
         }
 
         // DELETE: api/Instrument/5

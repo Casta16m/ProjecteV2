@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
+
 
 namespace DBSql.Controller
 {
@@ -14,10 +16,12 @@ namespace DBSql.Controller
     public class ArtistaController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly ArtistaService _artistaService;
 
         public ArtistaController(DataContext context)
         {
             _context = context;
+            _artistaService = new ArtistaService(context);
         }
 
         // GET: api/Artista
@@ -31,14 +35,14 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Artista>>> GetNomArtista(string nom)
         {
-            var artista = await _context.Artistes.Where(a => a.NomArtista.Contains(nom)).ToListAsync();
+            var artista = await _artistaService.GetArtista(nom);
 
             if (artista == null)
             {
                 return NotFound();
             }
 
-            return artista;
+            return Ok(artista);
         }
 
 
@@ -92,41 +96,14 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Artista>> PostArtista(Artista artista)
         {
-            _context.Artistes.Add(artista);
-            try
+            var crearArtista = await _artistaService.PostArtista(artista);
+            if (crearArtista == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (ArtistaExists(artista.NomArtista))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetArtista", new { id = artista.NomArtista }, artista);
+            return StatusCode(201);
         }
 
-        // DELETE: api/Artista/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtista(string id)
-        {
-            var artista = await _context.Artistes.FindAsync(id);
-            if (artista == null)
-            {
-                return NotFound();
-            }
-
-            _context.Artistes.Remove(artista);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
 
         public bool ArtistaExists(string id)
         {
