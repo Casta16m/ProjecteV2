@@ -7,7 +7,7 @@ namespace ProjecteV2.ApiSql{
             _context = context;
         }
         
-        public async Task <List<Llista>> GetLlista(string Nom, DataContext _context){
+        public async Task <List<Llista>> GetLlista(string Nom){
             var song = await _context.Llista.Include(a => a.songs).Where(a => a.Nom.Contains(Nom)).ToListAsync();
 
             if (song == null)
@@ -17,7 +17,7 @@ namespace ProjecteV2.ApiSql{
             
             return song;
         } 
-        public async Task <List<Llista>> GetLlistaMac(string ID_MAC, DataContext _context){
+        public async Task <List<Llista>> GetLlistaMac(string ID_MAC){
             var song = await _context.Llista.Where(a => a.ID_MAC.Contains(ID_MAC)).ToListAsync();
 
             if (song == null)
@@ -27,10 +27,11 @@ namespace ProjecteV2.ApiSql{
             
             return song;
         }
-        public async Task <Llista> PostLlista(Llista llista, DataContext _context){
+        public async Task <Llista> PostLlista(Llista llista){
 
 
             _context.Llista.Add(llista);
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -49,25 +50,25 @@ namespace ProjecteV2.ApiSql{
             }
             return llista;      
         }
-        public async Task <Llista> PutLlista(string NomLlista, string UID, string ID_MAC)
+        public async Task <string> PutLlista(string NomLlista, string UID, string ID_MAC)
         {
          var llista = await _context.Llista.Include(a => a.songs).FirstOrDefaultAsync(a => a.Nom == NomLlista);
         
         if (llista == null)
         {
-            return null;
+            return "no existeix la llista";
         }
 
         var ID_MAC1 = await _context.Llista.FirstOrDefaultAsync(a => a.ID_MAC == ID_MAC);
         if (ID_MAC1 == null)
         {
-            return null;
+            return "no existeix la ID_MAC";
         }
 
         var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == UID);
         if (song == null)
         {
-            return null;
+            return "no existeix la canço";
         }
 
 
@@ -75,10 +76,11 @@ namespace ProjecteV2.ApiSql{
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
         {
             llista.songs.Add(song);
+            song.llista.Add(llista);
             _context.Entry(llista).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return llista;
+            return "okay";
 
         }
         else

@@ -33,7 +33,7 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{Nom}")]
         public async Task<ActionResult<Llista>> GetLlista(string Nom)
         {
-            var llista = await _llistaService.GetLlista(Nom, _context);
+            var llista = await _llistaService.GetLlista(Nom);
         
             if (llista == null)
             {
@@ -45,7 +45,7 @@ namespace DBSql.Controller
         public async Task<ActionResult<Llista>> GetLlistaMAC(string ID_MAC)
         {
 
-            var llistaMac = await _llistaService.GetLlistaMac(ID_MAC, _context);
+            var llistaMac = await _llistaService.GetLlistaMac(ID_MAC);
             if (llistaMac == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Llista>> PostLlista(Llista llista)
         {
-            var llista2 = await _llistaService.PostLlista(llista, _context);
+            var llista2 = await _llistaService.PostLlista(llista);
             if (llista2 == null)
             {
                 return BadRequest();
@@ -73,7 +73,7 @@ namespace DBSql.Controller
     {
 
         var llista = await _llistaService.PutLlista(NomLlista, UID, ID_MAC);
-        if (llista == null)
+        if (llista != "okay")
         {
             return NotFound();
         }

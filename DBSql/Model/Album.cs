@@ -7,7 +7,7 @@ namespace ProjecteV2.ApiSql{
 
         public DateTime data { get; set; }
         
-        public string UIDSong { get; set; }
-        public Song? SongObj { get; set; }
+        public string? UIDSong { get; set; }
+        public Song? SongObj { get; set; } 
     }
 }

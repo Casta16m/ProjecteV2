@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
@@ -14,9 +15,11 @@ namespace DBSql.Controller
     public class AlbumController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly AlbumService _albumService;
 
         public AlbumController(DataContext context)
         {
+            _albumService = new AlbumService(context);
             _context = context;
         }
 
@@ -44,12 +47,13 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{album}")]
         public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album)
         {
-            var albums = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(album)).ToListAsync();
-            
+            var albums = await _albumService.GetAlbum(album);
+
             if (albums == null)
             {
                 return NotFound();
             }
+
             return albums;
         }
 
