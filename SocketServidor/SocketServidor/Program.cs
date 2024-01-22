@@ -18,8 +18,8 @@ class Program
 
     static async Task Main()
     {
-        //TcpListener server = new TcpListener(IPAddress.Parse("172.23.1.88"), 55555);
-        TcpListener server = new TcpListener(IPAddress.Parse("192.168.100.140"), 55555);
+        TcpListener server = new TcpListener(IPAddress.Parse("172.23.1.88"), 55555);
+        //TcpListener server = new TcpListener(IPAddress.Parse("192.168.100.140"), 55555);
         server.Start();
 
         Console.WriteLine("Waiting for connections...\n");
@@ -92,24 +92,21 @@ class Program
                 var pdfName = Console.ReadLine(); // No ser com acabar-ho de fer perquè no convenç fer-ho així
                 List<string> list = new List<string>(); // Aquesta està malament perquè serà el que em retornar-ha la api
                 byte[] pdfCreated = CreatePDF.createpdf(list, pdfName);
-
-                Console.WriteLine("PDF created.");
+                Console.WriteLine("PDF created.\n");
 
                 // Generar la clau AES
                 byte[] AESKeyCreated = EncryptPDF.GetBase64EncodedAesKey();
-
-                Console.WriteLine("AES Key created.");
+                Console.WriteLine("AES Key created.\n");
 
                 // Encriptar clau AES
-                RSAParameters RSAParameterKey = EncryptPDF.PassByteToRSAParameters(buffer);
+                RSAParameters RSAParameterKey = EncryptPDF.PassByteToRSAParameters(message);
+                Console.WriteLine("Byte to RSAParameters succes.\n");
                 byte[] EncryptedAESKey = EncryptPDF.EncryptAESKey(AESKeyCreated, RSAParameterKey);
-
-                Console.WriteLine("AES key encrypted.");
+                Console.WriteLine("AES key encrypted.\n");
 
                 // Encriptar PDF
                 RSA RSAKey = EncryptPDF.ConvertParametersToRsa(RSAParameterKey);
                 byte[] EncryptedPDF = EncryptPDF.encryptPDF(pdfCreated, RSAKey);
-
                 Console.WriteLine("PDF encrypted.");
 
 
