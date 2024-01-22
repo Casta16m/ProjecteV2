@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Musify-Desktop", "Musify-De
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusiFy-Library", "MusiFy-Library\MusiFy-Library.csproj", "{B7A6A7AA-A31C-4EC8-B06E-D3AC7A9B7551}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusiFy_Lib", "MusiFy_Lib\MusiFy_Lib.csproj", "{AB46222B-928F-4855-92BB-19386DFBFD90}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocketServidor", "..\SocketServidor\SocketServidor\SocketServidor.csproj", "{9F0AA5FD-DC43-4461-8F6B-87A26A854C35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusiFy_Lib", "MusiFy_Lib\MusiFy_Lib.csproj", "{AB46222B-928F-4855-92BB-19386DFBFD90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{AB46222B-928F-4855-92BB-19386DFBFD90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB46222B-928F-4855-92BB-19386DFBFD90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB46222B-928F-4855-92BB-19386DFBFD90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F0AA5FD-DC43-4461-8F6B-87A26A854C35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F0AA5FD-DC43-4461-8F6B-87A26A854C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F0AA5FD-DC43-4461-8F6B-87A26A854C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F0AA5FD-DC43-4461-8F6B-87A26A854C35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

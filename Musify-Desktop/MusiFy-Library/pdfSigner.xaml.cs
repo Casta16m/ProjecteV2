@@ -40,8 +40,16 @@ namespace MusiFy_Library
                 txtPfxFile.Text = fileDialog.FileName;
             }
         }
+        private void btSelectPdf_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                txtPDFFile.Text = fileDialog.FileName;
+            }
+        }
 
-        private void btSelectPDF_Click(object sender, RoutedEventArgs e)
+        private void btSelectOutPDF_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
@@ -92,22 +100,8 @@ namespace MusiFy_Library
 
         }
 
-        private void ListaPDF_Drop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.Text))
-            {
-                string rutaArchivo = e.Data.GetData(DataFormats.Text) as string;
-                txtPDFFile.Text = rutaArchivo;
-            }
-        }
+       
 
-        private void btPDFUbication(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == true)
-            {
-                txtPDFFile.Text = fileDialog.FileName;
-            }
-        }
+
     }
 }
