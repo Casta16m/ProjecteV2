@@ -16,6 +16,10 @@ class Program
     {
         client = new TcpClient();
 
+
+
+        /// El pfx se guardarà en 
+
         try
         {
             ConnectToServer();
@@ -41,6 +45,7 @@ class Program
                 }
                 else if (input == "list")
                 {
+
                     byte[] publicKey = GetPublicKey();
 
                     SendMessage(publicKey);
@@ -65,8 +70,8 @@ class Program
 
     static void ConnectToServer()
     {
-        //client.Connect("172.23.1.88", 55555);
-        client.Connect("192.168.100.140", 55555);
+        client.Connect("172.23.1.88", 55555);
+        //client.Connect("192.168.100.140", 55555);
         stream = client.GetStream();
         reader = new StreamReader(stream, Encoding.ASCII);
         writer = new StreamWriter(stream, Encoding.ASCII);
@@ -74,8 +79,7 @@ class Program
 
     static void ReceiveMessages()
     {
-        try
-        {
+        try {
             while (true)
             {
                 string message = ReadMessage(reader);
