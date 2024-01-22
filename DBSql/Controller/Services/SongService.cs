@@ -65,6 +65,26 @@ public async Task<Song> GetSongWithList(string id)
             return song;
 
         }
+        public async Task<string> PutSong(Song song){
+            _context.Entry(song).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SongExists(song.UID, _context))
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return "Okay";
+        }
 
                 
         private bool SongExists(string id, DataContext _context)

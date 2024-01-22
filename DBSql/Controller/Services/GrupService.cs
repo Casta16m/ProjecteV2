@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql.Services{
@@ -46,6 +47,7 @@ namespace ProjecteV2.ApiSql.Services{
 
             return grup;
         }
+        
         public bool GrupExists(string id)
         {
             return _context.Grups.Any(e => e.NomGrup == id);
