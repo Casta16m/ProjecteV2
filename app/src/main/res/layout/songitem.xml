@@ -73,6 +73,6 @@
                 android:layout_marginRight="15dp"
                 android:gravity="center"
                 android:visibility="gone"
-                android:src="@drawable/downloadnavy" />
+                android:src="@drawable/downloadlight" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

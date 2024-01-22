@@ -9,20 +9,23 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.yossefjm.musify.adapters.DownloadPlaylistAdapter
 import com.yossefjm.musify.adapters.DownloadSonglistAdapter
+import com.yossefjm.musify.data.ApiServiceSongSQL
+import com.yossefjm.musify.data.ApiServiceAlbum
+import com.yossefjm.musify.data.ApiServiceSongMongoDB
 import com.yossefjm.musify.data.PlaylistRepository
 import com.yossefjm.musify.data.SongRepository
 import com.yossefjm.musify.databinding.ActivityDownloadBinding
+import com.yossefjm.musify.extension.toExtendedIsoString
 import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import java.io.IOException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class DownloadActivity() : AppCompatActivity() {
 
@@ -39,6 +42,12 @@ class DownloadActivity() : AppCompatActivity() {
     private lateinit var DLplaylistAdapter: DownloadPlaylistAdapter
     private lateinit var DLsonglistAdapter: DownloadSonglistAdapter
 
+    // api service
+    private val apiServiceAlbum = ApiServiceAlbum()
+    private val apiServiceSongSQL = ApiServiceSongSQL()
+    private val apiServiceSongMongo = ApiServiceSongMongoDB()
+
+
     // tema de bsuqueda
     private var searchType: String = "album"
 
@@ -47,6 +56,7 @@ class DownloadActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDownloadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         playlistRepository = PlaylistRepository(this.applicationContext)
         songRepository = SongRepository(this.applicationContext)
@@ -76,16 +86,28 @@ class DownloadActivity() : AppCompatActivity() {
 
                 if (searchType == "album") {
                     // peticion de album
-                    val albums = searchAlbums(query!!)
-                    DLplaylistAdapter.updateList(albums)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val albums = apiServiceAlbum.searchAlbums(query ?: "")
+                        Log.d("albums", albums.toString())
+                        withContext(Dispatchers.Main) {
+                            DLplaylistAdapter.updateList(albums)
+                        }
+                    }
 
                 } else if (searchType == "song") {
                     // peticion de cancion
-                    val songs = searchSongs(query!!)
-                    DLsonglistAdapter.updateList(songs)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val songs = apiServiceSongSQL.makeRequestApiSongsByName(query ?: "")
+                        Log.d("songs", songs.toString())
+                        withContext(Dispatchers.Main) {
+                            DLsonglistAdapter.updateList(songs)
+                        }
+                    }
                 }
 
-                val playlist = Playlist(12, "playlist1", "descripcion", "", mutableListOf<Song>())
+                val currentDateTime = LocalDateTime.now(ZoneId.systemDefault()).toExtendedIsoString()
+
+                val playlist = Playlist(currentDateTime, "playlist1", "descripcion", "", mutableListOf<Song>())
                 DLplaylistAdapter.updateList(listOf(playlist))
 
                 return true
@@ -135,92 +157,6 @@ class DownloadActivity() : AppCompatActivity() {
     }
 
 
-    private fun searchAlbums(query: String) : List<Playlist>  {
-        var responseBodyJson = ""
-        val client = OkHttpClient()
-
-        val request = Request.Builder()
-            .url("https://spotify23.p.rapidapi.com/search/?q=${query}&type=albums&offset=0&limit=5&numberOfTopResults=5")
-            .get()
-            .addHeader("X-RapidAPI-Key", "b41889c768mshcb21a8b91f7ede0p194fe6jsnd5b30d47f3a3")
-            .addHeader("X-RapidAPI-Host", "spotify23.p.rapidapi.com")
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                // Manejar la falla de la solicitud
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                // Manejar la respuesta exitosa
-                if (response.isSuccessful) {
-                    val responseBody = response.body?.string()
-                    // Puedes trabajar con el cuerpo de la respuesta aquí
-                    if (responseBody != null) {
-                        Log.d("response", responseBody)
-                        responseBodyJson = responseBody
-                    }
-                } else {
-                    // Manejar respuesta no exitosa
-                    Log.d("response", "no exitosa")
-                }
-            }
-        })
-
-        return fromJsonToPlaylist(responseBodyJson)
-    }
-
-    fun fromJsonToPlaylist(json: String): List<Playlist> {
-        // aqui se deberia parsear el json y devolver una lista de playlist
-
-
-        return listOf(Playlist(12, "playlist1", "descripcion", "", mutableListOf<Song>()))
-    }
-
-    private fun searchSongs(query: String): List<Song> {
-        var responseBodyJson = ""
-        val client = OkHttpClient()
-
-        val request = Request.Builder()
-            .url("https://spotify23.p.rapidapi.com/search/?q=${query}&type=tracks&offset=0&limit=5&numberOfTopResults=5")
-            .get()
-            .addHeader("X-RapidAPI-Key", "b41889c768mshcb21a8b91f7ede0p194fe6jsnd5b30d47f3a3")
-            .addHeader("X-RapidAPI-Host", "spotify23.p.rapidapi.com")
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                // Manejar la falla de la solicitud
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                // Manejar la respuesta exitosa
-                if (response.isSuccessful) {
-                    val responseBody = response.body?.string()
-                    // Puedes trabajar con el cuerpo de la respuesta aquí
-                    if (responseBody != null) {
-                        Log.d("response", responseBody)
-                        responseBodyJson = responseBody
-                    }
-                } else {
-                    // Manejar respuesta no exitosa
-                    Log.d("response", "no exitosa")
-                }
-            }
-        })
-
-        return fromJsonToSongs(responseBodyJson)
-    }
-
-    fun fromJsonToSongs(json: String): List<Song> {
-        // aqui se deberia parsear el json y devolver una lista de playlist
-
-
-        return listOf(Song(12, "song1", "descripcion", "", "", false))
-    }
-
     private fun DownloadPLOnClickListener(playlist: Playlist) {
         Toast.makeText(this, "Descargando playlist ${playlist.name}", Toast.LENGTH_SHORT).show()
 
@@ -229,9 +165,11 @@ class DownloadActivity() : AppCompatActivity() {
 
     private fun DownloadSLOnClickListener(song: Song) {
         Toast.makeText(this, "Descargando cancion ${song.title}", Toast.LENGTH_SHORT).show()
-        // peticionDeAudio(song)
 
-        // songRepository.addSong(song)
+        val songPath = apiServiceSongMongo.makeRequestApiSongDownload(song.id)
+        song.songPath = songPath
+
+        playlistRepository.addSongToAllSongs(song)
     }
 
     // Función de ejemplo para obtener datos

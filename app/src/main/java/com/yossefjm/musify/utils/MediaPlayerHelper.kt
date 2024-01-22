@@ -132,7 +132,7 @@ class MediaPlayerHelper {
     }
 
     fun getCurrentSong(): Song {
-        return currentPlaylist?.get(currentIndex) ?: Song(0, "", "", "", "", false)
+        return currentPlaylist?.get(currentIndex) ?: Song("0", "", "", "", "", false)
     }
 
     fun playSong(songList: List<Song>, position: Int) {

@@ -23,6 +23,7 @@ import com.yossefjm.musify.data.PlaylistRepository
 import com.yossefjm.musify.data.SongRepository
 import com.yossefjm.musify.databinding.ActivityMainBinding
 import com.yossefjm.musify.extension.PermissionExtension
+import com.yossefjm.musify.extension.toExtendedIsoString
 import com.yossefjm.musify.extension.toHourMinSecString
 import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
@@ -93,7 +94,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             // reescibimos la activity
             finish()
+        }
 
+        binding.uploadLayoutbtn.setOnClickListener {
+            // abrimos el intent de busqueda y cerramos el actual
+            val intent = Intent(this, UploadActivity::class.java)
+            startActivity(intent)
+            // reescibimos la activity
+            finish()
         }
     }
 
@@ -181,7 +189,7 @@ class MainActivity : AppCompatActivity() {
             val description = descriptionEditText.text.toString()
 
             // Lógica para crear la nueva lista de reproducción con los valores proporcionados
-            playListRepository.addPlaylist(Playlist(playListRepository.getNewId(), title, description, "", mutableListOf()))
+            playListRepository.addPlaylist(Playlist(playListRepository.getNewId().toExtendedIsoString(), title, description, "", mutableListOf()))
             playlistAdapter.updateList(playListRepository.playlistsJson.playlists)
         }
 

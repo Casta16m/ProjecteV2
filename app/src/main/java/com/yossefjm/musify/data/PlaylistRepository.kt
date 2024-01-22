@@ -3,11 +3,16 @@ package com.yossefjm.musify.data
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
+import com.yossefjm.musify.extension.toExtendedIsoString
 import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
 import java.io.File
 import java.lang.reflect.Type
+import java.text.DateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class PlaylistRepository(private val context: Context) {
 
@@ -20,17 +25,20 @@ class PlaylistRepository(private val context: Context) {
 
     private val gson = Gson()
 
-    val playlistsJson = readPlaylistsJson()
+    var playlistsJson = readPlaylistsJson()
     private val allSongs = songRepository.getAllSongs()
 
 
     fun getAllPlaylists(): MutableList<Playlist> {
+        playlistsJson = readPlaylistsJson()
+
         // reescribir la playlist all songs con id 0 en caso de que no exista
-        playlistsJson.playlists.removeIf { it.id == 0L }
+        val nullLocalDateTime = LocalDateTime.of(1, 1, 1, 1, 1).toExtendedIsoString()
+        playlistsJson.playlists.removeIf { it.id == nullLocalDateTime }
 
         playlistsJson.playlists.add(
             Playlist(
-                0,
+                LocalDateTime.of(1, 1, 1, 1, 1).toExtendedIsoString(),
                 "All Songs",
                 "All Songs Playlist",
                 "",
@@ -54,12 +62,12 @@ class PlaylistRepository(private val context: Context) {
                 }
                 */
 
-        val likedPlaylist = playlistsJson.playlists.find { it.id == 1L }
+        val likedPlaylist = playlistsJson.playlists.find { it.id == LocalDateTime.of(2, 2, 2, 2, 2).toExtendedIsoString() }
 
         if (likedPlaylist == null) {
             playlistsJson.playlists.add(
                 Playlist(
-                    1,
+                    LocalDateTime.of(2, 2, 2, 2, 2).toExtendedIsoString(),
                     "Liked Songs",
                     "Liked Songs Playlist",
                     "",
@@ -79,7 +87,7 @@ class PlaylistRepository(private val context: Context) {
      * y las marca como liked en esa lista y en todas las demas
      */
     private fun likesSongs(playlists: MutableList<Playlist>, allSongs: MutableList<Song>) {
-        val likedPlaylist = playlists.find { it.id == 1L }
+        val likedPlaylist = playlists.find { it.id == LocalDateTime.of(1, 1, 1, 1, 1).toExtendedIsoString() }
         val likedSongs = likedPlaylist?.songs
         if (likedSongs != null) {
             likedSongs.forEach { likedSong ->
@@ -93,15 +101,25 @@ class PlaylistRepository(private val context: Context) {
     }
 
     private fun readPlaylistsJson(): PlaylistsJson {
-        if (!jsonFile.exists()) {
-            Log.i("PlaylistRepository", "No existe el archivo")
-            jsonFile.createNewFile()
-        }
+        try {
+            if (!jsonFile.exists()) {
+                Log.i("PlaylistRepository", "No existe el archivo")
+                jsonFile.createNewFile()
+            }
 
-        val jsonString = jsonFile.readText()
-        val type: Type = object : TypeToken<PlaylistsJson>() {}.type
-        return gson.fromJson(jsonString, type) ?: PlaylistsJson(mutableListOf())
+            val jsonString = jsonFile.readText()
+            val type: Type = object : TypeToken<PlaylistsJson>() {}.type
+            Log.d("PlaylistRepository", "readPlaylistsJson: $jsonString")
+            return gson.fromJson(jsonString, type) ?: PlaylistsJson(mutableListOf())
+        } catch (e: JsonSyntaxException) {
+            Log.e("PlaylistRepository", "Error al analizar JSON: ${e.message}", e)
+            throw e
+        } catch (e: Exception) {
+            Log.e("PlaylistRepository", "Error general: ${e.message}", e)
+            throw e
+        }
     }
+
 
     private fun writePlaylistsJson(playlistsJson: PlaylistsJson) {
         if (!jsonFile.exists()) {
@@ -109,8 +127,8 @@ class PlaylistRepository(private val context: Context) {
             jsonFile.createNewFile()
         }
         val jsonString = gson.toJson(playlistsJson)
-        jsonFile.writeText(jsonString)
         Log.i("PlaylistRepository", "writePlaylistsJson: $jsonString")
+        jsonFile.writeText(jsonString)
     }
 
     fun addPlaylist(playlist: Playlist) {
@@ -128,7 +146,7 @@ class PlaylistRepository(private val context: Context) {
         }
     }
 
-    fun deletePlaylist(playlistId: Long) {
+    fun deletePlaylist(playlistId: String) {
         val playlistToRemove = getPlaylistById(playlistId, playlistsJson)
 
         if (playlistToRemove != null) {
@@ -137,7 +155,7 @@ class PlaylistRepository(private val context: Context) {
         }
     }
 
-    private fun getPlaylistById(playlistId: Long, playlistsJson: PlaylistsJson): Playlist? {
+    private fun getPlaylistById(playlistId: String, playlistsJson: PlaylistsJson): Playlist? {
         return playlistsJson.playlists.find { it.id == playlistId }
     }
 
@@ -148,7 +166,7 @@ class PlaylistRepository(private val context: Context) {
      */
     fun editLikedSong(song: Song) {
         val playlistsJson = readPlaylistsJson()
-        val likedPlaylist = playlistsJson.playlists.find { it.id == 1L }
+        val likedPlaylist = playlistsJson.playlists.find { it.id == LocalDateTime.of(1, 1, 1, 1, 1).toExtendedIsoString() }
         val likedSongs = likedPlaylist?.songs
         if (likedSongs != null) {
             if (song.liked) {
@@ -166,9 +184,20 @@ class PlaylistRepository(private val context: Context) {
         writePlaylistsJson(playlistsJson)
     }
 
-    fun getNewId(): Long {
+    fun getNewId(): LocalDateTime {
+        val currentDateTime = LocalDateTime.now(ZoneId.systemDefault())
+        return currentDateTime
+    }
+
+    fun addSongToAllSongs(song: Song) {
         val playlistsJson = readPlaylistsJson()
-        return playlistsJson.playlists.maxByOrNull { it.id }?.id?.plus(1) ?: 0
+        val allSongsPlaylist = playlistsJson.playlists.find { it.id == LocalDateTime.of(1, 1, 1, 1, 1).toExtendedIsoString() }
+        val allSongs = allSongsPlaylist?.songs
+        if (allSongs != null) {
+            allSongs.add(song)
+            Log.d("PlaylistRepository", "addSongToAllSongs: ${allSongs.size}")
+        }
+        writePlaylistsJson(playlistsJson)
     }
 }
 

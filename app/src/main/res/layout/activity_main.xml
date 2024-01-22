@@ -31,17 +31,24 @@
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.5"
             android:text="MUSIFY"
             android:textAlignment="center"
             android:textColor="@color/navyBlue"
             android:textSize="38sp" />
 
         <ImageView
+            android:id="@+id/uploadLayoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:src="@drawable/uploadnavy" />
+
+        <ImageView
             android:id="@+id/downloadLayoutbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.2"
             android:src="@drawable/downloadnavy" />
     </LinearLayout>
 
