@@ -12,7 +12,7 @@ namespace ProjecteV2.ApiSql{
         public Song? SongObj { get; set; }
         public string? SongOriginal { get; set; }
         [MaxLength(35)]
-        public string Genere { get; set; }
+        public string? Genere { get; set; }
 
         public ICollection<Album>? album { get; set; }
         public ICollection<Llista>? llista { get; set; }

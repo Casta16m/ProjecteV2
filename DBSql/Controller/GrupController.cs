@@ -79,7 +79,16 @@ namespace DBSql.Controller
             }
             return Ok(postGrup);
         }
-
+        [HttpPut("modificarGrup")]
+        public async Task<Grup> PutGrup(Grup grup)
+        {
+            var grup2 = await _grupservice.ModificarTotGrup(grup);
+            if (grup2 == null)
+            {
+                return null;
+            }
+            return grup2;
+        }
         public bool GrupExists(string id)
         {
             return _context.Grups.Any(e => e.NomGrup == id);

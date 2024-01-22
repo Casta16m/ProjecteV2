@@ -62,8 +62,7 @@ namespace DBSql.Migrations
                 columns: table => new
                 {
                     Nom = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ID_MAC = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Dispositiu = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true)
+                    ID_MAC = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +77,7 @@ namespace DBSql.Migrations
                     data = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NomSong = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     SongOriginal = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
+                    Genere = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: true)
                 },
                 constraints: table =>
                 {

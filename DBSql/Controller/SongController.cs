@@ -58,33 +58,9 @@ namespace DBSql.Controller
             {
                 return BadRequest();
             }
-                using (var client = new HttpClient())
-            {
-        // Define la URL de la API de MongoDB
-        string apiUrl = "http://172.23.4.243:5010/FitxersApi/v1/Song";
-
-        // Serializa el objeto song a JSON
-        string jsonString = "{\"Uid\": \"song.UID\"}";
-
-        var json = JsonConvert.SerializeObject(jsonString);
-        var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-        // Realiza la solicitud POST
-        var response = await client.PostAsync(apiUrl, data);
-
-        // Verifica si la solicitud fue exitosa
-        if (response.IsSuccessStatusCode)
-        {
-            // Deserializa la respuesta a un objeto Song
-            var result = JsonConvert.DeserializeObject<Song>(await response.Content.ReadAsStringAsync());
-            return Ok(result);
-        }
-        else
-        {
-            return Ok(response);
-        }
-    }
-        }
+            return Ok(song2);
+         }
+        
         [HttpPut("modificarSong")]
         public async Task<ActionResult<Song>> PutSong(Song song)
         {

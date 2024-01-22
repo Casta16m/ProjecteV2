@@ -47,7 +47,11 @@ namespace ProjecteV2.ApiSql.Services{
 
             return grup;
         }
-        
+        public async Task<Grup> ModificarTotGrup(Grup grup){
+            _context.Entry(grup).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return grup;
+        }
         public bool GrupExists(string id)
         {
             return _context.Grups.Any(e => e.NomGrup == id);

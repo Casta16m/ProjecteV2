@@ -151,10 +151,6 @@ namespace DBSql.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Dispositiu")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.HasKey("Nom", "ID_MAC");
 
                     b.ToTable("Llista");
@@ -191,7 +187,6 @@ namespace DBSql.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Genere")
-                        .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
