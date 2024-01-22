@@ -25,7 +25,7 @@
 
 
 
-                <ListBox MouseMove="ListaPDF_MouseMove"  AllowDrop="True" FontSize="20" x:Name="ListaPDF" BorderBrush="Black" BorderThickness="1"  Background="#9DADD4" Height="170" Margin="10, 0, 10, 10"></ListBox>
+                <ListBox AllowDrop="True" FontSize="20" x:Name="ListaPDF" BorderBrush="Black" BorderThickness="1"  Background="#9DADD4" Height="170" Margin="10, 0, 10, 10"></ListBox>
 
 
 

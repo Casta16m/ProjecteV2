@@ -29,14 +29,13 @@ namespace Musify_Desktop
 
         private MusiFy_Lib.Reports reports = new MusiFy_Lib.Reports();
         private CreatePDF crearPDF = new CreatePDF();
-        private bool isDragging = false;
-        private Point startPoint;
+       
 
         public ReportPage()
         {
             InitializeComponent();
-            string pdfPath = crearPDF.getPdfPath();
-            CargarArchivosListView(pdfPath);
+       
+          
             CreateReportButtons();
         }
 
@@ -62,24 +61,22 @@ namespace Musify_Desktop
                     case 0:
                         button.Click += async (sender, e) =>
                         {
-                            List<Artist> artists = await reports.GetData<Artist>("http://localhost:1443/api/Artista");
-                            List< string> artisNames = new List<string>();
+                            List<Artist> artists = await reports.GetData<Artist>("http://172.23.1.231:1443/api/Artista");
+                            List<string?> artisNames = new List<string>();
                             artisNames = artists.Select(x => x.NomArtista).ToList();
-                            crearPDF.createPDF(artisNames, "Artistas");
-                            string pdfPath = crearPDF.getPdfPath();
-                            CargarArchivosListView(pdfPath);
+                            CreatePDFAndOpenFileDialog(artisNames);
+                         
 
                         };
                         break;
                     case 1:
                         button.Click += async (sender, e) => {
 
-                            List<Album> albums = await reports.GetData<Album>("http://localhost:1443/api/Artista");
-                            List<string> albumNames = new List<string>();
+                            List<Album> albums = await reports.GetData<Album>("http://172.23.1.231:1443/api/Artista");
+                            List<string?> albumNames = new List<string>();
                             albumNames = albums.Select(x => x.NomAlbum).ToList();
-                            crearPDF.createPDF(albumNames, "Albums");
-                            string pdfPath = crearPDF.getPdfPath();
-                            CargarArchivosListView(pdfPath);
+                            CreatePDFAndOpenFileDialog(albumNames);
+                                               
 
 
                         };
@@ -96,6 +93,16 @@ namespace Musify_Desktop
 
 
 
+        private async void CreatePDFAndOpenFileDialog
+            ( List<string?> content)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                crearPDF.createPDF(content, saveFileDialog.FileName);
+            }
+        }
+
         private void CargarArchivosListView(string carpeta)
         {
             try
@@ -105,7 +112,7 @@ namespace Musify_Desktop
                 List<string> listaArchivos = new List<string>();
                 foreach (FileInfo archivo in archivos)
                 {
-                    listaArchivos.Add(archivo.FullName);
+                    listaArchivos.Add(archivo.Name);
                 }
                 ListaPDF.ItemsSource = listaArchivos;
 
@@ -121,15 +128,7 @@ namespace Musify_Desktop
 
       
 
-        private void ListaPDF_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
-            {
-                DragDrop.DoDragDrop(ListaPDF, ListaPDF.SelectedItem, DragDropEffects.Move);
-            }
-            
-        }
-
+      
        
 
 

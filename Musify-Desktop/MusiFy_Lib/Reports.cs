@@ -21,7 +21,7 @@ namespace MusiFy_Lib
 
 
 
-        public async Task<List<T>> GetData<T>(string apiUrl)
+        public async Task<List<T>?> GetData<T>(string apiUrl)
         {
 
 
@@ -32,7 +32,7 @@ namespace MusiFy_Lib
 
 
 
-            return dataList;
+            return dataList ;
           
 
         }
@@ -55,15 +55,15 @@ namespace MusiFy_Lib
 
    public class Album
     {
-        public string NomAlbum { get; set; }
-        public string ArtistaNom { get; set; }
+        public string? NomAlbum{ get; set; }
+        public string? ArtistaNom { get; set; }
     }
 
 
 
     public class Artist
     {
-        public string NomArtista { get; set; }
+        public string? NomArtista { get; set; }
         public int AnyNaixement { get; set; }
         
     
