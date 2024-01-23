@@ -42,10 +42,10 @@ namespace MusiFy_Library
         }
         private void btSelectPdf_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == true)
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
             {
-                txtPDFFile.Text = fileDialog.FileName;
+                txtPDFFile.Text = saveFileDialog.FileName;
             }
         }
 

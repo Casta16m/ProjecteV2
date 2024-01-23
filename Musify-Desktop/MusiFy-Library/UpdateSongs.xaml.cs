@@ -28,6 +28,7 @@ namespace MusiFy_Library
         public UpdateSongs()
         {
             InitializeComponent();
+            btGetAllSongs();
         }
         private async void btGetSongClick(object sender, RoutedEventArgs e)
         {
@@ -35,14 +36,37 @@ namespace MusiFy_Library
 
             string url = $"http://172.23.1.231:1443/api/Song/BuscarUID/{uid}";
 
-           
-            Reports reports = new Reports();
-           await reports.GetData<Songs>($"http://172.23.1.231:1443/api/Song/BuscarUID/{uid}");
 
+            Reports reports = new Reports();
+            Songs song = await reports.GetSingleData<Songs>(url);
+            if (song != null)
+            {
+                txtNomcanço.Text = song.NomSong;
+                txtCançoOriginal.Text = song.Genere;
+                txtGenere.Text = song.Genere;
+            }
+
+        }
+        private async void btGetAllSongs()
+        {
+            string url = "http://172.23.1.231:1443/api/Song/";
+
+            Reports reports = new Reports();
+            List<Songs> songs = await reports.GetData<Songs>(url);
+
+            // Asegúrate de que las canciones no sean null antes de intentar acceder a sus propiedades
+            if (songs != null)
+            {
+                lvSongs.ItemsSource = songs;
+            }
+            else
+            {
+                // Maneja el caso en que las canciones sean null (por ejemplo, muestra un mensaje de error)
+            }
         }
 
     }
 
-    }
+}
 
 

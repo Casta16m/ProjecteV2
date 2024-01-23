@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Data;
 namespace MusiFy_Lib
 {
     public class Reports
@@ -32,9 +33,19 @@ namespace MusiFy_Lib
 
 
 
+
             return dataList;
 
 
+        }
+        public async Task<T?> GetSingleData<T>(string apiUrl)
+        {
+            MusiFyApi apiCall = new MusiFyApi(apiUrl);
+            string apiResponse = await apiCall.ObtenerDatosAsync();
+
+            T data = JsonSerializer.Deserialize<T>(apiResponse);
+
+            return data;
         }
 
 
@@ -57,6 +68,7 @@ namespace MusiFy_Lib
     {
         public string? NomAlbum { get; set; }
         public string? ArtistaNom { get; set; }
+       
     }
 
 
@@ -72,6 +84,10 @@ namespace MusiFy_Lib
     {
         public string UID { get; set; }
         public string NomSong { get; set; }
+        public string? SongOriginal { get; set; }
+        public string? Genere { get; set; }
+
+        
         
 
 
