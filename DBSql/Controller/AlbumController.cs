@@ -44,10 +44,10 @@ namespace DBSql.Controller
             return album;
         }
 
-        [HttpGet("BuscarNom/{album}")]
-        public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album)
+        [HttpGet("BuscarNom/{album}/{data}")]
+        public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album, DateTime data)
         {
-            var albums = await _albumService.GetAlbum(album);
+            var albums = await _albumService.GetAlbum(album, data);
 
             if (albums == null)
             {

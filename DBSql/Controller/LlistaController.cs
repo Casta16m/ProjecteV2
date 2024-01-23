@@ -66,7 +66,6 @@ namespace DBSql.Controller
             return Ok(llista2);
         }
         
-        //----------------------------------------------------------------------------------------
 
     [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
     public async Task<IActionResult> PutLlistaSong(string NomLlista, string UID, string ID_MAC)
@@ -78,10 +77,17 @@ namespace DBSql.Controller
             return NotFound();
         }
         return StatusCode(200);
-    } 
-        private bool LlistaExists(string id)
+    }
+
+    [HttpPut("modificarLlista")] 
+    public async Task<IActionResult> PutLlista(Llista llista)
+    {
+        var llista2 = await _llistaService.PutLlistaGeneral(llista);
+        if (llista2 == null)
         {
-            return _context.Llista.Any(e => e.Nom == id);
+            return NotFound();
         }
+        return Ok(llista2);
+    }
     }
 }

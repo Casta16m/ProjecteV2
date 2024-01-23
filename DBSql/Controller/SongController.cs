@@ -31,6 +31,16 @@ namespace DBSql.Controller
         {
             return await _context.Songs.ToListAsync();
         }
+        [HttpGet("BuscarUID/{UID}")]
+        public async Task<ActionResult<Song>> GetSong(string UID)
+        {
+            var song = await _songService.GetSongEspecifica(UID);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            return Ok(song);
+        }
 
 
         // GET: api/Song/BuscarNom/5
@@ -70,9 +80,6 @@ namespace DBSql.Controller
             return Ok(song2);
 
         }
-        private bool SongExists(string id)
-        {
-            return _context.Songs.Any(e => e.UID == id);
-        }
+
     }
 }

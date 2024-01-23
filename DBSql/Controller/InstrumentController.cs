@@ -61,33 +61,15 @@ namespace DBSql.Controller
 
         // PUT: api/Instrument/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutInstrument(string id, Instrument instrument)
+        [HttpPut("modificarInstrument")]
+        public async Task<IActionResult> PutInstrument(Instrument instrument)
         {
-            if (id != instrument.Nom)
+            var Instrument2 = await _instrumentService.PutInstrument( instrument);
+            if (Instrument2 == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(instrument).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InstrumentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(Instrument2);
         }
 
         // POST: api/Instrument
@@ -117,11 +99,6 @@ namespace DBSql.Controller
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        public bool InstrumentExists(string id)
-        {
-            return _context.Instrument.Any(e => e.Nom == id);
         }
     }
 }

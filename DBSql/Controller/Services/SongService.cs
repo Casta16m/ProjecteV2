@@ -7,6 +7,16 @@ namespace ProjecteV2.ApiSql.Services{
         public SongService(DataContext context){
             _context = context;
         }
+        public async Task<Song> GetSongEspecifica(string UID){
+            var song = await _context.Songs.Include(a => a.album).FirstOrDefaultAsync(a => a.UID == UID);
+
+            if (song == null)
+            {
+                return null;
+            }
+            
+            return song;
+        }
         
         public async Task<List<Song>> GetSong(string nom)
         {

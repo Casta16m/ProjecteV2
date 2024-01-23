@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjecteV2.ApiSql;
+using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
@@ -14,10 +15,12 @@ namespace DBSql.Controller
     public class ParticipaController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly ParticipaService _participaService;
 
         public ParticipaController(DataContext context)
         {
             _context = context;
+            _participaService = new ParticipaService(context);
         }
 
         // GET: api/Participa
@@ -31,7 +34,7 @@ namespace DBSql.Controller
         [HttpGet("BuscarSong/{UID}")]
         public async Task<ActionResult<Participa>> GetParticipa(string UID)
         {
-            var participa = await _context.Participa.Where(a => a.UID == UID).ToListAsync();
+            var participa = await _participaService.GetParticipa(UID);
 
             if (participa == null)
             {
@@ -43,33 +46,15 @@ namespace DBSql.Controller
 
         // PUT: api/Participa/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutParticipa(string id, Participa participa)
+        [HttpPut]
+        public async Task<IActionResult> PutParticipa(Participa participa)
         {
-            if (id != participa.UID)
+            var participa2 = await _participaService.PutParticipaGeneral(participa);
+            if (participa2 == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(participa).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ParticipaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(participa2);
         }
 
         // POST: api/Participa
@@ -77,58 +62,25 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Participa>> PostParticipa(Participa participa)
         {
-            ArtistaController artistaController = new ArtistaController(_context);
-            GrupController grupController = new GrupController(_context);
-            InstrumentController instrumentController = new InstrumentController(_context);
-
-            _context.Participa.Add(participa);
-            try
+            var participa2 = await _participaService.PostParticipa(participa);
+            if (participa2 == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (ParticipaExists(participa.UID))
-                {
-                    return Conflict();
-                }
-                if(!artistaController.ArtistaExists(participa.NomArtista))
-                {
-                    return Conflict();
-                }if(!grupController.GrupExists(participa.NomGrup))
-                {
-                    return Conflict();
-                }if(!instrumentController.InstrumentExists(participa.NomInstrument)){
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            return Ok(participa2);
 
-            return CreatedAtAction("GetParticipa", new { id = participa.UID }, participa);
         }
 
         // DELETE: api/Participa/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteParticipa(string id)
         {
-            var participa = await _context.Participa.FindAsync(id);
+            var participa = await _participaService.DeleteParticipa(id);
             if (participa == null)
             {
                 return NotFound();
             }
-
-            _context.Participa.Remove(participa);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ParticipaExists(string id)
-        {
-            return _context.Participa.Any(e => e.UID == id);
+            return Ok(participa);
         }
     }
 }

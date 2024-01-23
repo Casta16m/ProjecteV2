@@ -6,8 +6,8 @@ namespace ProjecteV2.ApiSql.Services{
         public AlbumService(DataContext context){
             _context = context;
         }
-        public async Task <List<Album>> GetAlbum(string Nom){
-            var song = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(Nom)).ToListAsync();
+        public async Task <List<Album>> GetAlbum(string Nom, DateTime data){
+            var song = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(Nom)).Where(a=> a.data == data).ToListAsync();
 
             if (song == null)
             {

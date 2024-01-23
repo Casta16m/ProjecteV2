@@ -46,15 +46,8 @@ namespace DBSql.Controller
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Grup>>> GetNomGrup(string nom)
         {
-            
-            var grup = await _context.Grups.Include(a=> a.artistes).Where(a => a.NomGrup.Contains(nom)).ToListAsync();
-
-            if (grup == null)
-            {
-                return NotFound();
-            }
-
-            return grup;
+            var grup = await _grupservice.GetGrup(nom);
+            return Ok(grup);
         }
         [HttpPut("AfegirArtista/{NomGrup}/{NomArtista}")]
         public async Task<IActionResult> PutAfegirSong(string NomGrup, string NomArtista)
@@ -89,9 +82,6 @@ namespace DBSql.Controller
             }
             return grup2;
         }
-        public bool GrupExists(string id)
-        {
-            return _context.Grups.Any(e => e.NomGrup == id);
-        }
+
     }
 }

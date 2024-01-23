@@ -26,6 +26,17 @@ namespace ProjecteV2.ApiSql.Services{
             await _context.SaveChangesAsync();
             return "Okay";
         }
+        public async Task<Grup> GetGrup(string NomGrup)
+        {
+            var grup = await _context.Grups.Include(a => a.artistes).FirstOrDefaultAsync(a => a.NomGrup == NomGrup);
+
+            if (grup == null)
+            {
+                return null;
+            }
+            
+            return grup;
+        }
         public async Task<Grup> PostGrup(Grup grup)
         {
             _context.Grups.Add(grup);

@@ -38,6 +38,25 @@ namespace ProjecteV2.ApiSql.Services{
 
             return "Okay";
         }
+        public async Task <Instrument> PutInstrument(Instrument instrument){
+            _context.Entry(instrument).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!InstrumentExists(instrument.Nom))
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return instrument;
+        }
         public bool InstrumentExists(string id)
         {
             return _context.Instrument.Any(e => e.Nom == id);

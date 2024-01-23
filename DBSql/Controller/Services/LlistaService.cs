@@ -70,9 +70,6 @@ namespace ProjecteV2.ApiSql{
         {
             return "no existeix la canço";
         }
-
-
-
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
         {
             llista.songs.Add(song);
@@ -87,6 +84,25 @@ namespace ProjecteV2.ApiSql{
         {
             return null;
         }
+        }
+        public async Task <Llista> PutLlistaGeneral(Llista llista){
+            _context.Entry(llista).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LlistaExists(llista.Nom))
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return llista;
         }
 
         private bool LlistaExists(string id)
