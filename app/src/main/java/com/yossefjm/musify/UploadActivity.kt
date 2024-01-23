@@ -80,7 +80,9 @@ class UploadActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 audioFile?.let { file ->
-                    val songUid = apiServiceSongSQL.postSongSQL(songName, genre)
+                    val extensio = file.name.split(".").last()
+                    Log.d("UploadActivity", "Extensión del archivo: $extensio")
+                    val songUid = apiServiceSongSQL.postSongSQL(songName, genre, extensio)
                     if (songUid != "null") {
                         apiServiceSongMongo.postSongAudio(songUid, file)
                     } else {

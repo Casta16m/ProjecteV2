@@ -32,7 +32,8 @@ data class SongDBSQL(
 
 data class SongPost(
     val nomSong: String,
-    val genere: String
+    val genere: String,
+    val extensio: String
 )
 
 
@@ -103,11 +104,11 @@ class ApiServiceSongSQL {
 
     }
 
-    fun postSongSQL(songName: String, genre: String): String {
+    fun postSongSQL(songName: String, genre: String, extensio: String): String {
         var responseJson: Song? = null
 
         try {
-            val songPost = SongPost(songName,genre)
+            val songPost = SongPost(songName, genre, extensio)
             val response = songApiServiceSQL.postSong(songPost).execute()
 
             if (response.isSuccessful) {

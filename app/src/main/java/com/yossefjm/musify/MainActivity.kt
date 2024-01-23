@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     // permision required
     private val READ_AUDIO_STORAGE = Manifest.permission.READ_MEDIA_AUDIO
+    private val READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
     // private val READ_FILE_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
 
     // Adapter
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         initAnimations()
 
         // Comprovamos que tenemos permisos
-        if (permissionExtension.checkAndRequestPermissions(READ_AUDIO_STORAGE)) {
+        if (permissionExtension.checkAndRequestPermissions(READ_AUDIO_STORAGE) && permissionExtension.checkAndRequestPermissions(READ_EXTERNAL_STORAGE)) {
             // Permission is granted
             Snackbar.make(binding.root, "Permission is granted", Snackbar.LENGTH_LONG).show()
             configAdaptersRW()
