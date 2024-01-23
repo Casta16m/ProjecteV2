@@ -72,10 +72,7 @@ namespace MusiFy_Lib
     {
         public string UID { get; set; }
         public string NomSong { get; set; }
-        public string SongOriginal { get; set; }
-        public string Genere { get; set; }
-        public string Album { get; set; }
-        public string llista { get; set; }
+        
 
 
     }

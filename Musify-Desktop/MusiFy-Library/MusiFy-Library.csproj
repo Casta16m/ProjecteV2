@@ -37,6 +37,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="UpdateSongs.xaml.cs">
+      <CustomToolNamespace>MusiFy_Library</CustomToolNamespace>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

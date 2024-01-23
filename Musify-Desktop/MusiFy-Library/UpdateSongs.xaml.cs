@@ -33,19 +33,15 @@ namespace MusiFy_Library
         {
             var uid = txtUID.Text;
 
-            string url = $"http://172.23.1.231:1443/api/Song/BuscarNom/{uid}";
+            string url = $"http://172.23.1.231:1443/api/Song/BuscarUID/{uid}";
 
            
             Reports reports = new Reports();
-           List<Songs> songs =await reports.GetData<Songs>(url);
+           await reports.GetData<Songs>($"http://172.23.1.231:1443/api/Song/BuscarUID/{uid}");
 
         }
-           
 
-
-
-
-        }
+    }
 
     }
 
