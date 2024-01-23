@@ -4,6 +4,7 @@ import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import com.yossefjm.musify.model.Song
 
 /**
@@ -33,19 +34,24 @@ class SongRepository(private val context: Context) {
 
             while (cursor.moveToNext()) {
                 val id = cursor.getLong(idColumn).toString()
-                val title = cursor.getString(titleColumn)
-                val artist = cursor.getString(artistColumn)
-                val filePath = cursor.getString(filePathColumn)
+                val title = cursor.getString(titleColumn) ?: ""
+                val artist = cursor.getString(artistColumn) ?: ""
+                val filePath = cursor.getString(filePathColumn) ?: ""
                 val albumId = cursor.getLong(albumIdColumn)
 
                 // Obtener la carátula usando el ID del álbum
-                val coverPath = getAlbumArtPath(albumId)
+                val coverPath = getAlbumArtPath(albumId) ?: ""
 
-                val song = Song(id, title, artist, filePath, coverPath, false)
-                if (song.title.subSequence(0, 3) != "AUD") {
-                    songs.add(song)
+                // Asegúrate de que los valores no sean nulos antes de crear la instancia de Song
+                if (id.isNotBlank() && title.isNotBlank() && artist.isNotBlank() && filePath.isNotBlank() && coverPath.isNotBlank()) {
+                    val song = Song(id, title, artist, filePath, coverPath, false)
+                    Log.d("SongRepository", "Canción encontrada:${song.artist}|")
+                    if (song.title.subSequence(0, 3) != "AUD" && song.artist != "Brian Tracy") {
+                        songs.add(song)
+                    }
                 }
             }
+
         }
 
         return songs

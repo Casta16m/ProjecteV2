@@ -45,7 +45,7 @@ class DownloadActivity() : AppCompatActivity() {
     // api service
     private val apiServiceAlbum = ApiServiceAlbum()
     private val apiServiceSongSQL = ApiServiceSongSQL()
-    private val apiServiceSongMongo = ApiServiceSongMongoDB()
+    private val apiServiceSongMongo = ApiServiceSongMongoDB(this)
 
 
     // tema de bsuqueda
@@ -77,8 +77,6 @@ class DownloadActivity() : AppCompatActivity() {
         // Configuración del SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Acciones cuando se envía la búsqueda (lógica de búsqueda aquí)
-                // logica de peticion con otra clase, cuando esa clase devuelve un resultado, se actualiza el adapter
 
                 if (query != null) {
                     Toast.makeText(this@DownloadActivity, "Buscando $query", Toast.LENGTH_SHORT).show()
@@ -97,7 +95,7 @@ class DownloadActivity() : AppCompatActivity() {
                 } else if (searchType == "song") {
                     // peticion de cancion
                     CoroutineScope(Dispatchers.IO).launch {
-                        val songs = apiServiceSongSQL.makeRequestApiSongsByName(query ?: "")
+                        val songs = apiServiceSongSQL.requestSongsByName(query ?: "")
                         Log.d("songs", songs.toString())
                         withContext(Dispatchers.Main) {
                             DLsonglistAdapter.updateList(songs)
@@ -166,7 +164,7 @@ class DownloadActivity() : AppCompatActivity() {
     private fun DownloadSLOnClickListener(song: Song) {
         Toast.makeText(this, "Descargando cancion ${song.title}", Toast.LENGTH_SHORT).show()
 
-        val songPath = apiServiceSongMongo.makeRequestApiSongDownload(song.id)
+        val songPath = apiServiceSongMongo.getSongAudio(song.uid, song.title)
         song.songPath = songPath
 
         playlistRepository.addSongToAllSongs(song)

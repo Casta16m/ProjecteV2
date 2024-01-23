@@ -1,6 +1,7 @@
 package com.yossefjm.musify
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -131,6 +132,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvPlayLists.adapter = playlistAdapter
     }
 
+    @SuppressLint("SdCardPath")
     private fun configPlayerListeners() {
         binding.compactPlayer.root.setOnClickListener { showHideExpandedView() }
         binding.expandedsong.arrowdown.setOnClickListener { showHideExpandedView() }
@@ -138,6 +140,12 @@ class MainActivity : AppCompatActivity() {
         binding.createplaylist.setOnClickListener { showCreatePlaylistDialog() }
 
         val playPauseClickListener = View.OnClickListener {
+            /*
+            val song = Song("1", "song1", "artist1", "/data/data/com.yossefjm.musify/files/audioDownload/audio.mp3", "path1", false)
+            mediaPlayerH.playSong(listOf(song), 0)
+            updateSongView(song)
+            */
+
             if (mediaPlayerH.isPaused) {
                 mediaPlayerH.resumePlayback()
                 binding.compactPlayer.playPauseButtonMinimized.setImageResource(R.drawable.pause)

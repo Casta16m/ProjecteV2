@@ -31,7 +31,7 @@ class UploadActivity : AppCompatActivity() {
 
     // API Service
     private val apiServiceSongSQL = ApiServiceSongSQL()
-    private val apiServiceSongMongo = ApiServiceSongMongoDB()
+    private val apiServiceSongMongo = ApiServiceSongMongoDB(this)
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,38 +39,25 @@ class UploadActivity : AppCompatActivity() {
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var songName = ""
-        var genre = ""
-
         // Configuración del botón "Seleccionar archivo de audio"
         val selectAudioButton: Button = findViewById(R.id.buttonSelectAudio)
         selectAudioButton.setOnClickListener {
-            // Abre el selector de documentos para permitir al usuario seleccionar un archivo de audio
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
-            intent.type = "audio/*"
-            startActivityForResult(intent, YOUR_REQUEST_CODE)
+            openAudioSelector()
         }
 
         // Configuración del botón "Enviar"
         val submitButton: Button = findViewById(R.id.buttonSubmit)
         submitButton.setOnClickListener {
-            // Lógica para enviar la información a la API o realizar otras acciones
-            songName = findViewById<EditText>(R.id.editTextSongName).text.toString()
-            genre = findViewById<EditText>(R.id.editTextGenre).text.toString()
-
-            // val songUid = apiServiceSongSQL.postSong(songName, genre)
-            val songUid = "1234"
-
-            // Coroutines
-            CoroutineScope(Dispatchers.IO).launch {
-                if (audioFile != null) {
-                    apiServiceSongMongo.postSongAudio(songUid, audioFile!!)
-                }
+            if (audioFile == null) {
+                Toast.makeText(this, "Selecciona un archivo de audio", Toast.LENGTH_SHORT).show()
+                } else if (binding.editTextSongName.text.isEmpty()) {
+                Toast.makeText(this, "Ingresa el nombre de la canción", Toast.LENGTH_SHORT).show()
+            } else if (binding.editTextGenre.text.isEmpty()) {
+                Toast.makeText(this, "Ingresa el género de la canción", Toast.LENGTH_SHORT).show()
             }
 
-            Log.d("UploadActivity", "Canción creada: $songName")
-            Toast.makeText(this, "Canción creada", Toast.LENGTH_SHORT).show()
+            uploadSong()
+
         }
 
         // Configuración del botón de retroceso
@@ -79,13 +66,42 @@ class UploadActivity : AppCompatActivity() {
         }
     }
 
+    private fun openAudioSelector() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.type = "audio/*"
+        startActivityForResult(intent, YOUR_REQUEST_CODE)
+    }
 
+    private fun uploadSong() {
+        val songName = findViewById<EditText>(R.id.editTextSongName).text.toString()
+        val genre = findViewById<EditText>(R.id.editTextGenre).text.toString()
 
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                audioFile?.let { file ->
+                    val songUid = apiServiceSongSQL.postSongSQL(songName, genre)
+                    if (songUid != "null") {
+                        apiServiceSongMongo.postSongAudio(songUid, file)
+                    } else {
+                       Log.e("UploadActivity", "Error: songUid nulo.")
+                    }
 
+                    // val songUid = "songUid123"
+                    // apiServiceSongMongo.postSongAudio(songUid, file)
 
-
-
-
+                    runOnUiThread {
+                        Log.d("UploadActivity", "Canción creada: $songName")
+                        Toast.makeText(this@UploadActivity, "Canción creada", Toast.LENGTH_SHORT).show()
+                    }
+                } ?: run {
+                    Log.e("UploadActivity", "Error: Archivo de audio nulo.")
+                }
+            } catch (e: Exception) {
+                Log.e("UploadActivity", "Error al subir la canción: ${e.message}", e)
+            }
+        }
+    }
 
     // Método para manejar el resultado del selector de documentos
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -93,31 +109,42 @@ class UploadActivity : AppCompatActivity() {
 
         if (requestCode == YOUR_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
-                // Obtener el File correspondiente a la URI
                 audioFile = getFileFromUri(uri)
             }
         }
     }
 
     // Función para obtener un File a partir de una URI
-    @SuppressLint("Range")
     private fun getFileFromUri(uri: Uri): File? {
         try {
-            val inputStream = contentResolver.openInputStream(uri)
-            if (inputStream != null) {
-                val file = File(cacheDir, "selected_audio_file.mp3")
+            contentResolver.openInputStream(uri)?.use { inputStream ->
+                val fileName = getFileName(uri)
+                val file = File(filesDir, fileName)
+
                 file.outputStream().use { outputStream ->
                     inputStream.copyTo(outputStream)
                 }
+
                 Log.d("UploadActivity", "Archivo seleccionado: ${file.name}")
                 return file
-            } else {
-                Log.e("UploadActivity", "¡Error! InputStream es nulo al abrir la URI.")
             }
         } catch (e: Exception) {
-            Log.e("UploadActivity", "¡Error! El archivo no se creó correctamente: ${e.message}", e)
+            Log.e("UploadActivity", "Error al obtener el archivo: ${e.message}", e)
         }
         return null
     }
 
+    @SuppressLint("Range")
+    private fun getFileName(uri: Uri): String {
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val displayName = it.getString(it.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                Log.d("UploadActivity", "Nombre del archivo: $displayName")
+                return displayName ?: "unknown_file"
+            }
+        }
+        // retorna un nombre de archivo por defecto
+        return "file_${System.currentTimeMillis()}"
+    }
 }

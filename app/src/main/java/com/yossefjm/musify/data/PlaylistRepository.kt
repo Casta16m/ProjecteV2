@@ -10,7 +10,6 @@ import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
 import java.io.File
 import java.lang.reflect.Type
-import java.text.DateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
 
@@ -91,9 +90,9 @@ class PlaylistRepository(private val context: Context) {
         val likedSongs = likedPlaylist?.songs
         if (likedSongs != null) {
             likedSongs.forEach { likedSong ->
-                allSongs.find { it.id == likedSong.id }?.liked = true
+                allSongs.find { it.uid == likedSong.uid }?.liked = true
                 playlists.forEach { playlist ->
-                    playlist.songs.find { it.id == likedSong.id }?.liked = true
+                    playlist.songs.find { it.uid == likedSong.uid }?.liked = true
                 }
             }
         }
@@ -172,12 +171,12 @@ class PlaylistRepository(private val context: Context) {
             if (song.liked) {
                 likedSongs.add(song)
                 playlistsJson.playlists.forEach { playlist ->
-                    playlist.songs.find { it.id == song.id }?.liked = true
+                    playlist.songs.find { it.uid == song.uid }?.liked = true
                 }
             } else {
                 likedSongs.remove(song)
                 playlistsJson.playlists.forEach { playlist ->
-                    playlist.songs.find { it.id == song.id }?.liked = false
+                    playlist.songs.find { it.uid == song.uid }?.liked = false
                 }
             }
         }

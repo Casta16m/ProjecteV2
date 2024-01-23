@@ -5,7 +5,7 @@ package com.yossefjm.musify.model
  * Esta clase es responsable de almacenar la información de una canción
  */
 data class Song(
-    val id: String, // ID único de la canción
+    val uid: String, // ID único de la canción
     val title: String,
     val artist: String,
     var songPath: String,
