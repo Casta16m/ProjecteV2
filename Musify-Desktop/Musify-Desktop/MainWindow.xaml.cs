@@ -36,6 +36,11 @@ namespace Musify_Desktop
     ReportPage reportPage = new ReportPage();
         reportPage.Show();
 }
+        private void AdminButton_Click(Object sender, RoutedEventArgs e)
+        {
+            Admin adminPage = new Admin();
+            adminPage.Show();
+        }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {

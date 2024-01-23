@@ -32,20 +32,20 @@ namespace MusiFy_Lib
 
 
 
-            return dataList ;
-          
+            return dataList;
+
 
         }
 
 
 
-      
-        
 
 
 
 
-      
+
+
+
 
 
 
@@ -53,9 +53,9 @@ namespace MusiFy_Lib
 
     }
 
-   public class Album
+    public class Album
     {
-        public string? NomAlbum{ get; set; }
+        public string? NomAlbum { get; set; }
         public string? ArtistaNom { get; set; }
     }
 
@@ -65,8 +65,18 @@ namespace MusiFy_Lib
     {
         public string? NomArtista { get; set; }
         public int AnyNaixement { get; set; }
-        
-    
-    }
 
+
+    }
+    public class Songs
+    {
+        public string UID { get; set; }
+        public string NomSong { get; set; }
+        public string SongOriginal { get; set; }
+        public string Genere { get; set; }
+        public string Album { get; set; }
+        public string llista { get; set; }
+
+
+    }
 }
