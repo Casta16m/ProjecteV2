@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
-3-322650357
+8628517522
 
-6-1705579544
+111882380720
 244-348371781
-Button.xaml;pdfSigner.xaml;UpdateSongs.xaml;
+Button.xaml;ButtonAtribute.xaml;ButtonClass.xaml;ButtonCreate.xaml;ButtonDelete.xaml;ButtonEdit.xaml;pdfSigner.xaml;UpdateSongs.xaml;
 
 False
 

@@ -30,6 +30,8 @@ namespace MusiFy_Library
             InitializeComponent();
             btGetAllSongs();
         }
+      
+        
         private async void btGetSongClick(object sender, RoutedEventArgs e)
         {
             var uid = txtUID.Text;
@@ -42,10 +44,49 @@ namespace MusiFy_Library
             if (song != null)
             {
                 txtNomcanço.Text = song.NomSong;
-                txtCançoOriginal.Text = song.Genere;
+                txtCançoOriginal.Text = song.SongOriginal;
                 txtGenere.Text = song.Genere;
             }
 
+        }
+        private async void btUpdateSongClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var uid = txtUID.Text;
+                string url = $"http://172.23.1.231:1443/api/Song/modificarSong/";
+                Reports rep = new Reports();
+
+                Songs songToUpdate = new Songs();
+                
+                songToUpdate.UID= txtUID.Text;
+                songToUpdate.NomSong = txtNomcanço.Text;
+                songToUpdate.SongOriginal = txtCançoOriginal.Text;
+                songToUpdate.Genere = txtGenere.Text;
+                Songs song = new Songs
+                {
+                    NomSong = songToUpdate.NomSong,
+                    SongOriginal = songToUpdate.SongOriginal,
+                    Genere = songToUpdate.Genere,
+                };
+
+               bool success = await rep.UpdateData<Songs>(url, songToUpdate);
+                if (success)
+                {
+                    // El objeto se actualizó correctamente
+                }
+                else
+                {
+                    // Hubo un error al actualizar el objeto
+                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo.");
+
+                }
+            }
+            catch (java.lang.Exception ex)
+            {
+                // Aquí puedes manejar la excepción y mostrar un mensaje al usuario
+                MessageBox.Show($"Se produjo un error: {ex.Message}");
+            }
         }
         private async void btGetAllSongs()
         {

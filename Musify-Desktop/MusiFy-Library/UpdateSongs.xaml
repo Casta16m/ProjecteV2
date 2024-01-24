@@ -6,17 +6,18 @@
              xmlns:local="clr-namespace:MusiFy_Library"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="54,1,430,155">
+    <Grid Margin="54,1,430,178">
         <Label Content="UID" Canvas.Left="20" Canvas.Top="79" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,17,0,0"/>
         <TextBox x:Name="txtUID" Canvas.Left="112" TextWrapping="Wrap" Canvas.Top="83" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,21,0,0" />
         <Label Content="Canço Original" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,51,0,0"/>
-        <TextBox x:Name="txtCançoOriginal" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,54,0,0" />
+            <TextBox x:Name="txtCançoOriginal" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,54,0,0" />
         <Label Content="Genere" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,83,0,0"/>
-        <TextBox x:Name="txtGenere" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,85,0,0" />
+            <TextBox x:Name="txtGenere" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,85,0,0" />
         <Label Content="Nom Canço" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,111,0,0"/>
-        <TextBox x:Name="txtNomcanço" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="95,114,0,0" />
+            <TextBox x:Name="txtNomcanço" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="95,114,0,0" />
         <Button x:Name="btGetSong" Content="..." Canvas.Left="250" Canvas.Top="45" Width="16" VerticalContentAlignment="Center" Click="btGetSongClick" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,19,0,0"/>
-        <ListView x:Name="lvSongs" Margin="327,-3,-327,3">
+        <Button x:Name="btUpdateSong" Content="..." Width="16" VerticalContentAlignment="Center" Click="btUpdateSongClick" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,152,0,0"/>
+        <ListView x:Name="lvSongs" Margin="333,-3,-327,-81">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="UID" DisplayMemberBinding="{Binding UID}" />
@@ -24,5 +25,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
     </Grid>
 </UserControl>

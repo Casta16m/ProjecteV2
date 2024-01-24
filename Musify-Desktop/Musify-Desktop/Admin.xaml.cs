@@ -28,5 +28,10 @@ namespace Musify_Desktop
             InitializeComponent();
         }
 
+       private void BtnSongs_Click(object sender, RoutedEventArgs e)
+        {
+            AdminSongxaml adminSong = new AdminSongxaml();
+            adminSong.Show();
+        }
     }
 }

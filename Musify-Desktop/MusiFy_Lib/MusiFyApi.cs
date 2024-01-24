@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,24 @@ namespace MusiFy_Lib
             {
 
                 return $"Error: {ex.Message}";
+            }
+           
+        }
+        public async Task<bool> SendPutRequestAsync(string dataJson)
+        {
+            try
+            {
+                var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
+                var response = await client.PutAsync(apiGetURL, content);
+                
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción y, por ejemplo, registrarla en un archivo de log
+                Debug.WriteLine($"Error en SendPutRequestAsync: {ex.Message}");
+                return false;
             }
         }
     }

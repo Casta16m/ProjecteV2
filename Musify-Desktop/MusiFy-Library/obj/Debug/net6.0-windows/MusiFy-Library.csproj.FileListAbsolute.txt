@@ -1546,3 +1546,14 @@ C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Libra
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ref\MusiFy-Library.dll
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\UpdateSongs.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\UpdateSongs.baml
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonClass.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonClass.baml
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonAtribute.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonAtribute.baml
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonCreate.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonDelete.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonEdit.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonCreate.baml
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonDelete.baml
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonEdit.baml

@@ -9,6 +9,16 @@
         Title="Admin" Height="450" Width="800"
         Background="#091227" >
     <Grid>
-        <MusiFy_Library:UpdateSongs HorizontalAlignment="Left" Margin="4,-3,0,0" VerticalAlignment="Top"/>
+        <Label Content="Admin" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
+        <MusiFy_Library:ButtonClass Click="BtnSongs_Click" x:Name="BtnSongs" HorizontalAlignment="Left" Margin="127,68,0,0" VerticalAlignment="Top"  />
+        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="336,69,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="594,65,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="253,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.958,0.029"/>
+        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="509,169,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="548,320,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="274,314,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="84,310,0,0" VerticalAlignment="Top"/>
+
+
     </Grid>
 </Window>

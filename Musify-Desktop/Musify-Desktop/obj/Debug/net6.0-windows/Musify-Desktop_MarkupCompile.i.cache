@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\App.xaml
-3-1650901440
+51347693927
 
-8-476834212
+10-634567808
 2451894770957
-Admin.xaml;MainWindow.xaml;ReportPage.xaml;
+Admin.xaml;AdminSongxaml.xaml;MainWindow.xaml;ReportPage.xaml;Song.xaml;
 
 True
 
