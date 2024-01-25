@@ -61,6 +61,21 @@ namespace MusiFy_Lib
                 return false;
             }
         }
+        public async Task<bool> SendPostRequestAsync(string dataJson)
+        {
+            try
+            {
+                var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(apiGetURL, content);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción y, por ejemplo, registrarla en un archivo de log
+                Debug.WriteLine($"Error en SendPostRequestAsync: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
 

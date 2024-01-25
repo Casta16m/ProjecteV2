@@ -34,9 +34,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <MusiFy_Library:ButtonCreate HorizontalAlignment="Left" Margin="444,208,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonDelete HorizontalAlignment="Left" Margin="543,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,0.528" Click="btDeleteSongClick"/>
-        <MusiFy_Library:ButtonEdit HorizontalAlignment="Left" Margin="619,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,-1.774" Click="btUpdateSongClick" />
+        <MusiFy_Library:ButtonCreate HorizontalAlignment="Left" Margin="438,227,0,0" VerticalAlignment="Top" Click="btCreateSongClick"/>
+        <MusiFy_Library:ButtonDelete HorizontalAlignment="Left" Margin="540,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,0.528" Click="btDeleteSongClick"/>
+        <MusiFy_Library:ButtonEdit HorizontalAlignment="Left" Margin="618,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,-1.774" Click="btUpdateSongClick" />
 
     </Grid>
 </Window>

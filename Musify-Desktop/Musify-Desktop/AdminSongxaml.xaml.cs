@@ -45,6 +45,60 @@ namespace Musify_Desktop
             }
 
         }
+        private async void btCreateSongClick(object sender, RoutedEventArgs e)
+        {
+            try {
+                var uid = txtUID.Text;
+                string url = $"http://172.23.1.231:1443/api/Song/";
+                Reports rep = new Reports();
+
+                Songs songToUpdate = new Songs();
+
+                Guid UID;
+                if (Guid.TryParse(txtUID.Text, out UID))
+                {
+                    songToUpdate.UID = UID.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, introduce una UID válida.");
+                }
+                songToUpdate.NomSong = txtNomcanço.Text;
+                songToUpdate.SongOriginal = txtCançoOriginal.Text;
+                songToUpdate.Genere = txtGenere.Text;
+
+                songToUpdate.data = DateTime.Now;
+                Songs song = new Songs
+                {
+                    NomSong = songToUpdate.NomSong,
+                    SongOriginal = songToUpdate.SongOriginal,
+                    Genere = songToUpdate.Genere,
+
+                };
+                string jsonData = JsonConvert.SerializeObject(songToUpdate);
+
+
+                bool success = await rep.CreateData(url, jsonData);
+                if (success == true)
+                {
+                    // El objeto se actualizó correctamente
+                }
+                else
+                {
+                    // Hubo un error al actualizar el objeto
+                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción y mostrar un mensaje al usuario
+                MessageBox.Show($"Se produjo un error: {ex.Message}");
+            }
+
+        }
+
+
         private async void btDeleteSongClick(object sender, RoutedEventArgs e)
         {
             var uid = txtUID.Text;
@@ -95,7 +149,7 @@ namespace Musify_Desktop
 
                 };
                 string jsonData = JsonConvert.SerializeObject(songToUpdate);
-               
+
 
                 bool success = await rep.UpdateData(url, jsonData);
                 if (success == true)
@@ -105,7 +159,7 @@ namespace Musify_Desktop
                 else
                 {
                     // Hubo un error al actualizar el objeto
-                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo." );
+                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo.");
 
                 }
             }
