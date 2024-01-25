@@ -2,22 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="ButtonCreate.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Button.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ButtonAtribute.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ButtonClass.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ButtonDelete.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ButtonEdit.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="pdfSigner.xaml.cs">
@@ -25,22 +10,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ButtonCreate.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Button.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ButtonAtribute.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ButtonClass.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ButtonDelete.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ButtonEdit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pdfSigner.xaml">

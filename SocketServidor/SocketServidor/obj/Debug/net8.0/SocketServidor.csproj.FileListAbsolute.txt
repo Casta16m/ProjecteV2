@@ -571,3 +571,13 @@ C:\Users\sergi\GitHub\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\
 C:\Users\sergi\Downloads\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.dll
 C:\Users\sergi\Downloads\SocketServidor\SocketServidor\obj\Debug\net8.0\refint\SocketServidor.dll
 C:\Users\sergi\Downloads\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.pdb
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.csproj.IkvmFrameworkReference.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.csproj.AssemblyReference.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.AssemblyInfoInputs.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.AssemblyInfo.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.csproj.CoreCompileInputs.cache
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.sourcelink.json
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.dll
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\refint\SocketServidor.dll
+C:\Users\luisr\Documents\Musify\ProjecteV2\SocketServidor\SocketServidor\obj\Debug\net8.0\SocketServidor.pdb

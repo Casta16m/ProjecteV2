@@ -8,17 +8,31 @@
         mc:Ignorable="d"
         Title="Admin" Height="450" Width="800"
         Background="#091227" >
-    <Grid>
-        <Label Content="Admin" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
-        <MusiFy_Library:ButtonClass Click="BtnSongs_Click" x:Name="BtnSongs" HorizontalAlignment="Left" Margin="127,68,0,0" VerticalAlignment="Top"  />
-        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="336,69,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="594,65,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="253,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.958,0.029"/>
-        <MusiFy_Library:ButtonClass HorizontalAlignment="Left" Margin="509,169,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="548,320,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="274,314,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonAtribute HorizontalAlignment="Left" Margin="84,310,0,0" VerticalAlignment="Top"/>
 
 
-    </Grid>
+    <Viewbox>
+        <Grid>
+            <Label Content="Admin" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
+
+            <StackPanel Width="750" Height="80"  Margin="30, 103,20,261" Orientation="Horizontal">
+                <MusiFy_Library:Button  x:Name="songButton" Click="BtnSongs_Click" ImageSize="50" BotonBackground="#9DADD4"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="130" WidthGridImage="100"  TextSize="30" Text="Songs" />
+                <MusiFy_Library:Button x:Name="artistButton" ImageSize="50" BotonBackground="#9DADD4"  VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="180" WidthGridImage="100" TextSize="30" Text="Artistes" />
+                <MusiFy_Library:Button x:Name="instrumentButton" ImageSize="50" BotonBackground="#9DADD4"  VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="100"   TextSize="25" Text="Instruments" />
+            </StackPanel>
+
+            <StackPanel Margin="0, 90, 0, 0" Width="500" Height="100" Orientation="Horizontal">
+                <MusiFy_Library:Button x:Name="groupButton" BotonBackground="#9DADD4"  ImageSize="50"  VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="100" TextSize="30" Text="Grup" />
+                <MusiFy_Library:Button x:Name="extensionButton" BotonBackground="#9DADD4"  ImageSize="50"  VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="180" WidthGridImage="100" TextSize="30" Text="Extensio" />
+            </StackPanel>
+           
+            <StackPanel Width="750" Height="100" VerticalAlignment="Bottom" Margin="0, 0 ,0 ,20" Orientation="Horizontal">
+                <MusiFy_Library:Button  x:Name="participaButton" BotonBackground="#5CE9BD" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="130" WidthGridImage="100"  TextSize="30" Text="Participa" />
+                <MusiFy_Library:Button x:Name="artistGroupButton" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="90" TextSize="30" Text="ArtistaGrup" />
+                <MusiFy_Library:Button x:Name="songAlbumbutton" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="100"   TextSize="25" Text="SongAlbum" />
+            </StackPanel>
+
+
+        </Grid>
+    </Viewbox>
+   
 </Window>

@@ -4,17 +4,25 @@
 library
 C#
 .cs
-C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\
 MusiFy_Library
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
+<<<<<<< Updated upstream
 71694861734
 
 10-1773345348
 244-348371781
 Button.xaml;ButtonAtribute.xaml;ButtonClass.xaml;ButtonCreate.xaml;ButtonDelete.xaml;ButtonEdit.xaml;pdfSigner.xaml;
+=======
+3-322650357
+
+6-1705579544
+24410912818
+Button.xaml;pdfSigner.xaml;UpdateSongs.xaml;
+>>>>>>> Stashed changes
 
 False
 

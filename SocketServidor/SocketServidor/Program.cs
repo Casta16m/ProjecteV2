@@ -91,7 +91,7 @@ class Program
                 // Crear el PDF
                 var pdfName = Console.ReadLine(); // No ser com acabar-ho de fer perquè no convenç fer-ho així
                 List<string> list = new List<string>(); // Aquesta està malament perquè serà el que em retornar-ha la api
-                byte[] pdfCreated = CreatePDF.createpdf(list, pdfName);
+              //  byte[] pdfCreated = CreatePDF.createpdf(list, pdfName);
                 Console.WriteLine("PDF created.\n");
 
                 // Generar la clau AES
@@ -106,7 +106,7 @@ class Program
 
                 // Encriptar PDF
                 RSA RSAKey = EncryptPDF.ConvertParametersToRsa(RSAParameterKey);
-                byte[] EncryptedPDF = EncryptPDF.encryptPDF(pdfCreated, RSAKey);
+                //byte[] EncryptedPDF = EncryptPDF.encryptPDF(pdfCreated, RSAKey);
                 Console.WriteLine("PDF encrypted.");
 
 

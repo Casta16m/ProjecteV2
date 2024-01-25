@@ -27,6 +27,8 @@ namespace MusiFy_Library
     public partial class Button : UserControl
     {
 
+        public static readonly DependencyProperty BotonBackgroundProperty =
+        DependencyProperty.Register("BotonBackground", typeof(Brush), typeof(Button), new PropertyMetadata(Brushes.Transparent));
 
 
         /// <summary>
@@ -55,7 +57,20 @@ namespace MusiFy_Library
             get { return ButtonNameSpace.ColumnDefinitions[1].Width; }
             set { ButtonNameSpace.ColumnDefinitions[1].Width = value; }
         }
-       
+
+        public GridLength WidthGridImage
+        {
+            get { return ButtonNameSpace.ColumnDefinitions[0].Width; }
+            set { ButtonNameSpace.ColumnDefinitions[0].Width = value; }
+        }
+
+
+        public Brush BotonBackground
+        {
+            get { return (Brush)GetValue(BotonBackgroundProperty); }
+            set { SetValue(BotonBackgroundProperty, value); }
+        }
+
 
 
         /// <summary>
@@ -103,6 +118,13 @@ namespace MusiFy_Library
             set { ButtonImage.Source = value; }
         }
 
+
+
+        public int MarginName
+        {
+            get { return (int)ButtonName.Margin.Left; }
+            set { ButtonName.Margin = new Thickness(value); }
+        }
 
 
 

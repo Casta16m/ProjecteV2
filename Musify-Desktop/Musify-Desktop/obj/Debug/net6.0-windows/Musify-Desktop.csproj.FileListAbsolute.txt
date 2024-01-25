@@ -2514,3 +2514,9 @@ C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Deskt
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Song.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\AdminSongxaml.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Song.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Admin.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\AdminSongxaml.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Song.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Admin.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\AdminSongxaml.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Song.baml

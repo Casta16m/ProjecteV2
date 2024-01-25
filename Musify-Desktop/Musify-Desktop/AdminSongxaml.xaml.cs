@@ -40,7 +40,7 @@ namespace Musify_Desktop
             if (song != null)
             {
                 txtNomcanço.Text = song.NomSong;
-                txtCançoOriginal.Text = song.SongOriginal;
+               // txtCançoOriginal.Text = song.SongOriginal;
                 txtGenere.Text = song.Genere;
             }
 
@@ -83,7 +83,7 @@ namespace Musify_Desktop
 
                 songToUpdate.UID = txtUID.Text;
                 songToUpdate.NomSong = txtNomcanço.Text;
-                songToUpdate.SongOriginal = txtCançoOriginal.Text;
+               // songToUpdate.SongOriginal = txtCançoOriginal.Text;
                 songToUpdate.Genere = txtGenere.Text;
 
                 songToUpdate.data = DateTime.Now;

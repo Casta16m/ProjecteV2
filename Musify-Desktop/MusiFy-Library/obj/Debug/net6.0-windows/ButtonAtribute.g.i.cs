@@ -61,7 +61,7 @@ namespace MusiFy_Library {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MusiFy-Library;component/buttonatribute.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MusiFy-Library;V1.0.0.0;component/buttonatribute.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ButtonAtribute.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

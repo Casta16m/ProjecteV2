@@ -1,5 +1,6 @@
 ﻿using com.sun.security.ntlm;
 using java.lang;
+using MusiFy_Library;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,6 +28,17 @@ namespace Musify_Desktop
         public Admin()
         {
             InitializeComponent();
+
+            
+            SetButtonImage(songButton);
+            SetButtonImage(artistButton);
+            SetButtonImage(instrumentButton);
+            SetButtonImage(groupButton);
+            SetButtonImage(extensionButton);
+            SetButtonImage(participaButton);
+            SetButtonImage(artistGroupButton);
+            SetButtonImage(songAlbumbutton);
+            
         }
 
        private void BtnSongs_Click(object sender, RoutedEventArgs e)
@@ -33,5 +46,11 @@ namespace Musify_Desktop
             AdminSongxaml adminSong = new AdminSongxaml();
             adminSong.Show();
         }
+
+        private void SetButtonImage(MusiFy_Library.Button button)
+        {
+            button.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/tendencia.png", UriKind.Absolute));
+        }
+
     }
 }

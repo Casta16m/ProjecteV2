@@ -1554,3 +1554,5 @@ C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Libra
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonCreate.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonDelete.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\ButtonEdit.baml
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\UpdateSongs.g.cs
+C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\MusiFy-Library\obj\Debug\net6.0-windows\UpdateSongs.baml

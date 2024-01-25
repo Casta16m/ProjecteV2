@@ -7,18 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-
-
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate x:Name="corner" TargetType="Button">
-                        <Border  Background="#9DADD4" Opacity="0.7"
-			 BorderBrush="{TemplateBinding BorderBrush}"
-			 BorderThickness="{TemplateBinding BorderThickness}"
-			 CornerRadius="9">
-
-                            <ContentPresenter  HorizontalAlignment="Left" Margin="20, 0, 0, 0" VerticalAlignment="Center"/>
+                        <Border x:Name="bgColor"  Background="{Binding BotonBackground, RelativeSource={RelativeSource AncestorType=UserControl}}" Opacity="0.9"
+		                    BorderBrush="{TemplateBinding BorderBrush}"
+		                    BorderThickness="{TemplateBinding BorderThickness}"
+		                    CornerRadius="9">
+                            <ContentPresenter   HorizontalAlignment="Left" Margin="20, 0, 0, 0" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -27,19 +24,20 @@
     </UserControl.Resources>
 
 
+
     <Grid>
-        <Button  MouseEnter="myButton_MouseEnter" MouseLeave="myButton_MouseLeave" Cursor="Hand"  x:Name="btn_glb" Margin="10px"   Foreground="White" FontSize="25px" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center"  Height="100" Width="300">
+        <Button   MouseEnter="myButton_MouseEnter" MouseLeave="myButton_MouseLeave" Cursor="Hand"  x:Name="btn_glb" Margin="10px"   Foreground="White" FontSize="25px" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center"  Height="100" Width="300">
             <Button.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1" CenterX="1" CenterY="1" />
             </Button.RenderTransform>
             <ContentControl>
-                <Grid Width="270" Name="ButtonNameSpace" Height="100"  VerticalAlignment="Center">
+                <Grid Width="290" Name="ButtonNameSpace" Height="100"  VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition  Width="70"></ColumnDefinition>
+                        <ColumnDefinition  Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="ButtonName" VerticalAlignment="Center" TextAlignment="Center" Text="Informes" FontSize="40px" Grid.Column="1" Foreground="White" />
-                    <Image x:Name="ButtonImage" Width="40" Grid.Column="0"/>
+                    <TextBlock  x:Name="ButtonName" VerticalAlignment="Center" TextAlignment="Center"  Text="Informes" FontSize="40px" Grid.Column="1" Foreground="White" />
+                    <Image x:Name="ButtonImage" Width="70" Grid.Column="0"/>
                 </Grid>
             </ContentControl>
         </Button>
