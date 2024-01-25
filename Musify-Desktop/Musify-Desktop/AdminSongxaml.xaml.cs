@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,32 @@ namespace Musify_Desktop
             }
 
         }
+        private async void btDeleteSongClick(object sender, RoutedEventArgs e)
+        {
+            var uid = txtUID.Text;
+            string url = $"http://172.23.1.231:1443/api/Song/{uid}";
+            Reports rep = new Reports();
+            Songs songToUpdate = new Songs();
+
+            songToUpdate.UID = txtUID.Text;
+
+            try
+            {
+                bool success = await rep.DeleteData(url);
+                if (success)
+                {
+                    MessageBox.Show("Canción borrada con éxito.");
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al borrar la canción.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Se produjo un error al borrar la canción: {ex.Message}");
+            }
+        }
         private async void btUpdateSongClick(object sender, RoutedEventArgs e)
         {
             try
@@ -58,6 +85,8 @@ namespace Musify_Desktop
                 songToUpdate.NomSong = txtNomcanço.Text;
                 songToUpdate.SongOriginal = txtCançoOriginal.Text;
                 songToUpdate.Genere = txtGenere.Text;
+
+                songToUpdate.data = DateTime.Now;
                 Songs song = new Songs
                 {
                     NomSong = songToUpdate.NomSong,
@@ -104,6 +133,10 @@ namespace Musify_Desktop
             }
         }
 
+        private void lvSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

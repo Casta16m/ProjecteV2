@@ -64,6 +64,30 @@ namespace MusiFy_Lib
                 return false;
             }
         }
+        public async Task<bool> DeleteData(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.DeleteAsync(url);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode}");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception in DeleteData: {ex.Message}");
+                    return false;
+                }
+            }
+        }
 
 
 
@@ -104,7 +128,7 @@ namespace MusiFy_Lib
     public class Songs
     {
         public string UID { get; set; }
-        public string? data { get; set; }
+        public DateTime? data { get; set; }
         public string? NomSong { get; set; }
         public object? SongObj { get; set; }
         public string? SongOriginal { get; set; }
