@@ -89,5 +89,26 @@ namespace DBSql.Controller
         }
         return Ok(llista2);
     }
+    [HttpPut("DeleteLlistaSong/{NomLlista}/{MAC}/{UID}")]
+    public async Task<string> DeleteSongLlista(string NomLlista, string MAC, string UID)
+    {
+        var llista = await _llistaService.DeleteLlistaSong(NomLlista, MAC, UID);
+        if (llista == null)
+        {
+            return "no existeix la llista";
+        }
+        else if (llista == "no existeix la canço")
+        {
+            return "no existeix la canço";
+        }
+        else if (llista == "no existeix la ID_MAC")
+        {
+            return "no existeix la ID_MAC";
+        }
+        else
+        {
+            return "okay";
+        }
     }
+}
 }

@@ -73,12 +73,9 @@ namespace ProjecteV2.ApiSql{
         if(llista.ID_MAC == ID_MAC1.ID_MAC)
         {
             llista.songs.Add(song);
-            song.llista.Add(llista);
             _context.Entry(llista).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return "okay";
-
         }
         else
         {
@@ -104,7 +101,31 @@ namespace ProjecteV2.ApiSql{
             }
             return llista;
         }
+        public async Task <string> DeleteLlistaSong(string NomLlista, string MAC, string UID)
+        {
+            var llista = await _context.Llista.Include(a => a.songs).Where(a => a.Nom.Contains(NomLlista)).Where(a=> a.ID_MAC.Contains(MAC)).FirstOrDefaultAsync();
+            if (llista == null)
+            {
+                return "no existeix la llista";
+            }
+            var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == UID);
+            if (song == null)
+            {
+                return "no existeix la canço";
+            }
+            if(llista.ID_MAC == MAC)
+            {
+                llista.songs.Remove(song);
+                _context.Entry(llista).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return "okay";
+            }
+            else
+            {
+                return null;
+            }
 
+        }
         private bool LlistaExists(string id)
         {
             return _context.Llista.Any(e => e.Nom == id);

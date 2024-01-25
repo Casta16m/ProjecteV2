@@ -45,7 +45,7 @@ namespace DBSql.Controller
 
         // GET: api/Song/BuscarNom/5
         [HttpGet("BuscarNom/{nom}")]
-        public async Task<ActionResult<IEnumerable<Song>>> GetNomSong(string nom)
+        public async Task<List<Song>> GetNomSong(string nom)
         {
             var song = await _songService.GetSong(nom);
             return song;
@@ -59,10 +59,10 @@ namespace DBSql.Controller
         }
         // POST: api/Song
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Song>> PostSong(Song song)
+        [HttpPost("crearSong/{NomExtensio}")]
+        public async Task<ActionResult<Song>> PostSong(Song song, string NomExtensio)
         {                
-            var song2 = await _songService.PostSong(song.UID, song);
+            var song2 = await _songService.PostSong(song, NomExtensio);
             if (song2 == null)
             {
                 return BadRequest();
@@ -75,10 +75,20 @@ namespace DBSql.Controller
             var song2 = await _songService.PutSong(song);
             if (song2 == null)
             {
-                return BadRequest();
+                return StatusCode(412);
             }
             return Ok(song2);
 
+        }
+        [HttpDelete("{UID}")]
+        public async Task<ActionResult<Song>> DeleteSong(string UID)
+        {
+            var song = await _songService.DeleteSong(UID);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            return Ok(song);
         }
 
     }

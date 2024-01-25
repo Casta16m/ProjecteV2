@@ -7,8 +7,8 @@ namespace ProjecteV2.ApiSql.Services{
         public SongService(DataContext context){
             _context = context;
         }
-        public async Task<Song> GetSongEspecifica(string UID){
-            var song = await _context.Songs.Include(a => a.album).FirstOrDefaultAsync(a => a.UID == UID);
+        public async Task <List<Song>> GetSongEspecifica(string UID){
+            var song = await _context.Songs.Include(a => a.album).Include(a => a.extensio).Where(a => a.UID == UID).ToListAsync();
 
             if (song == null)
             {
@@ -20,7 +20,7 @@ namespace ProjecteV2.ApiSql.Services{
         
         public async Task<List<Song>> GetSong(string nom)
         {
-            var song = await _context.Songs.Include(a=> a.album).Where(a => a.NomSong.Contains(nom)).ToListAsync();
+            var song = await _context.Songs.Include(a=> a.album).Include(a=> a.extensio).Where(a => a.NomSong.Contains(nom)).ToListAsync();
 
             if (song == null)
             {
@@ -53,39 +53,61 @@ public async Task<Song> GetSongWithList(string id)
 
             return song;
         }
-        public async Task<Song>PostSong(string id, Song song){
-            song.data = DateTime.Now;
-            _context.Songs.Add(song);
+        public async Task<Song>PostSong(Song song, string NomExtensio){
+            
+            Extensio extensio = new Extensio();
+            var extensio2 = await _context.Extensio.FindAsync(NomExtensio);
+            extensio.NomExtensio = NomExtensio;
+            if(extensio2 == null){
+                _context.Extensio.Add(extensio);
+                extensio.songs.Add(song);
+                song.extensio.Add(extensio);
+            }
+            else{
+                extensio2.songs.Add(song);
+                song.extensio.Add(extensio2);
+            }
             try
             {
-                await _context.SaveChangesAsync();
+                song.data = DateTime.Now;
+                _context.Songs.Add(song);
             }
             catch (DbUpdateException)
             {
-                if (SongExists(song.NomSong, _context))
+                if (SongExists(song.UID))
                 {
+                    await _context.SaveChangesAsync();
                     return null;
+                }
+                else if (!ExtensioExists(extensio2.NomExtensio))
+                {
+                    _context.Songs.Add(song);
+
+                    await _context.SaveChangesAsync();
+                    return song;
                 }
                 else
                 {
                     throw;
                 }
             }
+            await _context.SaveChangesAsync();
 
             return song;
 
         }
         public async Task<string> PutSong(Song song){
             _context.Entry(song).State = EntityState.Modified;
+
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SongExists(song.UID, _context))
+                if (!SongExists(song.UID))
                 {
-                    return null;
+                    return "No existeix";
                 }
                 else
                 {
@@ -93,13 +115,32 @@ public async Task<Song> GetSongWithList(string id)
                 }
             }
 
-            return "Okay";
-        }
+            return "Modificat";
+        }    
+        public async Task<string> DeleteSong(string id)
+        {
+            var song = await _context.Songs.FindAsync(id);
+            if (song == null)
+            {
+                return "No existeix";
+            }
 
-                
-        private bool SongExists(string id, DataContext _context)
+            _context.Songs.Remove(song);
+            await _context.SaveChangesAsync();
+
+            return "Eliminat";
+        }            
+        private bool SongExists(string id)
         {
             return _context.Songs.Any(e => e.UID == id);
+        }
+        private bool ExtensioExists(string id)
+        {
+            return _context.Extensio.Any(e => e.NomExtensio == id);
+        }
+        public bool DoesExtensionExist(List<Extensio> extensions, string extensionName)
+        {
+            return extensions.Any(e => e.NomExtensio == extensionName);
         }
     }
 }

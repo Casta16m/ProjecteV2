@@ -17,7 +17,7 @@ namespace ProjecteV2.ApiSql.Services{
             
             return song;
         }
-        public async Task <Participa> PutParticipaGeneral(Participa participa){
+         public async Task <Participa> PutParticipaGeneral(Participa participa){
             _context.Entry(participa).State = EntityState.Modified;
             try
             {
@@ -35,7 +35,7 @@ namespace ProjecteV2.ApiSql.Services{
                 }
             }
             return participa;
-        }
+        } 
         public async Task <Participa> PostParticipa(Participa participa){
             ArtistaService artistaController = new ArtistaService(_context);
             GrupService grupController = new GrupService(_context);

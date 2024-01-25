@@ -30,19 +30,7 @@ namespace DBSql.Controller
             return await _context.Album.ToListAsync();
         }
 
-        // GET: api/Album/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Album>> GetAlbum(string id)
-        {
-            var album = await _context.Album.FindAsync(id);
 
-            if (album == null)
-            {
-                return NotFound();
-            }
-
-            return album;
-        }
 
         [HttpGet("BuscarNom/{album}/{data}")]
         public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album, DateTime data)
@@ -59,32 +47,14 @@ namespace DBSql.Controller
 
         // PUT: api/Album/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlbum(string id, Album album)
+        [HttpPut("modificarAlbum")]
+        public async Task<IActionResult> PutAlbum(Album album)
         {
-            if (id != album.NomAlbum)
+            var album2 = await _albumService.PutAlbum(album);
+            if (album2 == null)
             {
                 return BadRequest();
             }
-
-            _context.Entry(album).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlbumExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return NoContent();
         }
 
@@ -93,23 +63,11 @@ namespace DBSql.Controller
         [HttpPost]
         public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
-            _context.Album.Add(album);
-            try
+            var album2 = await _albumService.PostAlbum(album);
+            if (album2 == null)
             {
-                await _context.SaveChangesAsync();
+                return BadRequest();
             }
-            catch (DbUpdateException)
-            {
-                if (AlbumExists(album.NomAlbum))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return CreatedAtAction("GetAlbum", new { id = album.NomAlbum }, album);
         }
 
@@ -117,21 +75,30 @@ namespace DBSql.Controller
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlbum(string id)
         {
-            var album = await _context.Album.FindAsync(id);
+            var album = await _albumService.DeleteAlbum(id);
             if (album == null)
             {
                 return NotFound();
             }
-
-            _context.Album.Remove(album);
-            await _context.SaveChangesAsync();
-
             return NoContent();
         }
-
-        private bool AlbumExists(string id)
+        [HttpPut("AfegirSongAlbum/{NomAlbum}/{data}/{UID}")]
+        public async Task<ActionResult<Album>> AfegirSongAlbum(string NomAlbum, DateTime data, string UID)
         {
-            return _context.Album.Any(e => e.NomAlbum == id);
+            var album = await _albumService.AfegirSongAlbum(NomAlbum, data, UID);
+            if (album == null)
+            {
+                return BadRequest();
+            }
+            else if (album == "No existeix l'album")
+            {
+                return StatusCode(413);
+            }
+            else if (album == "No existeix la canço")
+            {
+                return StatusCode(412);
+            }
+            return Ok(album);
         }
     }
 }

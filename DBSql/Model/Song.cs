@@ -14,10 +14,10 @@ namespace ProjecteV2.ApiSql{
         [MaxLength(35)]
         public string? Genere { get; set; }
 
-        public ICollection<Album>? album { get; set; }
+        public ICollection<Album>? album { get; set; } = new List<Album>();
         public ICollection<Llista>? llista { get; set; }
         public ICollection<Participa>? participa { get; set; }
-        public ICollection<Extensio>? extensio { get; set; }
+        public ICollection<Extensio>? extensio { get; set; } =  new List<Extensio>();
         public ICollection<Song>? songs { get; set; }
     }
 }

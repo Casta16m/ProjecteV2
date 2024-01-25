@@ -45,50 +45,17 @@ namespace DBSql.Controller
             return Ok(artista);
         }
 
-
-        // GET: api/Artista/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Artista>> GetArtista(string id)
-        {
-            var artista = await _context.Artistes.FindAsync(id);
-
-            if (artista == null)
-            {
-                return NotFound();
-            }
-
-            return artista;
-        }
-
         // PUT: api/Artista/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtista(string id, Artista artista)
+        [HttpPut("modificarArtista")]
+        public async Task<IActionResult> PutArtista(Artista artista)
         {
-            if (id != artista.NomArtista)
+            var artista2 = await _artistaService.PutArtista(artista);
+            if (artista2 == null)
             {
                 return BadRequest();
             }
-
-            _context.Entry(artista).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArtistaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(artista2);
         }
 
         // POST: api/Artista
@@ -103,11 +70,17 @@ namespace DBSql.Controller
             }
             return StatusCode(201);
         }
-
-
-        public bool ArtistaExists(string id)
+        [HttpDelete("{nom}")]
+        public async Task<ActionResult<Artista>> DeleteArtista(string nom)
         {
-            return _context.Artistes.Any(e => e.NomArtista == id);
+            var artista = await _artistaService.DeleteArtista(nom);
+            if (artista == null)
+            {
+                return BadRequest();
+            }
+            return Ok(artista);
         }
+
+
     }
 }

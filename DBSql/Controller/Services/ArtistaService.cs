@@ -39,6 +39,41 @@ namespace ProjecteV2.ApiSql.Services{
 
             return "Okay";
         }
+        public async Task<Artista> PutArtista(Artista artista){
+
+
+            _context.Entry(artista).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ArtistaExists(artista.NomArtista))
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return artista;
+        }
+        public async Task<Artista> DeleteArtista(string id){
+            var artista = await _context.Artistes.FindAsync(id);
+            if (artista == null)
+            {
+                return null;
+            }
+
+            _context.Artistes.Remove(artista);
+            await _context.SaveChangesAsync();
+
+            return artista;
+        }
         public bool ArtistaExists(string id)
         {
             return _context.Artistes.Any(e => e.NomArtista == id);
