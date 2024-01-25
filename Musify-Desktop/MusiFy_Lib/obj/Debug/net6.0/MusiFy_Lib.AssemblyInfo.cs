@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MusiFy_Lib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cc7ebe1f1d9b3f10b58d971ec753cb4f5145af5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e33effcb556f99ac06624d26e5514529314a1a6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MusiFy_Lib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MusiFy_Lib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

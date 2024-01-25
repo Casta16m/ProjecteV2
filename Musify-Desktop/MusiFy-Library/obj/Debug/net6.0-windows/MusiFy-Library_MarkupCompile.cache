@@ -10,19 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
-<<<<<<< Updated upstream
-71694861734
+2743693855
 
-10-1773345348
-244-348371781
-Button.xaml;ButtonAtribute.xaml;ButtonClass.xaml;ButtonCreate.xaml;ButtonDelete.xaml;ButtonEdit.xaml;pdfSigner.xaml;
-=======
-3-322650357
-
-6-1705579544
+5-1066338316
 24410912818
-Button.xaml;pdfSigner.xaml;UpdateSongs.xaml;
->>>>>>> Stashed changes
+Button.xaml;pdfSigner.xaml;
 
 False
 

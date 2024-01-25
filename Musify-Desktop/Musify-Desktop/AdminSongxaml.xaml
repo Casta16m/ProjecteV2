@@ -8,35 +8,50 @@
         mc:Ignorable="d"
         Title="AdminSongxaml" Height="450" Width="800"
         Background="#091227">
+
+
+
     <Grid>
-        <Label Content="Songs" HorizontalAlignment="Left" Margin="44,54,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
-        <Label Content="UID" Canvas.Left="20" Canvas.Top="79" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="478,21,0,0"/>
-        <TextBox x:Name="txtUID" Canvas.Left="112" TextWrapping="Wrap" Canvas.Top="83" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525,23,0,0" />
-        <Label Content="Canço Original" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="434,70,0,0"/>
-        <TextBox x:Name="txtCançoOriginal" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="540,74,0,0" />
-        <Label Content="Genere" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="464,112,0,0"/>
-        <TextBox x:Name="txtGenere" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="537,114,0,0" />
-        <Label Content="Nom Canço" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="452,141,0,0"/>
-        <TextBox x:Name="txtNomcanço" TextWrapping="Wrap" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="535,146,0,0" />
-        <ListView x:Name="lvSongs" Margin="5,112,411,15" RenderTransformOrigin="0.5,0.5" SelectionChanged="lvSongs_SelectionChanged">
-            <ListView.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0.608"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="1.789"/>
-                </TransformGroup>
-            </ListView.RenderTransform>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="UID" DisplayMemberBinding="{Binding UID}" />
-                    <GridViewColumn Header="Nom canço" DisplayMemberBinding="{Binding NomSong}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <MusiFy_Library:ButtonCreate HorizontalAlignment="Left" Margin="438,227,0,0" VerticalAlignment="Top" Click="btCreateSongClick"/>
-        <MusiFy_Library:ButtonDelete HorizontalAlignment="Left" Margin="540,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,0.528" Click="btDeleteSongClick"/>
-        <MusiFy_Library:ButtonEdit HorizontalAlignment="Left" Margin="618,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,-1.774" Click="btUpdateSongClick" />
+        <Label FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center"> MusiFy</Label>
+        <StackPanel Width="300" Margin="81,24,0,10" HorizontalAlignment="Left" Height="400">
+            <Label Content="Songs" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
+            <ListView x:Name="lvSongs" Height="300"  Width="250" HorizontalAlignment="Left" Margin="20, 0,0 ,0" RenderTransformOrigin="0.5,0.5" SelectionChanged="lvSongs_SelectionChanged">
+                <ListView.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.608"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="1.789"/>
+                    </TransformGroup>
+                </ListView.RenderTransform>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="UID" DisplayMemberBinding="{Binding UID}" />
+                        <GridViewColumn Header="Nom canço" DisplayMemberBinding="{Binding NomSong}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+
+
+
+        <Canvas Width="170" HorizontalAlignment="Left" Margin="515,52,0,172" Height="210" >
+            <Label Content="UID" Canvas.Left="5" Canvas.Top="15" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="txtUID" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="40" Width="150"/>
+            <Label Content="Canço Original" Canvas.Top="60" Canvas.Left="5" FontWeight="Bold" Foreground="White" />
+            <TextBox x:Name="txtCançoOriginal" TextWrapping="Wrap" Width="150" Canvas.Left="10" Canvas.Top="85" />
+            <Label Content="Genere" Foreground="White" Canvas.Top="105" Canvas.Left="5" FontWeight="Bold"/>
+            <TextBox x:Name="txtGenere" TextWrapping="Wrap" Width="150" Canvas.Top="130" Canvas.Left="10" />
+            <Label Content="Nom Canço" Foreground="White" Canvas.Top="150" Canvas.Left="5" FontWeight="Bold" />
+            <TextBox x:Name="txtNomcanço" TextWrapping="Wrap" Width="150" Canvas.Top="175" Canvas.Left="10" />
+        </Canvas>
+        <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#5FE95C"  WidthGridImage="0" Text="Create" HeightButton="60" Margin="450,262,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#00FFF0"  WidthGridImage="0" Text="Edit" HeightButton="60" Margin="600,262,0,0" VerticalAlignment="Top"/>
+        <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#FF0000"  WidthGridImage="0" Text="Delete" HeightButton="60" Margin="525,342,0,0" VerticalAlignment="Top"/>
+
+
+
 
     </Grid>
 </Window>
