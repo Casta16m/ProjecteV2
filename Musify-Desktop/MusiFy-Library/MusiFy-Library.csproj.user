@@ -23,9 +23,6 @@
     <Compile Update="pdfSigner.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UpdateSongs.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ButtonCreate.xaml">
@@ -47,9 +44,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pdfSigner.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UpdateSongs.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

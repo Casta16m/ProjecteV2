@@ -47,13 +47,22 @@ namespace MusiFy_Lib
 
             return data;
         }
-        public async Task<bool> UpdateData<T>(string apiUrl, T data)
+        public async Task<bool> UpdateData(string apiUrl, string data)
         {
-            MusiFyApi apiCall = new MusiFyApi(apiUrl);
-            string dataJson = JsonSerializer.Serialize(data);
-            bool success = await apiCall.SendPutRequestAsync(dataJson);
+            try
+            {
+                MusiFyApi apiCall = new MusiFyApi(apiUrl);
+                
+                bool success = await apiCall.SendPutRequestAsync(data);
 
-            return success;
+                return success;
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción, por ejemplo, imprimiendo el mensaje de error
+                Console.WriteLine($"Ocurrió un error al actualizar los datos: {ex.Message}");
+                return false;
+            }
         }
 
 

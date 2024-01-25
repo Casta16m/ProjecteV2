@@ -1,4 +1,5 @@
 ﻿using MusiFy_Lib;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,21 +63,24 @@ namespace Musify_Desktop
                     NomSong = songToUpdate.NomSong,
                     SongOriginal = songToUpdate.SongOriginal,
                     Genere = songToUpdate.Genere,
-                };
 
-                bool success = await rep.UpdateData<Songs>(url, songToUpdate);
-                if (success)
+                };
+                string jsonData = JsonConvert.SerializeObject(songToUpdate);
+               
+
+                bool success = await rep.UpdateData(url, jsonData);
+                if (success == true)
                 {
                     // El objeto se actualizó correctamente
                 }
                 else
                 {
                     // Hubo un error al actualizar el objeto
-                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo.");
+                    MessageBox.Show("Hubo un error al actualizar la canción. Por favor, inténtalo de nuevo." );
 
                 }
             }
-            catch (java.lang.Exception ex)
+            catch (Exception ex)
             {
                 // Aquí puedes manejar la excepción y mostrar un mensaje al usuario
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
