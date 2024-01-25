@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Data;
+using javax.xml.crypto;
 namespace MusiFy_Lib
 {
     public class Reports
@@ -86,6 +87,23 @@ namespace MusiFy_Lib
                     Console.WriteLine($"Exception in DeleteData: {ex.Message}");
                     return false;
                 }
+            }
+        }
+        public async Task<bool>CreateData(string apiurl, string data)
+        {
+            try
+            {
+                MusiFyApi apiCall = new MusiFyApi(apiurl);
+
+                bool success = await apiCall.SendPostRequestAsync(data);
+
+                return success;
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción, por ejemplo, imprimiendo el mensaje de error
+                Console.WriteLine($"Ocurrió un error al actualizar los datos: {ex.Message}");
+                return false;
             }
         }
 

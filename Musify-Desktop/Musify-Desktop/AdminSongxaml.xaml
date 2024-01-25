@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="AdminSongxaml" Height="450" Width="800"
         Background="#091227">
-<<<<<<< Updated upstream
     <Grid>
         <Label Content="Songs" HorizontalAlignment="Left" Margin="44,54,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
         <Label Content="UID" Canvas.Left="20" Canvas.Top="79" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="478,21,0,0"/>
@@ -35,57 +34,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <MusiFy_Library:ButtonCreate HorizontalAlignment="Left" Margin="444,208,0,0" VerticalAlignment="Top"/>
-        <MusiFy_Library:ButtonDelete HorizontalAlignment="Left" Margin="543,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,0.528" Click="btDeleteSongClick"/>
-        <MusiFy_Library:ButtonEdit HorizontalAlignment="Left" Margin="619,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,-1.774" Click="btUpdateSongClick" />
-=======
->>>>>>> Stashed changes
+        <MusiFy_Library:ButtonCreate HorizontalAlignment="Left" Margin="438,227,0,0" VerticalAlignment="Top" Click="btCreateSongClick"/>
+        <MusiFy_Library:ButtonDelete HorizontalAlignment="Left" Margin="540,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,0.528" Click="btDeleteSongClick"/>
+        <MusiFy_Library:ButtonEdit HorizontalAlignment="Left" Margin="618,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.798,-1.774" Click="btUpdateSongClick" />
 
-
-    <Viewbox>
-        <Grid>
-
-            <StackPanel Height="400" VerticalAlignment="Bottom" Width="350" HorizontalAlignment="Left" Margin="0,0,0,20">
-                <Label Content="Songs" HorizontalAlignment="Left" Margin="60,15,0,20" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="30" FontFamily="Poppins" FontWeight="DemiBold"/>
-                <ListView  x:Name="lvSongs" Height="300" Width="220" RenderTransformOrigin="0.5,0.5">
-                    <ListView.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleX="0.608"/>
-                            <RotateTransform/>
-                            <TranslateTransform X="1.789"/>
-                        </TransformGroup>
-                    </ListView.RenderTransform>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="UID" DisplayMemberBinding="{Binding UID}" />
-                            <GridViewColumn Header="Nom canço" DisplayMemberBinding="{Binding NomSong}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </StackPanel>
-
-
-
-            <Canvas Width="200" Margin="457,69,0,165" Height="200" HorizontalAlignment="Left">
-                <Label Content="UID" Canvas.Left="5" Canvas.Top="3" Foreground="White"  FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <TextBox x:Name="txtUID" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="30" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top"  />
-                <Label Content="Genere" Foreground="White" Canvas.Top="100" Canvas.Left="5" FontSize="15" FontWeight="Bold" />
-                <TextBox x:Name="txtGenere" TextWrapping="Wrap" Width="180" Canvas.Top="130" Canvas.Left="10" />
-                <Label Content="Nom" Canvas.Left="5" FontWeight="Bold" FontSize="15" Foreground="White" Canvas.Top="50"/>
-                <TextBox x:Name="txtNomcanço" TextWrapping="Wrap" Width="180" Canvas.Top="76" Canvas.Left="10"/>
-            </Canvas>
-            <MusiFy_Library:Button x:Name="createButton" BotonBackground="#5FE95C"   WidthButton="130" HeightButton="50" WidthGrid="270" WidthGridImage="0"   TextSize="30" Text="Create" Margin="380,250,261,104" />
-            <MusiFy_Library:Button x:Name="editButton" BotonBackground="#00FFF0"   WidthButton="130" HeightButton="50" WidthGrid="270" WidthGridImage="0"  TextSize="30" Text="Edit" Margin="578,250,63,104" />
-            <MusiFy_Library:Button x:Name="deleteButton" BotonBackground="#FF0000"   WidthButton="130" HeightButton="50" WidthGrid="270" WidthGridImage="0"  TextSize="30" Text="Delete" Margin="493,330,143,24" />
-
-
-
-
-
-
-
-        </Grid>
-    </Viewbox>
-    
+    </Grid>
 </Window>
