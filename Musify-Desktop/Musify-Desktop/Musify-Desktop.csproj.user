@@ -7,7 +7,28 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AdminSongxaml.xaml.cs">
+    <Compile Update="Administrator\AdminArtistaGrup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminArtists.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminExtensio.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminGrup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminInstrument.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminParticipa.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminSongAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Administrator\AdminSongxaml.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ReportPage.xaml.cs">
@@ -15,7 +36,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AdminSongxaml.xaml">
+    <Page Update="Administrator\AdminArtistaGrup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminArtists.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminExtensio.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminGrup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminInstrument.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminParticipa.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminSongAlbum.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminSongxaml.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

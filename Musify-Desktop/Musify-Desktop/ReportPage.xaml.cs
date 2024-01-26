@@ -53,7 +53,7 @@ namespace Musify_Desktop
                 button.HeightButton = 40;
                 button.TextSize= 20;
                 button.Text= "Button " + i;
-                ButtonsContainer.Children.Add(button);
+                //ButtonsContainer.Children.Add(button);
 
 
                 switch (index)
@@ -114,7 +114,7 @@ namespace Musify_Desktop
                 {
                     listaArchivos.Add(archivo.Name);
                 }
-                ListaPDF.ItemsSource = listaArchivos;
+                //ListaPDF.ItemsSource = listaArchivos;
 
             }catch(Exception ex)
             {

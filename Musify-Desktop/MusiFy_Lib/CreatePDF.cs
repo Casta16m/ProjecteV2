@@ -42,18 +42,9 @@ namespace MusiFy_Lib
             
                 try
                 {
-               
-                    
-               
-
-                
-
-                 PdfWriter pdfWriter = new PdfWriter(filePath);
-                 PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-                 Document document = new Document(pdfDocument, PageSize.A4);
-                 document.SetFontSize(15);
-
-
+                     PdfWriter pdfWriter = new PdfWriter(filePath);
+                     PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+                     Document document = new Document(pdfDocument, PageSize.A4);
 
                 foreach (string ? s in content) {
 
