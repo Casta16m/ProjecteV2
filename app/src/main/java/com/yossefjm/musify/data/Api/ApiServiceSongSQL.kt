@@ -33,7 +33,7 @@ data class SongDBSQL(
 data class SongPost(
     val nomSong: String,
     val genere: String,
-    val extensio: String
+    val SongExtensio: String
 )
 
 
@@ -43,17 +43,13 @@ interface SongApiServiceSQL {
 
     @POST("/api/Song")
     fun postSong(@Body song: SongPost): Call<SongDBSQL>
-
-    /*
-    @POST("/api/Song")
-    fun postSong(@Body song: SongDBSQL): Call<List<SongDBSQL>>
-    */
 }
 
 class ApiServiceSongSQL {
+    private val IP_ADDRESS = "192.168.0.16:5010"
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.0.16:5100/")
+        .baseUrl("http://${IP_ADDRESS}/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

@@ -6,32 +6,26 @@ import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
-import retrofit2.http.Query
 import java.io.File
-import java.io.FileOutputStream
 import java.io.InputStream
 import java.util.concurrent.TimeUnit
 
-interface SongApiService {
+interface FitxersApiService {
 
     @Multipart
     @POST("FitxersAPI/v1/Song")
@@ -44,11 +38,20 @@ interface SongApiService {
     fun getSongAudio(
         @Path("UID") songUid: String
     ): Call<ResponseBody>
+
+    @Multipart
+    @POST("MongoAPI/v1/Historial")
+    fun postSongHistorial(
+        @Part("uidSong") songUid: String,
+        @Part("mac") mac: String,
+        @Part("data") data: String
+    ): Call<ResponseBody>
+
 }
 
-class ApiServiceSongMongoDB(private val context: Context) {
+class ApiServiceFitxers(private val context: Context) {
 
-    private val IP_ADDRESS = "192.168.0.16:5010"
+    private val IP_ADDRESS = "172.23.3.204:5010"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("http://$IP_ADDRESS/")
@@ -56,8 +59,7 @@ class ApiServiceSongMongoDB(private val context: Context) {
         .client(OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build())
         .build()
 
-    private val songApiService: SongApiService = retrofit.create(SongApiService::class.java)
-
+    private val mongoApiService: FitxersApiService = retrofit.create(FitxersApiService::class.java)
 
     // Método para enviar un archivo de audio a la API
     fun postSongAudio(songUid: String, audioFile: File) {
@@ -66,7 +68,7 @@ class ApiServiceSongMongoDB(private val context: Context) {
             val audioPart = MultipartBody.Part.createFormData("Audio", audioFile.name, requestFile)
 
             // Realiza la llamada a la API
-            songApiService.postSongAudio(songUid, audioPart).enqueue(object : retrofit2.Callback<ResponseBody> {
+            mongoApiService.postSongAudio(songUid, audioPart).enqueue(object : retrofit2.Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         Log.d("ApiServiceSongMongoDB", "Respuesta exitosa")
@@ -97,7 +99,7 @@ class ApiServiceSongMongoDB(private val context: Context) {
         var filePath = "undefined"
         val songUidFull = "\"$songUid\""
         Log.d("ApiServiceSongMongoDB", "songUidFull: $songUidFull")
-        songApiService.getSongAudio(songUidFull).enqueue(object : Callback<ResponseBody> {
+        mongoApiService.getSongAudio(songUidFull).enqueue(object : Callback<ResponseBody> {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
@@ -156,8 +158,6 @@ class ApiServiceSongMongoDB(private val context: Context) {
         }
         return "undefined"
     }
-
-
 
 
 }

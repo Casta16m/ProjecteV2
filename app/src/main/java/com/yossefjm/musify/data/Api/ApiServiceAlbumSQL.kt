@@ -1,8 +1,6 @@
 package com.yossefjm.musify.data
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import com.google.gson.reflect.TypeToken
 import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
 import retrofit2.Call

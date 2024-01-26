@@ -12,7 +12,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.yossefjm.musify.data.ApiServiceSongMongoDB
+import com.yossefjm.musify.data.ApiServiceFitxers
 import com.yossefjm.musify.data.ApiServiceSongSQL
 import com.yossefjm.musify.databinding.ActivityUploadBinding
 import kotlinx.coroutines.CoroutineScope
@@ -31,7 +31,7 @@ class UploadActivity : AppCompatActivity() {
 
     // API Service
     private val apiServiceSongSQL = ApiServiceSongSQL()
-    private val apiServiceSongMongo = ApiServiceSongMongoDB(this)
+    private val apiServiceSongMongo = ApiServiceFitxers(this)
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,6 @@
 package com.yossefjm.musify
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,21 +19,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.yossefjm.musify.adapters.PlaylistAdapter
 import com.yossefjm.musify.adapters.SongListAdapter
+import com.yossefjm.musify.data.ApiServiceFitxers
+import com.yossefjm.musify.data.ApiServiceHistorial
 import com.yossefjm.musify.data.PlaylistRepository
 import com.yossefjm.musify.data.SongRepository
 import com.yossefjm.musify.databinding.ActivityMainBinding
 import com.yossefjm.musify.extension.PermissionExtension
+import com.yossefjm.musify.extension.getDeviceId
 import com.yossefjm.musify.extension.toExtendedIsoString
 import com.yossefjm.musify.extension.toHourMinSecString
 import com.yossefjm.musify.model.Playlist
 import com.yossefjm.musify.model.Song
 import com.yossefjm.musify.utils.MediaPlayerHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 
 class MainActivity : AppCompatActivity() {
 
     // Media player
     private val mediaPlayerH = MediaPlayerHelper()
+
+    // api mongo
+    private val apiServiceHistorialMongo = ApiServiceHistorial(this)
+
 
     // binding
     private lateinit var binding: ActivityMainBinding
@@ -77,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         initAnimations()
 
         // Comprovamos que tenemos permisos
-        if (permissionExtension.checkAndRequestPermissions(READ_AUDIO_STORAGE) && permissionExtension.checkAndRequestPermissions(READ_EXTERNAL_STORAGE)) {
+        if (permissionExtension.checkAndRequestPermissions(READ_AUDIO_STORAGE) || permissionExtension.checkAndRequestPermissions(READ_EXTERNAL_STORAGE)) {
             // Permission is granted
             Snackbar.make(binding.root, "Permission is granted", Snackbar.LENGTH_LONG).show()
             configAdaptersRW()
@@ -133,7 +143,6 @@ class MainActivity : AppCompatActivity() {
         binding.rvPlayLists.adapter = playlistAdapter
     }
 
-    @SuppressLint("SdCardPath")
     private fun configPlayerListeners() {
         binding.compactPlayer.root.setOnClickListener { showHideExpandedView() }
         binding.expandedsong.arrowdown.setOnClickListener { showHideExpandedView() }
@@ -151,6 +160,17 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayerH.resumePlayback()
                 binding.compactPlayer.playPauseButtonMinimized.setImageResource(R.drawable.pause)
                 binding.expandedsong.playPauseButton.setImageResource(R.drawable.pause)
+                val mac = getDeviceId(this)
+                val data = LocalDateTime.now().toExtendedIsoString()
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    Log.d("MainActivity", "postSongHistorial: ${mediaPlayerH.getCurrentSong().uid}")
+                    Log.d("MainActivity", "postSongHistorial: $mac")
+                    Log.d("MainActivity", "postSongHistorial: $data")
+
+                    apiServiceHistorialMongo.postSongHistorial(mediaPlayerH.getCurrentSong().uid, mac, data)
+                }
+
             } else {
                 mediaPlayerH.pausePlayback()
                 binding.compactPlayer.playPauseButtonMinimized.setImageResource(R.drawable.playwhite)
@@ -284,6 +304,14 @@ class MainActivity : AppCompatActivity() {
         binding.compactPlayer.artistNameMinimized.text = song.artist
         binding.expandedsong.songTitle.text = song.title
         binding.expandedsong.artistName.text = song.artist
+
+        val mac = getDeviceId(this)
+        val data = LocalDateTime.now().toExtendedIsoString()
+
+        CoroutineScope(Dispatchers.Main).launch {
+            Log.d("MainActivity", "postSongHistorial: ${mediaPlayerH.getCurrentSong().uid}")
+            apiServiceHistorialMongo.postSongHistorial(mediaPlayerH.getCurrentSong().uid, mac, data)
+        }
     }
 
     private fun handleLikeSongClick(song: Song, songList: List<Song>, position: Int) {

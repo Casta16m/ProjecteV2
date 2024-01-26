@@ -117,13 +117,13 @@ class MediaPlayerHelper {
     fun playNextSong() {
         if (currentIndex < (currentPlaylist?.size?.minus(1) ?: 0)) {
             currentIndex++
-            playCurrentSong()
+            //playCurrentSong()
             // Notificar al ViewModel que la canción ha cambiado
             // viewModel.notifySongChanged(currentPlaylist?.get(currentIndex))
         } else {
             // La lista de reproducción ha llegado al final
             currentIndex = 0
-            playCurrentSong()
+            //playCurrentSong()
         }
     }
 

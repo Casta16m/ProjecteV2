@@ -13,7 +13,7 @@ import com.yossefjm.musify.adapters.DownloadPlaylistAdapter
 import com.yossefjm.musify.adapters.DownloadSonglistAdapter
 import com.yossefjm.musify.data.ApiServiceSongSQL
 import com.yossefjm.musify.data.ApiServiceAlbum
-import com.yossefjm.musify.data.ApiServiceSongMongoDB
+import com.yossefjm.musify.data.ApiServiceFitxers
 import com.yossefjm.musify.data.PlaylistRepository
 import com.yossefjm.musify.data.SongRepository
 import com.yossefjm.musify.databinding.ActivityDownloadBinding
@@ -45,7 +45,7 @@ class DownloadActivity() : AppCompatActivity() {
     // api service
     private val apiServiceAlbum = ApiServiceAlbum()
     private val apiServiceSongSQL = ApiServiceSongSQL()
-    private val apiServiceSongMongo = ApiServiceSongMongoDB(this)
+    private val apiServiceSongMongo = ApiServiceFitxers(this)
 
 
     // tema de bsuqueda
