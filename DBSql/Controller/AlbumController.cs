@@ -10,6 +10,9 @@ using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
+    /// <summary>
+    /// Controlador de l'album
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AlbumController : ControllerBase
@@ -22,8 +25,10 @@ namespace DBSql.Controller
             _albumService = new AlbumService(context);
             _context = context;
         }
-
-        // GET: api/Album
+        /// <summary>
+        /// Busca tots els albums
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbum()
         {
@@ -31,7 +36,12 @@ namespace DBSql.Controller
         }
 
 
-
+        /// <summary>
+        /// Busca un album per la seva ID_MAC
+        /// </summary>
+        /// <param name="album"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpGet("BuscarNom/{album}/{data}")]
         public async Task<ActionResult<IEnumerable<Album>>> GetNomAlbum(string album, DateTime data)
         {
@@ -45,8 +55,11 @@ namespace DBSql.Controller
             return albums;
         }
 
-        // PUT: api/Album/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Busca un album per la seva ID_MAC
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
         [HttpPut("modificarAlbum")]
         public async Task<IActionResult> PutAlbum(Album album)
         {
@@ -58,8 +71,11 @@ namespace DBSql.Controller
             return NoContent();
         }
 
-        // POST: api/Album
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Crea un album
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
@@ -70,8 +86,11 @@ namespace DBSql.Controller
             }
             return CreatedAtAction("GetAlbum", new { id = album.NomAlbum }, album);
         }
-
-        // DELETE: api/Album/5
+        /// <summary>
+        /// Elimina un album
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlbum(string id)
         {
@@ -82,6 +101,13 @@ namespace DBSql.Controller
             }
             return NoContent();
         }
+        /// <summary>
+        /// Afegeix una canço a un album
+        /// </summary>
+        /// <param name="NomAlbum"></param>
+        /// <param name="data"></param>
+        /// <param name="UID"></param>
+        /// <returns></returns>
         [HttpPut("AfegirSongAlbum/{NomAlbum}/{data}/{UID}")]
         public async Task<ActionResult<Album>> AfegirSongAlbum(string NomAlbum, DateTime data, string UID)
         {

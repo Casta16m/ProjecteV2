@@ -2,12 +2,20 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql.Services{
+    /// <summary>
+    /// Servei de l'album
+    /// </summary>
     public class AlbumService{
         public DataContext _context { get; set; }
         public AlbumService(DataContext context){
             _context = context;
         }
-
+        /// <summary>
+        /// Busca tots els albums
+        /// </summary>
+        /// <param name="Nom"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task <List<Album>> GetAlbum(string Nom, DateTime data){
             var song = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(Nom)).Where(a=> a.data == data).ToListAsync();
 
@@ -18,6 +26,11 @@ namespace ProjecteV2.ApiSql.Services{
             
             return song;
         }
+        /// <summary>
+        /// Creem un album
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
         public async Task <Album> PostAlbum(Album album){
                       _context.Album.Add(album);
             try
@@ -38,6 +51,11 @@ namespace ProjecteV2.ApiSql.Services{
 
             return album;
         }
+        /// <summary>
+        /// Modifiquem l'album que li passem
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
         public async Task <Album> PutAlbum(Album album){
             _context.Entry(album).State = EntityState.Modified;
 
@@ -59,6 +77,13 @@ namespace ProjecteV2.ApiSql.Services{
 
             return album;
         }
+        /// <summary>
+        /// Afegim una canço a un album
+        /// </summary>
+        /// <param name="NomAlbum"></param>
+        /// <param name="data"></param>
+        /// <param name="UID"></param>
+        /// <returns></returns>
         public async Task<string> AfegirSongAlbum(string NomAlbum, DateTime data,string UID){
             Album album1 = new Album();
             var album = await _context.Album.Include(a => a.SongObj).Where(a => a.NomAlbum.Contains(NomAlbum)).Where(a=> a.data == data).FirstOrDefaultAsync();
@@ -91,6 +116,11 @@ namespace ProjecteV2.ApiSql.Services{
 
             return "album afegit";
         }
+        /// <summary>
+        /// Eliminem un album
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task <Album> DeleteAlbum(string id){
             var album = await _context.Album.FindAsync(id);
             if (album == null)
@@ -103,6 +133,11 @@ namespace ProjecteV2.ApiSql.Services{
 
             return album;
         }
+        /// <summary>
+        /// Comprova si existeix l'album
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool AlbumExists(string id)
         {
             return _context.Album.Any(e => e.NomAlbum == id);

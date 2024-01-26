@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjecteV2.ApiSql{
+    /// <summary>
+    /// Classe que conté les dades de l'album
+    /// </summary>
     public class Album{
         [MaxLength(25)]
         public string NomAlbum { get; set; }

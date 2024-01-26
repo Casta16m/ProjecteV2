@@ -1,12 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql{
+    /// <summary>
+    /// Servei de la llista
+    /// </summary>
     public class LlistaService{
         public DataContext _context { get; set; }
         public LlistaService(DataContext context){
             _context = context;
         }
-        
+        /// <summary>
+        /// Busca totes les llistes
+        /// </summary>
+        /// <param name="Nom"></param>
+        /// <returns></returns>
         public async Task <List<Llista>> GetLlista(string Nom){
             var song = await _context.Llista.Include(a => a.songs).Where(a => a.Nom.Contains(Nom)).ToListAsync();
 
@@ -17,6 +24,11 @@ namespace ProjecteV2.ApiSql{
             
             return song;
         } 
+        /// <summary>
+        /// Busca una llista per la seva ID_MAC
+        /// </summary>
+        /// <param name="ID_MAC"></param>
+        /// <returns></returns>
         public async Task <List<Llista>> GetLlistaMac(string ID_MAC){
             var song = await _context.Llista.Where(a => a.ID_MAC.Contains(ID_MAC)).ToListAsync();
 
@@ -27,6 +39,11 @@ namespace ProjecteV2.ApiSql{
             
             return song;
         }
+        /// <summary>
+        /// Busca una llista per la seva ID_MAC
+        /// </summary>
+        /// <param name="llista"></param>
+        /// <returns></returns>
         public async Task <Llista> PostLlista(Llista llista){
 
 
@@ -50,6 +67,13 @@ namespace ProjecteV2.ApiSql{
             }
             return llista;      
         }
+        /// <summary>
+        /// Busca una llista per la seva ID_MAC
+        /// </summary>
+        /// <param name="NomLlista"></param>
+        /// <param name="UID"></param>
+        /// <param name="ID_MAC"></param>
+        /// <returns></returns>
         public async Task <string> PutLlista(string NomLlista, string UID, string ID_MAC)
         {
          var llista = await _context.Llista.Include(a => a.songs).FirstOrDefaultAsync(a => a.Nom == NomLlista);
@@ -82,6 +106,11 @@ namespace ProjecteV2.ApiSql{
             return null;
         }
         }
+        /// <summary>
+        /// Modifica una llista general
+        /// </summary>
+        /// <param name="llista"></param>
+        /// <returns></returns>
         public async Task <Llista> PutLlistaGeneral(Llista llista){
             _context.Entry(llista).State = EntityState.Modified;
             try
@@ -101,6 +130,13 @@ namespace ProjecteV2.ApiSql{
             }
             return llista;
         }
+        /// <summary>
+        /// Elimina una canço de la llista
+        /// </summary>
+        /// <param name="NomLlista"></param>
+        /// <param name="MAC"></param>
+        /// <param name="UID"></param>
+        /// <returns></returns>
         public async Task <string> DeleteLlistaSong(string NomLlista, string MAC, string UID)
         {
             var llista = await _context.Llista.Include(a => a.songs).Where(a => a.Nom.Contains(NomLlista)).Where(a=> a.ID_MAC.Contains(MAC)).FirstOrDefaultAsync();
@@ -126,6 +162,11 @@ namespace ProjecteV2.ApiSql{
             }
 
         }
+        /// <summary>
+        /// Verificar si la llista existeix
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool LlistaExists(string id)
         {
             return _context.Llista.Any(e => e.Nom == id);

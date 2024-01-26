@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql{
     public class DataContext : DbContext{
+        /// <summary>
+        /// Constructor de la base de dades
+        /// </summary>
+        /// <param name="options"></param>
         public DataContext(DbContextOptions<DataContext> options) : base(options){}
         public DbSet<Extensio> Extensio { get; set; }
         public DbSet<Artista> Artistes { get; set; }
@@ -14,6 +18,7 @@ namespace ProjecteV2.ApiSql{
         public DbSet<Participa> Participa { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
+            
     
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
             modelBuilder.ApplyConfiguration(new LlistaConfiguracio());   

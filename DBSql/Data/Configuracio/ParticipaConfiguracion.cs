@@ -5,6 +5,10 @@ namespace ProjecteV2.ApiSql
 {
     public class ParticipaConfiguracio : IEntityTypeConfiguration<Participa>
     {
+        /// <summary>
+        /// Configuracio de la participacio
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<Participa> builder)
         {
             builder.HasKey(x => new { x.UID, x.NomArtista, x.NomGrup, x.NomInstrument });

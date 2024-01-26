@@ -10,6 +10,9 @@ using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
+    /// <summary>
+    /// Controlador del grup
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class GrupController : ControllerBase
@@ -22,15 +25,20 @@ namespace DBSql.Controller
             _context = context;
             _grupservice = new GrupService(context);
         }
-
-        // GET: api/Grup
+        /// <summary>
+        /// Busca tots els grups
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Grup>>> GetGrups()
         {
             return await _context.Grups.ToListAsync();
         }
-
-        // GET: api/Grup/5
+        /// <summary>
+        /// Busca un grup per la seva ID_MAC
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Grup>> GetGrup(string id)
         {
@@ -43,12 +51,23 @@ namespace DBSql.Controller
 
             return grup;
         }
+        /// <summary>
+        /// Busca un grup per el seu nom
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Grup>>> GetNomGrup(string nom)
         {
             var grup = await _grupservice.GetGrup(nom);
             return Ok(grup);
         }
+        /// <summary>
+        /// Busca un grup per el seu nom i el seu artista
+        /// </summary>
+        /// <param name="NomGrup"></param>
+        /// <param name="NomArtista"></param>
+        /// <returns></returns>
         [HttpPut("AfegirArtista/{NomGrup}/{NomArtista}")]
         public async Task<IActionResult> PutAfegirSong(string NomGrup, string NomArtista)
         {
@@ -60,8 +79,11 @@ namespace DBSql.Controller
                 return StatusCode(400);
             }
         }
-        // POST: api/Grup
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Crea un grup
+        /// </summary>
+        /// <param name="grup"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Grup>> PostGrup(Grup grup)
         {
@@ -72,6 +94,11 @@ namespace DBSql.Controller
             }
             return Ok(postGrup);
         }
+        /// <summary>
+        /// Modifica un grup
+        /// </summary>
+        /// <param name="grup"></param>
+        /// <returns></returns>
         [HttpPut("modificarGrup")]
         public async Task<Grup> PutGrup(Grup grup)
         {

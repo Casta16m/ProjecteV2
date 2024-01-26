@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjecteV2.ApiSql{
+    /// <summary>
+    /// Classe que conté les dades de la cançó
+    /// </summary>
     public class Song{
         [Key]
         public string? UID { get; set; } = Guid.NewGuid().ToString();

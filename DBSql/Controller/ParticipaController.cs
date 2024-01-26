@@ -10,6 +10,9 @@ using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
+    /// <summary>
+    /// Controlador de la participa
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ParticipaController : ControllerBase
@@ -22,15 +25,20 @@ namespace DBSql.Controller
             _context = context;
             _participaService = new ParticipaService(context);
         }
-
-        // GET: api/Participa
+    /// <summary>
+    /// Busca totes les participacions
+    /// </summary>
+    /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Participa>>> GetParticipa()
         {
             return await _context.Participa.ToListAsync();
         }
-
-        // GET: api/Participa/5
+    /// <summary>
+    /// Busca una participacio per la seva ID_MAC
+    /// </summary>
+    /// <param name="UID"></param>
+    /// <returns></returns>
         [HttpGet("BuscarSong/{UID}")]
         public async Task<ActionResult<Participa>> GetParticipa(string UID)
         {
@@ -43,9 +51,11 @@ namespace DBSql.Controller
 
             return Ok(participa);
         }
-
-        // PUT: api/Participa/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Busca una participacio per la seva ID_MAC
+        /// </summary>
+        /// <param name="participa"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> PutParticipa(Participa participa)
         {
@@ -57,8 +67,11 @@ namespace DBSql.Controller
             return Ok(participa2);
         }
 
-        // POST: api/Participa
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Crea una participacio
+        /// </summary>
+        /// <param name="participa"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Participa>> PostParticipa(Participa participa)
         {
@@ -70,8 +83,11 @@ namespace DBSql.Controller
             return Ok(participa2);
 
         }
-
-        // DELETE: api/Participa/5
+        /// <summary>
+        /// Elimina una participacio
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteParticipa(string id)
         {

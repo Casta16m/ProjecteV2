@@ -15,6 +15,9 @@ namespace DBSql.Controller
     [ApiController]
     public class ArtistaController : ControllerBase
     {
+        /// <summary>
+        /// Controlador de l'artista
+        /// </summary>
         private readonly DataContext _context;
         private readonly ArtistaService _artistaService;
 
@@ -23,15 +26,21 @@ namespace DBSql.Controller
             _context = context;
             _artistaService = new ArtistaService(context);
         }
-
-        // GET: api/Artista
+        /// <summary>
+        /// Busca tots els artistes
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Artista>>> GetArtistes()
         {
             return await _context.Artistes.ToListAsync();
         }
 
-
+        /// <summary>
+        /// Busca un artista per la seva ID_MAC
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         [HttpGet("BuscarNom/{nom}")]
         public async Task<ActionResult<IEnumerable<Artista>>> GetNomArtista(string nom)
         {
@@ -45,8 +54,11 @@ namespace DBSql.Controller
             return Ok(artista);
         }
 
-        // PUT: api/Artista/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Busca un artista per la seva ID_MAC
+        /// </summary>
+        /// <param name="artista"></param>
+        /// <returns></returns>
         [HttpPut("modificarArtista")]
         public async Task<IActionResult> PutArtista(Artista artista)
         {
@@ -58,8 +70,11 @@ namespace DBSql.Controller
             return Ok(artista2);
         }
 
-        // POST: api/Artista
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Crea un artista
+        /// </summary>
+        /// <param name="artista"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Artista>> PostArtista(Artista artista)
         {
@@ -70,6 +85,11 @@ namespace DBSql.Controller
             }
             return StatusCode(201);
         }
+        /// <summary>
+        /// Elimina un artista
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         [HttpDelete("{nom}")]
         public async Task<ActionResult<Artista>> DeleteArtista(string nom)
         {

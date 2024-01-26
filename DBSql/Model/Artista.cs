@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjecteV2.ApiSql{
+    /// <summary>
+    /// Classe que conté les dades de l'artista
+    /// </summary>
     public class Artista{
         [Key]
         [MaxLength(25)]

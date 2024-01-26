@@ -10,10 +10,14 @@ using ProjecteV2.ApiSql.Services;
 
 namespace DBSql.Controller
 {
+    /// <summary>
+    /// Controlador de l'instrument
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class InstrumentController : ControllerBase
     {
+
         private readonly DataContext _context;
         private readonly InstrumentService _instrumentService;
 

@@ -2,11 +2,19 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace ProjecteV2.ApiSql.Services{
+    /// <summary>
+    /// Servei de la canço
+    /// </summary>
     public class SongService{
         public DataContext _context { get; set; }
         public SongService(DataContext context){
             _context = context;
         }
+        /// <summary>
+        /// Busca totes les cançons
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <returns></returns>
         public async Task <List<Song>> GetSongEspecifica(string UID){
             var song = await _context.Songs.Include(a => a.album).Include(a => a.extensio).Where(a => a.UID == UID).ToListAsync();
 
@@ -17,7 +25,11 @@ namespace ProjecteV2.ApiSql.Services{
             
             return song;
         }
-        
+        /// <summary>
+        /// Busca una canço per el seu nom
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         public async Task<List<Song>> GetSong(string nom)
         {
             var song = await _context.Songs.Include(a=> a.album).Include(a=> a.extensio).Where(a => a.NomSong.Contains(nom)).ToListAsync();
@@ -29,8 +41,12 @@ namespace ProjecteV2.ApiSql.Services{
             
             return song;
         }
-
-public async Task<Song> GetSongWithList(string id)
+        /// <summary>
+        /// Busca una canço per la seva ID_MAC
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Song> GetSongWithList(string id)
         {
             var song = await _context.Songs.FirstOrDefaultAsync(a => a.UID == id);
 
@@ -41,7 +57,11 @@ public async Task<Song> GetSongWithList(string id)
             
             return song;
         }
-        
+        /// <summary>
+        /// Busca una canço per el seu genere
+        /// </summary>
+        /// <param name="Genere"></param>
+        /// <returns></returns>
         public async Task<List<Song>>GetGenere(string Genere)
         {
             var song = await _context.Songs.Where(a => a.Genere.Contains(Genere)).ToListAsync();
@@ -53,6 +73,12 @@ public async Task<Song> GetSongWithList(string id)
 
             return song;
         }
+        /// <summary>
+        /// Crea una canço
+        /// </summary>
+        /// <param name="song"></param>
+        /// <param name="NomExtensio"></param>
+        /// <returns></returns>
         public async Task<Song>PostSong(Song song, string NomExtensio){
             
             Extensio extensio = new Extensio();
@@ -96,6 +122,11 @@ public async Task<Song> GetSongWithList(string id)
             return song;
 
         }
+        /// <summary>
+        /// Modifica una canço
+        /// </summary>
+        /// <param name="song"></param>
+        /// <returns></returns>
         public async Task<string> PutSong(Song song){
             _context.Entry(song).State = EntityState.Modified;
 
@@ -116,7 +147,12 @@ public async Task<Song> GetSongWithList(string id)
             }
 
             return "Modificat";
-        }    
+        }  
+        /// <summary>
+        /// Elimina una canço
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<string> DeleteSong(string id)
         {
             var song = await _context.Songs.FindAsync(id);
@@ -129,15 +165,32 @@ public async Task<Song> GetSongWithList(string id)
             await _context.SaveChangesAsync();
 
             return "Eliminat";
-        }            
+        }  
+
+        /// <summary>
+        /// Verifica si la song existeix
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool SongExists(string id)
         {
             return _context.Songs.Any(e => e.UID == id);
         }
+        /// <summary>
+        /// Verifica si la extensio existeix
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool ExtensioExists(string id)
         {
             return _context.Extensio.Any(e => e.NomExtensio == id);
         }
+        /// <summary>
+        /// Verifica si la extensio existeix dins una llista de extensions
+        /// </summary>
+        /// <param name="extensions"></param>
+        /// <param name="extensionName"></param>
+        /// <returns></returns>
         public bool DoesExtensionExist(List<Extensio> extensions, string extensionName)
         {
             return extensions.Any(e => e.NomExtensio == extensionName);

@@ -9,6 +9,9 @@ using ProjecteV2.ApiSql;
 
 namespace DBSql.Controller
 {
+    /// <summary>
+    /// Controlador de la llista
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class LlistaController : ControllerBase
@@ -21,14 +24,21 @@ namespace DBSql.Controller
             _context = context;
             _llistaService = new LlistaService(context);
         }
-
+/// <summary>
+/// Busca totes les llistes
+/// </summary>
+/// <returns></returns>
         // GET: api/Llista
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Llista>>> GetLlista()
         {
             return await _context.Llista.ToListAsync();
         }
-
+/// <summary>
+/// Busca una llista per el seu nom
+/// </summary>
+/// <param name="Nom"></param>
+/// <returns></returns>
         // GET: api/Llista/5
         [HttpGet("BuscarNom/{Nom}")]
         public async Task<ActionResult<Llista>> GetLlista(string Nom)
@@ -41,6 +51,11 @@ namespace DBSql.Controller
             }
             return Ok(llista);
         }
+        /// <summary>
+        /// Busca una llista per la seva ID_MAC
+        /// </summary>
+        /// <param name="ID_MAC"></param>
+        /// <returns></returns>
         [HttpGet("BuscarMac/{ID_MAC}")]
         public async Task<ActionResult<Llista>> GetLlistaMAC(string ID_MAC)
         {
@@ -53,8 +68,11 @@ namespace DBSql.Controller
             return Ok(llistaMac);
         }
 
-        // POST: api/Llista
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+/// <summary>
+/// Busca una llista per el seu nom i la seva ID_MAC
+/// </summary>
+/// <param name="llista"></param>
+/// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Llista>> PostLlista(Llista llista)
         {
@@ -66,7 +84,13 @@ namespace DBSql.Controller
             return Ok(llista2);
         }
         
-
+/// <summary>
+/// Afegeix una canço a una llista
+/// </summary>
+/// <param name="NomLlista"></param>
+/// <param name="UID"></param>
+/// <param name="ID_MAC"></param>
+/// <returns></returns>
     [HttpPut("AfegirSong/{NomLlista}/{UID}/{ID_MAC}")]
     public async Task<IActionResult> PutLlistaSong(string NomLlista, string UID, string ID_MAC)
     {
@@ -78,7 +102,11 @@ namespace DBSql.Controller
         }
         return StatusCode(200);
     }
-
+    /// <summary>
+    /// Modifica una llista
+    /// </summary>
+    /// <param name="llista"></param>
+    /// <returns></returns>
     [HttpPut("modificarLlista")] 
     public async Task<IActionResult> PutLlista(Llista llista)
     {
@@ -89,6 +117,13 @@ namespace DBSql.Controller
         }
         return Ok(llista2);
     }
+    /// <summary>
+    /// Elimina una llista
+    /// </summary>
+    /// <param name="NomLlista"></param>
+    /// <param name="MAC"></param>
+    /// <param name="UID"></param>
+    /// <returns></returns>
     [HttpPut("DeleteLlistaSong/{NomLlista}/{MAC}/{UID}")]
     public async Task<string> DeleteSongLlista(string NomLlista, string MAC, string UID)
     {
