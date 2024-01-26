@@ -47,7 +47,8 @@ namespace Musify_Desktop
         }
         private async void btCreateSongClick(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 var uid = txtUID.Text;
                 string url = $"http://172.23.1.231:1443/api/Song/";
                 Reports rep = new Reports();
