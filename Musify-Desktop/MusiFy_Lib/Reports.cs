@@ -179,4 +179,9 @@ namespace MusiFy_Lib
         public string ID_MAC { get; set; }
         public List<object> songs { get; set; }
     }
+    public class Grup
+    {
+        public string NomGrup { get; set; }
+
+    }
 }
