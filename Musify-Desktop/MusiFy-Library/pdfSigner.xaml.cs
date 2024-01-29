@@ -29,9 +29,6 @@ namespace MusiFy_Library
             InitializeComponent();
         }
 
-
-
-
         private void btSelectPfx_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -57,10 +54,16 @@ namespace MusiFy_Library
                 txtPDFFile.Text = saveFileDialog.FileName;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSign_Click(object sender, RoutedEventArgs e)
         {
 
-            string outputFilePath = System.IO.Path.GetFullPath(@"..\..\..\..\..\MusiFy-Desktop\MusiFy_Lib\SignedPDF\Signed");
+            string outputFilePath = System.IO.Path.Combine(@"..\..\..\..\MusiFy_Lib\signedpdf\Signed");
             string outputFileName = System.IO.Path.GetFileName(txtPDFFile.Text);
 
             if (string.IsNullOrEmpty(this.txtPDFFile.Text))
@@ -73,35 +76,18 @@ namespace MusiFy_Library
             try
             {
                 sign = new Sign();
-                sign.InitCertificate(this.txtPfxFile.Text, this.txtPfxPassword.Text);
+                sign.InitCertificate(this.txtPfxFile.Text, this.txtPfxPassword.Password);
                 sign.SignPdf(this.txtPDFFile.Text, $"{outputFilePath}{outputFileName}", this.chkShowSignature.IsChecked == true);
                 MessageBox.Show("Signed pdf was generated");
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.StackTrace);
                 MessageBox.Show("Couldn't sign pdf file");
                 MessageBox.Show(ex.ToString());
             }
 
         }
-
-        private void txtPfxFile_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtPfxPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtOutFile_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-       
-
-
     }
 }

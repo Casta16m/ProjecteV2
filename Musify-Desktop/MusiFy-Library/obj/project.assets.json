@@ -11389,24 +11389,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guill\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\sergi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+      "projectUniqueName": "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
       "projectName": "MusiFy-Library",
-      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
-      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\obj\\",
+      "projectPath": "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+      "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\sergi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11420,8 +11415,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj": {
-              "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj"
+            "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj": {
+              "projectPath": "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj"
             }
           }
         }

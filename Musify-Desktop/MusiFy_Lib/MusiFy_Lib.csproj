@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="signedpdf\" />
     <Folder Include="PDF\" />
     <Folder Include="SignedPDF\" />
   </ItemGroup>

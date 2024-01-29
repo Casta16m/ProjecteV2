@@ -15,30 +15,29 @@ namespace MusiFy_Lib
     {
 
         /// <summary>
-        /// Method to get the artists from the API
+        /// Obtiene los datos de la API y los deserializa en una lista de objetos
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="apiUrl"></param>
         /// <returns></returns>
-        /// 
-
-
-
-
         public async Task<List<T>?> GetData<T>(string apiUrl)
         {
-
 
             MusiFyApi apiCall = new MusiFyApi(apiUrl);
             string apiResponse = await apiCall.ObtenerDatosAsync();
 
             List<T> dataList = JsonSerializer.Deserialize<List<T>>(apiResponse);
 
-
-
-
             return dataList;
 
-
         }
+
+        /// <summary>
+        /// Obtiene los datos de la API y los deserializa en un objeto
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="apiUrl"></param>
+        /// <returns></returns>
         public async Task<T?> GetSingleData<T>(string apiUrl)
         {
             MusiFyApi apiCall = new MusiFyApi(apiUrl);
@@ -48,6 +47,13 @@ namespace MusiFy_Lib
 
             return data;
         }
+
+        /// <summary>
+        /// Actualiza los datos de la API
+        /// </summary>
+        /// <param name="apiUrl"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateData(string apiUrl, string data)
         {
             try
@@ -65,6 +71,12 @@ namespace MusiFy_Lib
                 return false;
             }
         }
+
+        /// <summary>
+        /// Elimina los datos de la API
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteData(string url)
         {
             using (HttpClient client = new HttpClient())
@@ -89,6 +101,13 @@ namespace MusiFy_Lib
                 }
             }
         }
+
+        /// <summary>
+        /// Crea los datos de la API
+        /// </summary>
+        /// <param name="apiurl"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<bool>CreateData(string apiurl, string data)
         {
             try
@@ -106,21 +125,6 @@ namespace MusiFy_Lib
                 return false;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public class Album
@@ -129,17 +133,28 @@ namespace MusiFy_Lib
         public string? data { get; set; }
         public string? UIDSong {  get; set; }
         public string? SongObj { get; set; }
-        
-       
     }
 
-
+    public class Grups
+    {
+        public string? NomGrup { get; set; }
+        public object? artistes { get; set; }
+        public object? participa { get; set; }
+    }
 
     public class Artist
     {
         public string? NomArtista { get; set; }
         public int AnyNaixement { get; set; }
+        public object? grups { get; set; }
+        public object? participa { get; set; }
+    }
 
+    public class Instrument
+    {
+        public string? Nom { get; set; }
+        public string? Model { get; set; }
+        public object? participa { get; set; }
 
     }
   
@@ -157,6 +172,7 @@ namespace MusiFy_Lib
         public object? extensio { get; set; }
         public object? songs { get; set; }
     }
+
     public class Llista
     {
         public string Nom { get; set; }
