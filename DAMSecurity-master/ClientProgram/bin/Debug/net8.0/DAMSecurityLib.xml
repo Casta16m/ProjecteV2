@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DAMSecurityLib</name>
+    </assembly>
+    <members>
+        <member name="T:DAMSecurityLib.Certificates.Autosigned">
+            <summary>
+            Class to work with autosigned certifictes
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.Autosigned.GeneratePfx(System.String,System.String)">
+            <summary>
+            Generate Pfx  Certificate.
+            This Method generates pfx certificate with default info,
+            </summary>
+            <param name="certFileName">Pfx certificate file path</param>
+            <param name="certPassword">Pfx certificate password</param>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.Autosigned.GeneratePfx(System.String,System.String,DAMSecurityLib.Certificates.CertificateInfo)">
+            <summary>
+            Generate Pfx certificate.
+            This method generates pfx certificates with CerticateInfo inside it. 
+            </summary>
+            <param name="certFileName">Pfx certificate file path</param>
+            <param name="certPassword">Pfx certifiate password</param>
+            <param name="info">Pfx certicicate info to display it</param>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.Autosigned.PublicKeyInfo(System.String,System.String)">
+            <summary>
+            Obtanir public key info string accordint to certificate stored in disx
+            </summary>
+            <param name="pfxFileName">Certificate Filsesystem path</param>
+            <param name="pfxPassword">Certificate password</param>
+            <returns>string representing public key info</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.Autosigned.CreateNew(DAMSecurityLib.Certificates.CertificateInfo)">
+            <summary>
+            Geneates certificate witohout saving to disk
+            </summary>
+            <param name="info">PFx certiciate info</param>
+            <returns>certificate object to work with it</returns>
+        </member>
+        <member name="T:DAMSecurityLib.Certificates.CertificateInfo">
+            <summary>
+            This class  establishes the necessary properties to obtain the information of the generated
+            digital certificates
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.CommonName">
+            <summary>
+            Certificate CommonName
+            This property is mandatory and its default value is SelfSignedCert
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.Organization">
+            <summary>
+            Certificate Organization Name
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.Locality">
+            <summary>
+            Certificate Organization Locality
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.State">
+            <summary>
+            Certificate Organization State
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.Country">
+            <summary>
+            Certification Organization Country
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.Email">
+            <summary>
+            Certification Organization Email
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.Address">
+            <summary>
+            Certification Organization Street Address
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.PostalCode">
+            <summary>
+            Certification Origanization Postal Code
+            This property is optional
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.NotBefore">
+            <summary>
+            Certification Initial validation DateTimeOffset Period
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.NotAfter">
+            <summary>
+            Certification final validation DatetimeOffset Period
+            The certification doesn't work after this time
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Certificates.CertificateInfo.DistinguishedName">
+            <summary>
+            Default Certificate DistinguishedName 
+            This propoerty is created from the others properties
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.CertificateInfo.FromCertificate(System.String,System.String)">
+            <summary>
+            Returns CertificateInfo of the certificate passes as parametres
+            </summary>
+            <param name="certificatePath">Certificate path in disk</param>
+            <param name="certificatePassword">Certificate password</param>
+            <returns>CertificateInfo associated to the certificate</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Certificates.CertificateInfo.GetCertificateField(System.String,System.String)">
+            <summary>
+            Gets certificated field from subject identified by fieldIdentifier
+            </summary>
+            <param name="subject">Subject to extract fieldIdentifier</param>
+            <param name="fieldIdentifier">Identifier field to extract</param>
+            <returns>Certificate Field</returns>
+        </member>
+        <member name="T:DAMSecurityLib.Crypto.AESCrypt">
+            <summary>
+            Class used to encrypt/decrypt using aES alghorithm
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Crypto.AESCrypt.Key">
+            <summary>
+            Key used to encrypt/decrypt data
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Crypto.AESCrypt.IV">
+            <summary>
+            Initialization Vector (IV) to encrypt/decrypt data
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.#ctor">
+            <summary>
+            Default constructor
+            Initializes AESCrypt with random key and IV
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.GenerateIV">
+            <summary>
+            Generate IV (Initialization Vector)
+            We need to use this function only if we want generate IV vector from key. If we want a randon IV vector we must not use this function
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.Encrypt(System.Byte[])">
+            <summary>
+            Encrypte byte data using Aes and returns encrypted value
+            </summary>
+            <param name="bytes">byte[] to encrypt</param>
+            <returns>byte[] corresponding to encrypted data</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.Encrypt(System.String)">
+            <summary>
+            Encrypts text and returns encrypted value
+            </summary>
+            <param name="text">Text to encrypt</param>
+            <returns>byte[] corresponding to encrypted text</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.Decrypt(System.Byte[])">
+            <summary>
+            Decrypts input data and returns decrypted value
+            </summary>
+            <param name="encryptedData">Data to decrypt</param>
+            <returns>byte[] corresponding to decrypted data</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.AESCrypt.DecryptToFile(System.Byte[],System.String)">
+            <summary>
+            Decrypts encrypted data to a file in disk
+            </summary>
+            <param name="encryptedData">Encrypted data to decrypt</param>
+            <param name="outFileName">File path to store decrypted data</param>
+        </member>
+        <member name="T:DAMSecurityLib.Crypto.Hybrid">
+            <summary>
+            Class with some utilities using mixed cryptography
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Hybrid.Crypt(System.Security.Cryptography.RSAParameters,System.Byte[])">
+            <summary>
+            Crypt file using RSA/AES. Crypts AES key with RSA and file with AES.
+            Stores key and file used to code insde KeyFilePair
+            </summary>
+            <param name="publicKey">Public Key to crypt with RSA</param>
+            <param name="file">File to encrypt</param>
+            <returns>Key an file with encrypted values</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Hybrid.Decrypt(System.Security.Cryptography.X509Certificates.X509Certificate2,DAMSecurityLib.Data.KeyFilePair)">
+            <summary>
+            Decrypts file crypted with AES/RSA using certificate
+            </summary>
+            <param name="certificate">Certificate to decrypt with</param>
+            <param name="keyFilePair">Encrypted key and file</param>
+            <returns>byte[] corresponding to decrypted file</returns>
+        </member>
+        <member name="T:DAMSecurityLib.Crypto.RSACrypt">
+            <summary>
+            Class with some utilities to Encrypt/Decrypt using RSA algorithn
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.SavePublicKey(System.String,System.String,System.String)">
+            <summary>
+            Save certificate public key to a file on disk
+            </summary>
+            <param name="pfxFilename">Pfx file path to extract public key</param>
+            <param name="pfxPassword">Pfx password</param>
+            <param name="publicKeyFile">File path to store certificate public key</param>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.LoadPublicKey(System.String)">
+            <summary>
+            Load Certificate public key stored in disk
+            </summary>
+            <param name="publicKeyFile">Public path file path</param>
+            <returns>RSA certificate with public key</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.SavePublicKey(System.Security.Cryptography.RSA,System.String)">
+            <summary>
+            Save RSA Public key to a file
+            </summary>
+            <param name="publicKey">RSA Public key to store in disk</param>
+            <param name="publicKeyFile">Filesystem file path to store public key</param>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.PublicKey(System.Security.Cryptography.RSA)">
+            <summary>
+            Extract RSA Public key and converts it to byte[]
+            </summary>
+            <param name="rsa">RSA to extract public key</param>
+            <returns>byte[] corresponding to public key</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.LoadPublicKey(System.Byte[])">
+            <summary>
+            Create RSAParametres from byte array
+            </summary>
+            <param name="publickey">Byte[] to convert</param>
+            <returns>RSAParameters associated to input</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.EncryptAESKey(System.Byte[],System.Security.Cryptography.RSAParameters)">
+            <summary>
+            Encrypt AESKey with RSA public key
+            </summary>
+            <param name="aesKey">AES Key to encrypt</param>
+            <param name="publicKey">RSA public key to encrypt with</param>
+            <returns>Encrypted AES key</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.DecryptAESKeyWithPrivateKey(System.Byte[],System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Decrypt AES key encryted with RSA algorithm
+            </summary>
+            <param name="encrypteKey">Encrypted key to decrypt</param>
+            <param name="certificate">Certificate used to decrypt</param>
+            <returns>byte[] corresponding to decrypted key</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.Encrypt(System.Security.Cryptography.RSAParameters,System.Byte[])">
+            <summary>
+            Encrypt file using publicKey
+            </summary>
+            <param name="publicKey">PublicKey used to encript file</param>
+            <param name="file">Byte[] representing file to encript</param>
+            <returns>KeyFilePair withe key encripted in RSA and byte[] corresponding to file encripted with AES Key</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.RSACrypt.Decrypt(DAMSecurityLib.Data.KeyFilePair,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Decrypt file encripted with rSA
+            </summary>
+            <param name="keyFilePair">KeyFilePair with encripted information</param>
+            <param name="certificate">Certificate used to decript</param>
+            <returns>byte[] corresponding to decripted file</returns>
+            <exception cref="T:DAMSecurityLib.Exceptions.IncorrectParametersException"></exception>
+        </member>
+        <member name="T:DAMSecurityLib.Crypto.Sign">
+            <summary>
+            This class is used to sign documents 
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.InitCertificate(System.String,System.String)">
+            <summary>
+            Init class certificate attributes with the disk certificate
+            </summary>
+            <param name="pfxFileName">Certificate file disk path</param>
+            <param name="pfxPassword">Certificate password</param>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.SignPdf(System.String,System.String,System.Boolean)">
+            <summary>
+            Sign pdf document and save result to disk.
+            This method puts digital signature inside pdf document
+            </summary>
+            <param name="inputFileName">Input pdf file path to sign</param>
+            <param name="outputFileName">Ouput pdf file path to save the result file</param>
+            <param name="showSignature">If signatature is visible in pdf document</param>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.SignFile(System.String,System.String)">
+            <summary>
+            Sign filedisk file with the global class certificate
+            </summary>
+            <param name="inputFileName">Filedisk input file path to sign</param>
+            <param name="outputFileName">Filedisk output file path to save the result</param>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.SHA256Hash(System.Byte[])">
+            <summary>
+            Returns SHA-256 HASH from input byte array
+            </summary>
+            <param name="input">Input byte array to obtain SHA-256 HASH</param>
+            <returns>SHA-256 HASH</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.SignDocument(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Byte[])">
+            <summary>
+            Sign byte array document with the certificate
+            </summary>
+            <param name="certificate">Certificated used to sign the document</param>
+            <param name="document">Document byte array to sign</param>
+            <returns>Byte array with the signed document</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.CreateSignatureApperanceField(iText.Signatures.PdfSigner)">
+            <summary>
+            Adds signature field rectangle inside pdf document
+            </summary>
+            <param name="pdfSigner">PdfSigner used to sign document</param>
+        </member>
+        <member name="T:DAMSecurityLib.Data.KeyFilePair">
+            <summary>
+            Class representing pair data with Key and File Byte array
+            Is used to share and serialize this data
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.KeyFilePair.Key">
+            <summary>
+            Byte array associated with the Key
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.KeyFilePair.File">
+            <summary>
+            Byte array associated with the File
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyFilePair.Serialize">
+            <summary>
+            Serialize current object to Json String
+            </summary>
+            <returns>Json string corresponding to current object</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyFilePair.Deserialize(System.String)">
+            <summary>
+            Deserialize json string and convert it to KeyFilePairObject
+            </summary>
+            <param name="json">String to deserialize</param>
+            <returns>KeyFilePairObject corresponding to deserialized string</returns>
+            <exception cref="T:DAMSecurityLib.Exceptions.IncorrectParametersException"></exception>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyFilePair.Equals(System.Object)">
+            <summary>
+            Checks if 2 KeyFilePair objects are equals
+            </summary>
+            <param name="obj">KeyFilePair to compare</param>
+            <returns>If 2 objects are equals</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyFilePair.GetHashCode">
+            <summary>
+            Gets hash code of the current object
+            </summary>
+            <returns>Hash code of the current object</returns>
+        </member>
+        <member name="T:DAMSecurityLib.Data.KeyIVPair">
+            <summary>
+            Class representing pair data with Key and IV (Initialize Vector) 
+            Is used to share and serialize this data
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.KeyIVPair.Key">
+            <summary>
+            Byte array associated with the Key
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.KeyIVPair.IV">
+            <summary>
+            Byte array associated with the IV Vector
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyIVPair.Serialize">
+            <summary>
+            Serialize current object to Json String
+            </summary>
+            <returns>Json string corresponding to current object</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyIVPair.Deserialize(System.String)">
+            <summary>
+            Deserialize json string and convert it to KeyIVPair Object
+            </summary>
+            <param name="json">String to deserialize</param>
+            <returns>KeyFilePairObject corresponding to deserialized string</returns>
+            <exception cref="T:DAMSecurityLib.Exceptions.IncorrectParametersException"></exception>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyIVPair.Equals(System.Object)">
+            <summary>
+            Checks if 2 KeyFilePair objects are equals
+            </summary>
+            <param name="obj">KeyFilePair to compare</param>
+            <returns>If 2 objects are equals</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.KeyIVPair.GetHashCode">
+            <summary>
+            Gets hash code of the current object
+            </summary>
+            <returns>Hash code of the current object</returns>
+        </member>
+        <member name="T:DAMSecurityLib.Data.ObjectPair">
+            <summary>
+            Class representing pair of objects
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.ObjectPair.Obj1">
+            <summary>
+            Class first object
+            </summary>
+        </member>
+        <member name="P:DAMSecurityLib.Data.ObjectPair.Obj2">
+            <summary>
+            Class second object
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Data.ObjectPair.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Data.ObjectPair.#ctor(System.Object,System.Object)">
+            <summary>
+            Initialize object with default values
+            </summary>
+            <param name="obj1">Object1 initial value</param>
+            <param name="obj2">Object2 initial value</param>
+        </member>
+        <member name="M:DAMSecurityLib.Data.ObjectPair.Serialize">
+            <summary>
+            Serialize current object to Json String
+            </summary>
+            <returns>Json string corresponding to current object</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.ObjectPair.ToBytes">
+            <summary>
+            Converts current object to byte[]
+            </summary>
+            <returns>Byte[] corresponding to current object</returns>
+        </member>
+        <member name="M:DAMSecurityLib.Data.ObjectPair.Deserialize(System.String)">
+            <summary>
+            Deserialize json string and convert it to KeyFilePairObject
+            </summary>
+            <param name="json">String to deserialize</param>
+            <returns>KeyFilePairObject corresponding to deserialized string</returns>
+            <exception cref="T:DAMSecurityLib.Exceptions.IncorrectParametersException"></exception>
+        </member>
+        <member name="T:DAMSecurityLib.Exceptions.IncorrectKeyException">
+            <summary>
+            Incorrect Key Exception
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Exceptions.IncorrectKeyException.#ctor(System.String)">
+            <summary>
+            Iniit class with message
+            </summary>
+            <param name="message">Exception's message</param>
+        </member>
+        <member name="T:DAMSecurityLib.Exceptions.IncorrectParametersException">
+            <summary>
+            Exception throwed when the parameters are incorrect
+            </summary>
+        </member>
+        <member name="M:DAMSecurityLib.Exceptions.IncorrectParametersException.#ctor(System.String)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="message">Message associated with the exception</param>
+        </member>
+    </members>
+</doc>

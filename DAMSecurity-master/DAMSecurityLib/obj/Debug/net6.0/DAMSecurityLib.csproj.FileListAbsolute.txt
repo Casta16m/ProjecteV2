@@ -1,0 +1,14 @@
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.deps.json
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.dll
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.pdb
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\bin\Debug\net6.0\DAMSecurityLib.xml
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.AssemblyReference.cache
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfoInputs.cache
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.AssemblyInfo.cs
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.csproj.CoreCompileInputs.cache
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.dll
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\refint\DAMSecurityLib.dll
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.xml
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\DAMSecurityLib.pdb
+C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityLib\obj\Debug\net6.0\ref\DAMSecurityLib.dll
