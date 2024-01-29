@@ -22,6 +22,9 @@
     <Compile Update="Administrator\AdminInstrument.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Administrator\AdminMongoHistorial.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Administrator\AdminParticipa.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Administrator\AdminInstrument.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Administrator\AdminMongoHistorial.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Administrator\AdminParticipa.xaml">

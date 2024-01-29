@@ -3192,3 +3192,5 @@ C:\Users\sergi\Documents\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Deb
 C:\Users\sergi\Documents\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Musify-Desktop.genruntimeconfig.cache
 C:\Users\sergi\Documents\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\ref\Musify-Desktop.dll
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\bin\Debug\net6.0-windows\Musify-Desktop.dll.config
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminMongoHistorial.g.cs
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminMongoHistorial.baml

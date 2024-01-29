@@ -1,5 +1,6 @@
 ﻿using com.sun.security.ntlm;
 using java.lang;
+
 using MusiFy_Library;
 using Newtonsoft.Json;
 using System;
@@ -89,6 +90,11 @@ namespace Musify_Desktop
         {
             AdminSongAlbum adminSongAlbum = new AdminSongAlbum();
             adminSongAlbum.Show();
+        }
+        private void BtnMongoHistorial_Click(object sender, RoutedEventArgs e)
+        {
+            AdminMongoHistorial adminMongoHistorial = new AdminMongoHistorial();
+            adminMongoHistorial.Show();
         }
 
         

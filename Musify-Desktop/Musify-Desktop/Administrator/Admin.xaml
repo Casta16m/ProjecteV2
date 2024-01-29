@@ -31,8 +31,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="80" Margin="0,0,0,15" VerticalAlignment="Bottom">
-                <MusiFy_Library:Button  x:Name="mongoSong" BotonBackground="#24B91D" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="40"  TextSize="30" Text="MongoSong" />
-                <MusiFy_Library:Button x:Name="mongoHistorial" BotonBackground="#24B91D"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="210" WidthGridImage="37" TextSize="30" Text="MongoHistorial" />
+                <MusiFy_Library:Button  x:Name="mongoSong" BotonBackground="#24B91D" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="40"  TextSize="30" Text="MongoSong"  />
+                <MusiFy_Library:Button x:Name="mongoHistorial" Click="BtnMongoHistorial_Click" BotonBackground="#24B91D"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="210" WidthGridImage="37" TextSize="30" Text="MongoHistorial" />
             </StackPanel>
         </Grid>
     </Viewbox>
