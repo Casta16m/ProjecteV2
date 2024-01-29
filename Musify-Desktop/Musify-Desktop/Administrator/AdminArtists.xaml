@@ -28,8 +28,8 @@
                     </ListView.RenderTransform>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}" />
-                            <GridViewColumn Header="DataNaix" DisplayMemberBinding="{Binding DataNaix}" />
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding NomArtista}" />
+                            <GridViewColumn Header="DataNaix" DisplayMemberBinding="{Binding AnyNaixement}" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -41,9 +41,9 @@
             <Canvas Width="200" HorizontalAlignment="Left" Margin="515,52,0,172" Height="210" >
                 <Label Content="Nom"  Canvas.Left="5" Canvas.Top="15" FontWeight="Bold" Foreground="White"/>
                 <TextBox x:Name="txtNom"  Canvas.Left="10" TextWrapping="NoWrap" Canvas.Top="40" Width="170" />
-                <Label Content="Data Naix" Canvas.Top="60" Canvas.Left="5" FontWeight="Bold" Foreground="White" />
-                <TextBox x:Name="txtDataNaix" TextWrapping="Wrap" Width="170" Canvas.Left="10" Canvas.Top="85"/>
-               
+                <Label Content="Any Neixament" Canvas.Top="60" Canvas.Left="5" FontWeight="Bold" Foreground="White" />
+                <TextBox x:Name="txtAnyNeixament" TextWrapping="Wrap" Width="170" Canvas.Left="10" Canvas.Top="85"/>
+
             </Canvas>
             <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#5FE95C" Click="btCreateArtistClick" WidthGridImage="0" Text="Create" HeightButton="60" Margin="450,262,0,0" VerticalAlignment="Top"/>
             <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#00FFF0"  Click="btUpdateArtistClick" WidthGridImage="0" Text="Edit" HeightButton="60" Margin="600,262,0,0" VerticalAlignment="Top"/>
