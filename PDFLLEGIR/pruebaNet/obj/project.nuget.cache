@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "zXHg65Ns9EivxU9jN+dCF8tio9WASi9sI6aZ1WkmdRjgSiYr2E8xECkXzv1WpeZ5UhCZ1co9UH/ydv1WC78w4Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Aimar\\source\\repos\\PDFLLEGIR\\pruebaNet\\pruebaNet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aimar\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Aimar\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Aimar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Aimar\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
