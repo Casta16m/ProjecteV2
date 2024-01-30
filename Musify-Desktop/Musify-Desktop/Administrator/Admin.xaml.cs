@@ -68,11 +68,7 @@ namespace Musify_Desktop
             adminGroups.Show();
         }
 
-        private void BtnExtensions_Click(object sender, RoutedEventArgs e)
-        {
-            AdminExtensio adminExtensions = new AdminExtensio();
-            adminExtensions.Show();
-        }
+        
 
         private void BtnParticipa_Click(object sender, RoutedEventArgs e)
         {

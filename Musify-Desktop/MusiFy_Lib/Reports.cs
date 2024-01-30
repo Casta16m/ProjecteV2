@@ -189,7 +189,7 @@ namespace MusiFy_Lib
         public string _ID { get; set; }
         public string mac { get; set; }
         public DateTime data { get; set; }
-        public DateTime data { get; set; }
+       
         public string OID { get; set; }
     }
 

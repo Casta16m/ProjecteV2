@@ -4,6 +4,7 @@ using MusiFy_Lib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,9 @@ namespace Musify_Desktop
     /// Lógica de interacción para AdminMongoHistorial.xaml
     /// </summary>
     public partial class AdminMongoHistorial : Window
+        
     {
+        string baseUrlMongoApi = ConfigurationManager.AppSettings["BaseUrlMongoAPI"];
         public AdminMongoHistorial()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace Musify_Desktop
         }
         private async void GetAllHistorial()
         {
-            string url = "http://172.17.160.1:5001/MongoApi/v1/Historial";
+            string url = $"{baseUrlMongoApi}Historial";
 
             Reports reports = new Reports();
             List<Historial> historial = await reports.GetData<Historial>(url);
@@ -61,7 +64,7 @@ namespace Musify_Desktop
             try
             {
                
-                string url = $"http://192.168.1.41:1443/MongoApi/v1/Historial";
+                string url = $"{baseUrlMongoApi}Historial";
                 Reports rep = new Reports();
 
                 Historial historialToUpdate = new Historial();
@@ -98,7 +101,7 @@ namespace Musify_Desktop
             {
                 var _ID = txt_ID.Text;
 
-                string url = $"http://192.168.1.41:1443/MongoAPI/v1/Historial{_ID}";
+                string url = $"{baseUrlMongoApi}Historial{_ID}";
                 Reports rep = new Reports();
 
                 Historial historialToUpdate = new Historial();
@@ -123,6 +126,7 @@ namespace Musify_Desktop
                 if (success == true)
                 {
                     // El objeto se actualizó correctamente
+                    MessageBox.Show("S'ha actualizat l'historial");
                 }
                 else
                 {

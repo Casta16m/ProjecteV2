@@ -4,6 +4,7 @@ using MusiFy_Lib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Musify_Desktop
     /// </summary>
     public partial class AdminGrup : Window
     {
+        string BaseUrlSql = ConfigurationManager.AppSettings["BaseUrlSql"];
         public AdminGrup()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace Musify_Desktop
         }
         private async void GetAllGrup()
         {
-            string url = "http://192.168.1.41:1443/api/Grup/";
+            string url = $"{BaseUrlSql}Grup/";
 
             Reports reports = new Reports();
             List<Grup> grup = await reports.GetData<Grup>(url);
@@ -60,7 +62,7 @@ namespace Musify_Desktop
             try
             {
 
-                string url = $"http://192.168.1.41:1443/api/Grup/";
+                string url = $"{BaseUrlSql}Grup/";
                 Reports rep = new Reports();
 
                 Grup grupToUpdate = new Grup();

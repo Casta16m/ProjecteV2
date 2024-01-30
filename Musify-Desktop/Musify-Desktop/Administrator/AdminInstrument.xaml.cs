@@ -4,6 +4,7 @@ using MusiFy_Lib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Musify_Desktop
     /// </summary>
     public partial class AdminInstrument : Window
     {
+        string BaseUrlSql = ConfigurationManager.AppSettings["BaseUrlSql"];
         public AdminInstrument()
         {
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace Musify_Desktop
         }
         private async void GetAllInstrument()
         {
-            string url = "http://192.168.1.41:1443/api/Instrument/";
+            string url = $"{BaseUrlSql}Instrument/";
 
             Reports reports = new Reports();
             List<Instrument> Instrument = await reports.GetData<Instrument>(url);
@@ -63,7 +65,7 @@ namespace Musify_Desktop
             try
             {
                 var nom = txtNom.Text;
-                string url = $"http://192.168.1.41:1443/api/Instrument/";
+                string url = $"{BaseUrlSql}Instrument/";
                 Reports rep = new Reports();
 
                 Instrument instrumentToUpdate = new Instrument();
@@ -97,7 +99,7 @@ namespace Musify_Desktop
             try
             {
 
-                string url = $"http://192.168.1.41:1443/api/Instrument/modificarInstrument";
+                string url = $"{BaseUrlSql}Instrument/modificarInstrument";
                 Reports rep = new Reports();
 
                 Instrument instrumentToUpdate = new Instrument();

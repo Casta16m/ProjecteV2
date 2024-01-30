@@ -1,7 +1,9 @@
-﻿using MusiFy_Lib;
+﻿using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsWPF;
+using MusiFy_Lib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Musify_Desktop
 {
@@ -22,9 +25,18 @@ namespace Musify_Desktop
     /// </summary>
     public partial class AdminSongxaml : Window
     {
+        string BaseUrlSql = ConfigurationManager.AppSettings["BaseUrlSql"];
         public AdminSongxaml()
         {
             InitializeComponent();
+            btGetAllSongs();
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
             btGetAllSongs();
         }
 
@@ -32,7 +44,7 @@ namespace Musify_Desktop
         {
             var uid = txtUID.Text;
 
-            string url = $"http://172.23.1.231:1443/api/Song/BuscarUID/{uid}";
+            string url = $"{BaseUrlSql}BuscarUID/{uid}";
 
 
             Reports reports = new Reports();
@@ -50,7 +62,7 @@ namespace Musify_Desktop
             try
             {
                 var uid = txtUID.Text;
-                string url = $"http://172.23.1.231:1443/api/Song/";
+                string url = $"{BaseUrlSql}Song/";
                 Reports rep = new Reports();
 
                 Songs songToUpdate = new Songs();

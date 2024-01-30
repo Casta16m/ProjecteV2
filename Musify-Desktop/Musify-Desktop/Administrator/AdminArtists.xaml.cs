@@ -6,6 +6,7 @@ using Org.BouncyCastle.Utilities;
 using sun.security.action;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace Musify_Desktop
     /// </summary>
     public partial class AdminArtists : Window
     {
+        string BaseUrlSql = ConfigurationManager.AppSettings["BaseUrlSql"];
         public AdminArtists()
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace Musify_Desktop
         }
         private async void GetAllArtists()
         {
-            string url = "http://172.23.1.231:1443/api/Artista/";
+            string url = $"{BaseUrlSql}/Artista/";
 
             Reports reports = new Reports();
             List<Artist> artist = await reports.GetData<Artist>(url);
@@ -64,7 +66,7 @@ namespace Musify_Desktop
             try
             {
                 var nom = txtNom.Text;
-                string url = $"http://172.23.1.231:1443/api/Artista/";
+                string url = $"{BaseUrlSql}Artista/";
                 Reports rep = new Reports();
 
                 Artist artistToUpdate = new Artist();
@@ -110,7 +112,7 @@ namespace Musify_Desktop
             try
             {
 
-                string url = $"http://172.23.1.231:1443/api/Artista/modificarArtista";
+                string url = $"{BaseUrlSql}Artista/modificarArtista";
                 Reports rep = new Reports();
 
                 Artist artistToUpdate = new Artist();
@@ -160,7 +162,7 @@ namespace Musify_Desktop
         private async void btDeleteArtistClick(object sender, RoutedEventArgs e)
         {
             var nom = txtNom.Text;
-            string url = $"http://172.23.1.231:1443/api/Artista/{nom}";
+            string url = $"{BaseUrlSql}Artista/{nom}";
             Reports rep = new Reports();
             Artist artistToUpdate = new Artist();
 

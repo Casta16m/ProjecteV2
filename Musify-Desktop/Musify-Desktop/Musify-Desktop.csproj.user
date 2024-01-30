@@ -13,9 +13,6 @@
     <Compile Update="Administrator\AdminArtists.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Administrator\AdminExtensio.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Administrator\AdminGrup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,9 +40,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Administrator\AdminArtists.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Administrator\AdminExtensio.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Administrator\AdminGrup.xaml">
