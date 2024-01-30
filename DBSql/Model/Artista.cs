@@ -9,7 +9,7 @@ namespace ProjecteV2.ApiSql{
         [MaxLength(25)]
         public string NomArtista { get; set; }
         public int AnyNaixement { get; set; }
-        public ICollection<Grup>? Grups { get; set; }
+        public ICollection<Grup>? Grups { get; set; } = new List<Grup>();
         public ICollection<Participa>? participa { get; set; }
     }
 }

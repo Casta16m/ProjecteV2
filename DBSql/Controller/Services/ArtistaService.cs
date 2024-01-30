@@ -16,7 +16,7 @@ namespace ProjecteV2.ApiSql.Services{
         /// <returns></returns>
         public async Task<List<Artista>> GetArtista(string nom)
         {
-            var artista = await _context.Artistes.Where(a => a.NomArtista.Contains(nom)).ToListAsync();
+            var artista = await _context.Artistes.Include(a=> a.Grups).Where(a => a.NomArtista.Contains(nom)).ToListAsync();
 
             if (artista == null)
             {

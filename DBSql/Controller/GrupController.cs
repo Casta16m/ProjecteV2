@@ -76,7 +76,7 @@ namespace DBSql.Controller
                 return StatusCode(200);
             } 
             else{
-                return StatusCode(400);
+                return Ok(resposta);
             }
         }
         /// <summary>

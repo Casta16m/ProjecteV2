@@ -23,12 +23,12 @@ namespace ProjecteV2.ApiSql.Services{
             var grup = await _context.Grups.Include(a => a.artistes).FirstOrDefaultAsync(a => a.NomGrup == NomGrup);
             if (grup == null)
             {
-                return null;
+                return "artista no trobat";
             }
             var artista = await _context.Artistes.FirstOrDefaultAsync(a => a.NomArtista == NomArtista);
             if (artista == null)
             {
-                return null;
+                return "grup no trobat";
             }
             grup.artistes.Add(artista);
             await _context.SaveChangesAsync();
