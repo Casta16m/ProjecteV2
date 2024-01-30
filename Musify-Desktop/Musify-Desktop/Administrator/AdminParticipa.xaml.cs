@@ -23,5 +23,16 @@ namespace Musify_Desktop
         {
             InitializeComponent();
         }
+        public void btCreateParticipaClick(object sender, RoutedEventArgs e)
+        {
+            // Your code here
+        }
+        public void btUpdateParticipaClick(object sender, RoutedEventArgs e)
+        {
+            // Your code here
+        }
+
+
+
     }
 }

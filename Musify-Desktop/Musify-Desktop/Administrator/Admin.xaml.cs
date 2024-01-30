@@ -35,7 +35,6 @@ namespace Musify_Desktop
             SetButtonImage(artistButton);
             SetButtonImage(instrumentButton);
             SetButtonImage(groupButton);
-            SetButtonImage(extensionButton);
             SetButtonImage(participaButton);
             SetButtonImage(artistGroupButton);
             SetButtonImage(songAlbumbutton);

@@ -2528,7 +2528,6 @@ C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Deb
 C:\Users\luisr\Documents\Musify\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminSongxaml.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\Admin.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminArtistaGrup.baml
-C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminExtensio.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminGrup.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminInstrument.baml
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminParticipa.baml
@@ -2536,7 +2535,6 @@ C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Deskt
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\Admin.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminArtistaGrup.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminArtists.g.cs
-C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminExtensio.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminGrup.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminInstrument.g.cs
 C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\Musify-Desktop\Musify-Desktop\obj\Debug\net6.0-windows\Administrator\AdminParticipa.g.cs

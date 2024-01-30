@@ -45,8 +45,8 @@
                 <TextBox x:Name="txtuidSong" TextWrapping="Wrap" Width="170" Canvas.Left="9" Canvas.Top="126" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
             </Canvas>
-            <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#5FE95C" Click="btCreateHistorialClick" WidthGridImage="0" Text="Create" HeightButton="60" Margin="450,262,0,0" VerticalAlignment="Top"/>
-            <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#00FFF0"  Click="btUpdateHistorialClick" WidthGridImage="0" Text="Edit" HeightButton="60" Margin="600,262,0,0" VerticalAlignment="Top"/>
+            <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#5FE95C" Click="btCreateParticipaClick" WidthGridImage="0" Text="Create" HeightButton="60" Margin="450,262,0,0" VerticalAlignment="Top"/>
+            <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#00FFF0"  Click="btUpdateParticipaClick" WidthGridImage="0" Text="Edit" HeightButton="60" Margin="600,262,0,0" VerticalAlignment="Top"/>
 
 
 
