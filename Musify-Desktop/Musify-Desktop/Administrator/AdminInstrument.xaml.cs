@@ -139,7 +139,7 @@ namespace Musify_Desktop
         private async void btDeleteInstrumentClick(object sender, RoutedEventArgs e)
         {
             var nom = txtNom.Text;
-            string url = $"http://192.168.1.41/api/Instrument/{nom}";
+            string url = $"{BaseUrlSql}Instrument/{nom}";
             Reports rep = new Reports();
             Instrument instrumentToUpdate = new Instrument();
 

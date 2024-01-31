@@ -77,7 +77,7 @@ namespace Musify_Desktop {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Musify-Desktop;V1.0.0.0;component/administrator/adminmongosong.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Musify-Desktop;component/administrator/adminmongosong.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Administrator\AdminMongoSong.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

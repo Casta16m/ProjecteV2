@@ -2,6 +2,7 @@
 using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsWPF;
 using MusiFy_Lib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,7 +25,7 @@ namespace Musify_Desktop
     /// Lógica de interacción para AdminMongoHistorial.xaml
     /// </summary>
     public partial class AdminMongoHistorial : Window
-        
+
     {
         string baseUrlMongoApi = ConfigurationManager.AppSettings["BaseUrlMongoAPI"];
         public AdminMongoHistorial()
@@ -35,7 +36,7 @@ namespace Musify_Desktop
             timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += Timer_Tick;
             timer.Start();
-           
+
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -63,19 +64,32 @@ namespace Musify_Desktop
         {
             try
             {
-               
+
                 string url = $"{baseUrlMongoApi}Historial";
                 Reports rep = new Reports();
 
                 Historial historialToUpdate = new Historial();
 
-                
-                historialToUpdate.OID= txtuidSong.Text;
+                historialToUpdate.data = DateTime.Now;
+
                 historialToUpdate.mac = txtmac.Text;
-                historialToUpdate._ID = txt_ID.Text;
+                historialToUpdate.uidSong = txtuidSong.Text;
+
 
 
                 string jsonData = JsonConvert.SerializeObject(historialToUpdate);
+
+
+
+                // Parse the JSON into a JObject
+                JObject jObject = JObject.Parse(jsonData);
+
+                // Remove the _ID property
+                jObject.Property("_ID").Remove();
+
+                // Convert the JObject back into a JSON string
+                jsonData = jObject.ToString();
+
 
                 bool success = await rep.CreateData(url, jsonData);
                 if (success == true)
@@ -95,30 +109,35 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
-        public async  void btUpdateHistorialClick(object sender, RoutedEventArgs e)
+        public async void btUpdateHistorialClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 var _ID = txt_ID.Text;
 
-                string url = $"{baseUrlMongoApi}Historial{_ID}";
+                string url = $"{baseUrlMongoApi}Historial/{_ID}";
                 Reports rep = new Reports();
 
                 Historial historialToUpdate = new Historial();
-
-                historialToUpdate.OID = txtuidSong.Text;
-                historialToUpdate.mac = txtmac.Text;
                 historialToUpdate._ID = txt_ID.Text;
+                historialToUpdate.mac = txtmac.Text;
+                historialToUpdate.uidSong = txtuidSong.Text;
+                historialToUpdate.data = DateTime.Now;
+
+
 
                 Historial historial = new Historial
                 {
-                   OID = historialToUpdate.OID,
-               mac = historialToUpdate.mac,
-              _ID =  historialToUpdate._ID 
+                    _ID = historialToUpdate._ID,
+                    mac = historialToUpdate.mac,
+                    uidSong = historialToUpdate.uidSong,
+                    data = historialToUpdate.data
 
 
 
-            };
+
+
+                };
                 string jsonData = JsonConvert.SerializeObject(historialToUpdate);
 
 
@@ -141,6 +160,6 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
-        
+
     }
 }

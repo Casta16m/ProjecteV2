@@ -30,7 +30,7 @@ namespace Musify_Desktop
         {
             InitializeComponent();
 
-            
+
             SetButtonImage(songButton);
             SetButtonImage(artistButton);
             SetButtonImage(instrumentButton);
@@ -38,10 +38,10 @@ namespace Musify_Desktop
             SetButtonImage(participaButton);
             SetButtonImage(artistGroupButton);
             SetButtonImage(songAlbumbutton);
-            
+
         }
 
-       private void BtnSongs_Click(object sender, RoutedEventArgs e)
+        private void BtnSongs_Click(object sender, RoutedEventArgs e)
         {
             AdminSongxaml adminSong = new AdminSongxaml();
             adminSong.Show();
@@ -67,7 +67,7 @@ namespace Musify_Desktop
             adminGroups.Show();
         }
 
-        
+
 
         private void BtnParticipa_Click(object sender, RoutedEventArgs e)
         {
@@ -92,16 +92,11 @@ namespace Musify_Desktop
             adminMongoHistorial.Show();
         }
 
-        
+
         private void SetButtonImage(MusiFy_Library.Button button)
         {
             button.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/tendencia.png", UriKind.Absolute));
         }
 
-        private void BtnMongoSong_Click(object sender, RoutedEventArgs e)
-        {
-            AdminMongoSong adminMongoSong = new AdminMongoSong();
-            adminMongoSong.Show();
-        }
     }
 }

@@ -44,7 +44,7 @@ namespace Musify_Desktop
         }
         private async void GetAllArtists()
         {
-            string url = $"{BaseUrlSql}/Artista/";
+            string url = $"{BaseUrlSql}Artista";
 
             Reports reports = new Reports();
             List<Artist> artist = await reports.GetData<Artist>(url);

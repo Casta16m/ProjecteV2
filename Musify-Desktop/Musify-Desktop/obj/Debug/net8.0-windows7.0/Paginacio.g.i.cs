@@ -62,7 +62,7 @@ namespace Musify_Desktop {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Musify-Desktop;V1.0.0.0;component/paginacio.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Musify-Desktop;component/paginacio.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Paginacio.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

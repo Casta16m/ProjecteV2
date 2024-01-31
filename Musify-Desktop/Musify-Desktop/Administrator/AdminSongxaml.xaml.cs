@@ -1,6 +1,8 @@
 ﻿using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsWPF;
 using MusiFy_Lib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using org.w3c.dom.css;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -51,9 +53,9 @@ namespace Musify_Desktop
             Songs song = await reports.GetSingleData<Songs>(url);
             if (song != null)
             {
-                txtNomcanço.Text = song.NomSong;
-               // txtCançoOriginal.Text = song.SongOriginal;
-                txtGenere.Text = song.Genere;
+                txtNomcanço.Text = song.nomSong;
+                // txtCançoOriginal.Text = song.SongOriginal;
+                txtGenere.Text = song.genere;
             }
 
         }
@@ -61,34 +63,49 @@ namespace Musify_Desktop
         {
             try
             {
-                var uid = txtUID.Text;
-                string url = $"{BaseUrlSql}Song/";
+                var extension = txtExtensio.Text;
+                string url = $"{BaseUrlSql}Song/crearSong/{extension}";
                 Reports rep = new Reports();
 
                 Songs songToUpdate = new Songs();
 
-                Guid UID;
-                if (Guid.TryParse(txtUID.Text, out UID))
-                {
-                    songToUpdate.UID = UID.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, introduce una UID válida.");
-                }
-                songToUpdate.NomSong = txtNomcanço.Text;
-                songToUpdate.SongOriginal = txtCançoOriginal.Text;
-                songToUpdate.Genere = txtGenere.Text;
+                songToUpdate.nomSong = txtNomcanço.Text;
 
-                songToUpdate.data = DateTime.Now;
+                songToUpdate.songOriginal = txtCançoOriginal.Text;
+                if (songToUpdate.songOriginal == "")
+                {
+                    songToUpdate.songOriginal = null;
+                }
+                songToUpdate.genere = txtGenere.Text;
+
+
                 Songs song = new Songs
                 {
-                    NomSong = songToUpdate.NomSong,
-                    SongOriginal = songToUpdate.SongOriginal,
-                    Genere = songToUpdate.Genere,
+                    nomSong = songToUpdate.nomSong,
+                    songOriginal = songToUpdate.songOriginal,
+                    genere = songToUpdate.genere
+
 
                 };
                 string jsonData = JsonConvert.SerializeObject(songToUpdate);
+                // Parse the JSON into a JObject
+                JObject jObject = JObject.Parse(jsonData);
+
+
+
+                jObject.Property("UID").Remove();
+                jObject.Property("data").Remove();
+                jObject.Property("album").Remove();
+                jObject.Property("extensio").Remove();
+                jObject.Property("participa").Remove();
+                jObject.Property("llista").Remove();
+                jObject.Property("songs").Remove();
+
+
+
+
+                // Convert the JObject back into a JSON string
+                jsonData = jObject.ToString();
 
 
                 bool success = await rep.CreateData(url, jsonData);
@@ -149,19 +166,22 @@ namespace Musify_Desktop
                 Songs songToUpdate = new Songs();
 
                 songToUpdate.UID = txtUID.Text;
-                songToUpdate.NomSong = txtNomcanço.Text;
-               // songToUpdate.SongOriginal = txtCançoOriginal.Text;
-                songToUpdate.Genere = txtGenere.Text;
+                songToUpdate.nomSong = txtNomcanço.Text;
+                // songToUpdate.SongOriginal = txtCançoOriginal.Text;
+                songToUpdate.genere = txtGenere.Text;
 
                 songToUpdate.data = DateTime.Now;
                 Songs song = new Songs
                 {
-                    NomSong = songToUpdate.NomSong,
-                    SongOriginal = songToUpdate.SongOriginal,
-                    Genere = songToUpdate.Genere,
+                    nomSong = songToUpdate.nomSong,
+                    songOriginal = songToUpdate.songOriginal,
+                    genere = songToUpdate.genere,
 
                 };
                 string jsonData = JsonConvert.SerializeObject(songToUpdate);
+
+
+
 
 
                 bool success = await rep.UpdateData(url, jsonData);
@@ -184,7 +204,7 @@ namespace Musify_Desktop
         }
         private async void btGetAllSongs()
         {
-            string url = "http://172.23.1.231:1443/api/Song/";
+            string url = $"{BaseUrlSql}Song";
 
             Reports reports = new Reports();
             List<Songs> songs = await reports.GetData<Songs>(url);
@@ -200,30 +220,6 @@ namespace Musify_Desktop
             }
         }
 
-        private void lvSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lvSongs.SelectedItem != null)
-            {
-                var selectedSong = (Songs)lvSongs.SelectedItem;
-                string uid = selectedSong.UID;
-                string nomSong = selectedSong.NomSong;
-                txtNomcanço.Text = nomSong;
-                txtUID.Text = uid;
-
-
-
-            }
-        }
-
-        private void txtCançoOriginal_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtUID_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
 

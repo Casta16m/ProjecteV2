@@ -34,15 +34,16 @@
 
             <StackPanel Width="750" Height="80" VerticalAlignment="Bottom" Margin="0, 0 ,0 ,100" Orientation="Horizontal">
                 <MusiFy_Library:Button  x:Name="participaButton" Click="BtnParticipa_Click" BotonBackground="#5CE9BD" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="130" WidthGridImage="100"  TextSize="30" Text="Participa" />
-                <MusiFy_Library:Button x:Name="artistGroupButton" Click="BtnArtists_Click" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="90" TextSize="30" Text="ArtistaGrup" />
+                <MusiFy_Library:Button x:Name="artistGroupButton" Click="BtnArtistGroup_Click" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="90" TextSize="30" Text="ArtistaGrup" />
                 <MusiFy_Library:Button x:Name="songAlbumbutton" Click="BtnSongAlbum_Click" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="100"   TextSize="25" Text="SongAlbum" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="80" Margin="0,0,0,15" VerticalAlignment="Bottom">
-                <MusiFy_Library:Button  x:Name="mongoSong" BotonBackground="#24B91D" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="40"  TextSize="30" Text="MongoSong" Click="BtnMongoSong_Click"  />
+                <MusiFy_Library:Button  x:Name="mongoSong" BotonBackground="#24B91D" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="40"  TextSize="30" Text="MongoSong"  />
                 <MusiFy_Library:Button x:Name="mongoHistorial" Click="BtnMongoHistorial_Click" BotonBackground="#24B91D"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="210" WidthGridImage="37" TextSize="30" Text="MongoHistorial" />
             </StackPanel>
         </Grid>
     </Viewbox>
 
 </Window>
+

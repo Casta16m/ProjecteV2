@@ -44,7 +44,7 @@ namespace Musify_Desktop
             string url = $"{BaseUrlSql}Grup/";
 
             Reports reports = new Reports();
-            List<Grup> grup = await reports.GetData<Grup>(url);
+            List<Grups> grup = await reports.GetData<Grups>(url);
 
             // Asegúrate de que las canciones no sean null antes de intentar acceder a sus propiedades
             if (grup != null)
@@ -65,7 +65,7 @@ namespace Musify_Desktop
                 string url = $"{BaseUrlSql}Grup/";
                 Reports rep = new Reports();
 
-                Grup grupToUpdate = new Grup();
+                Grups grupToUpdate = new Grups();
 
                 grupToUpdate.NomGrup = txtNom.Text;
 
@@ -98,3 +98,4 @@ namespace Musify_Desktop
         }
     }
 }
+

@@ -41,7 +41,7 @@ namespace Musify_Desktop
                 List<Songs> songs = await reports.GetData<Songs>(BaseUrlSql + "Song/");
 
                 List<string?> songNames = new List<string>();
-                songNames = songs.Select(x => x.NomSong).ToList();
+                songNames = songs.Select(x => x.nomSong).ToList();
 
                 responseProcess(songNames);
             }
