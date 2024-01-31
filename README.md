@@ -31,19 +31,22 @@ Para clonar unicamente la APP utiliza el siguiente comando
 git clone -b Android https://github.com/Casta16m/ProjecteV2
 ```
 
-Para clonar unicamente el Socket utiliza el siguiente comando
+Para clonar unicamente el Sockets y Testing utiliza el siguiente comando
 ```
-git clone -b Socket https://github.com/Casta16m/ProjecteV2
+git clone -b SocketAndTests https://github.com/Casta16m/ProjecteV2
 ```
 
 Para clonar unicamente la api de SQL utiliza el siguiente comando
 ```
-git clone -b APISQLDB https://github.com/Casta16m/ProjecteV2
+git clone -b APISql https://github.com/Casta16m/ProjecteV2
 ```
 
-Para clonar unicamente la api de MongoDB utiliza el siguiente comando
+Para clonar unicamente las dos api's de MongoDB utiliza el siguiente comando
 ```
 git clone -b APIMongoDB https://github.com/Casta16m/ProjecteV2
 ```
-
+Para clonar unicamente el WPF utiliza el siguiente comando
+```
+git clone -b WPF https://github.com/Casta16m/ProjecteV2
+```
 
