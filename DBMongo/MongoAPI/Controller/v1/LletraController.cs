@@ -4,6 +4,9 @@ using MongoStoreApi.Services;
 using ProjecteV2.ApiMongoDB;
 
 namespace ProjecteV2.Controllers;
+/// <summary>
+/// Controlador per la col·leccio de lletres
+/// </summary>
 
 [Route("MongoApi/v1/[controller]")]
 [ApiController]
@@ -12,8 +15,17 @@ public class LletresController: ControllerBase
 {
     private readonly LletraService _LletresService;
 
+    /// <summary>
+    /// Constructor de la classe
+    /// </summary>
+    /// <param name="lletraService"></param>
     public LletresController(LletraService lletraService) =>
     _LletresService = lletraService;
+
+    /// <summary>
+    /// Aconseguir totes les lletres
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<List<Lletra>>> GetAllLletres()
     {
@@ -24,6 +36,12 @@ public class LletresController: ControllerBase
         }
         return Lletres;
     }
+
+    /// <summary>
+    /// Aconseguir una lletra específica
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     [HttpGet("{_ID}")]
     public async Task<ActionResult<Lletra>> Get(string _ID)
     {
@@ -36,6 +54,12 @@ public class LletresController: ControllerBase
 
         return Lletres;
     }
+
+    /// <summary>
+    /// Aconseguir una lletra específica per el seu UIDSong
+    /// </summary>
+    /// <param name="UIDSong"></param>
+    /// <returns></returns>
     [HttpGet("Song/{UIDSong}")]
     public async Task<ActionResult<Lletra>> GetByUIDSong(string UIDSong)
     {
@@ -48,6 +72,12 @@ public class LletresController: ControllerBase
 
         return Lletres;
     }
+
+    /// <summary>
+    /// Crear una lletra
+    /// </summary>
+    /// <param name="newLletra"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> Post(Lletra newLletra)
     {
@@ -61,6 +91,13 @@ public class LletresController: ControllerBase
         }
         return result;
     }
+
+    /// <summary>
+    /// Actualitzar lletra
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <param name="updatedLletra"></param>
+    /// <returns></returns>
     [HttpPut("{_ID}")]
     public async Task<IActionResult> Put(string _ID, Lletra updatedLletra)
     {

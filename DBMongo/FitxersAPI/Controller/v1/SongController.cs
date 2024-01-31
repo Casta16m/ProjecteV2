@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 
 namespace ProjecteV2.Controllers;
 
-
+/// <summary>
+/// Controlador per la col·leccio de song
+/// </summary>
 [Route("FitxersAPI/v1/[controller]")]
 [ApiController]
 public class SongController : ControllerBase
@@ -20,7 +22,11 @@ public class SongController : ControllerBase
 
     public SongController(SongService SongService) =>
         _SongService = SongService;
-        
+
+    /// <summary>
+    /// Aconseguir totes les songs
+    /// </summary>
+    /// <returns></returns>    
     [HttpGet]
     public async Task<ActionResult<List<Song>>> GetAll()
     {
@@ -32,6 +38,11 @@ public class SongController : ControllerBase
         return songs;
     }
 
+    /// <summary>
+    /// Aconseguir una song específica
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     [HttpGet("{_ID}")]
     public async Task<ActionResult<Song>> GetSong(string _ID)
     {
@@ -45,6 +56,11 @@ public class SongController : ControllerBase
         return song;
     }
 
+    /// <summary>
+    /// Aconseguir una song específica per el seu UID
+    /// </summary>
+    /// <param name="UID"></param>
+    /// <returns></returns>
     [HttpGet("GetAudio/{UID}")]
     public async Task<IActionResult> GetAudio(string UID)
     {
@@ -72,7 +88,11 @@ public class SongController : ControllerBase
         }
     }
 
-
+    /// <summary>
+    /// Crear una song amb la classe model
+    /// </summary>
+    /// <param name="songModel"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> UploadSong([FromForm] SongUploadModel songModel)
     {
@@ -105,6 +125,12 @@ public class SongController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Modificar una song amb el seu _ID únic
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <param name="updatedSong"></param>
+    /// <returns></returns>
     [HttpPut("{_ID}")]
     public async Task<IActionResult> Update(string _ID, Song updatedSong)
     {

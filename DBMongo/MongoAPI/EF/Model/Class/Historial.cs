@@ -3,6 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 
 namespace ProjecteV2.ApiMongoDB{
+    /// <summary>
+    /// Classe per a la col·lecció de historials
+    /// </summary>
     public class Historial{
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

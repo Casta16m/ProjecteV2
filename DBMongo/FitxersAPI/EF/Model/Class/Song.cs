@@ -2,6 +2,9 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjecteV2.ApiMongoDB{
+    /// <summary>
+    /// Classe per a la col·lecció de songs
+    /// </summary>
     public class Song{
         
         [BsonId]
