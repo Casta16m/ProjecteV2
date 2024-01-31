@@ -25,7 +25,11 @@ namespace MusiFy_Lib
         private Pkcs12Store pkcs12Store = new Pkcs12StoreBuilder().Build();
         private string storeAlias = "";
 
-
+        /// <summary>
+        /// Initializes the digital certificate used for signing PDFs.
+        /// </summary>
+        /// <param name="pfxFileName">Path to the PFX file containing the certificate.</param>
+        /// <param name="pfxPassword">Password for the PFX file.</param>
         public void InitCertificate(string pfxFileName, string pfxPassword)
         {
             certificate = new X509Certificate2(pfxFileName, pfxPassword);
@@ -41,6 +45,13 @@ namespace MusiFy_Lib
             }
             certificateInfo = CertificateInfo.FromCertificate(pfxFileName, pfxPassword);
         }
+
+        /// <summary>
+        /// Signs a PDF file using the initialized digital certificate.
+        /// </summary>
+        /// <param name="inputFileName">Path to the input PDF file.</param>
+        /// <param name="outputFileName">Path to save the signed PDF.</param>
+        /// <param name="showSignature">Specifies whether to show the signature appearance.</param>
         public void SignPdf(string inputFileName, string outputFileName, bool showSignature)
         {
             AsymmetricKeyParameter key = pkcs12Store.GetKey(storeAlias).Key;
@@ -64,6 +75,11 @@ namespace MusiFy_Lib
                 pdfSigner.SignDetached(signature, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
             }
         }
+
+        /// <summary>
+        /// Creates a signature appearance field for the PDF signer.
+        /// </summary>
+        /// <param name="pdfSigner">The PdfSigner instance.</param>
         internal void CreateSignatureApperanceField(PdfSigner pdfSigner)
         {
             var pdfDocument = pdfSigner.GetDocument();

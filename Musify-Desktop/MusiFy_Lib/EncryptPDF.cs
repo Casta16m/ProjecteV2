@@ -10,6 +10,12 @@ namespace MusiFy_Lib
 {
     public class EncryptPDF
     {
+        /// <summary>
+        /// Save the public key from a certificate to a file
+        /// </summary>
+        /// <param name="pfxFilename"></param>
+        /// <param name="pfxPassword"></param>
+        /// <param name="publicKeyFile"></param>
         public static void SavePublicKey(string pfxFilename, string pfxPassword, string publicKeyFile)
         {
             X509Certificate2 certificate = new X509Certificate2(pfxFilename, pfxPassword);
@@ -21,6 +27,11 @@ namespace MusiFy_Lib
             }
         }
 
+        /// <summary>
+        /// Load the public key from a file
+        /// </summary>
+        /// <param name="publicKeyFile"></param>
+        /// <returns></returns>
         public static RSA LoadPublicKey(string publicKeyFile)
         {
             RSAParameters publicKeyParams = new RSAParameters();
@@ -39,6 +50,11 @@ namespace MusiFy_Lib
             return rsa;
         }
 
+        /// <summary>
+        /// Save the public key to a file
+        /// </summary>
+        /// <param name="publicKey"></param>
+        /// <param name="publicKeyFile"></param>
         public static void SavePublicKey(RSA publicKey, string publicKeyFile)
         {
             RSAParameters publickeyParams = publicKey.ExportParameters(false);
@@ -54,7 +70,7 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// 
+        /// Encrypt the AES key with the public key
         /// </summary>
         /// <param name="aesKey"></param>
         /// <param name="publicKey"></param>
@@ -71,7 +87,7 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// 
+        /// Decrypt the AES key with the private key
         /// </summary>
         /// <param name="encrypteKey"></param>
         /// <param name="certificate"></param>
@@ -92,7 +108,7 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// 
+        /// Encrypt the PDF content directly using RSA
         /// </summary>
         /// <param name="pdfBytes"></param>
         /// <param name="publicKey"></param>
@@ -105,7 +121,7 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// 
+        /// Decrypt the PDF content directly using RSA
         /// </summary>
         /// <returns></returns>
         public static byte[] GenerateAesKeyBytes()
@@ -118,7 +134,7 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// 
+        /// Generate a random AES key
         /// </summary>
         /// <returns></returns>
         public static byte[] GetBase64EncodedAesKey()
@@ -126,36 +142,6 @@ namespace MusiFy_Lib
             byte[] aesKey = GenerateAesKeyBytes();
             return aesKey;
             //return Convert.ToBase64String(aesKey);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="publicKeyBytes"></param>
-        /// <returns></returns>
-        public static RSAParameters PassByteToRSAParameters(byte[] publicKeyBytes)
-        {
-            // Recrear la instancia de RSACryptoServiceProvider
-            RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
-            rsaKey.FromXmlString(Encoding.UTF8.GetString(publicKeyBytes));
-
-            // Exportar los parámetros de la clave pública
-            RSAParameters publicKeyParams = rsaKey.ExportParameters(false);
-
-            return publicKeyParams;
-        }
-
-        public static RSA ConvertParametersToRsa(RSAParameters rsaParameters)
-        {
-            RSA rsa = RSA.Create();
-            rsa.ImportParameters(rsaParameters);
-            return rsa;
-        }
-
-        public static RSAParameters ConvertRsaToParameters(RSA rsa)
-        {
-            RSAParameters rsaParameters = rsa.ExportParameters(false);
-            return rsaParameters;
         }
     }
 }

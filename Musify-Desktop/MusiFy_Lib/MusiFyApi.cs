@@ -21,6 +21,11 @@ namespace MusiFy_Lib
 
         }
 
+        /// <summary>
+        /// Asynchronously retrieves data from a specified API endpoint using an HTTP GET request.
+        /// Returns the content as a string if the request is successful, or an error message if there's an issue.
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> ObtenerDatosAsync()
         {
             try
@@ -44,6 +49,13 @@ namespace MusiFy_Lib
             }
            
         }
+
+        /// <summary>
+        /// Asynchronously sends a PUT request to a specified API endpoint with provided JSON data.
+        /// Returns true if the request is successful; otherwise, returns false.
+        /// </summary>
+        /// <param name="dataJson">JSON data to be included in the PUT request.</param>
+        /// <returns>A Task representing the asynchronous operation with a boolean indicating the success of the request.</returns>
         public async Task<bool> SendPutRequestAsync(string dataJson)
         {
             try
@@ -61,6 +73,13 @@ namespace MusiFy_Lib
                 return false;
             }
         }
+
+        /// <summary>
+        /// Asynchronously sends a POST request to a specified API endpoint with provided JSON data.
+        /// Returns true if the request is successful; otherwise, returns false.
+        /// </summary>
+        /// <param name="dataJson">JSON data to be included in the POST request.</param>
+        /// <returns>A Task representing the asynchronous operation with a boolean indicating the success of the request.</returns>
         public async Task<bool> SendPostRequestAsync(string dataJson)
         {
             try

@@ -15,11 +15,11 @@ namespace MusiFy_Lib
     {
 
         /// <summary>
-        /// Obtiene los datos de la API y los deserializa en una lista de objetos
+        /// Asynchronously retrieves a list of data from a specified API endpoint and deserializes it into a generic List.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="apiUrl"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">Type of data to be deserialized.</typeparam>
+        /// <param name="apiUrl">URL of the API endpoint.</param>
+        /// <returns>A Task representing the asynchronous operation with a List of deserialized data.</returns>
         public async Task<List<T>?> GetData<T>(string apiUrl)
         {
 
@@ -33,11 +33,11 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// Obtiene los datos de la API y los deserializa en un objeto
+        /// Asynchronously retrieves a single piece of data from a specified API endpoint and deserializes it into a generic type.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="apiUrl"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">Type of data to be deserialized.</typeparam>
+        /// <param name="apiUrl">URL of the API endpoint.</param>
+        /// <returns>A Task representing the asynchronous operation with a deserialized data.</returns>
         public async Task<T?> GetSingleData<T>(string apiUrl)
         {
             MusiFyApi apiCall = new MusiFyApi(apiUrl);
@@ -49,11 +49,11 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// Actualiza los datos de la API
+        /// Asynchronously updates data on a specified API endpoint using a PUT request.
         /// </summary>
-        /// <param name="apiUrl"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="apiUrl">URL of the API endpoint.</param>
+        /// <param name="data">JSON data to be included in the PUT request.</param>
+        /// <returns>A Task representing the asynchronous operation with a boolean indicating the success of the update.</returns>
         public async Task<bool> UpdateData(string apiUrl, string data)
         {
             try
@@ -73,10 +73,11 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// Elimina los datos de la API
+        /// Asynchronously sends a DELETE request to a specified URL and returns true if the request is successful (HTTP status code 2xx);
+        /// otherwise, returns false. Logs errors to the console.
         /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
+        /// <param name="url">URL of the resource to be deleted.</param>
+        /// <returns>A Task representing the asynchronous operation with a boolean indicating the success of the delete operation.</returns>
         public async Task<bool> DeleteData(string url)
         {
             using (HttpClient client = new HttpClient())
@@ -103,11 +104,13 @@ namespace MusiFy_Lib
         }
 
         /// <summary>
-        /// Crea los datos de la API
+        /// Asynchronously sends a POST request to a specified API endpoint with the provided JSON data.
+        /// Returns true if the request is successful (HTTP status code 2xx); otherwise, returns false.
+        /// Logs errors to the console.
         /// </summary>
-        /// <param name="apiurl"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="apiurl">URL of the API endpoint.</param>
+        /// <param name="data">JSON data to be included in the POST request.</param>
+        /// <returns>A Task representing the asynchronous operation with a boolean indicating the success of the create operation.</returns>
         public async Task<bool>CreateData(string apiurl, string data)
         {
             try
