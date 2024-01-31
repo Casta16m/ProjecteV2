@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,12 +42,7 @@ namespace ProjecteV2.ApiSql.Services{
         /// <returns></returns>
         public async Task<Grup> GetGrup(string NomGrup)
         {
-            var grup = await _context.Grups.Include(a => a.artistes).FirstOrDefaultAsync(a => a.NomGrup == NomGrup);
-
-            if (grup == null)
-            {
-                return null;
-            }
+            var grup = await _context.Grups.Include(a => a.artistes).Where(a => a.NomGrup == NomGrup).FirstOrDefaultAsync();
             
             return grup;
         }

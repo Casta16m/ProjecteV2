@@ -57,7 +57,7 @@ namespace DBSql.Controller
         /// <param name="nom"></param>
         /// <returns></returns>
         [HttpGet("BuscarNom/{nom}")]
-        public async Task<ActionResult<IEnumerable<Grup>>> GetNomGrup(string nom)
+        public async Task<ActionResult<Grup>> GetNomGrup(string nom)
         {
             var grup = await _grupservice.GetGrup(nom);
             return Ok(grup);
