@@ -26,7 +26,6 @@ namespace Musify_Desktop
         public ReportPage()
         {
             InitializeComponent();
-
         }
 
         /// <summary>

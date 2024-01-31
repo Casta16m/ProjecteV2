@@ -19,7 +19,6 @@ namespace Musify_Desktop
         public MainWindow()
         {
             InitializeComponent();
-
             
             ReportButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/report.png", UriKind.Absolute));
             AdminButton.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/admin.png", UriKind.Absolute));
@@ -31,17 +30,28 @@ namespace Musify_Desktop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-       private void ReportButton_Click(object sender, RoutedEventArgs e)
-{
-    ReportPage reportPage = new ReportPage();
-        reportPage.Show();
-}
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPage reportPage = new ReportPage();
+            reportPage.Show();
+        }
+
+        /// <summary>
+        /// Method to navigate to the Admin page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             Admin adminPage = new Admin();
             adminPage.Show();
         }
 
+        /// <summary>
+        /// Method to navigate to the Home page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
 
