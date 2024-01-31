@@ -51,27 +51,29 @@ namespace MusiFy_Library
         /// <summary>
         /// Property to set the width of TextBlock inside the button
         /// </summary>
-       
         public GridLength WidthGrid
         {
             get { return ButtonNameSpace.ColumnDefinitions[1].Width; }
             set { ButtonNameSpace.ColumnDefinitions[1].Width = value; }
         }
 
+        /// <summary>
+        /// Property to set the width of Image inside the button
+        /// </summary>
         public GridLength WidthGridImage
         {
             get { return ButtonNameSpace.ColumnDefinitions[0].Width; }
             set { ButtonNameSpace.ColumnDefinitions[0].Width = value; }
         }
 
-
+        /// <summary>
+        /// Property to set the background of the button
+        /// </summary>
         public Brush BotonBackground
         {
             get { return (Brush)GetValue(BotonBackgroundProperty); }
             set { SetValue(BotonBackgroundProperty, value); }
         }
-
-
 
         /// <summary>
         /// Property to set the width of the button
@@ -82,20 +84,14 @@ namespace MusiFy_Library
             set { btn_glb.Width = value; }
         }
 
-
-       
-
-
         /// <summary>
         /// Property to set the height of the button
         /// </summary>
-
         public int HeightButton
         {
             get { return (int)btn_glb.Height; }
             set { btn_glb.Height = value; }
         }
-
 
         /// <summary>
         /// Property to set the font size of the text inside the button
@@ -106,28 +102,22 @@ namespace MusiFy_Library
             set { ButtonName.FontSize = value; }
         }
 
-
-
-
         /// <summary>
         /// Property to set the image of the Control 
         /// </summary>
-
         public ImageSource SourceImageButton {
             get { return ButtonImage.Source; }
             set { ButtonImage.Source = value; }
         }
 
-
-
+        /// <summary>
+        /// Property to set the margin of the text inside the button
+        /// </summary>
         public int MarginName
         {
             get { return (int)ButtonName.Margin.Left; }
             set { ButtonName.Margin = new Thickness(value); }
         }
-
-
-
 
         /// <summary>
         /// Property to set the size of the image inside the button
@@ -137,15 +127,13 @@ namespace MusiFy_Library
             get { return (int)ButtonImage.Width; }
             set { ButtonImage.Width = value; ButtonImage.Height = value; }
         }
-
-      
-
-
         
+        /// <summary>
+        /// Property to set the margin of the image inside the button
+        /// </summary>
         public Button()
         {
             InitializeComponent();
-
 
             btn_glb.Click += (s, e) =>
             {
@@ -154,9 +142,6 @@ namespace MusiFy_Library
 
         }
 
-      
-
-
         /// <summary>
         /// Method to handle the click event
         /// </summary>
@@ -164,8 +149,6 @@ namespace MusiFy_Library
         {
             Click?.Invoke(this, new RoutedEventArgs());
         }
-
-
 
         /// <summary>
         /// Method to handle the mouse enter event and animate the button
@@ -179,7 +162,6 @@ namespace MusiFy_Library
             scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
             scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
         }
-
 
         /// <summary>
         /// Method to handle the mouse leave event and animate the button

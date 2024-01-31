@@ -33,6 +33,11 @@ namespace MusiFy_Library
             txtPDFFile.Text = pdfFilePath;
         }
 
+        /// <summary>
+        /// Selecct pfx file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSelectPfx_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -41,6 +46,12 @@ namespace MusiFy_Library
                 txtPfxFile.Text = fileDialog.FileName;
             }
         }
+
+        /// <summary>
+        /// Select pdf file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSelectPdf_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -50,6 +61,11 @@ namespace MusiFy_Library
             }
         }
 
+        /// <summary>
+        /// Select output pdf file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSelectOutPDF_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -60,10 +76,11 @@ namespace MusiFy_Library
         }
 
         /// <summary>
-        /// 
+        /// Event handler for the "Sign" button click. Signs the selected PDF file using a digital certificate,
+        /// creates a signed PDF file, and displays a message indicating the result.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void btSign_Click(object sender, RoutedEventArgs e)
         {
             string filePath = this.txtPDFFile.Text;
@@ -96,6 +113,11 @@ namespace MusiFy_Library
 
         }
 
+        /// <summary>
+        /// Exit pdf signer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
