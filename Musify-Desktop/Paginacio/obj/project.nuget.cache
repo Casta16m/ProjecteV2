@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "CM5hWwQX4wuG14WUC9wuAPJ2cYclE5fGFf45XhdjKY/sUKsA5X3mefxXncHVZ2IMKDg2MtJ/fqhyszLziKDQIA==",
+  "dgSpecHash": "R+dWslNhiSRYdZmM6GYOkKkh8kqjoj4GUVPPBRlZtZrBxAnGMT46ZgndJIqikiSzrJvVW16gYnnbR738yWZPfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\ProjecteV2\\Musify-Desktop\\Paginacio\\Paginacio.csproj",
+  "projectFilePath": "C:\\Users\\sergi\\Documents\\GitHub\\ProjecteV2\\Musify-Desktop\\Paginacio\\Paginacio.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.compression.base\\24.2.3\\syncfusion.compression.base.24.2.3.nupkg.sha512",
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.licensing\\24.2.3\\syncfusion.licensing.24.2.3.nupkg.sha512",
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.pdf.wpf\\24.2.3\\syncfusion.pdf.wpf.24.2.3.nupkg.sha512",
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.pdftoimageconverter.wpf\\24.2.3\\syncfusion.pdftoimageconverter.wpf.24.2.3.nupkg.sha512",
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.pdfviewer.wpf\\24.2.3\\syncfusion.pdfviewer.wpf.24.2.3.nupkg.sha512",
-    "C:\\Users\\yosse\\.nuget\\packages\\syncfusion.shared.wpf\\24.2.3\\syncfusion.shared.wpf.24.2.3.nupkg.sha512"
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.compression.base\\24.2.3\\syncfusion.compression.base.24.2.3.nupkg.sha512",
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.licensing\\24.2.3\\syncfusion.licensing.24.2.3.nupkg.sha512",
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.pdf.wpf\\24.2.3\\syncfusion.pdf.wpf.24.2.3.nupkg.sha512",
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.pdftoimageconverter.wpf\\24.2.3\\syncfusion.pdftoimageconverter.wpf.24.2.3.nupkg.sha512",
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.pdfviewer.wpf\\24.2.3\\syncfusion.pdfviewer.wpf.24.2.3.nupkg.sha512",
+    "C:\\Users\\sergi\\.nuget\\packages\\syncfusion.shared.wpf\\24.2.3\\syncfusion.shared.wpf.24.2.3.nupkg.sha512"
   ],
   "logs": []
 }

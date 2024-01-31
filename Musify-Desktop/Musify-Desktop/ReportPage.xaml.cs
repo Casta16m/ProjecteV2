@@ -29,6 +29,12 @@ namespace Musify_Desktop
 
         }
 
+        /// <summary>
+        /// Handles the click event for the "Songs" button. Retrieves a list of songs from a SQL-based API endpoint,
+        /// extracts song names, and processes the list of names using the responseProcess function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnSongs_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -46,6 +52,12 @@ namespace Musify_Desktop
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the "Artists" button. Retrieves a list of artists from a SQL-based API endpoint,
+        /// extracts artist names, and processes the list of names using the responseProcess function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnArtists_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -65,6 +77,12 @@ namespace Musify_Desktop
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the "Instruments" button. Retrieves a list of instruments from a SQL-based API endpoint,
+        /// extracts instrument names, and processes the list of names using the responseProcess function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnInstruments_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,6 +100,12 @@ namespace Musify_Desktop
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the "Groups" button. Retrieves a list of groups from a SQL-based API endpoint,
+        /// extracts group names, and processes the list of names using the responseProcess function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnGrups_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -90,7 +114,7 @@ namespace Musify_Desktop
 
                 List<string?> grupNames = new List<string>();
                 grupNames = grups.Select(x => x.NomGrup).ToList();
-                
+
                 responseProcess(grupNames);
 
             }
@@ -100,6 +124,12 @@ namespace Musify_Desktop
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the "Albums" button. Retrieves a list of albums from a SQL-based API endpoint,
+        /// extracts album names, and processes the list of names using the responseProcess function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnAlbums_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -108,7 +138,7 @@ namespace Musify_Desktop
 
                 List<string?> albumNames = new List<string>();
                 albumNames = albums.Select(x => x.NomAlbum).ToList();
-                
+
                 responseProcess(albumNames);
 
             }
@@ -118,6 +148,10 @@ namespace Musify_Desktop
             }
         }
 
+        /// <summary>
+        /// Processes a list of content, generates a PDF file, and provides options to sign and view the PDF.
+        /// </summary>
+        /// <param name="content"></param>
         private void responseProcess(List<string?> content)
         {
             MessageBox.Show("Select the place where you want to save the pdf \n Remind to put .pdf in the namefile");
@@ -152,8 +186,12 @@ namespace Musify_Desktop
 
         }
 
-
-
+        /// <summary>
+        /// Opens a Save File Dialog to allow the user to choose a location for saving a PDF file. 
+        /// If a location is selected, creates a PDF file using the provided content and returns the file path; otherwise, returns null.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
         private string? CreatePDFAndOpenFileDialog(List<string?> content)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
