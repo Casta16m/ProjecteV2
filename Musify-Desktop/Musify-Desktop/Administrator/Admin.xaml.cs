@@ -92,10 +92,17 @@ namespace Musify_Desktop
             adminMongoHistorial.Show();
         }
 
+        private void BtnMongoSong_Click(object sender, RoutedEventArgs e)
+        {
+            AdminMongoSong adminMongoSong = new AdminMongoSong();
+            adminMongoSong.Show();
+        }
+
 
         private void SetButtonImage(MusiFy_Library.Button button)
         {
-            button.SourceImageButton = new BitmapImage(new Uri("pack://application:,,,/MusiFy-Library;component/Images/tendencia.png", UriKind.Absolute));
+            string imgPath = "pack://application:,,,/MusiFy-Library;component/Images/report.png";
+            // button.SourceImageButton = new BitmapImage(new Uri(imgPath, UriKind.Absolute));
         }
 
     }

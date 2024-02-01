@@ -37,7 +37,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock  x:Name="ButtonName" VerticalAlignment="Center" TextAlignment="Center"  Text="Informes" FontSize="40px" Grid.Column="1" Foreground="White" />
-                    <Image x:Name="ButtonImage" Width="70" Grid.Column="0"/>
+                    <Image x:Name="ButtonImage" Width="100" Height="100" Grid.Column="0"/>
                 </Grid>
             </ContentControl>
         </Button>
