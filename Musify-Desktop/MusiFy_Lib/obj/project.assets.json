@@ -10390,23 +10390,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yosse\\.nuget\\packages\\": {},
+    "C:\\Users\\guill\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
+      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
       "projectName": "MusiFy_Lib",
-      "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
-      "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\obj\\",
+      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
+      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\yosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

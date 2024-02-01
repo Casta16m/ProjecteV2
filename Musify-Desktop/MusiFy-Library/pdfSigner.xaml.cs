@@ -25,7 +25,10 @@ namespace MusiFy_Library
 
         CreatePDF crearPDF = new CreatePDF();
         private string pdfFilePath;
-
+        /// <summary>
+        /// Signa el pdf
+        /// </summary>
+        /// <param name="pdfFile"></param>
         public pdfSigner(string pdfFile)
         {
             InitializeComponent();

@@ -109,7 +109,7 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
-        public async void btUpdateHistorialClick(object sender, RoutedEventArgs e)
+        private async void btUpdateHistorialClick(object sender, RoutedEventArgs e)
         {
             try
             {
