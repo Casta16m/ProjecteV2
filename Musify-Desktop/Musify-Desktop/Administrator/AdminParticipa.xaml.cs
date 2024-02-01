@@ -38,10 +38,19 @@ namespace Musify_Desktop
             GetAllParticipa();
 
         }
+        /// <summary>
+        /// Temporizador de 5 segundos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             GetAllParticipa();
         }
+
+        /// <summary>
+        /// Obtener todos los participa
+        /// </summary>
         private async void GetAllParticipa()
         {
             string url = $"{BaseUrlSql}Participa";
@@ -59,6 +68,12 @@ namespace Musify_Desktop
                 // Maneja el caso en que las canciones sean null (por ejemplo, muestra un mensaje de error)
             }
         }
+
+        /// <summary>
+        /// Crea un participa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void btCreateParticipaClick(object sender, RoutedEventArgs e)
         {
             try

@@ -39,19 +39,15 @@ namespace Musify_Desktop
         {
             InitializeComponent();
             _httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
-
-            // GetAllHistorial();
-            var timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5);
-            timer.Tick += Timer_Tick;
-            timer.Start();
+          
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // GetAllHistorial();
-        }
-
+    
+        /// <summary>
+        /// Seleciona un Audio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSelectAudio(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -67,7 +63,11 @@ namespace Musify_Desktop
                 audioname.Text = fileName;
             }
         }
-
+        /// <summary>
+        /// Actualiza un audio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btUploadAudio(object sender, RoutedEventArgs e)
         {
             if (filePath != "" && txt_uid.Text != "")
@@ -82,7 +82,12 @@ namespace Musify_Desktop
             
             }
         }
-
+        /// <summary>
+        /// Crea un audio
+        /// </summary>
+        /// <param name="songUid"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public async Task<bool> PostSongAudio(string songUid, string filePath)
         {
             try
@@ -122,7 +127,11 @@ namespace Musify_Desktop
             return false;
         }
 
-
+        /// <summary>
+        /// Obtener un Audio
+        /// </summary>
+        /// <param name="songUid"></param>
+        /// <returns></returns>
         public async Task<string> GetSongAudio(string songUid)
         {
             try

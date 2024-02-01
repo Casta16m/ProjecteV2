@@ -37,28 +37,20 @@ namespace Musify_Desktop
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        /// <summary>
+        /// Temporizador de 5 segundos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             btGetAllSongs();
         }
-
-        private async void btGetSongClick(object sender, RoutedEventArgs e)
-        {
-            var uid = txtUID.Text;
-
-            string url = $"{BaseUrlSql}BuscarUID/{uid}";
-
-
-            Reports reports = new Reports();
-            Songs song = await reports.GetSingleData<Songs>(url);
-            if (song != null)
-            {
-                txtNomcanço.Text = song.nomSong;
-                // txtCançoOriginal.Text = song.SongOriginal;
-                txtGenere.Text = song.genere;
-            }
-
-        }
+        /// <summary>
+        /// Crea una cancion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateSongClick(object sender, RoutedEventArgs e)
         {
             try
@@ -128,7 +120,11 @@ namespace Musify_Desktop
 
         }
 
-
+        /// <summary>
+        /// Borra una cancion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btDeleteSongClick(object sender, RoutedEventArgs e)
         {
             var uid = txtUID.Text;
@@ -155,6 +151,11 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error al borrar la canción: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Actualiza una cancion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btUpdateSongClick(object sender, RoutedEventArgs e)
         {
             try
@@ -202,6 +203,9 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Obtiene todas la canciones
+        /// </summary>
         private async void btGetAllSongs()
         {
             string url = $"{BaseUrlSql}Song";

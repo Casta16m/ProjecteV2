@@ -35,10 +35,18 @@ namespace Musify_Desktop
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        /// <summary>
+        /// Temporizador de 5 segundos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             GetAllGrup();
         }
+        /// <summary>
+        /// Busca a todos los artistas
+        /// </summary>
         private async void GetAllGrup()
         {
             string url = $"{BaseUrlSql}Grup/";
@@ -57,6 +65,11 @@ namespace Musify_Desktop
             }
 
         }
+        /// <summary>
+        /// Crea un grupo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateGrupClick(object sender, RoutedEventArgs e)
         {
             try

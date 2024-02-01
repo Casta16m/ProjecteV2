@@ -36,10 +36,18 @@ namespace Musify_Desktop
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        /// <summary>
+        /// Temporizador de 5 segundos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             GetAllInstrument();
         }
+        /// <summary>
+        /// obtiene todos los instrumentos
+        /// </summary>
         private async void GetAllInstrument()
         {
             string url = $"{BaseUrlSql}Instrument/";
@@ -59,7 +67,11 @@ namespace Musify_Desktop
 
         }
 
-
+        /// <summary>
+        /// Crea un instrumento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateInstrumentClick(object sender, RoutedEventArgs e)
         {
             try
@@ -94,6 +106,11 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Actualiza el instrumento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btUpdateInstrumentClick(object sender, RoutedEventArgs e)
         {
             try
@@ -136,6 +153,11 @@ namespace Musify_Desktop
             }
 
         }
+        /// <summary>
+        /// Borra el instrumento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btDeleteInstrumentClick(object sender, RoutedEventArgs e)
         {
             var nom = txtNom.Text;

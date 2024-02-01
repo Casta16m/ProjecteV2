@@ -40,27 +40,42 @@ namespace Musify_Desktop
             SetButtonImage(songAlbumbutton);
 
         }
-
+        /// <summary>
+        /// Este boto va a la pestaña songs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSongs_Click(object sender, RoutedEventArgs e)
         {
             AdminSongxaml adminSong = new AdminSongxaml();
             adminSong.Show();
         }
-
-
+        /// <summary>
+        /// Este boto va a la pestaña Artists
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnArtists_Click(object sender, RoutedEventArgs e)
         {
             AdminArtists adminArtists = new AdminArtists();
             adminArtists.Show();
         }
 
-
+        /// <summary>
+        /// Este boto va a la pestaña Instruments
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnInstruments_Click(object sender, RoutedEventArgs e)
         {
             AdminInstrument adminInstruments = new AdminInstrument();
             adminInstruments.Show();
         }
-
+        /// <summary>
+        /// Este boto va a la pestaña Group
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnGroups_Click(object sender, RoutedEventArgs e)
         {
             AdminGrup adminGroups = new AdminGrup();
@@ -68,37 +83,61 @@ namespace Musify_Desktop
         }
 
 
-
+        /// <summary>
+        /// Este boto va a la pestaña Participa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnParticipa_Click(object sender, RoutedEventArgs e)
         {
             AdminParticipa adminParticipa = new AdminParticipa();
             adminParticipa.Show();
         }
-
+        /// <summary>
+        /// Este boto va a la pestaña ArtistGroup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnArtistGroup_Click(object sender, RoutedEventArgs e)
         {
             AdminArtistaGrup adminArtistGroup = new AdminArtistaGrup();
             adminArtistGroup.Show();
         }
-
+        /// <summary>
+        /// Este boto va a la pestaña Song Album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSongAlbum_Click(object sender, RoutedEventArgs e)
         {
             AdminSongAlbum adminSongAlbum = new AdminSongAlbum();
             adminSongAlbum.Show();
         }
+        /// <summary>
+        /// Este boto va a la pestaña Historial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnMongoHistorial_Click(object sender, RoutedEventArgs e)
         {
             AdminMongoHistorial adminMongoHistorial = new AdminMongoHistorial();
             adminMongoHistorial.Show();
         }
-
+        /// <summary>
+        /// Este boto va a la pestaña Mongo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnMongoSong_Click(object sender, RoutedEventArgs e)
         {
             AdminMongoSong adminMongoSong = new AdminMongoSong();
             adminMongoSong.Show();
         }
 
-
+       /// <summary>
+       /// Possa la imatge a el boto
+       /// </summary>
+       /// <param name="button"></param>
         private void SetButtonImage(MusiFy_Library.Button button)
         {
             string imgPath = "pack://application:,,,/MusiFy-Library;component/Images/report.png";

@@ -38,10 +38,19 @@ namespace Musify_Desktop
             timer.Start();
 
         }
+        /// <summary>
+        /// Temporizador de 5 segundos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             GetAllArtists();
         }
+
+        /// <summary>
+        /// Busca a todos los artistas
+        /// </summary>
         private async void GetAllArtists()
         {
             string url = $"{BaseUrlSql}Artista";
@@ -60,7 +69,11 @@ namespace Musify_Desktop
             }
 
         }
-
+        /// <summary>
+        /// Crea Artistas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateArtistClick(object sender, RoutedEventArgs e)
         {
             try
@@ -106,7 +119,11 @@ namespace Musify_Desktop
 
 
         }
-
+        /// <summary>
+        /// Actualiza Artistas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btUpdateArtistClick(object sender, RoutedEventArgs e)
         {
             try
@@ -158,7 +175,11 @@ namespace Musify_Desktop
             }
 
         }
-
+        /// <summary>
+        /// Borra Artistas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btDeleteArtistClick(object sender, RoutedEventArgs e)
         {
             var nom = txtNom.Text;
@@ -185,7 +206,7 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error al borrar la canción: {ex.Message}");
             }
         }
-
+        
         private void lvArtists_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

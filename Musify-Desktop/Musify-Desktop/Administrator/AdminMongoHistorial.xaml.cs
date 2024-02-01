@@ -38,10 +38,19 @@ namespace Musify_Desktop
             timer.Start();
 
         }
+        /// <summary>
+        /// Temporizador de 5 segons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             GetAllHistorial();
         }
+
+        /// <summary>
+        /// Busca todo el Historial
+        /// </summary>
         private async void GetAllHistorial()
         {
             string url = $"{baseUrlMongoApi}Historial";
@@ -60,6 +69,11 @@ namespace Musify_Desktop
             }
 
         }
+        /// <summary>
+        /// Crea un apartado de el Historial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateHistorialClick(object sender, RoutedEventArgs e)
         {
             try
@@ -109,6 +123,11 @@ namespace Musify_Desktop
                 MessageBox.Show($"Se produjo un error: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Edita un historial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btUpdateHistorialClick(object sender, RoutedEventArgs e)
         {
             try

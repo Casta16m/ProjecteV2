@@ -25,7 +25,13 @@ namespace Musify_Desktop
         public AdminSongAlbum()
         {
             InitializeComponent();
+
         }
+        /// <summary>
+        /// Crea Los Song Album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btCreateSongAlbumClick(object sender, RoutedEventArgs e)
         {
             try
