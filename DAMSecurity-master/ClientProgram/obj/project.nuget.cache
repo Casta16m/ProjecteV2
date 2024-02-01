@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n38ZDvwpy4WVOEeStlgddEKHY7glaMSK89Cq6NqtSJo4AYkoiZlRTHIVogwoSJBr1msoul3SCYwJbmLKCRmpCw==",
+  "dgSpecHash": "rfwnCuDKb1deSZ11FYdTjDcpkSPcn/29GrcuDQy3g75g1SpnmKJG5lLZwZpPGdXcmDcBatHAQOSZJ1Cm1PJBSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\ClientProgram\\ClientProgram.csproj",
+  "projectFilePath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\ClientProgram\\ClientProgram.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yosse\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\itext\\8.0.2\\itext.8.0.2.nupkg.sha512",
@@ -41,7 +41,9 @@
     "C:\\Users\\yosse\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
+    "C:\\Users\\yosse\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
+    "C:\\Users\\yosse\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.diagnostics.process\\4.3.0\\system.diagnostics.process.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",
@@ -76,6 +78,7 @@
     "C:\\Users\\yosse\\.nuget\\packages\\system.security.cryptography.encoding\\4.3.0\\system.security.cryptography.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.0\\system.security.cryptography.pkcs.8.0.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\yosse\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.security.cryptography.xml\\8.0.0\\system.security.cryptography.xml.8.0.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\system.text.encoding.codepages\\4.3.0\\system.text.encoding.codepages.4.3.0.nupkg.sha512",

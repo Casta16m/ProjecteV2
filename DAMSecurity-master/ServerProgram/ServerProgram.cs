@@ -34,16 +34,23 @@ using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Tls;
 using Org.BouncyCastle.Ocsp;
+using Org.BouncyCastle.Utilities;
+using System.Configuration;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 
 namespace DAMUtils.Socket
 {
-    /**
-        * This class is the server program that will receive the 
-        * public key from the client and send the encrypted PDF back to the client     
-        */
+    /// <summary>
+    /// 
+    /// </summary>
     class ServerProgram
     {
+        // base url
+        static string BaseUrlSql = ConfigurationManager.AppSettings["BaseUrlSql"];
+        HttpClient client = new HttpClient();
+
         static int PORT = 1000;
         static private IPAddress address = IPAddress.Parse("127.0.0.1");
         static private TcpListener listener;
@@ -54,8 +61,8 @@ namespace DAMUtils.Socket
         static string pdfFolder = "GeneratedPDFs";
 
         // Certificate path and password
-        static string CertificatePath = "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\certificatsDigitals\\yossef_CD.pfx";
-        static string CertPassword = "1234";
+        static string CertificatePath = ConfigurationManager.AppSettings["CertificatePath"];
+        static string CertPassword = ConfigurationManager.AppSettings["CertPassword"];
         static X509Certificate2 certificate2 = new X509Certificate2(CertificatePath, CertPassword);
 
 
@@ -65,6 +72,16 @@ namespace DAMUtils.Socket
         /// </summary>
         public static void Main()
         {
+            if (BaseUrlSql == null)
+            {
+                Console.WriteLine("Error: BaseUrlSql is null");
+                return;
+            } else
+            {
+                Console.WriteLine("BaseUrlSql: " + BaseUrlSql);
+            }
+
+
             // Create a relative folder for storing PDFs
             string currentDirectory = Directory.GetCurrentDirectory();
             string pdfFolderPath = Path.Combine(currentDirectory, pdfFolder);
@@ -180,7 +197,8 @@ namespace DAMUtils.Socket
                 byte[] pdfBytes = PdfGenerator.Generate(jsonString);
 
                 // Sign the document
-                byte[] pdfBytesSigned = Sign.SignDocument(certificate2, pdfBytes);
+                // byte[] pdfBytesSigned = Sign.SignDocument(certificate2, pdfBytes);
+                byte[] pdfBytesSigned = signPdfBytes(pdfBytes);
 
                 // Encrypt PDF and key
                 KeyFilePair kfp = Hybrid.Crypt(rsaParameters, pdfBytesSigned);
@@ -199,6 +217,22 @@ namespace DAMUtils.Socket
             return "";
         }
 
+        private static byte[] signPdfBytes(byte[] pdfBytes)
+        {
+            // Supongamos que tienes un directorio donde deseas guardar el archivo temporal
+            if (!Directory.Exists(pdfFolder))
+            {
+                Directory.CreateDirectory(pdfFolder);
+            }
+
+            // Combina el directorio de trabajo actual con el directorio temporal y el nombre del archivo
+            string outputFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfFolder, "signed.pdf");
+            Console.WriteLine("outputFilePath: " + outputFilePath);
+            Sign sign = new Sign();
+            sign.InitCertificate(CertificatePath, CertPassword);
+            return sign.SignBytes(pdfBytes, outputFilePath);
+        }
+
         /// <summary>
         /// Process the client request and return the JSON string
         /// </summary>
@@ -213,145 +247,51 @@ namespace DAMUtils.Socket
 
                 if (requestType.Equals("song"))
                 {
-                    // ApiSong apiSong = new ApiSong();
-                    // List<Song> songs = await api.GetSongs();
-                    string songs = "petition songs not created yet";
+                    string data = await RequestApiSqlAsync($"{BaseUrlSql}Song");
 
-                    var data = new
-                    {
-                        Songs = songs
-                    };
+                    // Deserialize el JSON a una lista de objetos
+                    List<Song> songs = JsonConvert.DeserializeObject<List<Song>>(data);
+
+                    // Obtener los nombres de las canciones y concatenarlos en un solo string con saltos de línea
+                    string songNames = string.Join(Environment.NewLine, songs.Select(s => s.NomSong));
+                    // obtener los nombres sin saltos de linea:
+                    // string songNames = string.Join(", ", songs.Select(s => s.NomSong));
 
                     // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
+                    jsonString = songNames;
                 } 
                 else if (requestType.Equals("artista"))
                 {
-                    // ApiArtist apiArtist = new ApiArtist();
-                    // List<Artist> artists = await api.GetArtists();
-                    string artists = "petition artists not created yet";
+                    string data = await RequestApiSqlAsync($"{BaseUrlSql}Artista/");
 
-                    var data = new
-                    {
-                        Artists = artists
-                    };
 
                     // Serialize the object to a JSON string
                     jsonString = JsonConvert.SerializeObject(data);
                 } 
                 else if (requestType.Equals("instrument"))
                 {
-                    // ApiInstrument apiInstrument = new ApiInstrument();
-                    // List<Instrument> instruments = await api.GetInstruments();
-                    string instruments = "petition instruments not created yet";
+                    string data = await RequestApiSqlAsync($"{BaseUrlSql}Instrument/");
 
-                    var data = new
-                    {
-                        Instruments = instruments
-                    };
 
                     // Serialize the object to a JSON string
                     jsonString = JsonConvert.SerializeObject(data);
                 }
                 else if (requestType.Equals("album"))
                 {
-                    // ApiAlbum apiAlbum = new ApiAlbum();
-                    // List<Album> albums = await api.GetAlbums();
-                    string albums = "petition albums not created yet";
+                    string data = await RequestApiSqlAsync($"{BaseUrlSql}Album/");
 
-                    var data = new
-                    {
-                        Albums = albums
-                    };
 
                     // Serialize the object to a JSON string
                     jsonString = JsonConvert.SerializeObject(data);
                 }
                 else if (requestType.Equals("grup"))
                 {
-                    // ApiGroup apiGroup = new ApiGroup();
-                    // List<Group> groups = await api.GetGroups();
-                    string groups = "petition groups not created yet";
+                    string data = await RequestApiSqlAsync($"{BaseUrlSql}Grup/");
 
-                    var data = new
-                    {
-                        Groups = groups
-                    };
 
                     // Serialize the object to a JSON string
                     jsonString = JsonConvert.SerializeObject(data);
                 }
-                else if (requestType.Equals("extensio"))
-                {
-                    // ApiExtension apiExtension = new ApiExtension();
-                    // List<Extension> extensions = await api.GetExtensions();
-                    string extensions = "petition extensions not created yet";
-
-                    var data = new
-                    {
-                        Extensions = extensions
-                    };
-
-                    // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
-                }
-                else if (requestType.Equals("participa"))
-                {
-                    // ApiParticipation apiParticipation = new ApiParticipation();
-                    // List<Participation> participations = await api.GetParticipations();
-                    string participations = "petition participations not created yet";
-
-                    var data = new
-                    {
-                        Participations = participations
-                    };
-
-                    // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
-                }
-                else if (requestType.Equals("artistaGrup"))
-                {
-                    // ApiArtistGroup apiArtistGroup = new ApiArtistGroup();
-                    // List<ArtistGroup> artistGroups = await api.GetArtistGroups();
-                    string artistGroups = "petition artist groups not created yet";
-
-                    var data = new
-                    {
-                        ArtistGroups = artistGroups
-                    };
-
-                    // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
-                }
-                else if (requestType.Equals("songAlbum"))
-                {
-                    // ApiSongAlbum apiSongAlbum = new ApiSongAlbum();
-                    // List<SongAlbum> songAlbums = await api.GetSongAlbums();
-                    string songAlbums = "petition song albums not created yet";
-
-                    var data = new
-                    {
-                        SongAlbums = songAlbums
-                    };
-
-                    // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
-                }
-                else if (requestType.Equals("historial"))
-                {
-                    // ApiHistory apiHistory = new ApiHistory();
-                    // List<History> histories = await api.GetHistories();
-                    string histories = "petition histories not created yet";
-
-                    var data = new
-                    {
-                        Histories = histories
-                    };
-
-                    // Serialize the object to a JSON string
-                    jsonString = JsonConvert.SerializeObject(data);
-                }
-
 
                 return jsonString;
             }
@@ -362,10 +302,53 @@ namespace DAMUtils.Socket
             }
         }
 
+
+        /// <summary>
+        /// Call the API and return the JSON string
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private static async Task<string> RequestApiSqlAsync(string url)
+            {
+                try
+                {
+                    using (HttpClient client = new HttpClient())
+                    {
+                        HttpResponseMessage response = await client.GetAsync(url);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string json = await response.Content.ReadAsStringAsync();
+                            return json;
+                        }
+                        else
+                        {
+                            // Manejar el caso de respuesta no exitosa según tus necesidades
+                            return "";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejar excepciones según tus necesidades
+                    return "Error en la peticion";
+                }
+            }
+
+
+}
+
+    /// <summary>
+    /// Class to store information about a song
+    /// </summary>
+    public class Song
+    {
+        public string UID { get; set; }
+        public DateTime data { get; set; }
+        public string NomSong { get; set; }
+        public string Genere { get; set; }
+        // Otros campos necesarios
     }
-
-        
-
 
     /// <summary>
     /// This class stores information about the client connected to the server

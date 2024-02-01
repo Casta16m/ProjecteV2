@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj": {}
+    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj": {
+    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj",
+        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj",
         "projectName": "DAMSecurityGUI",
-        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj",
+        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityGUI\\DAMSecurityGUI.csproj",
         "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityGUI\\obj\\",
+        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityGUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj"
+              "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
           }
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "projectName": "DAMSecurityLib",
-        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\obj\\",
+        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

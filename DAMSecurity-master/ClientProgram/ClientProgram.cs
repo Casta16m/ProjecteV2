@@ -5,6 +5,7 @@ using DAMSecurityLib.Exceptions;
 using DAMUtils.Socket;
 using Org.BouncyCastle.Tls;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -24,8 +25,8 @@ namespace DAMSecurity
     {
 
         // Solicit the certificate and password
-        static string CertificatePath = "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\certificatsDigitals\\yossef_CD.pfx";
-        static string CertPassword = "1234";
+        static string CertificatePath = ConfigurationManager.AppSettings["CertificatePath"];
+        static string CertPassword = ConfigurationManager.AppSettings["CertPassword"];
         static X509Certificate2 Certificate2 = new X509Certificate2(CertificatePath, CertPassword);
 
         // Create a relative folder for storing PDFs
@@ -43,10 +44,10 @@ namespace DAMSecurity
             }
 
             while (true)
-            {                
+            {
                 try
                 {
-                    string[] options = ["song", "artista", "instrument", "album", "grup", "extensio", "participa", "artistaGrup", "songAlbum", "historial"];
+                    string[] options = { "song", "artista", "instrument", "album", "grup" };
                     // Solicit the request type
                     Console.WriteLine("--------------------------------------");
                     Console.WriteLine("--------------------------------------");
@@ -58,14 +59,10 @@ namespace DAMSecurity
                     Console.WriteLine("| instrument");
                     Console.WriteLine("| album");
                     Console.WriteLine("| grup");
-                    Console.WriteLine("| extensio");
-                    Console.WriteLine("| participa");
-                    Console.WriteLine("| artistaGrup");
-                    Console.WriteLine("| songAlbum");
-                    Console.WriteLine("| historial");
                     Console.WriteLine("--------------------------------------");
                     Console.WriteLine("Enter the request type: ");
                     string requestType = Console.ReadLine();
+
                     if(options.Contains(requestType))
                     {
                         Console.WriteLine("Request type accepted: " + requestType);

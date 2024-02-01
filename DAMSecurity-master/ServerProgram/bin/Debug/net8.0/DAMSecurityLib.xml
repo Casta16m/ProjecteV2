@@ -300,6 +300,14 @@
             <param name="outputFileName">Ouput pdf file path to save the result file</param>
             <param name="showSignature">If signatature is visible in pdf document</param>
         </member>
+        <member name="M:DAMSecurityLib.Crypto.Sign.SignBytes(System.Byte[],System.String)">
+            <summary>
+            This method signs a PDF document and returns the signed document as a byte array.
+            </summary>
+            <param name="inputBytes">Input PDF as byte array</param>
+            <param name="outputFilePath">Output PDF file path for saving the result file</param>
+            <returns>Signed PDF as byte array</returns>
+        </member>
         <member name="M:DAMSecurityLib.Crypto.Sign.SignFile(System.String,System.String)">
             <summary>
             Sign filedisk file with the global class certificate

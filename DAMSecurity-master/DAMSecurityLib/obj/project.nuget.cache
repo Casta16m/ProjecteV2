@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y/3cYB2tEic1MZXe0Jd2cxvacf8uVG7bpDJ+SwgtLD2ODvPsZrYe3wPXUtM1Lh3cn0t8r68uVbZWJJr3slKHkg==",
+  "dgSpecHash": "mnxeVrRAGvpjeqNuO+3j43UFhlLGypyF7wqSkdgtAPjEPBYXfE9AcFDxtO26JY0qUe6SMogN+Y1dIKLrGA10sQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yosse\\Dropbox\\PC\\Downloads\\DAMSecurity-Sockets\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
+  "projectFilePath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yosse\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\yosse\\.nuget\\packages\\itext\\8.0.2\\itext.8.0.2.nupkg.sha512",

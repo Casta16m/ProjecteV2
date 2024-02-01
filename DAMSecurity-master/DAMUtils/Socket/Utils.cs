@@ -23,7 +23,11 @@ namespace DAMUtils.Socket
             while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
             {
                 receivedData.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
-                break;
+                if (stream.DataAvailable == false)
+                {
+                    Console.WriteLine("No more data available.");
+                    break;
+                }
             }
 
 

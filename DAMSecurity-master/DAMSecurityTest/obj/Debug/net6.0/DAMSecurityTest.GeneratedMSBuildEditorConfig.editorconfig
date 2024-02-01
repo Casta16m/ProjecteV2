@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DAMSecurityTest
-build_property.ProjectDir = C:\Users\yosse\Dropbox\PC\Downloads\DAMSecurity-Sockets\DAMSecurity-master\DAMSecurityTest\
+build_property.ProjectDir = C:\Users\yosse\Dropbox\PC\Desktop\PROGRAMACIO\PROGRAMES\2nDAM\Musify\ProjecteV2\DAMSecurity-master\DAMSecurityTest\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

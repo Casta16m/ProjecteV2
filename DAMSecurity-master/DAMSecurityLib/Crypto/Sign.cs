@@ -87,6 +87,44 @@ namespace DAMSecurityLib.Crypto
             }
         }
 
+
+        /// <summary>
+        /// This method signs a PDF document and returns the signed document as a byte array.
+        /// </summary>
+        /// <param name="inputBytes">Input PDF as byte array</param>
+        /// <param name="outputFilePath">Output PDF file path for saving the result file</param>
+        /// <returns>Signed PDF as byte array</returns>
+        public byte[] SignBytes(byte[] inputBytes, string outputFilePath)
+        {
+            AsymmetricKeyParameter key = pkcs12Store.GetKey(storeAlias).Key;
+
+            X509CertificateEntry[] chainEntries = pkcs12Store.GetCertificateChain(storeAlias);
+            IX509Certificate[] chain = new IX509Certificate[chainEntries.Length];
+            for (int i = 0; i < chainEntries.Length; i++)
+                chain[i] = new X509CertificateBC(chainEntries[i].Certificate);
+
+            PrivateKeySignature signature = new PrivateKeySignature(new PrivateKeyBC(key), "SHA256");
+
+            using (MemoryStream inputStream = new MemoryStream(inputBytes))
+            using (FileStream outputStream = File.Create(outputFilePath))  // Guardar en un archivo temporal
+            {
+                using (PdfReader pdfReader = new PdfReader(inputStream))
+                using (PdfWriter pdfWriter = new PdfWriter(outputStream))
+                {
+                    PdfSigner pdfSigner = new PdfSigner(pdfReader, pdfWriter, new StampingProperties().UseAppendMode());
+
+                    // Puedes habilitar CreateSignatureApperanceField si lo necesitas
+                    // CreateSignatureApperanceField(pdfSigner);
+
+                    pdfSigner.SignDetached(signature, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
+                }
+
+                return File.ReadAllBytes(outputFilePath);  // Leer el archivo temporal y devolverlo como byte array
+            }
+        }
+
+
+
         /// <summary>
         /// Sign filedisk file with the global class certificate
         /// </summary>
