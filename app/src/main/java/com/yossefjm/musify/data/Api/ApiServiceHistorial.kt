@@ -50,7 +50,7 @@ interface HistorialApiService {
 
 class ApiServiceHistorial(private val context: Context) {
 
-    private val IP_ADDRESS = "172.23.3.204:5001"
+    private val IP_ADDRESS = "172.23.1.231:1443"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("http://$IP_ADDRESS/")

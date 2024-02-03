@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -51,7 +52,7 @@ interface FitxersApiService {
 
 class ApiServiceFitxers(private val context: Context) {
 
-    private val IP_ADDRESS = "172.23.3.204:5010"
+    private val IP_ADDRESS = "192.168.0.16:5010"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("http://$IP_ADDRESS/")
@@ -105,13 +106,16 @@ class ApiServiceFitxers(private val context: Context) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        Log.d("ApiServiceSongMongoDB", "Canción descargada exitosamente")
+                        Log.d("ApiServiceSongMongoDB", "Canción encontrada")
                         filePath = saveToFile(responseBody.byteStream(), songName)
                     } else {
                         Log.d("ApiServiceSongMongoDB", "Cuerpo de respuesta nulo")
                     }
                 } else {
+                    Toast.makeText(context, "Error al encontrar la canción", Toast.LENGTH_SHORT).show()
                     Log.d("ApiServiceSongMongoDB", "Respuesta no exitosa: ${response.code()}")
+                    Log.d("ApiServiceSongMongoDB", "Respuesta no exitosa: ${response.message()}")
+                    Log.d("ApiServiceSongMongoDB", "Respuesta no exitosa: ${response.body()}")
                 }
             }
 
@@ -147,7 +151,7 @@ class ApiServiceFitxers(private val context: Context) {
 
                 outputStream?.close()
                 inputStream.close()
-
+                Toast.makeText(context, "Canción descargada exitosamente", Toast.LENGTH_SHORT).show()
                 Log.d("ApiServiceSongMongoDB", "Archivo guardado exitosamente: $audioUri")
                 return audioUri.toString()
             } ?: run {

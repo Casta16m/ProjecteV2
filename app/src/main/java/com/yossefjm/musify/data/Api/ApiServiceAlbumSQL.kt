@@ -35,7 +35,7 @@ interface AlbumApiService {
 class ApiServiceAlbum {
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.0.16:1443/")
+        .baseUrl("http://172.23.1.231:1443")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

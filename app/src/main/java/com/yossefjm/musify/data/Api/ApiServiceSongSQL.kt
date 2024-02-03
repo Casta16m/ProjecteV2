@@ -33,7 +33,6 @@ data class SongDBSQL(
 data class SongPost(
     val nomSong: String,
     val genere: String,
-    val SongExtensio: String
 )
 
 
@@ -41,15 +40,19 @@ interface SongApiServiceSQL {
     @GET("/api/Song/BuscarNom/{query}")
     fun searchSongsByName(@Path("query") query: String): Call<List<SongDBSQL>>
 
-    @POST("/api/Song")
-    fun postSong(@Body song: SongPost): Call<SongDBSQL>
+    // sha dafeguir lextensio en la url
+    @POST("/api/Song/crearSong/{extension}")
+    fun postSong(
+        @Path("extension") extension: String,
+        @Body song: SongPost
+    ): Call<SongDBSQL>
 }
 
 class ApiServiceSongSQL {
-    private val IP_ADDRESS = "192.168.0.16:5010"
+    private val IP_ADDRESS = "192.168.0.16:5100"
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://${IP_ADDRESS}/")
+        .baseUrl("http://${IP_ADDRESS}")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -65,6 +68,8 @@ class ApiServiceSongSQL {
                 return fromSongDBListToSongList(songDBList)
             } else {
                 Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.code()}")
+                Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.errorBody()}")
+                Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.message()}")
             }
         } catch (e: IOException) {
             Log.e("ApiServiceSQL", "Error al realizar la solicitud: ${e.message}", e)
@@ -104,8 +109,8 @@ class ApiServiceSongSQL {
         var responseJson: Song? = null
 
         try {
-            val songPost = SongPost(songName, genre, extensio)
-            val response = songApiServiceSQL.postSong(songPost).execute()
+            val songPost = SongPost(songName, genre)
+            val response = songApiServiceSQL.postSong(extensio, songPost).execute()
 
             if (response.isSuccessful) {
                 val responseBody = response.body()
@@ -114,6 +119,8 @@ class ApiServiceSongSQL {
 
             } else {
                 Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.code()}")
+                Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.errorBody()}")
+                Log.d("ApiServiceSQL", "Respuesta no exitosa: ${response.message()}")
             }
         } catch (e: Exception) {
             Log.e("ApiServiceSQL", "Error al realizar la solicitud: ${e.message}", e)
