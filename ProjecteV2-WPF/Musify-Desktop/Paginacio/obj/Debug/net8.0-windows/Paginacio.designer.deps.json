@@ -1,0 +1,117 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Syncfusion.Compression.Base/24.2.3": {
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Compression.Base.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      },
+      "Syncfusion.Licensing/24.2.3": {
+        "runtime": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      },
+      "Syncfusion.Pdf.Wpf/24.2.3": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "24.2.3",
+          "Syncfusion.Licensing": "24.2.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Pdf.Base.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      },
+      "Syncfusion.PdfToImageConverter.WPF/24.2.3": {
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      },
+      "Syncfusion.PdfViewer.WPF/24.2.3": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "24.2.3",
+          "Syncfusion.Licensing": "24.2.3",
+          "Syncfusion.Pdf.Wpf": "24.2.3",
+          "Syncfusion.PdfToImageConverter.WPF": "24.2.3",
+          "Syncfusion.Shared.WPF": "24.2.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.PdfViewer.WPF.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/24.2.3": {
+        "dependencies": {
+          "Syncfusion.Licensing": "24.2.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "24.2.3.0",
+            "fileVersion": "24.2.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Syncfusion.Compression.Base/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lVvF2c65vlzJ8wLmtGVAwXtWfHaRWLYM3/jKsNx8qnUoMJTlOrBdL7jmFkpJsdGOqv88f03iJb8XdFm1znaKIw==",
+      "path": "syncfusion.compression.base/24.2.3",
+      "hashPath": "syncfusion.compression.base.24.2.3.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LjggcY/65ZqbjJ0XyPr1hjPC733nT1pDC2ncQJ0VVFeM7B0PiDGU9Z1vL7StArtgoi3X2auwJHoh8kLvy71k7Q==",
+      "path": "syncfusion.licensing/24.2.3",
+      "hashPath": "syncfusion.licensing.24.2.3.nupkg.sha512"
+    },
+    "Syncfusion.Pdf.Wpf/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h7TFT7m+kqo2LXsUWi5FU8nlTHTS6ASccPddyFhvZ+skz3f6DiVflkffLsTH8ytslzUQ3IkhcztBAiriiKiJLw==",
+      "path": "syncfusion.pdf.wpf/24.2.3",
+      "hashPath": "syncfusion.pdf.wpf.24.2.3.nupkg.sha512"
+    },
+    "Syncfusion.PdfToImageConverter.WPF/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XkQ1IqKM8NqAtOnLd5eV13+gk9vNP/sqoP6uEIYDe3CKwzpxnmKH7nEsah1GyI/TcYpjyspOQZKTXdln4JhvQQ==",
+      "path": "syncfusion.pdftoimageconverter.wpf/24.2.3",
+      "hashPath": "syncfusion.pdftoimageconverter.wpf.24.2.3.nupkg.sha512"
+    },
+    "Syncfusion.PdfViewer.WPF/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wV2UwHedIrpRmt8odxP1/1iBx+5mKIkhmiNY8IqEEC2Mrq/o9eAPx9qjm9haN8pCi/wEFeBaINvyLjS0Ah46vA==",
+      "path": "syncfusion.pdfviewer.wpf/24.2.3",
+      "hashPath": "syncfusion.pdfviewer.wpf.24.2.3.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/24.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fV0I9K+RT/945/US6IjOIIycCt0rCvEELou1OFB6m/4ICLsh7t0aK0W3Thu0MdGIRfoy7kBeUi28P5S7K19rCA==",
+      "path": "syncfusion.shared.wpf/24.2.3",
+      "hashPath": "syncfusion.shared.wpf.24.2.3.nupkg.sha512"
+    }
+  }
+}

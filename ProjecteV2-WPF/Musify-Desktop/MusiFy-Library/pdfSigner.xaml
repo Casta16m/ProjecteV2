@@ -1,0 +1,28 @@
+﻿<Window x:Class="MusiFy_Library.pdfSigner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MusiFy_Library"
+             mc:Ignorable="d" 
+                Title="pdfSigner" Height="270" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None"
+             Background="Wheat">
+    <Grid>
+
+        <Canvas Height="250" Width="280" Background="#091227">
+            <Rectangle Height="250" Stroke="White" Canvas.Top="0" Width="278"  />
+            <Label Content="Pfx File" Canvas.Left="23"   Canvas.Top="51" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPfxFile" Canvas.Left="82" TextWrapping="Wrap" Canvas.Top="55" Width="158" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="btSelectPfx" Content="..." Canvas.Left="250" Canvas.Top="55" Width="16" VerticalContentAlignment="Center" Click="btSelectPfx_Click" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.587,1.222"/>
+            <Label Content="Pfx password" Canvas.Left="20" Canvas.Top="105" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="txtPfxPassword" Canvas.Left="110" Canvas.Top="107" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top" PasswordChar="•" />
+            <CheckBox x:Name="chkShowSignature" Content="Show signature" Canvas.Left="20" Canvas.Top="209" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button x:Name="btSign" Content="Sign PDF" Canvas.Left="198" Canvas.Top="205" Width="60" Height="24" Click="btSign_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#5FE95C"/>
+            <Button x:Name="btExit" Content="Exit" Canvas.Left="10" Canvas.Top="10" Width="50" Height="25" Click="btExit_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#E95C5C"/>
+            <Label Content="PDF File" Canvas.Left="20" Canvas.Top="151" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPDFFile" Canvas.Left="82"  TextWrapping="Wrap" Canvas.Top="155" Width="158" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="btPDFUbication" Content="..." Canvas.Left="250" Canvas.Top="153" Width="16" VerticalContentAlignment="Center" Click="btSelectPdf_Click" RenderTransformOrigin="0.5,4.529" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        </Canvas>
+    </Grid>
+</Window>

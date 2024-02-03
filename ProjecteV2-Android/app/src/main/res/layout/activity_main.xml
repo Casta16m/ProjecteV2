@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/arrowback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:src="@drawable/arrowback" />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="MUSIFY"
+            android:textAlignment="center"
+            android:textColor="@color/navyBlue"
+            android:textSize="38sp" />
+
+        <ImageView
+            android:id="@+id/uploadLayoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:src="@drawable/uploadnavy" />
+
+        <ImageView
+            android:id="@+id/downloadLayoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:src="@drawable/downloadnavy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/titlenav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="20dp"
+        android:weightSum="1"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Playlists"
+            android:textColor="@color/navyBlue"
+            android:textSize="24sp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/createplaylist"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:src="@drawable/newplaylist"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPlayLists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@+id/titlenav"
+        app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintHeight_default="wrap"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSongList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@+id/titlenav"
+        app:layout_constraintBottom_toTopOf="@+id/compactPlayer"
+        app:layout_constraintHeight_max="500dp"
+        app:layout_constraintHeight_default="wrap"
+        />
+
+    <include
+        layout="@layout/compactplayer"
+        android:id="@+id/compactPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        layout="@layout/expandedsong"
+        android:id="@+id/expandedsong"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

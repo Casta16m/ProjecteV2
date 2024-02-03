@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)syncfusion.pdftoimageconverter.wpf\24.2.3\build\net6.0-windows7.0\Syncfusion.PdfToImageConverter.WPF.targets" Condition="Exists('$(NuGetPackageRoot)syncfusion.pdftoimageconverter.wpf\24.2.3\build\net6.0-windows7.0\Syncfusion.PdfToImageConverter.WPF.targets')" />
+    <Import Project="$(NuGetPackageRoot)ikvm.msbuild.tools\8.7.3\buildTransitive\netstandard2.0\IKVM.MSBuild.Tools.targets" Condition="Exists('$(NuGetPackageRoot)ikvm.msbuild.tools\8.7.3\buildTransitive\netstandard2.0\IKVM.MSBuild.Tools.targets')" />
+    <Import Project="$(NuGetPackageRoot)ikvm.msbuild\8.7.3\buildTransitive\IKVM.MSBuild.targets" Condition="Exists('$(NuGetPackageRoot)ikvm.msbuild\8.7.3\buildTransitive\IKVM.MSBuild.targets')" />
+    <Import Project="$(NuGetPackageRoot)ikvm.image\8.7.3\buildTransitive\IKVM.Image.targets" Condition="Exists('$(NuGetPackageRoot)ikvm.image\8.7.3\buildTransitive\IKVM.Image.targets')" />
+    <Import Project="$(NuGetPackageRoot)ikvm\8.7.3\buildTransitive\IKVM.targets" Condition="Exists('$(NuGetPackageRoot)ikvm\8.7.3\buildTransitive\IKVM.targets')" />
+  </ImportGroup>
+</Project>

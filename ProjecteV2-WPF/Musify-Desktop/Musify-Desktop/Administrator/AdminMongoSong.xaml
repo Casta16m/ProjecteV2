@@ -1,0 +1,52 @@
+﻿<Window x:Class="Musify_Desktop.AdminMongoSong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:MusiFy_Library="clr-namespace:MusiFy_Library;assembly=MusiFy-Library"
+        mc:Ignorable="d"
+        Title="AdminMongoSong" Height="450" Width="800"
+        Background="#091227"
+        >
+
+    <Viewbox>
+        <Grid>
+            <Label FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center">MusiFy</Label>
+            <StackPanel Width="300" Margin="81,24,0,10" HorizontalAlignment="Left" Height="400">
+                <Label Content="Song Audio" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
+                <!--
+                <ListView x:Name="SongList" Height="300"  Width="250" HorizontalAlignment="Left" Margin="20, 0,0 ,0" RenderTransformOrigin="0.5,0.5" SelectionChanged="SongList_SelectionChanged" >
+                    <ListView.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.608"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="1.789"/>
+                        </TransformGroup>
+                    </ListView.RenderTransform>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="UID" DisplayMemberBinding="{Binding uid}" />
+                            <GridViewColumn Header="SongName" DisplayMemberBinding="{Binding audioFileName}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+    -->
+            </StackPanel>
+
+            <Canvas Width="200" HorizontalAlignment="Left" Margin="425,52,0,172" Height="210" >
+                <Label Content="UID"  Canvas.Left="5" Canvas.Top="15" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="txt_uid"  Canvas.Left="10" TextWrapping="NoWrap" Canvas.Top="40" Width="170" />
+
+                <Label Content="Audio" Canvas.Top="105" Canvas.Left="7" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Button x:Name="AudioSelect" Content="Select Audio" Width="170" Canvas.Left="9" Canvas.Top="126" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btSelectAudio"/>
+                <TextBlock x:Name="audioname" TextWrapping="Wrap" Width="170" Canvas.Left="9" Canvas.Top="156" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Wheat"/>
+
+            </Canvas>
+            
+            <MusiFy_Library:Button HorizontalAlignment="Left" WidthButton="130" TextSize="30" WidthGrid="270" BotonBackground="#5FE95C" WidthGridImage="0" Text="Create" HeightButton="60" Margin="450,262,0,0" VerticalAlignment="Top" Click="btUploadAudio"/>
+
+        </Grid>
+    </Viewbox>
+
+
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:MusiFy_Library="clr-namespace:MusiFy_Library;assembly=MusiFy-Library" x:Class="Musify_Desktop.Admin"
+        mc:Ignorable="d"
+        Title="Admin" Height="450" Width="800"
+        Background="#091227" >
+
+
+    <Viewbox>
+        <Grid>
+            <Label Content="Admin" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
+
+            <StackPanel Height="80"  Margin="145,83,20,261" Orientation="Horizontal">
+                <MusiFy_Library:Button  x:Name="songButton" Click="BtnSongs_Click" ImageSize="50" BotonBackground="#9DADD4" WidthButton="230" HeightButton="60" WidthGrid="130" WidthGridImage="100"  TextSize="30" Text="Songs" />
+                <MusiFy_Library:Button x:Name="artistButton" ImageSize="50" BotonBackground="#9DADD4" Click="BtnArtists_Click"  VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="180" WidthGridImage="100" TextSize="30" Text="Artistes" />
+            </StackPanel>
+
+            <StackPanel Margin="145,167,44,157" Height="100" Orientation="Horizontal" RenderTransformOrigin="0.519,0.132">
+                <MusiFy_Library:Button x:Name="groupButton" Click="BtnGroups_Click" BotonBackground="#9DADD4"  ImageSize="50" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="100" TextSize="30" Text="Grup" RenderTransformOrigin="0.5,0.5" >
+                    <MusiFy_Library:Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0"/>
+                        </TransformGroup>
+                    </MusiFy_Library:Button.RenderTransform>
+                </MusiFy_Library:Button>
+                <MusiFy_Library:Button x:Name="instrumentButton" Click="BtnInstruments_Click" ImageSize="50" BotonBackground="#9DADD4" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="100"   TextSize="25" Text="Instruments" />
+            </StackPanel>
+
+            <StackPanel Width="750" Height="80" VerticalAlignment="Bottom" Margin="0, 0 ,0 ,100" Orientation="Horizontal">
+                <MusiFy_Library:Button  x:Name="participaButton" Click="BtnParticipa_Click" BotonBackground="#5CE9BD" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="130" WidthGridImage="100"  TextSize="30" Text="Participa" />
+                <MusiFy_Library:Button x:Name="artistGroupButton" Click="BtnArtistGroup_Click" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="90" TextSize="30" Text="ArtistaGrup" />
+                <MusiFy_Library:Button x:Name="songAlbumbutton" Click="BtnSongAlbum_Click" BotonBackground="#5CE9BD"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="150" WidthGridImage="100"   TextSize="25" Text="SongAlbum" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="80" Margin="0,0,0,15" VerticalAlignment="Bottom">
+                <MusiFy_Library:Button  x:Name="mongoSong" Click="BtnMongoSong_Click" BotonBackground="#24B91D" ImageSize="50"   VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="190" WidthGridImage="40"  TextSize="30" Text="MongoSong"  />
+                <MusiFy_Library:Button x:Name="mongoHistorial" Click="BtnMongoHistorial_Click" BotonBackground="#24B91D"  ImageSize="50" VerticalAlignment="Top" WidthButton="230" HeightButton="60" WidthGrid="210" WidthGridImage="37" TextSize="30" Text="MongoHistorial" />
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+
+</Window>
+
