@@ -56,6 +56,7 @@ Musify és una aplicació de reproductor de música desenvolupada en Kotlin per 
 ---
 
 # Musify - API MONGO **Fitxers** Entity Framework
+Esta a dins de la carpeta de `/ProjecteV2-APIMongoDB/DBMongo/FitxersAPI`:
 
 ## Característiques
 - Creació de la base de dades amb Entity Framework.
@@ -67,6 +68,7 @@ Musify és una aplicació de reproductor de música desenvolupada en Kotlin per 
 ---
 
 # Musify - API MONGO **Normal** Entity Framework
+Esta a dins de la carpeta de `/ProjecteV2-APIMongoDB/DBMongo/MongoAPI`:
 
 ## Característiques
 - Creació de la base de dades amb Entity Framework.
