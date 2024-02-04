@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GWlAgsVTZOxwvZ7IzwujA+4afTmy6pcLENi1mvqudTmrWMfoOujHiKY3CMUuTVXQRXyuil+/lQdF1QEhmrLCMA==",
+  "dgSpecHash": "rB2bPrF4hE/rVpaWvXxuEFmoUIQQ+sOkE1Cm7GOcNbqxP7BzcxeMB7nQgYKmBWawUByuvuavDH0ODRMKJLgrVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guill\\.nuget\\packages\\benchmarkdotnet\\0.13.12\\benchmarkdotnet.0.13.12.nupkg.sha512",
     "C:\\Users\\guill\\.nuget\\packages\\benchmarkdotnet.annotations\\0.13.12\\benchmarkdotnet.annotations.0.13.12.nupkg.sha512",

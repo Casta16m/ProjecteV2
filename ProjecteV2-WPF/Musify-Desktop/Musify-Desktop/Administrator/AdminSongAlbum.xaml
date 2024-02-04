@@ -17,23 +17,6 @@
             <Label FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center">MusiFy</Label>
             <StackPanel Width="300" Margin="81,24,0,10" HorizontalAlignment="Left" Height="400">
                 <Label Content="SongAlbum" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Foreground="#FFD8D8D8" FontSize="40" FontFamily="Poppins" FontWeight="Bold"/>
-                <ListView x:Name="lvSongAlbm" Height="300"  Width="250" HorizontalAlignment="Left" Margin="20, 0,0 ,0" RenderTransformOrigin="0.5,0.5">
-                    <ListView.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleX="0.608"/>
-                            <RotateTransform/>
-                            <TranslateTransform X="1.789"/>
-                        </TransformGroup>
-                    </ListView.RenderTransform>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Song" DisplayMemberBinding="{Binding NomGrup}" />
-                            <GridViewColumn Header="Album" DisplayMemberBinding="{Binding artistes}" />
-
-                        </GridView>
-                    </ListView.View>
-                </ListView>
             </StackPanel>
 
 

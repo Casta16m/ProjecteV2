@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rRK7BG6KdxZ8pSsMfFMWK9j0/ATBevlfoWJ+YiFiA3l3daDoRtPYvwSd30lif8alM3Fxs9qlyls4srvFHlcsYQ==",
+  "dgSpecHash": "srjAO60CCK/HoaLu6EfO48Tr3sTWvVnMywjDUZaVL13ERas+Swf56xRkcmHjiVr6N6TN+HFdynBKUCjwBFAbhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
+  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guill\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\guill\\.nuget\\packages\\ikvm\\8.7.3\\ikvm.8.7.3.nupkg.sha512",

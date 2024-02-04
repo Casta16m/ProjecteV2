@@ -52,27 +52,11 @@ namespace Musify_Desktop
             Reports reports = new Reports();
             string url = $"{BaseUrlSql}Grup";
             List<Grups> grup = await reports.GetData<Grups>(url);
-
-            if (grup != null)
+            if(grup != null)
             {
-                List<string> groupNames = grup.Select(g => g.NomGrup).ToList();
-                foreach (string groupName in groupNames)
-                {
-                    Grups specificGrup = grup.FirstOrDefault(g => g.NomGrup == groupName);
-                    // Make another GET request to fetch more details about the specific group
-
-                    string specificGrupUrl = $"{BaseUrlSql}Grup/BuscarNom/{specificGrup.NomGrup}";
-                    Grups detailedGrup = await reports.GetDataOne<Grups>(specificGrupUrl);
-                    if (detailedGrup != null)
-                    {
-                        lvArtistsGrup.ItemsSource = new List<Grups> { detailedGrup };
-                    }
-                    else
-                    {
-                        MessageBox.Show("No hi ha cap song");
-                    }
-                }
+                lvArtistsGrup.ItemsSource = grup;
             }
+            
         }
 
         /// <summary>
