@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj": {}
+    "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+    "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "projectUniqueName": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
         "projectName": "DAMSecurityLib",
-        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
-        "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\obj\\",
+        "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj",
+        "packagesPath": "C:\\Users\\Aimar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aimar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,6 +38,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -68,6 +71,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -77,20 +94,20 @@
         }
       }
     },
-    "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj": {
+    "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj",
+        "projectUniqueName": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj",
         "projectName": "DAMUtils",
-        "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj",
-        "packagesPath": "C:\\Users\\yosse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMUtils\\obj\\",
+        "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMUtils\\DAMUtils.csproj",
+        "packagesPath": "C:\\Users\\Aimar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMUtils\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aimar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -105,8 +122,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
-                "projectPath": "C:\\Users\\yosse\\Dropbox\\PC\\Desktop\\PROGRAMACIO\\PROGRAMES\\2nDAM\\Musify\\ProjecteV2\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj"
+              "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj": {
+                "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-SocketsAndTests\\DAMSecurity-master\\DAMSecurityLib\\DAMSecurityLib.csproj"
               }
             }
           }
@@ -115,6 +132,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -137,6 +157,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
