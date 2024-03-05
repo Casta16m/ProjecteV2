@@ -11678,11 +11678,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
       "projectName": "MusiFy-Library",
       "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
       "packagesPath": "C:\\Users\\Aimar\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+      "projectName": "MusiFy-Library",
+      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\obj\\",
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11703,8 +11711,13 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows7.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj": {
               "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj"
+=======
+            "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj": {
+              "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj"
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
             }
           }
         }

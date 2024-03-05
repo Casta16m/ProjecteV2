@@ -29,7 +29,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="NomGrup" DisplayMemberBinding="{Binding NomGrup}" />
-                            <GridViewColumn Header="Artista" DisplayMemberBinding="{Binding artistes}" />
+                            
 
                         </GridView>
                     </ListView.View>

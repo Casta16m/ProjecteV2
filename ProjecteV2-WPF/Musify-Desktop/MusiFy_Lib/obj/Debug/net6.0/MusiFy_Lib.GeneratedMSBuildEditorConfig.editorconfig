@@ -8,6 +8,10 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MusiFy_Lib
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Aimar\Documents\GitHub\ProjecteV2-WPF\Musify-Desktop\MusiFy_Lib\
+=======
+build_property.ProjectDir = C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\ProjecteV2-WPF\Musify-Desktop\MusiFy_Lib\
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

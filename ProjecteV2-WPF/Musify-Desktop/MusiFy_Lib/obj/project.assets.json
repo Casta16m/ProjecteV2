@@ -10396,11 +10396,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
       "projectName": "MusiFy_Lib",
       "projectPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
       "packagesPath": "C:\\Users\\Aimar\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
+      "projectName": "MusiFy_Lib",
+      "projectPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\MusiFy_Lib.csproj",
+      "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy_Lib\\obj\\",
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "3jz8zaCVipFQISoJ6nSdzHhyZZQtFPm0mXt8z2H67LX+ZHZrtQIOPBtT4hVXYppzmXQ6Nk2Twb8D4Lzw9Q/B0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Aimar\\Documents\\GitHub\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+=======
+  "dgSpecHash": "rB2bPrF4hE/rVpaWvXxuEFmoUIQQ+sOkE1Cm7GOcNbqxP7BzcxeMB7nQgYKmBWawUByuvuavDH0ODRMKJLgrVQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\guill\\OneDrive\\Documentos\\GitHub\\ProjecteV2\\ProjecteV2-WPF\\Musify-Desktop\\MusiFy-Library\\MusiFy-Library.csproj",
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
   "expectedPackageFiles": [
     "C:\\Users\\Aimar\\.nuget\\packages\\benchmarkdotnet\\0.13.12\\benchmarkdotnet.0.13.12.nupkg.sha512",
     "C:\\Users\\Aimar\\.nuget\\packages\\benchmarkdotnet.annotations\\0.13.12\\benchmarkdotnet.annotations.0.13.12.nupkg.sha512",

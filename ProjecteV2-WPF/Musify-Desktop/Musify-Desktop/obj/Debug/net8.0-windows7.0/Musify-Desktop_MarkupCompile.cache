@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Aimar\Documents\GitHub\ProjecteV2-WPF\Musify-Desktop\Musify-Desktop\obj\Debug\net8.0-windows7.0\
+=======
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\ProjecteV2-WPF\Musify-Desktop\Musify-Desktop\obj\Debug\net8.0-windows7.0\
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
 Musify_Desktop
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\Aimar\Documents\GitHub\ProjecteV2-WPF\Musify-Desktop\Musify-Desktop\App.xaml
+=======
+C:\Users\guill\OneDrive\Documentos\GitHub\ProjecteV2\ProjecteV2-WPF\Musify-Desktop\Musify-Desktop\App.xaml
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
 13-1394372469
 3-1712535674
 16740783468
+<<<<<<< HEAD
 255720131122
+=======
+2551810126764
+>>>>>>> c3ed8ab297bef1824feaf8a329a9105f74ecc9bb
 Administrator\Admin.xaml;Administrator\AdminArtistaGrup.xaml;Administrator\AdminArtists.xaml;Administrator\AdminGrup.xaml;Administrator\AdminInstrument.xaml;Administrator\AdminMongoHistorial.xaml;Administrator\AdminMongoSong.xaml;Administrator\AdminParticipa.xaml;Administrator\AdminSongAlbum.xaml;Administrator\AdminSongxaml.xaml;MainWindow.xaml;Paginacio.xaml;ReportPage.xaml;
 
 True
